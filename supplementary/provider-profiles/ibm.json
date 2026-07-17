@@ -1,0 +1,24 @@
+{
+    "provider": "ibm",
+    "platform_role": "direct_provider",
+    "hardware_providers": [
+        "IBM Quantum"
+    ],
+    "summary": "IBM Quantum is a direct provider platform. Jobs run through Qiskit Runtime; results and backend properties are returned by the Runtime job and backend APIs.",
+    "fixture_to_public_schema": {
+        "snapshot.status": "Qiskit Runtime job status (QUEUED/RUNNING/DONE/ERROR/CANCELLED); mapped to canonical COMPLETED (DONE) here.",
+        "snapshot.created_at / snapshot.ended_at": "Runtime job creation / completion timestamps.",
+        "snapshot.shots": "Number of shots for the primitive run.",
+        "snapshot.target_id / provider_target_id": "IBM backend name (e.g. ibm_kyiv).",
+        "result.measurement_counts": "Bitstring counts from the primitive result data.",
+        "result.compiled_circuit": "ISA / transpiled circuit used for execution.",
+        "device.calibration": "Backend properties snapshot (qubit and gate calibration) from the backend API.",
+        "device.provider_properties": "Backend configuration/properties block."
+    },
+    "provenance_semantics": {
+        "platform_provider": "ibm_quantum",
+        "hardware_provider": "ibm_quantum",
+        "characterization_evidence": "provider_supplied with nearest-available association (temporal delta reported; no claim snapshot in force during execution).",
+        "results_evidence": "provider_supplied measurement_counts; execution timing derived from created/ended timestamps."
+    }
+}

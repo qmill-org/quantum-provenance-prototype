@@ -1,0 +1,218 @@
+{
+  "schema_version": "0.1.0-prototype",
+  "record_id": "qprov:ionq:f09d0b7fd29c07000f3221aad6ddb677",
+  "generated_at": "2026-07-17T08:15:02.645308+00:00",
+  "retrieved_at": "2026-07-17T08:15:02.645299+00:00",
+  "adapter": {
+    "provider": "ionq",
+    "name": "ionq-provenance-adapter",
+    "version": "0.1.0-prototype"
+  },
+  "job": {
+    "canonical_id": "qprov:ionq:f09d0b7fd29c07000f3221aad6ddb677",
+    "provider": "ionq",
+    "external_id": "b7f3d2a1-9c84-4e15-8a76-0f2c1d5e6b3a",
+    "status": "completed",
+    "created_at": "2026-03-04T12:00:00+00:00",
+    "ended_at": "2026-03-04T12:00:03.500000+00:00",
+    "shots": 1000
+  },
+  "device": {
+    "provider": "ionq",
+    "identifier": "qpu.aria-1",
+    "name": "IonQ Aria-1",
+    "type": "qpu",
+    "qubit_count": 25,
+    "platform_provider": "ionq",
+    "hardware_provider": "ionq"
+  },
+  "artifacts": [
+    {
+      "role": "compiled",
+      "media_type": "application/json",
+      "description": "IonQ native-gate circuit executed on the QPU (passthrough, hash only).",
+      "content_hash": {
+        "algorithm": "sha256",
+        "value": "68e54564ad1b3e626f713a74aacc59e9363c8a98c7dbd622b0bc558f7f835e84"
+      },
+      "byte_size": 122
+    },
+    {
+      "role": "provider_native",
+      "media_type": "application/json",
+      "description": "Sanitized IonQ job metadata (content hash only).",
+      "content_hash": {
+        "algorithm": "sha256",
+        "value": "9fb27b319545532fd1579574434da5a20d47b67295cecbaf2793aaf82a3f7353"
+      }
+    }
+  ],
+  "results": {
+    "available": true,
+    "shots": 1000,
+    "measurement_probabilities": {
+      "00000": 0.492,
+      "11111": 0.508
+    },
+    "estimated_measurement_counts": {
+      "00000": 492,
+      "11111": 508
+    }
+  },
+  "evidence": [
+    {
+      "path": "/job/status",
+      "status": "provider_supplied",
+      "provider_field": "ionq.jobs.get().status"
+    },
+    {
+      "path": "/job/shots",
+      "status": "provider_supplied",
+      "provider_field": "ionq.jobs.get().shots"
+    },
+    {
+      "path": "/job/created_at",
+      "status": "provider_supplied",
+      "provider_field": "ionq.jobs.get() request/response times"
+    },
+    {
+      "path": "/job/ended_at",
+      "status": "provider_supplied",
+      "provider_field": "ionq.jobs.get() request/response times"
+    },
+    {
+      "path": "/device/identifier",
+      "status": "provider_supplied",
+      "provider_field": "ionq.jobs.get().target"
+    },
+    {
+      "path": "/device/type",
+      "status": "provider_supplied",
+      "provider_field": "ionq.backends.get().type"
+    },
+    {
+      "path": "/device/qubit_count",
+      "status": "provider_supplied",
+      "provider_field": "ionq.backends.get().qubits"
+    },
+    {
+      "path": "/device/platform_provider",
+      "status": "provider_supplied",
+      "provider_field": "ionq.jobs.get() (IonQ Cloud)",
+      "notes": "Job was submitted through the IonQ platform."
+    },
+    {
+      "path": "/device/hardware_provider",
+      "status": "provider_supplied",
+      "provider_field": "ionq.jobs.get().target",
+      "notes": "IonQ operates the physical device directly."
+    },
+    {
+      "path": "/results/measurement_probabilities",
+      "status": "provider_supplied",
+      "provider_field": "ionq.jobs.get_results() histogram",
+      "notes": "IonQ returns outcome probabilities, not per-shot counts. The provider values are preserved verbatim; integer basis states are rewritten as fixed-width bitstrings."
+    },
+    {
+      "path": "/results/estimated_measurement_counts",
+      "status": "derived",
+      "source_paths": [
+        "/results/measurement_probabilities",
+        "/job/shots"
+      ],
+      "derivation": "round(probability * shots) per bucket, independently",
+      "notes": "Estimated counts derived from probabilities and requested shots by independent per-bucket rounding. These are NOT observed per-shot counts and need not sum to shots; no bucket is adjusted to force the total."
+    },
+    {
+      "path": "/artifacts/0",
+      "status": "provider_passthrough",
+      "provider_field": "ionq.jobs.get().circuit (native)"
+    },
+    {
+      "path": "/artifacts/1",
+      "status": "provider_passthrough",
+      "provider_field": "ionq.jobs.get()",
+      "notes": "Secrets redacted; only a content hash is retained."
+    },
+    {
+      "path": "/execution/run_duration_ms",
+      "status": "provider_supplied",
+      "provider_field": "ionq.jobs.get().execution_time"
+    },
+    {
+      "path": "/execution/total_duration_ms",
+      "status": "derived",
+      "source_paths": [
+        "/job/created_at",
+        "/job/ended_at"
+      ],
+      "derivation": "ended_at - created_at"
+    },
+    {
+      "path": "/characterization",
+      "status": "provider_supplied",
+      "provider_field": "ionq.characterizations.get()",
+      "notes": "Linked characterization id 0f5d9c2e-1a34-4b78-9e56-7c8d1e2f3a4b."
+    }
+  ],
+  "warnings": [],
+  "operations": [
+    {
+      "actor": "adapter",
+      "operation": "get_task",
+      "count": 1
+    },
+    {
+      "actor": "adapter",
+      "operation": "get_status",
+      "count": 1
+    },
+    {
+      "actor": "adapter",
+      "operation": "get_device_details",
+      "count": 1
+    },
+    {
+      "actor": "adapter",
+      "operation": "get_result",
+      "count": 1
+    },
+    {
+      "actor": "qmill",
+      "operation": "create_provenance_record",
+      "count": 1
+    }
+  ],
+  "execution": {
+    "run_duration_ms": 2200,
+    "total_duration_ms": 3500
+  },
+  "characterization": {
+    "association": "provider_linked",
+    "captured_at": "2026-03-04T06:00:00+00:00",
+    "metrics": [
+      {
+        "name": "mean_fidelity_1q",
+        "value": 0.9989
+      },
+      {
+        "name": "mean_fidelity_2q",
+        "value": 0.9932
+      },
+      {
+        "name": "spam_fidelity",
+        "value": 0.9959
+      },
+      {
+        "name": "t1_us",
+        "value": 100000000.0,
+        "unit": "microseconds"
+      },
+      {
+        "name": "t2_us",
+        "value": 1000000.0,
+        "unit": "microseconds"
+      }
+    ]
+  }
+}

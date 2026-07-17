@@ -1,0 +1,29 @@
+{
+    "provider": "braket",
+    "platform_role": "aggregator",
+    "hardware_providers": [
+        "IonQ",
+        "Rigetti",
+        "IQM",
+        "QuEra",
+        "Amazon (simulators)"
+    ],
+    "summary": "Amazon Braket is an aggregation platform that brokers access to multiple hardware providers. Job results and device calibration are returned through the Braket task API and the Braket device API.",
+    "fixture_to_public_schema": {
+        "snapshot.status": "Braket task state (QueuedType/RUNNING/COMPLETED/FAILED/CANCELLED); mapped to canonical COMPLETED here.",
+        "snapshot.created_at / snapshot.ended_at": "Braket task createdAt / endedAt timestamps.",
+        "snapshot.shots": "Task shot count.",
+        "snapshot.target_id / provider_target_id": "Braket device ARN (arn:aws:braket:::device/...).",
+        "result.measurement_counts": "Measurement histogram from the task result (measurementCounts).",
+        "result.compiled_circuit": "Compiled/native program associated with the task, passed through verbatim.",
+        "device.type / status": "Braket device type (QPU/SIMULATOR) and status (ONLINE/OFFLINE).",
+        "device.calibration": "Device calibration/properties document returned by the Braket device API.",
+        "device.provider_properties": "Provider-specific device properties block."
+    },
+    "provenance_semantics": {
+        "platform_provider": "amazon_braket",
+        "hardware_provider": "Derived from the device ARN (e.g. arn:aws:braket:::device/qpu/ionq/... -> ionq).",
+        "compiled_circuit_evidence": "provider_passthrough (Braket returns the native program as-is).",
+        "results_evidence": "provider_supplied measurement_counts; execution timing derived from created/ended timestamps."
+    }
+}

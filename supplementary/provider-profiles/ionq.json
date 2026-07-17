@@ -1,0 +1,24 @@
+{
+    "provider": "ionq",
+    "platform_role": "direct_provider",
+    "hardware_providers": [
+        "IonQ"
+    ],
+    "summary": "IonQ is a direct provider platform. Its API returns results as a normalized probability histogram rather than raw shot counts, which is preserved verbatim by the adapter.",
+    "fixture_to_public_schema": {
+        "snapshot.status": "IonQ job status (submitted/ready/running/completed/failed/canceled); mapped to canonical COMPLETED here.",
+        "snapshot.created_at / snapshot.ended_at": "IonQ job request / response timestamps.",
+        "snapshot.shots": "Requested shot count.",
+        "snapshot.target_id / provider_target_id": "IonQ target (e.g. qpu.aria-1, simulator).",
+        "result.raw_payload.histogram": "IonQ probability histogram keyed by integer state index.",
+        "result.compiled_circuit": "Compiled program, passed through verbatim.",
+        "device.calibration": "IonQ characterization / calibration document.",
+        "device.provider_properties": "Provider-specific device properties block."
+    },
+    "provenance_semantics": {
+        "platform_provider": "ionq",
+        "hardware_provider": "ionq",
+        "results_evidence": "measurement_probabilities are provider_supplied; estimated_measurement_counts are derived (independent per-bucket rounding of probabilities x shots). measurement_counts are never fabricated because IonQ does not return raw counts.",
+        "note": "This asymmetry (probabilities, not counts) is the principal IonQ-specific distinction the unified model captures without loss."
+    }
+}

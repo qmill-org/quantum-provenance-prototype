@@ -1,0 +1,819 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "QMill Unified Quantum Provenance API (research prototype)",
+        "version": "0.1.0-prototype",
+        "description": "Reduced prototype contract. Canonical machine-readable source for the provenance domain schema exposed by the in-process provenance service. Two operations only: register/assemble a record and retrieve a canonical record. Application-captured context is carried on the create request and marked as such in evidence."
+    },
+    "paths": {
+        "/v1/provenance-records": {
+            "post": {
+                "summary": "Register an external job and assemble a provenance record",
+                "operationId": "createProvenanceRecord",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateProvenanceRecordRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Existing record returned (idempotent create for an already-registered job).",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProvenanceRecord"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Provenance record created.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProvenanceRecord"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/Problem"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Problem"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/Problem"
+                    }
+                }
+            }
+        },
+        "/v1/jobs/{job_id}/provenance": {
+            "get": {
+                "summary": "Retrieve a canonical provenance record",
+                "operationId": "getJobProvenance",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/JobId"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Best available, possibly partial provenance record.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProvenanceRecord"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Problem"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "parameters": {
+            "JobId": {
+                "name": "job_id",
+                "in": "path",
+                "required": true,
+                "schema": {
+                    "$ref": "#/components/schemas/CanonicalId"
+                },
+                "description": "Canonical job ID, not a raw provider job ID."
+            }
+        },
+        "responses": {
+            "Problem": {
+                "description": "Problem response.",
+                "content": {
+                    "application/problem+json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Problem"
+                        }
+                    }
+                }
+            }
+        },
+        "schemas": {
+            "CanonicalId": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Opaque canonical identifier. Prototype default: 'qprov:{provider}:{sha256(provider|external_job_id|scope)[:32]}'."
+            },
+            "Timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "RFC 3339 timestamp with offset."
+            },
+            "DurationMilliseconds": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Duration in milliseconds, never a timestamp."
+            },
+            "ProviderId": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_-]*$"
+            },
+            "EvidenceStatus": {
+                "type": "string",
+                "description": "Provenance qualifier for a normalized field.",
+                "enum": [
+                    "provider_supplied",
+                    "aggregator_normalized",
+                    "provider_passthrough",
+                    "derived",
+                    "application_captured",
+                    "unavailable",
+                    "not_applicable",
+                    "not_verifiable"
+                ]
+            },
+            "AvailabilityReason": {
+                "type": "string",
+                "enum": [
+                    "not_exposed_by_provider",
+                    "not_captured_by_application",
+                    "authentication_scope_insufficient",
+                    "upstream_request_failed",
+                    "insufficient_source_data",
+                    "discarded_by_retention_policy",
+                    "expired_provider_artifact",
+                    "unsupported_by_adapter"
+                ]
+            },
+            "ArtifactRole": {
+                "type": "string",
+                "enum": [
+                    "source",
+                    "submitted",
+                    "compiled",
+                    "executed",
+                    "environment",
+                    "result",
+                    "provider_native"
+                ]
+            },
+            "CharacterizationAssociation": {
+                "type": "string",
+                "enum": [
+                    "provider_linked",
+                    "configuration_linked",
+                    "timestamp_matched",
+                    "nearest_available",
+                    "current_at_retrieval"
+                ]
+            },
+            "Evidence": {
+                "type": "object",
+                "required": [
+                    "path",
+                    "status"
+                ],
+                "properties": {
+                    "path": {
+                        "type": "string",
+                        "description": "RFC 6901 JSON Pointer to the normalized value or unavailable section."
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/EvidenceStatus"
+                    },
+                    "reason": {
+                        "$ref": "#/components/schemas/AvailabilityReason"
+                    },
+                    "source_paths": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "derivation": {
+                        "type": "string"
+                    },
+                    "provider_field": {
+                        "type": "string"
+                    },
+                    "notes": {
+                        "type": "string"
+                    }
+                },
+                "allOf": [
+                    {
+                        "if": {
+                            "properties": {
+                                "status": {
+                                    "const": "unavailable"
+                                }
+                            },
+                            "required": [
+                                "status"
+                            ]
+                        },
+                        "then": {
+                            "required": [
+                                "reason"
+                            ]
+                        }
+                    }
+                ],
+                "additionalProperties": false
+            },
+            "ContentHash": {
+                "type": "object",
+                "required": [
+                    "algorithm",
+                    "value"
+                ],
+                "properties": {
+                    "algorithm": {
+                        "type": "string",
+                        "enum": [
+                            "sha256",
+                            "sha384",
+                            "sha512"
+                        ]
+                    },
+                    "value": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]+$"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Artifact": {
+                "type": "object",
+                "required": [
+                    "role",
+                    "media_type"
+                ],
+                "properties": {
+                    "role": {
+                        "$ref": "#/components/schemas/ArtifactRole"
+                    },
+                    "media_type": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "reference": {
+                        "type": "string",
+                        "description": "Opaque locator (URI or store key). No inline provider payloads in the prototype."
+                    },
+                    "content_hash": {
+                        "$ref": "#/components/schemas/ContentHash"
+                    },
+                    "byte_size": {
+                        "type": "integer",
+                        "minimum": 0
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Adapter": {
+                "type": "object",
+                "required": [
+                    "provider",
+                    "name",
+                    "version"
+                ],
+                "properties": {
+                    "provider": {
+                        "$ref": "#/components/schemas/ProviderId"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Job": {
+                "type": "object",
+                "required": [
+                    "canonical_id",
+                    "provider",
+                    "external_id",
+                    "status"
+                ],
+                "properties": {
+                    "canonical_id": {
+                        "$ref": "#/components/schemas/CanonicalId"
+                    },
+                    "provider": {
+                        "$ref": "#/components/schemas/ProviderId"
+                    },
+                    "external_id": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "created",
+                            "queued",
+                            "running",
+                            "completed",
+                            "failed",
+                            "cancelled",
+                            "unknown"
+                        ]
+                    },
+                    "created_at": {
+                        "$ref": "#/components/schemas/Timestamp"
+                    },
+                    "ended_at": {
+                        "$ref": "#/components/schemas/Timestamp"
+                    },
+                    "shots": {
+                        "type": "integer",
+                        "minimum": 0
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Device": {
+                "type": "object",
+                "required": [
+                    "provider",
+                    "identifier"
+                ],
+                "properties": {
+                    "provider": {
+                        "$ref": "#/components/schemas/ProviderId"
+                    },
+                    "identifier": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "qpu",
+                            "simulator",
+                            "unknown"
+                        ]
+                    },
+                    "qubit_count": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "platform_provider": {
+                        "$ref": "#/components/schemas/ProviderId",
+                        "description": "Platform through which the job was submitted (e.g. amazon_braket, ibm_quantum, ionq)."
+                    },
+                    "hardware_provider": {
+                        "$ref": "#/components/schemas/ProviderId",
+                        "description": "Operator of the physical device (e.g. ionq). Equals platform_provider for direct-provider integrations."
+                    }
+                },
+                "additionalProperties": false
+            },
+            "MappingEntry": {
+                "type": "object",
+                "required": [
+                    "logical",
+                    "physical"
+                ],
+                "properties": {
+                    "logical": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "physical": {
+                        "type": "integer",
+                        "minimum": 0
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Compilation": {
+                "type": "object",
+                "properties": {
+                    "compiler_name": {
+                        "type": "string"
+                    },
+                    "compiler_version": {
+                        "type": "string"
+                    },
+                    "optimization_level": {
+                        "type": "integer"
+                    },
+                    "random_seed": {
+                        "type": "integer"
+                    },
+                    "logical_to_physical_mapping": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MappingEntry"
+                        }
+                    },
+                    "native_gate_counts": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    },
+                    "depth": {
+                        "type": "integer",
+                        "minimum": 0
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Execution": {
+                "type": "object",
+                "properties": {
+                    "queue_duration_ms": {
+                        "$ref": "#/components/schemas/DurationMilliseconds"
+                    },
+                    "run_duration_ms": {
+                        "$ref": "#/components/schemas/DurationMilliseconds"
+                    },
+                    "total_duration_ms": {
+                        "$ref": "#/components/schemas/DurationMilliseconds"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CharacterizationMetric": {
+                "type": "object",
+                "required": [
+                    "name",
+                    "value"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "number"
+                    },
+                    "unit": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Characterization": {
+                "type": "object",
+                "required": [
+                    "association"
+                ],
+                "properties": {
+                    "association": {
+                        "$ref": "#/components/schemas/CharacterizationAssociation"
+                    },
+                    "captured_at": {
+                        "$ref": "#/components/schemas/Timestamp"
+                    },
+                    "metrics": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CharacterizationMetric"
+                        }
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Results": {
+                "type": "object",
+                "required": [
+                    "available"
+                ],
+                "properties": {
+                    "available": {
+                        "type": "boolean"
+                    },
+                    "shots": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "measurement_counts": {
+                        "type": "object",
+                        "description": "Actual provider-returned or observed integer counts (Braket, IBM). Absent when the provider returns probabilities instead of counts.",
+                        "additionalProperties": {
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    },
+                    "measurement_probabilities": {
+                        "type": "object",
+                        "description": "Provider-returned or normalized outcome probabilities keyed by fixed-width bitstring (e.g. IonQ). Preserved verbatim; not derived.",
+                        "additionalProperties": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                        }
+                    },
+                    "estimated_measurement_counts": {
+                        "type": "object",
+                        "description": "Optional integer counts derived from measurement_probabilities and requested shots by independent per-bucket rounding. These are estimates, not observed per-shot counts, and need not sum to shots.",
+                        "additionalProperties": {
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SoftwareContext": {
+                "type": "object",
+                "properties": {
+                    "provider_client": {
+                        "type": "string"
+                    },
+                    "provider_client_version": {
+                        "type": "string"
+                    },
+                    "compiler_name": {
+                        "type": "string"
+                    },
+                    "compiler_version": {
+                        "type": "string"
+                    },
+                    "python_version": {
+                        "type": "string"
+                    },
+                    "framework_versions": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Warning": {
+                "type": "object",
+                "required": [
+                    "code",
+                    "message"
+                ],
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "OperationObservation": {
+                "type": "object",
+                "required": [
+                    "actor",
+                    "operation"
+                ],
+                "properties": {
+                    "actor": {
+                        "type": "string",
+                        "enum": [
+                            "qmill",
+                            "adapter",
+                            "provider"
+                        ]
+                    },
+                    "operation": {
+                        "type": "string"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "minimum": 1
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ProvenanceRecord": {
+                "type": "object",
+                "required": [
+                    "schema_version",
+                    "record_id",
+                    "generated_at",
+                    "retrieved_at",
+                    "adapter",
+                    "job",
+                    "device",
+                    "artifacts",
+                    "results",
+                    "evidence",
+                    "warnings",
+                    "operations"
+                ],
+                "properties": {
+                    "schema_version": {
+                        "type": "string",
+                        "const": "0.1.0-prototype"
+                    },
+                    "record_id": {
+                        "$ref": "#/components/schemas/CanonicalId"
+                    },
+                    "generated_at": {
+                        "$ref": "#/components/schemas/Timestamp"
+                    },
+                    "retrieved_at": {
+                        "$ref": "#/components/schemas/Timestamp"
+                    },
+                    "adapter": {
+                        "$ref": "#/components/schemas/Adapter"
+                    },
+                    "job": {
+                        "$ref": "#/components/schemas/Job"
+                    },
+                    "device": {
+                        "$ref": "#/components/schemas/Device"
+                    },
+                    "artifacts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Artifact"
+                        }
+                    },
+                    "compilation": {
+                        "$ref": "#/components/schemas/Compilation"
+                    },
+                    "execution": {
+                        "$ref": "#/components/schemas/Execution"
+                    },
+                    "characterization": {
+                        "$ref": "#/components/schemas/Characterization"
+                    },
+                    "results": {
+                        "$ref": "#/components/schemas/Results"
+                    },
+                    "software": {
+                        "$ref": "#/components/schemas/SoftwareContext"
+                    },
+                    "evidence": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Evidence"
+                        }
+                    },
+                    "warnings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Warning"
+                        }
+                    },
+                    "operations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/OperationObservation"
+                        }
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SourceProgramInput": {
+                "type": "object",
+                "required": [
+                    "format"
+                ],
+                "properties": {
+                    "format": {
+                        "type": "string",
+                        "description": "e.g. openqasm3, openqasm2, qiskit-qpy, braket-ir."
+                    },
+                    "reference": {
+                        "type": "string"
+                    },
+                    "content_hash": {
+                        "$ref": "#/components/schemas/ContentHash"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ApplicationCompilationContext": {
+                "type": "object",
+                "properties": {
+                    "compiler_name": {
+                        "type": "string"
+                    },
+                    "compiler_version": {
+                        "type": "string"
+                    },
+                    "optimization_level": {
+                        "type": "integer"
+                    },
+                    "random_seed": {
+                        "type": "integer"
+                    },
+                    "logical_to_physical_mapping": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MappingEntry"
+                        }
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ApplicationSoftwareContext": {
+                "type": "object",
+                "properties": {
+                    "provider_client": {
+                        "type": "string"
+                    },
+                    "provider_client_version": {
+                        "type": "string"
+                    },
+                    "compiler_name": {
+                        "type": "string"
+                    },
+                    "compiler_version": {
+                        "type": "string"
+                    },
+                    "python_version": {
+                        "type": "string"
+                    },
+                    "framework_versions": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CreateProvenanceRecordRequest": {
+                "type": "object",
+                "required": [
+                    "provider",
+                    "external_job_id"
+                ],
+                "properties": {
+                    "provider": {
+                        "$ref": "#/components/schemas/ProviderId"
+                    },
+                    "external_job_id": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "scope": {
+                        "type": "string",
+                        "description": "Optional tenancy qualifier folded into the canonical ID. Routing region is a separate property (see `region`)."
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Optional provider-specific routing region (e.g. an AWS region for Braket). Used for retrieval; not folded into the canonical ID."
+                    },
+                    "refresh": {
+                        "type": "boolean",
+                        "description": "Re-assemble even if a record already exists.",
+                        "default": false
+                    },
+                    "source_program": {
+                        "$ref": "#/components/schemas/SourceProgramInput"
+                    },
+                    "compilation_context": {
+                        "$ref": "#/components/schemas/ApplicationCompilationContext"
+                    },
+                    "software_context": {
+                        "$ref": "#/components/schemas/ApplicationSoftwareContext"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Problem": {
+                "type": "object",
+                "required": [
+                    "type",
+                    "title",
+                    "status"
+                ],
+                "properties": {
+                    "type": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "integer"
+                    },
+                    "detail": {
+                        "type": "string"
+                    },
+                    "instance": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            }
+        }
+    }
+}

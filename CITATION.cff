@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using these metadata."
+title: "Quantum Provenance Prototype: reproducible reference artifact"
+abstract: >-
+  Self-contained reference prototype and evaluation harness for a unified
+  quantum-provenance model spanning Amazon Braket, IBM Quantum, and IonQ.
+  Accompanies the paper "Toward Standardized Quantum Provenance: A Cross-Provider
+  Analysis, Unified API, and Reference Prototype". Runs entirely from sanitized,
+  synthetic fixtures with no network access or credentials.
+type: software
+authors:
+  - family-names: Peltonen
+    given-names: Jouni
+version: 0.1.0
+date-released: "2026-07-24"
+license: MIT
+repository-code: "https://github.com/qmill-org/quantum-provenance-prototype"
+keywords:
+  - quantum computing
+  - provenance
+  - reproducibility
+  - openapi
+  - metadata
+preferred-citation:
+  type: article
+  title: >-
+    Toward Standardized Quantum Provenance: A Cross-Provider Analysis, Unified
+    API, and Reference Prototype
+  authors:
+    - family-names: Peltonen
+      given-names: Jouni
+  year: 2026

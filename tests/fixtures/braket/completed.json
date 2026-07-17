@@ -1,0 +1,47 @@
+{
+    "provider": "braket",
+    "external_job_id": "arn:aws:braket:us-east-1:000000000000:quantum-task/11111111-2222-3333-4444-555555555555",
+    "region": "us-east-1",
+    "snapshot": {
+        "status": "COMPLETED",
+        "created_at": "2026-01-05T10:00:00+00:00",
+        "ended_at": "2026-01-05T10:00:03.500000+00:00",
+        "shots": 1000,
+        "target_id": "arn:aws:braket:us-east-1::device/qpu/ionq/Aria-1",
+        "provider_target_id": "arn:aws:braket:us-east-1::device/qpu/ionq/Aria-1",
+        "metadata": {
+            "deviceArn": "arn:aws:braket:us-east-1::device/qpu/ionq/Aria-1",
+            "shots": 1000,
+            "status": "COMPLETED",
+            "sessionToken": "FAKE-SESSION-TOKEN-must-not-appear",
+            "aws_secret_access_key": "FAKE-SECRET-must-not-appear"
+        }
+    },
+    "result": {
+        "measurement_counts": {
+            "00": 511,
+            "11": 489
+        },
+        "compiled_circuit": "OPENQASM 3.0;\nbit[2] c;\nqubit[2] q;\nh q[0];\ncnot q[0], q[1];\nc[0] = measure q[0];\nc[1] = measure q[1];\n"
+    },
+    "device": {
+        "target_id": "arn:aws:braket:us-east-1::device/qpu/ionq/Aria-1",
+        "provider_target_id": "arn:aws:braket:us-east-1::device/qpu/ionq/Aria-1",
+        "name": "Aria-1",
+        "type": "QPU",
+        "status": "ONLINE",
+        "provider_properties": {
+            "qubitCount": 25
+        },
+        "calibration": {
+            "captured_at": "2026-01-05T06:00:00+00:00",
+            "metrics": {
+                "one_qubit_readout_fidelity_mean": 0.9956,
+                "two_qubit_gate_fidelity_mean": 0.987
+            }
+        },
+        "metadata": {
+            "provider": "IonQ"
+        }
+    }
+}

@@ -1,0 +1,282 @@
+{
+  "attribute_inventory_version": "0.1.0",
+  "partial_record_experiment": {
+    "change": {
+      "affected_attribute": "/characterization",
+      "omitted": "device_calibration_data",
+      "type": "partial_provider_record"
+    },
+    "measured": {
+      "all_records_validate": true,
+      "characterization_degrades_everywhere": true,
+      "no_unclassified_attributes": true,
+      "per_provider": {
+        "braket": {
+          "characterization_status": "unavailable",
+          "characterization_unavailable": true,
+          "record_validates": true,
+          "unavailable_attributes": 3,
+          "unclassified": 0
+        },
+        "ibm": {
+          "characterization_status": "unavailable",
+          "characterization_unavailable": true,
+          "record_validates": true,
+          "unavailable_attributes": 3,
+          "unclassified": 0
+        },
+        "ionq": {
+          "characterization_status": "unavailable",
+          "characterization_unavailable": true,
+          "record_validates": true,
+          "unavailable_attributes": 7,
+          "unclassified": 0
+        }
+      }
+    }
+  },
+  "provider_input_experiment": {
+    "change": {
+      "affected_attribute": "/device/qubit_count",
+      "provider": "ibm",
+      "renamed_field": "device.provider_properties.num_qubits",
+      "renamed_to": "qubit_total",
+      "type": "provider_input_field_rename"
+    },
+    "measured": {
+      "affected_attribute_degraded_to_unavailable": true,
+      "affected_attribute_status_after": "unavailable",
+      "ibm_record_still_validates": true,
+      "isolation_holds": true,
+      "other_providers_unchanged": {
+        "braket": true,
+        "ionq": true
+      },
+      "qubit_count_after": null,
+      "qubit_count_before": 156
+    },
+    "touch_set": {
+      "files": 1,
+      "rule": "a provider-side input change is repaired in exactly one adapter file; the contract, shared implementation, and other adapters are untouched.",
+      "to_restore_attribute": [
+        "src/qmill_quantum_provenance/adapters/ibm.py"
+      ]
+    }
+  },
+  "providers": {
+    "braket": {
+      "adapter_loc": 428,
+      "attribute_evidence_counts": {
+        "application_captured": 11,
+        "derived": 2,
+        "provider_passthrough": 2,
+        "provider_supplied": 10
+      },
+      "evidence_total": 25,
+      "fixture_id": "arn:aws:braket:us-east-1:000000000000:quantum-task/11111111-2222-3333-4444-555555555555",
+      "inventory_classification": {
+        "by_attribute": {
+          "artifact.compiled": "provider_passthrough",
+          "characterization": "provider_supplied",
+          "compilation.compiler": "application_captured",
+          "compilation.logical_to_physical_mapping": "application_captured",
+          "device.hardware_provider": "derived",
+          "device.identifier": "provider_supplied",
+          "device.platform_provider": "provider_supplied",
+          "device.qubit_count": "provider_supplied",
+          "device.type": "provider_supplied",
+          "execution.queue_duration_ms": "unavailable",
+          "execution.run_duration_ms": "unavailable",
+          "execution.total_duration_ms": "derived",
+          "job.created_at": "provider_supplied",
+          "job.ended_at": "provider_supplied",
+          "job.shots": "provider_supplied",
+          "job.status": "provider_supplied",
+          "results.estimated_measurement_counts": "not_applicable",
+          "results.measurement_counts": "provider_supplied",
+          "results.measurement_probabilities": "not_applicable",
+          "software.framework_versions": "application_captured",
+          "software.provider_client": "application_captured"
+        },
+        "counts": {
+          "application_captured": 4,
+          "derived": 2,
+          "not_applicable": 2,
+          "provider_passthrough": 1,
+          "provider_supplied": 10,
+          "unavailable": 2
+        },
+        "unclassified": 0
+      },
+      "operations": {
+        "adapter_upstream": 4,
+        "provider_reported": 0,
+        "qmill_facing": 1
+      },
+      "record_id": "qprov:braket:782f818c22da425e05074b501ca26a26",
+      "results_available": true
+    },
+    "ibm": {
+      "adapter_loc": 486,
+      "attribute_evidence_counts": {
+        "application_captured": 11,
+        "derived": 3,
+        "provider_passthrough": 2,
+        "provider_supplied": 11
+      },
+      "evidence_total": 27,
+      "fixture_id": "cx7z8k2m4n5p6q7r8s9t",
+      "inventory_classification": {
+        "by_attribute": {
+          "artifact.compiled": "provider_passthrough",
+          "characterization": "provider_supplied",
+          "compilation.compiler": "application_captured",
+          "compilation.logical_to_physical_mapping": "application_captured",
+          "device.hardware_provider": "provider_supplied",
+          "device.identifier": "provider_supplied",
+          "device.platform_provider": "provider_supplied",
+          "device.qubit_count": "provider_supplied",
+          "device.type": "provider_supplied",
+          "execution.queue_duration_ms": "derived",
+          "execution.run_duration_ms": "derived",
+          "execution.total_duration_ms": "derived",
+          "job.created_at": "provider_supplied",
+          "job.ended_at": "provider_supplied",
+          "job.shots": "provider_supplied",
+          "job.status": "provider_supplied",
+          "results.estimated_measurement_counts": "not_applicable",
+          "results.measurement_counts": "provider_supplied",
+          "results.measurement_probabilities": "not_applicable",
+          "software.framework_versions": "application_captured",
+          "software.provider_client": "application_captured"
+        },
+        "counts": {
+          "application_captured": 4,
+          "derived": 3,
+          "not_applicable": 2,
+          "provider_passthrough": 1,
+          "provider_supplied": 11
+        },
+        "unclassified": 0
+      },
+      "operations": {
+        "adapter_upstream": 4,
+        "provider_reported": 0,
+        "qmill_facing": 1
+      },
+      "record_id": "qprov:ibm:049001a0c6830efb74a6fa0c8ae65e6d",
+      "results_available": true
+    },
+    "ionq": {
+      "adapter_loc": 526,
+      "attribute_evidence_counts": {
+        "derived": 2,
+        "provider_passthrough": 2,
+        "provider_supplied": 12
+      },
+      "evidence_total": 16,
+      "fixture_id": "b7f3d2a1-9c84-4e15-8a76-0f2c1d5e6b3a",
+      "inventory_classification": {
+        "by_attribute": {
+          "artifact.compiled": "provider_passthrough",
+          "characterization": "provider_supplied",
+          "compilation.compiler": "unavailable",
+          "compilation.logical_to_physical_mapping": "unavailable",
+          "device.hardware_provider": "provider_supplied",
+          "device.identifier": "provider_supplied",
+          "device.platform_provider": "provider_supplied",
+          "device.qubit_count": "provider_supplied",
+          "device.type": "provider_supplied",
+          "execution.queue_duration_ms": "unavailable",
+          "execution.run_duration_ms": "provider_supplied",
+          "execution.total_duration_ms": "derived",
+          "job.created_at": "provider_supplied",
+          "job.ended_at": "provider_supplied",
+          "job.shots": "provider_supplied",
+          "job.status": "provider_supplied",
+          "results.estimated_measurement_counts": "derived",
+          "results.measurement_counts": "not_applicable",
+          "results.measurement_probabilities": "provider_supplied",
+          "software.framework_versions": "unavailable",
+          "software.provider_client": "unavailable"
+        },
+        "counts": {
+          "derived": 2,
+          "not_applicable": 1,
+          "provider_passthrough": 1,
+          "provider_supplied": 12,
+          "unavailable": 5
+        },
+        "unclassified": 0
+      },
+      "operations": {
+        "adapter_upstream": 4,
+        "provider_reported": 0,
+        "qmill_facing": 1
+      },
+      "record_id": "qprov:ionq:f09d0b7fd29c07000f3221aad6ddb677",
+      "results_available": true
+    }
+  },
+  "report_format": "qmill.provenance.evaluation",
+  "report_version": "0.2.0",
+  "schema_change_experiment": {
+    "change": {
+      "attribute": "cost",
+      "location": "/cost",
+      "type": "additive_optional_attribute"
+    },
+    "measured": {
+      "backward_compatible": true,
+      "change_is_necessary": true,
+      "examples_checked": 3,
+      "new_attribute_accepted_by_extended": true,
+      "new_attribute_rejected_by_original": true,
+      "per_example": [
+        {
+          "example": "braket-completed.json",
+          "valid_extended": true,
+          "valid_original": true
+        },
+        {
+          "example": "ibm-completed.json",
+          "valid_extended": true,
+          "valid_original": true
+        },
+        {
+          "example": "ionq-completed.json",
+          "valid_extended": true,
+          "valid_original": true
+        }
+      ]
+    },
+    "touch_set": {
+      "per_provider_adapter": {
+        "rule": "one localized change per provider that can source the attribute (0..N); adapters that cannot source it are unchanged."
+      },
+      "shared_implementation": [
+        "src/qmill_quantum_provenance/openapi.json",
+        "src/qmill_quantum_provenance/models.py",
+        "src/qmill_quantum_provenance/adapter.py",
+        "src/qmill_quantum_provenance/service.py"
+      ],
+      "shared_implementation_files": 4,
+      "unchanged_infrastructure": [
+        "src/qmill_quantum_provenance/registry.py",
+        "src/qmill_quantum_provenance/replay.py",
+        "src/qmill_quantum_provenance/contract.py",
+        "src/qmill_quantum_provenance/evaluation.py"
+      ]
+    }
+  },
+  "schema_version": "0.1.0-prototype",
+  "shared_provider_independent_implementation_loc": {
+    "adapter.py": 112,
+    "contract.py": 32,
+    "models.py": 383,
+    "redaction.py": 55,
+    "registry.py": 50,
+    "service.py": 229
+  },
+  "shared_provider_independent_implementation_loc_total": 861
+}

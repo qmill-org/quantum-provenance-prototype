@@ -1,0 +1,63 @@
+{
+    "provider": "ibm",
+    "external_job_id": "cx7z8k2m4n5p6q7r8s9t",
+    "region": null,
+    "snapshot": {
+        "status": "DONE",
+        "created_at": "2026-02-10T09:15:00+00:00",
+        "ended_at": "2026-02-10T09:15:47.250000+00:00",
+        "shots": 4096,
+        "target_id": "ibm_fez",
+        "provider_target_id": "ibm_fez",
+        "metadata": {
+            "backend_name": "ibm_fez",
+            "program_id": "sampler",
+            "timestamps": {
+                "created": "2026-02-10T09:15:00+00:00",
+                "running": "2026-02-10T09:15:42+00:00",
+                "finished": "2026-02-10T09:15:47.250000+00:00"
+            },
+            "usage": {
+                "quantum_seconds": 5.25
+            },
+            "shots": 4096,
+            "access_token": "FAKE-IBM-ACCESS-TOKEN-must-not-appear",
+            "api_key": "FAKE-IBM-APIKEY-must-not-appear"
+        }
+    },
+    "result": {
+        "measurement_counts": {
+            "00000": 2013,
+            "11111": 1985,
+            "00001": 49,
+            "10000": 49
+        },
+        "compiled_circuit": "OPENQASM 3.0;\nbit[5] c;\nrz(pi/2) $0;\nsx $0;\nrz(pi/2) $0;\necr $0, $1;\necr $1, $2;\necr $2, $3;\necr $3, $4;\nc[0] = measure $0;\nc[1] = measure $1;\nc[2] = measure $2;\nc[3] = measure $3;\nc[4] = measure $4;\n"
+    },
+    "device": {
+        "target_id": "ibm_fez",
+        "provider_target_id": "ibm_fez",
+        "name": "ibm_fez",
+        "type": "QPU",
+        "status": "ONLINE",
+        "provider_properties": {
+            "num_qubits": 156,
+            "processor_type": {
+                "family": "Heron",
+                "revision": 2
+            }
+        },
+        "calibration": {
+            "captured_at": "2026-02-10T06:00:00+00:00",
+            "metrics": {
+                "median_t1_us": 189.4,
+                "median_t2_us": 121.7,
+                "median_readout_error": 0.0142,
+                "median_ecr_error": 0.0031
+            }
+        },
+        "metadata": {
+            "provider": "IBM Quantum"
+        }
+    }
+}

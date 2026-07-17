@@ -1,0 +1,267 @@
+{
+  "schema_version": "0.1.0-prototype",
+  "record_id": "qprov:braket:782f818c22da425e05074b501ca26a26",
+  "generated_at": "2026-07-17T08:20:53.630084+00:00",
+  "retrieved_at": "2026-07-17T08:20:53.630072+00:00",
+  "adapter": {
+    "provider": "braket",
+    "name": "braket-provenance-adapter",
+    "version": "0.1.0-prototype"
+  },
+  "job": {
+    "canonical_id": "qprov:braket:782f818c22da425e05074b501ca26a26",
+    "provider": "braket",
+    "external_id": "arn:aws:braket:us-east-1:000000000000:quantum-task/11111111-2222-3333-4444-555555555555",
+    "status": "completed",
+    "created_at": "2026-01-05T10:00:00+00:00",
+    "ended_at": "2026-01-05T10:00:03.500000+00:00",
+    "shots": 1000
+  },
+  "device": {
+    "provider": "braket",
+    "identifier": "arn:aws:braket:us-east-1::device/qpu/ionq/Aria-1",
+    "name": "Aria-1",
+    "type": "qpu",
+    "qubit_count": 25,
+    "platform_provider": "amazon_braket",
+    "hardware_provider": "ionq"
+  },
+  "artifacts": [
+    {
+      "role": "compiled",
+      "media_type": "application/x-openqasm;version=3",
+      "description": "Provider-compiled program (passthrough, hash only).",
+      "content_hash": {
+        "algorithm": "sha256",
+        "value": "1f6a04607d4d67b84864440fff65603d336bfcdf8a67e81b38329fee7776d9e2"
+      },
+      "byte_size": 103
+    },
+    {
+      "role": "provider_native",
+      "media_type": "application/json",
+      "description": "Sanitized Braket task metadata (content hash only).",
+      "content_hash": {
+        "algorithm": "sha256",
+        "value": "ca5984afbc7dbe741d6ea9fd772af593ac26219cb6fff030e57766426af46c93"
+      }
+    },
+    {
+      "role": "source",
+      "media_type": "application/x-openqasm;version=3",
+      "description": "Application-captured source program (openqasm3)",
+      "reference": "app://demo/braket/bell",
+      "content_hash": {
+        "algorithm": "sha256",
+        "value": "586631a5e26e633950e8580227e466cbf324fadc9da69d2acc87dc9dea007470"
+      }
+    }
+  ],
+  "results": {
+    "available": true,
+    "shots": 1000,
+    "measurement_counts": {
+      "00": 511,
+      "11": 489
+    }
+  },
+  "evidence": [
+    {
+      "path": "/job/status",
+      "status": "provider_supplied",
+      "provider_field": "AwsQuantumTask.state()"
+    },
+    {
+      "path": "/job/shots",
+      "status": "provider_supplied",
+      "provider_field": "metadata.shots"
+    },
+    {
+      "path": "/job/created_at",
+      "status": "provider_supplied",
+      "provider_field": "AwsQuantumTask.metadata() createdAt/endedAt"
+    },
+    {
+      "path": "/job/ended_at",
+      "status": "provider_supplied",
+      "provider_field": "AwsQuantumTask.metadata() createdAt/endedAt"
+    },
+    {
+      "path": "/device/identifier",
+      "status": "provider_supplied",
+      "provider_field": "metadata.deviceArn"
+    },
+    {
+      "path": "/device/type",
+      "status": "provider_supplied",
+      "provider_field": "device_details.device_type"
+    },
+    {
+      "path": "/device/qubit_count",
+      "status": "provider_supplied",
+      "provider_field": "device_properties.qubitCount"
+    },
+    {
+      "path": "/device/platform_provider",
+      "status": "provider_supplied",
+      "provider_field": "metadata.deviceArn (arn:aws:braket namespace)",
+      "notes": "Job was submitted through the Amazon Braket aggregation platform."
+    },
+    {
+      "path": "/device/hardware_provider",
+      "status": "derived",
+      "source_paths": [
+        "/device/identifier"
+      ],
+      "derivation": "vendor segment of the Braket device ARN",
+      "notes": "Underlying hardware operator behind the Braket platform."
+    },
+    {
+      "path": "/results/measurement_counts",
+      "status": "provider_supplied",
+      "provider_field": "GateModelQuantumTaskResult.measurement_counts"
+    },
+    {
+      "path": "/artifacts/0",
+      "status": "provider_passthrough",
+      "provider_field": "additionalMetadata.*.compiledProgram"
+    },
+    {
+      "path": "/artifacts/1",
+      "status": "provider_passthrough",
+      "provider_field": "AwsQuantumTask.metadata()",
+      "notes": "Secrets redacted; only a content hash is retained."
+    },
+    {
+      "path": "/execution/total_duration_ms",
+      "status": "derived",
+      "source_paths": [
+        "/job/created_at",
+        "/job/ended_at"
+      ],
+      "derivation": "ended_at - created_at"
+    },
+    {
+      "path": "/characterization",
+      "status": "provider_supplied",
+      "provider_field": "device_details.calibration",
+      "notes": "Device calibration snapshot at retrieval time."
+    },
+    {
+      "path": "/artifacts/2",
+      "status": "application_captured",
+      "notes": "Source program supplied by the submitting application."
+    },
+    {
+      "path": "/compilation/compiler_name",
+      "status": "application_captured"
+    },
+    {
+      "path": "/compilation/compiler_version",
+      "status": "application_captured"
+    },
+    {
+      "path": "/compilation/optimization_level",
+      "status": "application_captured"
+    },
+    {
+      "path": "/compilation/logical_to_physical_mapping",
+      "status": "application_captured"
+    },
+    {
+      "path": "/software/provider_client",
+      "status": "application_captured"
+    },
+    {
+      "path": "/software/provider_client_version",
+      "status": "application_captured"
+    },
+    {
+      "path": "/software/compiler_name",
+      "status": "application_captured"
+    },
+    {
+      "path": "/software/compiler_version",
+      "status": "application_captured"
+    },
+    {
+      "path": "/software/python_version",
+      "status": "application_captured"
+    },
+    {
+      "path": "/software/framework_versions",
+      "status": "application_captured"
+    }
+  ],
+  "warnings": [],
+  "operations": [
+    {
+      "actor": "adapter",
+      "operation": "get_task",
+      "count": 1
+    },
+    {
+      "actor": "adapter",
+      "operation": "get_status",
+      "count": 1
+    },
+    {
+      "actor": "adapter",
+      "operation": "get_device_details",
+      "count": 1
+    },
+    {
+      "actor": "adapter",
+      "operation": "get_result",
+      "count": 1
+    },
+    {
+      "actor": "qmill",
+      "operation": "create_provenance_record",
+      "count": 1
+    }
+  ],
+  "compilation": {
+    "compiler_name": "qiskit-transpiler",
+    "compiler_version": "2.5.0",
+    "optimization_level": 2,
+    "logical_to_physical_mapping": [
+      {
+        "logical": 0,
+        "physical": 0
+      },
+      {
+        "logical": 1,
+        "physical": 1
+      }
+    ]
+  },
+  "execution": {
+    "total_duration_ms": 3500
+  },
+  "characterization": {
+    "association": "current_at_retrieval",
+    "captured_at": "2026-01-05T06:00:00+00:00",
+    "metrics": [
+      {
+        "name": "one_qubit_readout_fidelity_mean",
+        "value": 0.9956
+      },
+      {
+        "name": "two_qubit_gate_fidelity_mean",
+        "value": 0.987
+      }
+    ]
+  },
+  "software": {
+    "provider_client": "amazon-braket-sdk",
+    "provider_client_version": "1.97.0",
+    "compiler_name": "qiskit-transpiler",
+    "compiler_version": "2.5.0",
+    "python_version": "3.12",
+    "framework_versions": {
+      "qiskit": "2.5.0",
+      "qiskit-braket-provider": "0.7.0"
+    }
+  }
+}

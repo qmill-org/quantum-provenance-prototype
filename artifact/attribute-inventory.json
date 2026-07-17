@@ -1,0 +1,162 @@
+{
+    "inventory_version": "0.1.0",
+    "schema_version": "0.1.0-prototype",
+    "description": "Fixed, versioned inventory of provenance attributes evaluated for every provider record. Each attribute is classified per provider as exactly one of the evidence-qualifier statuses (provider_supplied, aggregator_normalized, provider_passthrough, derived, application_captured, unavailable, not_applicable, not_verifiable) or, when an emitted attribute has no classification, unclassified (which fails the evaluation). Classification distinguishes an absent-but-applicable field (unavailable) from an inapplicable field (not_applicable). This inventory enumerates canonical attributes; it is intentionally separate from the count of raw evidence entries in a record.",
+    "statuses": [
+        "provider_supplied",
+        "aggregator_normalized",
+        "provider_passthrough",
+        "derived",
+        "application_captured",
+        "unavailable",
+        "not_applicable",
+        "not_verifiable",
+        "unclassified"
+    ],
+    "attributes": [
+        {
+            "id": "job.status",
+            "value_pointer": "/job/status",
+            "evidence_pointer": "/job/status",
+            "applicability": "all"
+        },
+        {
+            "id": "job.created_at",
+            "value_pointer": "/job/created_at",
+            "evidence_pointer": "/job/created_at",
+            "applicability": "all"
+        },
+        {
+            "id": "job.ended_at",
+            "value_pointer": "/job/ended_at",
+            "evidence_pointer": "/job/ended_at",
+            "applicability": "all"
+        },
+        {
+            "id": "job.shots",
+            "value_pointer": "/job/shots",
+            "evidence_pointer": "/job/shots",
+            "applicability": "all"
+        },
+        {
+            "id": "device.identifier",
+            "value_pointer": "/device/identifier",
+            "evidence_pointer": "/device/identifier",
+            "applicability": "all"
+        },
+        {
+            "id": "device.type",
+            "value_pointer": "/device/type",
+            "evidence_pointer": "/device/type",
+            "applicability": "all"
+        },
+        {
+            "id": "device.qubit_count",
+            "value_pointer": "/device/qubit_count",
+            "evidence_pointer": "/device/qubit_count",
+            "applicability": "all"
+        },
+        {
+            "id": "device.platform_provider",
+            "value_pointer": "/device/platform_provider",
+            "evidence_pointer": "/device/platform_provider",
+            "applicability": "all"
+        },
+        {
+            "id": "device.hardware_provider",
+            "value_pointer": "/device/hardware_provider",
+            "evidence_pointer": "/device/hardware_provider",
+            "applicability": "all"
+        },
+        {
+            "id": "artifact.compiled",
+            "locator": {
+                "type": "artifact_role",
+                "role": "compiled"
+            },
+            "applicability": "all",
+            "rationale": "The compiled (backend-native / ISA) circuit artifact. Located by artifact role because its record index is positional."
+        },
+        {
+            "id": "execution.queue_duration_ms",
+            "value_pointer": "/execution/queue_duration_ms",
+            "evidence_pointer": "/execution/queue_duration_ms",
+            "applicability": "all"
+        },
+        {
+            "id": "execution.run_duration_ms",
+            "value_pointer": "/execution/run_duration_ms",
+            "evidence_pointer": "/execution/run_duration_ms",
+            "applicability": "all"
+        },
+        {
+            "id": "execution.total_duration_ms",
+            "value_pointer": "/execution/total_duration_ms",
+            "evidence_pointer": "/execution/total_duration_ms",
+            "applicability": "all"
+        },
+        {
+            "id": "characterization",
+            "value_pointer": "/characterization",
+            "evidence_pointer": "/characterization",
+            "applicability": "all"
+        },
+        {
+            "id": "results.measurement_counts",
+            "value_pointer": "/results/measurement_counts",
+            "evidence_pointer": "/results/measurement_counts",
+            "applicability": {
+                "not_applicable": [
+                    "ionq"
+                ]
+            },
+            "rationale": "measurement_counts holds actual provider-returned/observed integer counts. IonQ returns a probability histogram rather than observed counts, so this attribute is not applicable to IonQ records."
+        },
+        {
+            "id": "results.measurement_probabilities",
+            "value_pointer": "/results/measurement_probabilities",
+            "evidence_pointer": "/results/measurement_probabilities",
+            "applicability": {
+                "applicable_only": [
+                    "ionq"
+                ]
+            },
+            "rationale": "Only IonQ exposes a provider-supplied probability histogram in this prototype; Braket and IBM return observed counts."
+        },
+        {
+            "id": "results.estimated_measurement_counts",
+            "value_pointer": "/results/estimated_measurement_counts",
+            "evidence_pointer": "/results/estimated_measurement_counts",
+            "applicability": {
+                "applicable_only": [
+                    "ionq"
+                ]
+            },
+            "rationale": "Optional counts derived from provider-supplied probabilities and requested shots; not observed counts."
+        },
+        {
+            "id": "compilation.compiler",
+            "value_pointer": "/compilation/compiler_name",
+            "evidence_pointer": "/compilation/compiler_name",
+            "applicability": "all"
+        },
+        {
+            "id": "compilation.logical_to_physical_mapping",
+            "value_pointer": "/compilation/logical_to_physical_mapping",
+            "evidence_pointer": "/compilation/logical_to_physical_mapping",
+            "applicability": "all"
+        },
+        {
+            "id": "software.provider_client",
+            "value_pointer": "/software/provider_client",
+            "evidence_pointer": "/software/provider_client",
+            "applicability": "all"
+        },
+        {
+            "id": "software.framework_versions",
+            "value_pointer": "/software/framework_versions",
+            "evidence_pointer": "/software/framework_versions",
+            "applicability": "all"
+        }
+    ]
+}
