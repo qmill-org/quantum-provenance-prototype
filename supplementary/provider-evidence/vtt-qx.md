@@ -16,10 +16,10 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 | Resource | Assessed version/interface | Evidence type | Official stable URL | Accessed/verified | Claims supported |
 |---|---|---|---|---|---|
-| VTT quantum technology overview | Current public pages | Official documentation | https://www.vttresearch.com/en/ourservices/quantum-technology | 2026-07-19 | Platform overview; VTT 5-qubit and 20-qubit systems; research access model |
-| VTT Q5sim / VTT QX service information | Current public pages | Official documentation | https://www.vttresearch.com/en/ourservices/quantum-technology | 2026-07-19 | System naming (Q5sim evolved to VTT QX); hardware specifications; access arrangements |
-| IQM client SDK (open source) — applicable to VTT QX | latest stable release | SDK source / package documentation | https://github.com/iqm-finland/iqm-client | 2026-07-19 | REST API client interface applicable to IQM-hardware systems including VTT QX; `RunRequest` and `RunResult` field structure |
-| IQM documentation (applicable interface) | Current public release | Official documentation | https://docs.meetiqm.com/ | 2026-07-19 | IQM server REST API; measurement result structure; job status |
+| VTT quantum technology overview | No exact assessed version established in paper/profile (public pages reviewed 2026-07-19) | Official documentation | https://www.vttresearch.com/en/ourservices/quantum-technology | 2026-07-19 | Platform overview; VTT 5-qubit and 20-qubit systems; research access model |
+| VTT Q5sim / VTT QX service information | No exact assessed version established in paper/profile (public pages reviewed 2026-07-19) | Official documentation | https://www.vttresearch.com/en/ourservices/quantum-technology | 2026-07-19 | System naming (Q5sim evolved to VTT QX); hardware specifications; access arrangements |
+| IQM client SDK (open source) — applicable to VTT QX | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/iqm-finland/iqm-client | 2026-07-19 | REST API client interface applicable to IQM-hardware systems including VTT QX; `RunRequest` and `RunResult` field structure |
+| IQM documentation (applicable interface) | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://docs.meetiqm.com/ | 2026-07-19 | IQM server REST API; measurement result structure; job status |
 
 ## Notes
 

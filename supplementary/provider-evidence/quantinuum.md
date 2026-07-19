@@ -15,12 +15,12 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 | Resource | Assessed version/interface | Evidence type | Official stable URL | Accessed/verified | Claims supported |
 |---|---|---|---|---|---|
-| Quantinuum documentation portal | Current public release | Official documentation | https://docs.quantinuum.com/ | 2026-07-19 | Platform overview; H-Series trapped-ion systems; job submission; result format; access model |
-| pytket documentation | Current public release | Official documentation | https://tket.quantinuum.com/api-docs/ | 2026-07-19 | Circuit model; `BackendResult` fields (shot table, state dict); compilation pipeline |
-| pytket (open source) | latest stable release | SDK source / package documentation | https://github.com/CQCL/pytket | 2026-07-19 | `BackendResult` object; measurement outcome representations (shot table, counts dict, state vector, unitary) |
-| pytket PyPI releases | latest stable | Package release page | https://pypi.org/project/pytket/ | 2026-07-19 | Published release history and version constraints |
-| pytket-quantinuum (open source) | latest stable release | SDK source / package documentation | https://github.com/CQCL/pytket-quantinuum | 2026-07-19 | Quantinuum backend adapter; job submission to Quantinuum H-Series; result retrieval; device properties; status fields |
-| pytket-quantinuum PyPI releases | latest stable | Package release page | https://pypi.org/project/pytket-quantinuum/ | 2026-07-19 | Published release history and version constraints |
+| Quantinuum documentation portal | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://docs.quantinuum.com/ | 2026-07-19 | Platform overview; H-Series trapped-ion systems; job submission; result format; access model |
+| pytket documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://tket.quantinuum.com/api-docs/ | 2026-07-19 | Circuit model; `BackendResult` fields (shot table, state dict); compilation pipeline |
+| pytket (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/CQCL/pytket | 2026-07-19 | `BackendResult` object; measurement outcome representations (shot table, counts dict, state vector, unitary) |
+| pytket PyPI releases | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | Package release page | https://pypi.org/project/pytket/ | 2026-07-19 | Published release history and version constraints |
+| pytket-quantinuum (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/CQCL/pytket-quantinuum | 2026-07-19 | Quantinuum backend adapter; job submission to Quantinuum H-Series; result retrieval; device properties; status fields |
+| pytket-quantinuum PyPI releases | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | Package release page | https://pypi.org/project/pytket-quantinuum/ | 2026-07-19 | Published release history and version constraints |
 
 ## Notes
 
