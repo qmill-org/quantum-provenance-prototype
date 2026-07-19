@@ -27,7 +27,7 @@ documented resource structures and programmatic operations but do not prove
 that every documented field is populated for every account, device, region, or
 completed job.
 
-The final verification cutoff was **July 2026**. SDK and API versions refer to
+The final verification cutoff was **July 19, 2026**. SDK and API versions refer to
 the versions assessed at that cutoff unless otherwise noted.
 
 ## Interpretation of platform categories
@@ -96,8 +96,7 @@ dependent on application-side capture.
 
 ### Evidence references
 
-- `aqtsdk`
-- `aqtapi`
+See the [AQT evidence ledger](../provider-evidence/aqt.md).
 
 ---
 
@@ -160,8 +159,7 @@ client-side capture.
 
 ### Evidence references
 
-- `dwavesdk`
-- `dwaveapi`
+See the [D-Wave evidence ledger](../provider-evidence/d-wave.md).
 
 ---
 
@@ -230,8 +228,7 @@ context remain partial.
 
 ### Evidence references
 
-- `cirq`
-- `googleengine`
+See the [Google Quantum AI evidence ledger](../provider-evidence/google-quantum-ai.md).
 
 ---
 
@@ -239,9 +236,9 @@ context remain partial.
 
 ### Assessed interfaces
 
-- Qiskit SDK 2.4.2
-- Qiskit IBM Runtime client 0.46.1
-- Versioned Qiskit Runtime REST API
+- Qiskit SDK 2.5.0
+- Qiskit IBM Runtime 0.47.0
+- Qiskit Runtime REST API 2026-04-15
 
 ### Findings
 
@@ -280,6 +277,10 @@ context.
 
 Further details on the mapping challenge and the corresponding reference
 prototype are provided in the main paper.
+
+### Evidence references
+
+See the [IBM Quantum evidence ledger](../provider-evidence/ibm-quantum.md).
 
 ---
 
@@ -356,8 +357,7 @@ compilation detail, and standardized software-access context remain partial.
 
 ### Evidence references
 
-- `ionqsdk`
-- `ionqapi`
+See the [IonQ evidence ledger](../provider-evidence/ionq.md).
 
 ---
 
@@ -436,8 +436,7 @@ therefore not operationally verified.
 
 ### Evidence references
 
-- `iqmclient`
-- `iqmapi`
+See the [IQM evidence ledger](../provider-evidence/iqm.md).
 
 ---
 
@@ -506,8 +505,7 @@ and standardized software-access metadata remain partial.
 
 ### Evidence references
 
-- `pasqalsdk`
-- `pasqalapi`
+See the [Pasqal evidence ledger](../provider-evidence/pasqal.md).
 
 ---
 
@@ -585,8 +583,7 @@ remain partial.
 
 ### Evidence references
 
-- `perceval`
-- `quandelaapi`
+See the [Quandela evidence ledger](../provider-evidence/quandela.md).
 
 ---
 
@@ -653,8 +650,7 @@ metadata remain partial.
 
 ### Evidence references
 
-- `quantinuumsdk`
-- `quantinuumapi`
+See the [Quantinuum evidence ledger](../provider-evidence/quantinuum.md).
 
 ---
 
@@ -722,8 +718,7 @@ standardized software-access metadata remain partial.
 
 ### Evidence references
 
-- `braketsdk`
-- `braketahs`
+See the [QuEra evidence ledger](../provider-evidence/quera.md).
 
 ---
 
@@ -785,8 +780,7 @@ software-access context remain partial.
 
 ### Evidence references
 
-- `rigettisdk`
-- `rigettiapi`
+See the [Rigetti evidence ledger](../provider-evidence/rigetti.md).
 
 ---
 
@@ -862,9 +856,7 @@ context remain partial.
 
 ### Evidence references
 
-- `vttqx`
-- `vttqxapi`
-- `vttqxresults`
+See the [VTT QX evidence ledger](../provider-evidence/vtt-qx.md).
 
 ---
 
@@ -946,8 +938,7 @@ standardized software-access context remain partial and provider-dependent.
 
 ### Evidence references
 
-- `braketsdk`
-- `braketapi`
+See the [Amazon Braket evidence ledger](../provider-evidence/amazon-braket.md).
 
 ---
 
@@ -1020,9 +1011,7 @@ standardized software-access context remain incomplete.
 
 ### Evidence references
 
-- `azureqdk`
-- `azuresdk`
-- `azureapi`
+See the [Microsoft Azure Quantum evidence ledger](../provider-evidence/azure-quantum.md).
 
 ---
 
@@ -1105,8 +1094,7 @@ software-access context remain partial.
 
 ### Evidence references
 
-- `qbraidsdk`
-- `qbraidapi`
+See the [qBraid evidence ledger](../provider-evidence/qbraid.md).
 
 ---
 
@@ -1152,7 +1140,7 @@ record structure while preserving:
 
 Xanadu Cloud was not included in the final comparative platform sample because
 the formerly public hardware cloud service was no longer available at the July
-2026 verification cutoff.
+19, 2026 verification cutoff.
 
 Strawberry Fields and PennyLane continue to document photonic device
 specifications and simulator capabilities, including numbers of modes, allowed
