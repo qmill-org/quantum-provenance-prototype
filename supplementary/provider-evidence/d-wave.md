@@ -15,12 +15,12 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 | Resource | Assessed version/interface | Evidence type | Official stable URL | Accessed/verified | Claims supported |
 |---|---|---|---|---|---|
-| D-Wave documentation portal | Current public release | Official documentation | https://docs.dwavesys.com/ | 2026-07-19 | Quantum annealing computation model; QPU topology; problem submission; solution structure |
-| D-Wave Ocean SDK documentation | Current public release | Official documentation | https://docs.ocean.dwavesys.com/ | 2026-07-19 | Problem formulation (QUBO/BQM/CQM); sampler interfaces; result `SampleSet` format; timing data |
-| dwave-ocean-sdk (open source) | latest stable release | SDK source / package documentation | https://github.com/dwavesystems/dwave-ocean-sdk | 2026-07-19 | Meta-package encompassing Ocean toolchain; release history |
-| dwave-cloud-client (open source) | latest stable release | SDK source / package documentation | https://github.com/dwavesystems/dwave-cloud-client | 2026-07-19 | Leap API client; solver listing; problem submission; `Future` result object fields (`timing`, `num_occurrences`, `energy`, `sample`) |
-| dwave-cloud-client PyPI releases | latest stable | Package release page | https://pypi.org/project/dwave-cloud-client/ | 2026-07-19 | Published release history and version constraints |
-| D-Wave Leap service documentation | Current public release | Official documentation | https://docs.dwavesys.com/docs/latest/c_leap.html | 2026-07-19 | Cloud service access model; solver types available (QPU, hybrid); access tiers |
+| D-Wave documentation portal | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://docs.dwavesys.com/ | 2026-07-19 | Quantum annealing computation model; QPU topology; problem submission; solution structure |
+| D-Wave Ocean SDK documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://docs.ocean.dwavesys.com/ | 2026-07-19 | Problem formulation (QUBO/BQM/CQM); sampler interfaces; result `SampleSet` format; timing data |
+| dwave-ocean-sdk (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/dwavesystems/dwave-ocean-sdk | 2026-07-19 | Meta-package encompassing Ocean toolchain; release history |
+| dwave-cloud-client (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/dwavesystems/dwave-cloud-client | 2026-07-19 | Leap API client; solver listing; problem submission; `Future` result object fields (`timing`, `num_occurrences`, `energy`, `sample`) |
+| dwave-cloud-client PyPI releases | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | Package release page | https://pypi.org/project/dwave-cloud-client/ | 2026-07-19 | Published release history and version constraints |
+| D-Wave Leap service documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://docs.dwavesys.com/docs/latest/c_leap.html | 2026-07-19 | Cloud service access model; solver types available (QPU, hybrid); access tiers |
 
 ## Notes
 

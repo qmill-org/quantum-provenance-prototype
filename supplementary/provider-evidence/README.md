@@ -46,12 +46,14 @@ directory. For example:
 
 **Total:** 15 platforms (12 hardware-provider platforms + 3 cloud aggregators).
 
-## Legacy fixture evidence notes
+## Fixture-specific companion notes (prototype fixtures)
 
-Three shorter fixture-focused notes exist from the initial prototype
-development. They have been superseded by and are cross-referenced from the
-full ledgers above:
+The 15 full ledgers above support the comparative platform analysis. Three
+shorter fixture-focused companion notes also remain for the prototype fixtures:
 
-- [`braket.md`](braket.md) — superseded by [`amazon-braket.md`](amazon-braket.md)
-- [`ibm.md`](ibm.md) — superseded by [`ibm-quantum.md`](ibm-quantum.md)
-- `ionq.md` — upgraded in-place to the full ledger format
+- [`braket.md`](braket.md) — fixture-specific mapping note for the Braket
+  prototype fixture
+- [`ibm.md`](ibm.md) — fixture-specific mapping note for the IBM prototype
+  fixture
+- [`ionq-fixture.md`](ionq-fixture.md) — fixture-specific mapping note for the
+  IonQ prototype fixture

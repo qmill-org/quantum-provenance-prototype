@@ -17,12 +17,12 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 | Resource | Assessed version/interface | Evidence type | Official stable URL | Accessed/verified | Claims supported |
 |---|---|---|---|---|---|
-| Google Quantum AI documentation | Current public release | Official documentation | https://quantumai.google/ | 2026-07-19 | Platform overview; hardware systems (Sycamore); Cirq ecosystem |
-| Cirq documentation | Current public release | Official documentation | https://quantumai.google/cirq | 2026-07-19 | Circuit model; result object (`cirq.Result`); measurement key structure; repetitions |
-| Cirq GitHub repository (open source) | latest stable release | SDK source / package documentation | https://github.com/quantumlib/Cirq | 2026-07-19 | `cirq.Result` fields; `cirq.study.ResultTypes`; measurement data as NumPy arrays |
-| cirq-google (open source) | latest stable release | SDK source / package documentation | https://github.com/quantumlib/Cirq/tree/main/cirq-google | 2026-07-19 | `Engine` and `EngineJob` interfaces; `QuantumExecutable` submission; calibration data structures; processor/device specification |
-| cirq-google PyPI releases | latest stable | Package release page | https://pypi.org/project/cirq-google/ | 2026-07-19 | Published release history and version constraints |
-| Cirq release notes | Latest tagged release | Release notes | https://github.com/quantumlib/Cirq/releases | 2026-07-19 | Version-specific interface changes |
+| Google Quantum AI documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://quantumai.google/ | 2026-07-19 | Platform overview; hardware systems (Sycamore); Cirq ecosystem |
+| Cirq documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://quantumai.google/cirq | 2026-07-19 | Circuit model; result object (`cirq.Result`); measurement key structure; repetitions |
+| Cirq GitHub repository (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/quantumlib/Cirq | 2026-07-19 | `cirq.Result` fields; `cirq.study.ResultTypes`; measurement data as NumPy arrays |
+| cirq-google (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/quantumlib/Cirq/tree/main/cirq-google | 2026-07-19 | `Engine` and `EngineJob` interfaces; `QuantumExecutable` submission; calibration data structures; processor/device specification |
+| cirq-google PyPI releases | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | Package release page | https://pypi.org/project/cirq-google/ | 2026-07-19 | Published release history and version constraints |
+| Cirq release notes | No exact assessed version established in paper/profile (latest tagged release reviewed 2026-07-19) | Release notes | https://github.com/quantumlib/Cirq/releases | 2026-07-19 | Version-specific interface changes |
 
 ## Notes
 

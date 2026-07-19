@@ -15,12 +15,12 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 | Resource | Assessed version/interface | Evidence type | Official stable URL | Accessed/verified | Claims supported |
 |---|---|---|---|---|---|
-| Rigetti QCS documentation | Current public release | Official documentation | https://docs.rigetti.com/qcs/ | 2026-07-19 | Platform overview; QPU and QVM targets; job execution lifecycle; reservation model; result format |
-| Rigetti QCS API reference | Current public release | API reference / OpenAPI specification | https://docs.api.qcs.rigetti.com/ | 2026-07-19 | REST endpoint definitions; `QuantumProcessor` fields; `ExecutionResult` fields; `ReadoutValues` structure (register name → per-shot integer array); job status |
-| PyQuil documentation | Current public release | Official documentation | https://pyquil-docs.rigetti.com/ | 2026-07-19 | Quil circuit language; `QPUExecutor` usage; result `ReadoutData` format; compiler integration |
-| PyQuil (open source) | latest stable release | SDK source / package documentation | https://github.com/rigetti/pyquil | 2026-07-19 | `QuantumComputer` interface; `Program` execution; `QAMExecutionResult` and `ReadoutData` objects; register-keyed measurement results |
-| pyquil PyPI releases | latest stable | Package release page | https://pypi.org/project/pyquil/ | 2026-07-19 | Published release history and version constraints |
-| qcs-sdk-python (open source) | latest stable release | SDK source / package documentation | https://github.com/rigetti/qcs-sdk-python | 2026-07-19 | Lower-level QCS API client; quilc compilation; `ExecutionResult` deserialization |
+| Rigetti QCS documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://docs.rigetti.com/qcs/ | 2026-07-19 | Platform overview; QPU and QVM targets; job execution lifecycle; reservation model; result format |
+| Rigetti QCS API reference | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | API reference / OpenAPI specification | https://docs.api.qcs.rigetti.com/ | 2026-07-19 | REST endpoint definitions; `QuantumProcessor` fields; `ExecutionResult` fields; `ReadoutValues` structure (register name → per-shot integer array); job status |
+| PyQuil documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://pyquil-docs.rigetti.com/ | 2026-07-19 | Quil circuit language; `QPUExecutor` usage; result `ReadoutData` format; compiler integration |
+| PyQuil (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/rigetti/pyquil | 2026-07-19 | `QuantumComputer` interface; `Program` execution; `QAMExecutionResult` and `ReadoutData` objects; register-keyed measurement results |
+| pyquil PyPI releases | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | Package release page | https://pypi.org/project/pyquil/ | 2026-07-19 | Published release history and version constraints |
+| qcs-sdk-python (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/rigetti/qcs-sdk-python | 2026-07-19 | Lower-level QCS API client; quilc compilation; `ExecutionResult` deserialization |
 
 ## Notes
 

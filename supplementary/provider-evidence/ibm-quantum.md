@@ -15,11 +15,11 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 | Resource | Assessed version/interface | Evidence type | Official stable URL | Accessed/verified | Claims supported |
 |---|---|---|---|---|---|
-| IBM Quantum documentation | Current public release | Official documentation | https://docs.quantum.ibm.com/ | 2026-07-19 | Job lifecycle; primitive results; backend properties; calibration snapshot format |
-| qiskit-ibm-runtime (open source) | latest stable release | SDK source / package documentation | https://github.com/Qiskit/qiskit-ibm-runtime | 2026-07-19 | `RuntimeJob` status and timestamp fields; primitive result data (bitstring counts); `backend.properties()` calibration structure; job metadata |
-| qiskit-ibm-runtime PyPI releases | latest stable | Package release page | https://pypi.org/project/qiskit-ibm-runtime/ | 2026-07-19 | Published release history and version constraints |
-| IBM Quantum API reference | Current public release | API reference | https://docs.quantum.ibm.com/api/qiskit-ibm-runtime | 2026-07-19 | `RuntimeJob` class interface; job status enum (`DONE`, `RUNNING`, `ERROR`, `CANCELLED`); backend properties API |
-| Qiskit documentation | Current public release | Official documentation | https://docs.quantum.ibm.com/api/qiskit | 2026-07-19 | Circuit representation; transpilation; ISA circuit concepts |
+| IBM Quantum documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://docs.quantum.ibm.com/ | 2026-07-19 | Job lifecycle; primitive results; backend properties; calibration snapshot format |
+| qiskit-ibm-runtime (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/Qiskit/qiskit-ibm-runtime | 2026-07-19 | `RuntimeJob` status and timestamp fields; primitive result data (bitstring counts); `backend.properties()` calibration structure; job metadata |
+| qiskit-ibm-runtime PyPI releases | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | Package release page | https://pypi.org/project/qiskit-ibm-runtime/ | 2026-07-19 | Published release history and version constraints |
+| IBM Quantum API reference | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | API reference | https://docs.quantum.ibm.com/api/qiskit-ibm-runtime | 2026-07-19 | `RuntimeJob` class interface; job status enum (`DONE`, `RUNNING`, `ERROR`, `CANCELLED`); backend properties API |
+| Qiskit documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://docs.quantum.ibm.com/api/qiskit | 2026-07-19 | Circuit representation; transpilation; ISA circuit concepts |
 
 ## Notes
 
@@ -44,6 +44,6 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 ## Legacy fixture evidence note
 
 The prototype fixture (`tests/fixtures/ibm/`) reconstructs the Qiskit Runtime
-job/result and backend-properties API shape. See also the original
-fixture-focused evidence note (`ibm.md`), which this ledger extends and
-supersedes for comparative purposes.
+job/result and backend-properties API shape. See also the fixture-specific
+companion note ([`ibm.md`](ibm.md)), which preserves the direct fixture mapping
+detail for the three-provider prototype implementation.

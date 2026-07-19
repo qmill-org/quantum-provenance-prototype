@@ -15,12 +15,12 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 | Resource | Assessed version/interface | Evidence type | Official stable URL | Accessed/verified | Claims supported |
 |---|---|---|---|---|---|
-| Pasqal documentation | Current public release | Official documentation | https://docs.pasqal.com/ | 2026-07-19 | Platform overview; neutral-atom hardware (Fresnel, EMU); access model; job submission workflow |
-| Pulser documentation | Current public release | Official documentation | https://pulser.readthedocs.io/ | 2026-07-19 | Pulse-sequence circuit model; register (atom layout); sequence serialization; result format |
-| Pulser (open source) | latest stable release | SDK source / package documentation | https://github.com/pasqal-io/Pulser | 2026-07-19 | `Sequence` and `Register` objects; pulse-level circuit representation; device specification; result structure |
-| Pulser PyPI releases | latest stable | Package release page | https://pypi.org/project/pulser/ | 2026-07-19 | Published release history and version constraints |
-| pasqal-cloud (open source) | latest stable release | SDK source / package documentation | https://github.com/pasqal-io/pasqal-cloud | 2026-07-19 | Cloud job submission; `Batch` and `Job` objects; job status fields; result retrieval |
-| pasqal-cloud PyPI releases | latest stable | Package release page | https://pypi.org/project/pasqal-cloud/ | 2026-07-19 | Published release history and version constraints |
+| Pasqal documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://docs.pasqal.com/ | 2026-07-19 | Platform overview; neutral-atom hardware (Fresnel, EMU); access model; job submission workflow |
+| Pulser documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://pulser.readthedocs.io/ | 2026-07-19 | Pulse-sequence circuit model; register (atom layout); sequence serialization; result format |
+| Pulser (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/pasqal-io/Pulser | 2026-07-19 | `Sequence` and `Register` objects; pulse-level circuit representation; device specification; result structure |
+| Pulser PyPI releases | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | Package release page | https://pypi.org/project/pulser/ | 2026-07-19 | Published release history and version constraints |
+| pasqal-cloud (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/pasqal-io/pasqal-cloud | 2026-07-19 | Cloud job submission; `Batch` and `Job` objects; job status fields; result retrieval |
+| pasqal-cloud PyPI releases | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | Package release page | https://pypi.org/project/pasqal-cloud/ | 2026-07-19 | Published release history and version constraints |
 
 ## Notes
 

@@ -15,10 +15,10 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 | Resource | Assessed version/interface | Evidence type | Official stable URL | Accessed/verified | Claims supported |
 |---|---|---|---|---|---|
-| Perceval documentation | Current public release | Official documentation | https://perceval.quandela.net/docs/ | 2026-07-19 | Photonic circuit model; linear-optical components; sampling and boson-sampling result format; remote execution via Quandela cloud |
-| Perceval (open source) | latest stable release | SDK source / package documentation | https://github.com/Quandela/Perceval | 2026-07-19 | `Circuit` and `Processor` objects; result `BSDistribution` (boson-sampling distribution); remote provider interface; job submission and retrieval |
-| perceval-quandela PyPI releases | latest stable | Package release page | https://pypi.org/project/perceval-quandela/ | 2026-07-19 | Published release history and version constraints |
-| Quandela cloud documentation | Current public release | Official documentation | https://cloud.quandela.com/ | 2026-07-19 | Cloud access model; available photonic processors; job management |
+| Perceval documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://perceval.quandela.net/docs/ | 2026-07-19 | Photonic circuit model; linear-optical components; sampling and boson-sampling result format; remote execution via Quandela cloud |
+| Perceval (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/Quandela/Perceval | 2026-07-19 | `Circuit` and `Processor` objects; result `BSDistribution` (boson-sampling distribution); remote provider interface; job submission and retrieval |
+| perceval-quandela PyPI releases | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | Package release page | https://pypi.org/project/perceval-quandela/ | 2026-07-19 | Published release history and version constraints |
+| Quandela cloud documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://cloud.quandela.com/ | 2026-07-19 | Cloud access model; available photonic processors; job management |
 
 ## Notes
 

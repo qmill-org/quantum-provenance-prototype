@@ -15,11 +15,11 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 | Resource | Assessed version/interface | Evidence type | Official stable URL | Accessed/verified | Claims supported |
 |---|---|---|---|---|---|
-| IonQ API documentation | v0.3 REST API | Official documentation | https://docs.ionq.com/ | 2026-07-19 | Job submission and retrieval; `histogram` probability result format; job status lifecycle; target specification (`qpu.aria-1`, `simulator`) |
-| IonQ API reference (OpenAPI) | v0.3 | API reference / OpenAPI specification | https://docs.ionq.com/api-reference/ | 2026-07-19 | Request/response schemas; job fields (`id`, `status`, `target`, `shots`, `created_at`, `updated_at`); result histogram structure |
-| qiskit-ionq (open source) | latest main branch | SDK source / package documentation | https://github.com/Qiskit-Partners/qiskit-ionq | 2026-07-19 | Probability-histogram result handling; IonQ job submission through Qiskit backend interface |
-| qiskit-ionq PyPI releases | latest stable | Package release page | https://pypi.org/project/qiskit-ionq/ | 2026-07-19 | Published release history and version constraints |
-| IonQ characterization / calibration documentation | Current public docs | Official documentation | https://docs.ionq.com/ | 2026-07-19 | Calibration data structure; native gate fidelities; qubit characterization fields |
+| IonQ API documentation | IonQ Quantum Cloud API v0.4 | Official documentation | https://docs.ionq.com/ | 2026-07-19 | Job submission and retrieval; `histogram` probability result format; job status lifecycle; target specification (`qpu.aria-1`, `simulator`) |
+| IonQ API reference (OpenAPI) | IonQ Quantum Cloud API v0.4 | API reference / OpenAPI specification | https://docs.ionq.com/api-reference/ | 2026-07-19 | Request/response schemas; job fields (`id`, `status`, `target`, `shots`, `created_at`, `updated_at`); result histogram structure |
+| qiskit-ionq (open source) | Qiskit IonQ Provider 1.1.1 | SDK source / package documentation | https://github.com/Qiskit-Partners/qiskit-ionq | 2026-07-19 | Probability-histogram result handling; IonQ job submission through Qiskit backend interface |
+| qiskit-ionq PyPI releases | Qiskit IonQ Provider 1.1.1 | Package release page | https://pypi.org/project/qiskit-ionq/ | 2026-07-19 | Published release history and version constraints |
+| IonQ characterization / calibration documentation | No exact assessed version established in paper/profile (public documentation reviewed 2026-07-19) | Official documentation | https://docs.ionq.com/ | 2026-07-19 | Calibration data structure; native gate fidelities; qubit characterization fields |
 
 ## Notes
 
@@ -41,5 +41,6 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 The prototype fixture (`tests/fixtures/ionq/`) reconstructs the IonQ jobs API
 shape. Field paths and semantics are taken from the documentation sources
-above; all values are synthetic placeholders. See also the original
-fixture-focused evidence note, which this ledger supersedes.
+above; all values are synthetic placeholders. See also the fixture-specific
+companion note ([`ionq-fixture.md`](ionq-fixture.md)), which preserves the
+original prototype fixture mapping details.
