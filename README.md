@@ -151,8 +151,8 @@ Supplementary conceptual and comparative materials are also available under
 ## Citation
 
 If you use this artifact, please cite it via [`CITATION.cff`](CITATION.cff).
-This repository is archived on Zenodo; the archived release provides a citable
-DOI.
+A versioned release of this repository will be archived on Zenodo. Until a DOI
+is available, cite the artifact using [`CITATION.cff`](CITATION.cff).
 
 ## License
 
