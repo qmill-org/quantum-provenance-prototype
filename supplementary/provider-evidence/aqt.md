@@ -15,10 +15,10 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 | Resource | Assessed version/interface | Evidence type | Official stable URL | Accessed/verified | Claims supported |
 |---|---|---|---|---|---|
-| AQT website and system overview | No exact assessed version established in paper/profile (public pages reviewed 2026-07-19) | Official documentation | https://www.aqt.eu/ | 2026-07-19 | Platform overview; available trapped-ion systems; access model (cloud portal) |
-| qiskit-aqt-provider (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/qiskit-community/qiskit-aqt-provider | 2026-07-19 | Job submission and retrieval interface; result structure (measurement samples as bitstring list); job status fields; resource/target specification |
-| qiskit-aqt-provider PyPI releases | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | Package release page | https://pypi.org/project/qiskit-aqt-provider/ | 2026-07-19 | Published release history and version constraints |
-| qiskit-aqt-provider documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Package documentation | https://qiskit-community.github.io/qiskit-aqt-provider/ | 2026-07-19 | API usage examples; supported gate set; result format documentation |
+| AQT website and system overview | AQT Public API 1.1.1 (OpenAPI 3.1); public documentation reviewed 2026-07-19 | Official documentation | https://www.aqt.eu/ | 2026-07-19 | Platform overview; available trapped-ion systems; access model (cloud portal) |
+| qiskit-aqt-provider (open source) | Qiskit AQT Provider 1.15.0 | SDK source / package documentation | https://github.com/qiskit-community/qiskit-aqt-provider | 2026-07-19 | Job submission and retrieval interface; result structure (measurement samples as bitstring list); job status fields; resource/target specification |
+| qiskit-aqt-provider PyPI releases | Qiskit AQT Provider 1.15.0 | Package release page | https://pypi.org/project/qiskit-aqt-provider/ | 2026-07-19 | Published release history and version constraints |
+| qiskit-aqt-provider documentation | Qiskit AQT Provider 1.15.0 documentation | Package documentation | https://qiskit-community.github.io/qiskit-aqt-provider/ | 2026-07-19 | API usage examples; supported gate set; result format documentation |
 
 ## Notes
 

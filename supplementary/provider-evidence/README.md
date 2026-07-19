@@ -12,17 +12,12 @@ package documentation, worked examples, and release notes. No ledger claims
 authenticated operational verification; interface behavior is assessed through
 public artifacts only.
 
-## Relative-link convention
+## Detailed profile linkage
 
-If `supplementary/provider-profiles/platform-specific-findings.md` is added in
-future, citation-key placeholders such as `` `aqtsdk` `` or `` `aqtapi` ``
-should be replaced with relative links to the corresponding ledger in this
-directory. For example:
-
-```markdown
-[AQT SDK evidence](../provider-evidence/aqt.md)
-[AQT API evidence](../provider-evidence/aqt.md)
-```
+The detailed supplementary profile is now present at
+[`../provider-profiles/platform-specific-findings.md`](../provider-profiles/platform-specific-findings.md).
+It links each platform section to exactly one comparative ledger in this
+directory using relative Markdown links.
 
 ## Platform index
 

@@ -143,6 +143,9 @@ kind of job records each provider platform returns:
 A complete, human-readable example of a fully populated provenance response is
 provided in
 [`supplementary/complete-example-provenance-response.json`](supplementary/complete-example-provenance-response.json).
+Supplementary conceptual and comparative materials are also available under
+[`supplementary/conceptual-api/`](supplementary/conceptual-api/) and
+[`supplementary/provider-profiles/platform-specific-findings.md`](supplementary/provider-profiles/platform-specific-findings.md).
 
 ## Citation
 

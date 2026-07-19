@@ -16,11 +16,11 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 | Resource | Assessed version/interface | Evidence type | Official stable URL | Accessed/verified | Claims supported |
 |---|---|---|---|---|---|
-| QuEra documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://docs.quera.com/ | 2026-07-19 | Platform overview; Aquila neutral-atom system; analog Hamiltonian simulation model; access model |
-| Bloqade documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://queracomputing.github.io/bloqade-python/ | 2026-07-19 | Analog Hamiltonian simulation interface; register specification; drive and waveform construction; result format |
-| bloqade-python (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/QuEraComputing/bloqade-python | 2026-07-19 | `AtomArrangement`; pulse/waveform objects; `ShotResult` and `Report` result types; Braket backend integration |
-| bloqade PyPI releases | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | Package release page | https://pypi.org/project/bloqade/ | 2026-07-19 | Published release history and version constraints |
-| Amazon Braket — Aquila device documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://docs.aws.amazon.com/braket/latest/developerguide/braket-devices.html | 2026-07-19 | Aquila device ARN; task result format when accessed via Braket; `AHSQuantumTaskResult` structure |
+| QuEra documentation | Public documentation reviewed 2026-07-19 | Official documentation | https://docs.quera.com/ | 2026-07-19 | Platform overview; Aquila neutral-atom system; analog Hamiltonian simulation model; access model |
+| Bloqade documentation | Supplementary documentation reviewed 2026-07-19 | Official documentation | https://queracomputing.github.io/bloqade-python/ | 2026-07-19 | Analog Hamiltonian simulation interface; register specification; drive and waveform construction; result format |
+| bloqade-python (open source) | Supplementary source reviewed 2026-07-19 | SDK source / package documentation | https://github.com/QuEraComputing/bloqade-python | 2026-07-19 | `AtomArrangement`; pulse/waveform objects; `ShotResult` and `Report` result types; Braket backend integration |
+| bloqade PyPI releases | Supplementary package releases reviewed 2026-07-19 | Package release page | https://pypi.org/project/bloqade/ | 2026-07-19 | Published release history and version constraints |
+| Amazon Braket — Aquila device documentation | Amazon Braket SDK 1.123.0 + authenticated Braket API (AHS schema) | Official documentation | https://docs.aws.amazon.com/braket/latest/developerguide/braket-devices.html | 2026-07-19 | Aquila device ARN; task result format when accessed via Braket; `AHSQuantumTaskResult` structure |
 
 ## Notes
 

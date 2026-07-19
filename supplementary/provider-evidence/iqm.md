@@ -15,12 +15,12 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 | Resource | Assessed version/interface | Evidence type | Official stable URL | Accessed/verified | Claims supported |
 |---|---|---|---|---|---|
-| IQM documentation portal | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://docs.meetiqm.com/ | 2026-07-19 | Platform overview; hardware systems; job submission workflow; result format |
-| iqm-client (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/iqm-finland/iqm-client | 2026-07-19 | REST API client for IQM servers; job submission (`RunRequest`); result retrieval (`RunResult`); circuit model (`IQMCircuit`); status fields |
-| iqm-client PyPI releases | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | Package release page | https://pypi.org/project/iqm-client/ | 2026-07-19 | Published release history and version constraints |
-| qiskit-on-iqm (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/iqm-finland/qiskit-on-iqm | 2026-07-19 | Qiskit backend adapter; result conversion to Qiskit `Result` format; backend properties |
-| qiskit-on-iqm PyPI releases | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | Package release page | https://pypi.org/project/qiskit-on-iqm/ | 2026-07-19 | Published release history and version constraints |
-| IQM REST API (OpenAPI) | Current server version | API reference / OpenAPI specification | https://docs.meetiqm.com/ | 2026-07-19 | Job submission and retrieval endpoints; `RunResult` fields including measurement outcomes (per-qubit binary arrays per shot); metadata fields |
+| IQM documentation portal | Public documentation reviewed 2026-07-19 | Official documentation | https://docs.meetiqm.com/ | 2026-07-19 | Platform overview; hardware systems; job submission workflow; result format |
+| iqm-client (open source) | IQM Client 34.0.4 | SDK source / package documentation | https://github.com/iqm-finland/iqm-client | 2026-07-19 | REST API client for IQM servers; job submission (`RunRequest`); result retrieval (`RunResult`); circuit model (`IQMCircuit`); status fields |
+| iqm-client PyPI releases | IQM Client 34.0.4 | Package release page | https://pypi.org/project/iqm-client/ | 2026-07-19 | Published release history and version constraints |
+| qiskit-on-iqm (open source) | Supplementary integration source reviewed 2026-07-19 | SDK source / package documentation | https://github.com/iqm-finland/qiskit-on-iqm | 2026-07-19 | Qiskit backend adapter; result conversion to Qiskit `Result` format; backend properties |
+| qiskit-on-iqm PyPI releases | Supplementary package releases reviewed 2026-07-19 | Package release page | https://pypi.org/project/qiskit-on-iqm/ | 2026-07-19 | Published release history and version constraints |
+| IQM REST API (OpenAPI) | Public API schemas reviewed 2026-07-19 (aligned with IQM Client 34.0.4) | API reference / OpenAPI specification | https://docs.meetiqm.com/ | 2026-07-19 | Job submission and retrieval endpoints; `RunResult` fields including measurement outcomes (per-qubit binary arrays per shot); metadata fields |
 
 ## Notes
 

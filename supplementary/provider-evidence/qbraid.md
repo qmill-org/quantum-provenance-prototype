@@ -15,11 +15,11 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 | Resource | Assessed version/interface | Evidence type | Official stable URL | Accessed/verified | Claims supported |
 |---|---|---|---|---|---|
-| qBraid documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://docs.qbraid.com/ | 2026-07-19 | Platform overview; supported providers and devices; job submission; result retrieval; access model |
-| qBraid SDK documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://sdk.qbraid.com/ | 2026-07-19 | `QuantumJob` interface; `QuantumDevice` abstraction; result format; provider-agnostic job management |
-| qBraid SDK (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/qBraid/qBraid | 2026-07-19 | `QuantumJob` class hierarchy; `GateModelJobResult` and related result types; `QuantumDevice` interface; provider adapter pattern |
-| qbraid PyPI releases | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | Package release page | https://pypi.org/project/qbraid/ | 2026-07-19 | Published release history and version constraints |
-| qBraid API reference | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | API reference | https://docs.qbraid.com/api-reference | 2026-07-19 | REST endpoint definitions for job submission, retrieval, and device listing; job status fields |
+| qBraid documentation | Public documentation reviewed 2026-07-19 | Official documentation | https://docs.qbraid.com/ | 2026-07-19 | Platform overview; supported providers and devices; job submission; result retrieval; access model |
+| qBraid SDK documentation | qBraid SDK 0.12.2 documentation | Official documentation | https://sdk.qbraid.com/ | 2026-07-19 | `QuantumJob` interface; `QuantumDevice` abstraction; result format; provider-agnostic job management |
+| qBraid SDK (open source) | qBraid SDK 0.12.2 | SDK source / package documentation | https://github.com/qBraid/qBraid | 2026-07-19 | `QuantumJob` class hierarchy; `GateModelJobResult` and related result types; `QuantumDevice` interface; provider adapter pattern |
+| qbraid PyPI releases | qBraid SDK 0.12.2 | Package release page | https://pypi.org/project/qbraid/ | 2026-07-19 | Published release history and version constraints |
+| qBraid API reference | qBraid Quantum Runtime API | API reference | https://docs.qbraid.com/api-reference | 2026-07-19 | REST endpoint definitions for job submission, retrieval, and device listing; job status fields |
 
 ## Notes
 
