@@ -21,7 +21,8 @@ prototype; it does not depend on any private QMill code.
 | Paper | *Toward Standardized Quantum Provenance: A Cross-Provider Analysis, Unified API, and Reference Prototype* |
 | Author | Jouni Peltonen |
 | Source commit | `0ca8ac8` (branch `feature/unified-provenance-prototype`) |
-| Evaluation cutoff date | 2026-07-17 |
+| Prototype evaluation cutoff date | 2026-07-17 |
+| Provider-interface verification cutoff date | 2026-07-19 |
 | Schema version | `0.1.0-prototype` |
 | Report format | `qmill.provenance.evaluation` v`0.2.0` |
 
@@ -143,12 +144,15 @@ kind of job records each provider platform returns:
 A complete, human-readable example of a fully populated provenance response is
 provided in
 [`supplementary/complete-example-provenance-response.json`](supplementary/complete-example-provenance-response.json).
+Supplementary conceptual and comparative materials are also available under
+[`supplementary/conceptual-api/`](supplementary/conceptual-api/) and
+[`supplementary/provider-profiles/platform-specific-findings.md`](supplementary/provider-profiles/platform-specific-findings.md).
 
 ## Citation
 
 If you use this artifact, please cite it via [`CITATION.cff`](CITATION.cff).
-This repository is archived on Zenodo; the archived release provides a citable
-DOI.
+A versioned release of this repository will be archived on Zenodo. Until a DOI
+is available, cite the artifact using [`CITATION.cff`](CITATION.cff).
 
 ## License
 
