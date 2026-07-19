@@ -15,11 +15,11 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 | Resource | Assessed version/interface | Evidence type | Official stable URL | Accessed/verified | Claims supported |
 |---|---|---|---|---|---|
-| Amazon Braket Developer Guide | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://docs.aws.amazon.com/braket/latest/developerguide/ | 2026-07-19 | Task lifecycle; task result format (`measurementCounts`); device ARN conventions; supported hardware providers |
-| Amazon Braket API Reference | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | API reference | https://docs.aws.amazon.com/braket/latest/APIReference/ | 2026-07-19 | `GetQuantumTask` fields (`status`, `createdAt`, `endedAt`, `shots`, `deviceArn`); `GetDevice` fields (device type, status, provider properties, calibration) |
-| amazon-braket-sdk-python (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/amazon-braket/amazon-braket-sdk-python | 2026-07-19 | Result object schema; `measurement_counts` accessor; task result parsing; device properties models |
-| amazon-braket-sdk-python PyPI releases | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | Package release page | https://pypi.org/project/amazon-braket-sdk/ | 2026-07-19 | Published release history and version constraints |
-| Amazon Braket pricing and device list | No exact assessed version established in paper/profile (public page reviewed 2026-07-19) | Official documentation | https://aws.amazon.com/braket/pricing/ | 2026-07-19 | Supported hardware providers brokered through aggregator interface |
+| Amazon Braket Developer Guide | Public documentation reviewed 2026-07-19 | Official documentation | https://docs.aws.amazon.com/braket/latest/developerguide/ | 2026-07-19 | Task lifecycle; task result format (`measurementCounts`); device ARN conventions; supported hardware providers |
+| Amazon Braket API Reference | Braket service API | API reference | https://docs.aws.amazon.com/braket/latest/APIReference/ | 2026-07-19 | `GetQuantumTask` fields (`status`, `createdAt`, `endedAt`, `shots`, `deviceArn`); `GetDevice` fields (device type, status, provider properties, calibration) |
+| amazon-braket-sdk-python (open source) | Amazon Braket SDK 1.123.0 | SDK source / package documentation | https://github.com/amazon-braket/amazon-braket-sdk-python | 2026-07-19 | Result object schema; `measurement_counts` accessor; task result parsing; device properties models |
+| amazon-braket-sdk-python PyPI releases | Amazon Braket SDK 1.123.0 | Package release page | https://pypi.org/project/amazon-braket-sdk/ | 2026-07-19 | Published release history and version constraints |
+| Amazon Braket pricing and device list | Public documentation reviewed 2026-07-19 | Official documentation | https://aws.amazon.com/braket/pricing/ | 2026-07-19 | Supported hardware providers brokered through aggregator interface |
 
 ## Notes
 

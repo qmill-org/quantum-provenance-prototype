@@ -15,11 +15,11 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 | Resource | Assessed version/interface | Evidence type | Official stable URL | Accessed/verified | Claims supported |
 |---|---|---|---|---|---|
-| IBM Quantum documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://docs.quantum.ibm.com/ | 2026-07-19 | Job lifecycle; primitive results; backend properties; calibration snapshot format |
-| qiskit-ibm-runtime (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/Qiskit/qiskit-ibm-runtime | 2026-07-19 | `RuntimeJob` status and timestamp fields; primitive result data (bitstring counts); `backend.properties()` calibration structure; job metadata |
-| qiskit-ibm-runtime PyPI releases | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | Package release page | https://pypi.org/project/qiskit-ibm-runtime/ | 2026-07-19 | Published release history and version constraints |
-| IBM Quantum API reference | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | API reference | https://docs.quantum.ibm.com/api/qiskit-ibm-runtime | 2026-07-19 | `RuntimeJob` class interface; job status enum (`DONE`, `RUNNING`, `ERROR`, `CANCELLED`); backend properties API |
-| Qiskit documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://docs.quantum.ibm.com/api/qiskit | 2026-07-19 | Circuit representation; transpilation; ISA circuit concepts |
+| IBM Quantum documentation | Public documentation reviewed 2026-07-19 | Official documentation | https://docs.quantum.ibm.com/ | 2026-07-19 | Job lifecycle; primitive results; backend properties; calibration snapshot format |
+| qiskit-ibm-runtime (open source) | Qiskit IBM Runtime 0.47.0 | SDK source / package documentation | https://github.com/Qiskit/qiskit-ibm-runtime | 2026-07-19 | `RuntimeJob` status and timestamp fields; primitive result data (bitstring counts); `backend.properties()` calibration structure; job metadata |
+| qiskit-ibm-runtime PyPI releases | Qiskit IBM Runtime 0.47.0 | Package release page | https://pypi.org/project/qiskit-ibm-runtime/ | 2026-07-19 | Published release history and version constraints |
+| IBM Quantum API reference | Qiskit Runtime REST API 2026-04-15 | API reference | https://docs.quantum.ibm.com/api/qiskit-ibm-runtime | 2026-07-19 | `RuntimeJob` class interface; job status enum (`DONE`, `RUNNING`, `ERROR`, `CANCELLED`); backend properties API |
+| Qiskit documentation | Qiskit SDK 2.5.0 documentation | Official documentation | https://docs.quantum.ibm.com/api/qiskit | 2026-07-19 | Circuit representation; transpilation; ISA circuit concepts |
 
 ## Notes
 

@@ -16,11 +16,11 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 | Resource | Assessed version/interface | Evidence type | Official stable URL | Accessed/verified | Claims supported |
 |---|---|---|---|---|---|
-| Azure Quantum documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://learn.microsoft.com/en-us/azure/quantum/ | 2026-07-19 | Platform overview; supported hardware providers (IonQ, Quantinuum, Rigetti, and others); job submission workflow; result retrieval |
-| Azure Quantum Python SDK (azure-quantum) documentation | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | Official documentation | https://learn.microsoft.com/en-us/azure/quantum/install-overview-qdk | 2026-07-19 | SDK installation; workspace connection; job submission; result download |
-| qdk-python (open source) | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | SDK source / package documentation | https://github.com/microsoft/qdk-python | 2026-07-19 | `Workspace` and `Job` objects; `Job.get_results()` method; job status and metadata fields; provider-specific output format handling |
-| azure-quantum PyPI releases | No exact assessed version established in paper/profile (latest stable release reviewed 2026-07-19) | Package release page | https://pypi.org/project/azure-quantum/ | 2026-07-19 | Published release history and version constraints |
-| Azure Quantum REST API reference | No exact assessed version established in paper/profile (public release reviewed 2026-07-19) | API reference | https://learn.microsoft.com/en-us/rest/api/azurequantum/ | 2026-07-19 | Job resource fields (`id`, `name`, `status`, `createdTime`, `endTime`, `target`, `outputDataUri`); workspace and provider configuration |
+| Azure Quantum documentation | Public documentation reviewed 2026-07-19 | Official documentation | https://learn.microsoft.com/en-us/azure/quantum/ | 2026-07-19 | Platform overview; supported hardware providers (IonQ, Quantinuum, Rigetti, and others); job submission workflow; result retrieval |
+| Azure Quantum Python SDK (azure-quantum) documentation | Azure Quantum Python SDK 3.10.0 documentation | Official documentation | https://learn.microsoft.com/en-us/azure/quantum/install-overview-qdk | 2026-07-19 | SDK installation; workspace connection; job submission; result download |
+| qdk-python (open source) | QDK 1.30.0 | SDK source / package documentation | https://github.com/microsoft/qdk-python | 2026-07-19 | `Workspace` and `Job` objects; `Job.get_results()` method; job status and metadata fields; provider-specific output format handling |
+| azure-quantum PyPI releases | Azure Quantum Python SDK 3.10.0 | Package release page | https://pypi.org/project/azure-quantum/ | 2026-07-19 | Published release history and version constraints |
+| Azure Quantum REST API reference | Data-plane REST API `2026-01-15-preview` | API reference | https://learn.microsoft.com/en-us/rest/api/azurequantum/ | 2026-07-19 | Job resource fields (`id`, `name`, `status`, `createdTime`, `endTime`, `target`, `outputDataUri`); workspace and provider configuration |
 
 ## Notes
 

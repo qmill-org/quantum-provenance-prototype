@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "qprov-record-7d4fd53a",
+  "generated_at": "2026-07-12T14:05:22Z",
+  "job": {
+    "id": "qprov-job-7d4fd53a",
+    "external_id": "job-12345",
+    "name": "example-experiment",
+    "platform_id": "ibm-quantum",
+    "hardware_provider_id": "ibm",
+    "status": "completed"
+  },
+  "device": {
+    "id": "ibm:ibm_kyoto",
+    "external_id": "ibm_kyoto",
+    "name": "ibm_kyoto",
+    "technology": "superconducting",
+    "num_qubits": 127,
+    "capabilities_ref": "/v1/devices/ibm:ibm_kyoto"
+  },
+  "program": {
+    "representation": "gate_model",
+    "summary": {
+      "width": 5,
+      "depth": 42,
+      "operation_count": 156
+    },
+    "artifacts": [
+      {
+        "artifact_id": "artifact-source",
+        "role": "source",
+        "format": "qiskit-circuit",
+        "schema_version": null,
+        "captured_by": "application"
+      },
+      {
+        "artifact_id": "artifact-submitted",
+        "role": "submitted",
+        "format": "qasm3",
+        "schema_version": "3.0",
+        "produced_from": [
+          "artifact-source"
+        ],
+        "captured_by": "provider_adapter"
+      },
+      {
+        "artifact_id": "artifact-compiled",
+        "role": "compiled",
+        "format": "qasm3",
+        "schema_version": "3.0",
+        "produced_from": [
+          "artifact-submitted"
+        ],
+        "captured_by": "application"
+      }
+    ]
+  },
+  "compilation": {
+    "target_device_id": "ibm:ibm_kyoto",
+    "optimization_level": 3,
+    "logical_to_physical_mapping": [
+      {
+        "logical": 0,
+        "physical": 45
+      },
+      {
+        "logical": 1,
+        "physical": 46
+      }
+    ],
+    "random_seed": 42,
+    "compiler": {
+      "name": "qiskit-transpiler",
+      "version": "1.0.2"
+    },
+    "steps": [],
+    "capture_source": "application"
+  },
+  "execution": {
+    "status": "completed",
+    "shots_requested": 4096,
+    "shots_successful": 4096,
+    "created_at": "2025-03-24T10:15:30Z",
+    "queued_at": null,
+    "started_at": "2025-03-24T10:22:15Z",
+    "ended_at": "2025-03-24T10:22:47Z",
+    "queue_duration_ms": 405000,
+    "execution_duration_ms": 32000,
+    "error_mitigation": {
+      "enabled": true,
+      "methods": [
+        "readout_correction"
+      ]
+    }
+  },
+  "characterization": {
+    "snapshot_id": "cal-20250324T090000Z",
+    "kind": "calibration",
+    "observed_at": "2025-03-24T09:00:00Z",
+    "association": {
+      "type": "provider_linked",
+      "execution_time_delta_ms": 4935000
+    },
+    "href": "/v1/devices/ibm:ibm_kyoto/characterizations/cal-20250324T090000Z"
+  },
+  "results": {
+    "representation": "raw_shots",
+    "original_representation": "raw_shots",
+    "converted": false,
+    "conversion_reason": null,
+    "artifacts": [
+      {
+        "artifact_id": "artifact-results",
+        "role": "result",
+        "format": "provider-json",
+        "retention_status": "available"
+      }
+    ]
+  },
+  "software": {
+    "client": {
+      "name": "qiskit",
+      "version": "1.0.2",
+      "captured_by": "application"
+    },
+    "provider_api": {
+      "name": "IBM Quantum API",
+      "version": null
+    },
+    "retrieved_at": "2026-07-12T14:05:20Z"
+  },
+  "extensions": {
+    "gate_model": {
+      "operations": [],
+      "measurements": []
+    }
+  },
+  "evidence": [
+    {
+      "path": "/execution/queue_duration_ms",
+      "status": "derived",
+      "source_paths": [
+        "/execution/created_at",
+        "/execution/started_at"
+      ],
+      "derivation": "started_at - created_at"
+    },
+    {
+      "path": "/compilation/steps",
+      "status": "unavailable",
+      "reason": "not_exposed_by_provider_or_client"
+    },
+    {
+      "path": "/software/client/version",
+      "status": "application_captured"
+    }
+  ],
+  "provider_native": {
+    "platform": "ibm-quantum",
+    "artifacts_ref": "/v1/jobs/qprov-job-7d4fd53a/provider-native"
+  }
+}
