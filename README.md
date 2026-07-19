@@ -20,9 +20,8 @@ prototype; it does not depend on any private QMill code.
 | --- | --- |
 | Paper | *Toward Standardized Quantum Provenance: A Cross-Provider Analysis, Unified API, and Reference Prototype* |
 | Author | Jouni Peltonen |
-| Original development PR | [`qmill-org/common#25`](https://github.com/qmill-org/common/pull/25) |
 | Source commit | `0ca8ac8` (branch `feature/unified-provenance-prototype`) |
-| Evaluation cutoff date | 2026-07-24 |
+| Evaluation cutoff date | 2026-07-17 |
 | Schema version | `0.1.0-prototype` |
 | Report format | `qmill.provenance.evaluation` v`0.2.0` |
 
