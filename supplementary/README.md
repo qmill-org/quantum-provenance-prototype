@@ -1,11 +1,11 @@
 # Supplementary material
 
-This directory contains narrative supplementary material for the paper and a
-complete worked example. None of it is required to run the artifact; it
-documents how the sanitized fixtures relate to real, publicly documented
-provider evidence.
+This directory contains four categories of narrative supplementary material for
+the paper. None of it is required to run the artifact.
 
 ## Contents
+
+### 1. Generated prototype record
 
 - [`complete-example-provenance-response.json`](complete-example-provenance-response.json) —
   a full, schema-valid `ProvenanceRecord` as returned by
@@ -13,11 +13,39 @@ provider evidence.
   fixture (the most fully populated case). Every top-level section is present:
   `job`, `device`, `compilation`, `software`, `execution`, `characterization`,
   `results`, `evidence`, `artifacts`, `operations`, and `warnings`.
-- [`provider-profiles/`](provider-profiles) — one structured profile per
-  provider mapping each fixture field to the corresponding concept in that
-  provider's public result / device schema.
-- [`provider-evidence/`](provider-evidence) — one note per provider listing the
-  public documentation sources the fixture shapes were reconstructed from.
+
+  This file is a **generated artifact**: it is produced by the prototype
+  implementation from the sanitized Braket fixture and committed here as a
+  canonical example. It is also used in the paper as the complete provenance
+  response listing.
+
+### 2. Conceptual API example
+
+The generated record above serves as the primary conceptual example showing
+the structure of a fully populated provenance response. It is the same record
+referenced in the paper's API design section and appendix.
+
+### 3. Detailed 15-platform comparative profiles
+
+- [`provider-profiles/`](provider-profiles) — one structured JSON profile per
+  prototype-supported provider (Amazon Braket, IBM Quantum, IonQ), mapping
+  each fixture field to the corresponding concept in that provider's public
+  result and device schema. These profiles document how the synthetic fixtures
+  were shaped to mirror each provider's public API structure.
+
+### 4. 15-platform evidence ledgers
+
+- [`provider-evidence/`](provider-evidence) — one Markdown evidence ledger per
+  analyzed platform (all 15 platforms: 12 hardware-provider platforms and 3
+  cloud aggregators). Each ledger documents:
+  - the platform classification and evidence boundary;
+  - the verification date;
+  - a table of public documentation, SDK, and API sources with stable URLs;
+  - notes distinguishing documented interface structure from actual field
+    population.
+
+  See [`provider-evidence/README.md`](provider-evidence/README.md) for the
+  complete platform index with direct links to all 15 ledgers.
 
 ## Synthetic fixtures ↔ public provider evidence
 
@@ -32,6 +60,7 @@ hand-authored reconstructions**, not captures of real jobs:
 - No **proprietary or exported provider data** is included, keeping the artifact
   freely redistributable and fully deterministic.
 
-The evidence notes reference official provider documentation by name and root
-URL. Exact field paths in the fixtures are reconstructions from that public
-documentation and the corresponding open-source SDKs.
+The evidence ledgers reference official provider documentation, SDK source
+repositories, and package release pages. Exact field paths in the fixtures are
+reconstructions from public documentation and the corresponding open-source
+SDKs. No ledger claims authenticated operational verification.
