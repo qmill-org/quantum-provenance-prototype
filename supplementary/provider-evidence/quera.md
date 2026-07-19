@@ -35,7 +35,7 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
   structure; when accessed through Bloqade's native backend, the result is a
   `Report` containing per-shot atom-state configurations.
 - Result semantics: each shot records the detected state (ground or Rydberg
-  excited) of each atom in the register, typically as a binary pre-sequence of
+  excited) of each atom in the register, typically as a binary per-shot sequence of
   atom states. This is structurally different from qubit bitstring measurements.
 - QuEra is not among the three providers with prototype fixtures in this
   repository; its inclusion in the comparative analysis is based on public
