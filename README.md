@@ -138,4 +138,4 @@ is available, cite the artifact using [`CITATION.cff`](CITATION.cff).
 
 ## License
 
-[MIT](LICENSE) © 2026 Jouni Peltonen.
+[MIT](LICENSE) © 2026 QMill Oy.
