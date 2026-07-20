@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21451599.svg)](https://doi.org/10.5281/zenodo.21451599)
+
 # Quantum Provenance Prototype
 
 Reproducible research artifact for the paper:
@@ -24,6 +26,7 @@ prototype; it does not depend on any private QMill code.
 | Provider-interface verification cutoff date | 2026-07-19 |
 | Schema version | `0.1.0-prototype` |
 | Report format | `qmill.provenance.evaluation` v`0.2.0` |
+| DOI | [10.5281/zenodo.21451599](https://doi.org/10.5281/zenodo.21451599) |
 
 ## Layout
 
@@ -133,8 +136,8 @@ Supplementary conceptual and comparative materials are also available under
 ## Citation
 
 If you use this artifact, please cite it via [`CITATION.cff`](CITATION.cff).
-A versioned release of this repository will be archived on Zenodo. Until a DOI
-is available, cite the artifact using [`CITATION.cff`](CITATION.cff).
+A versioned release of this repository is archived at Zenodo: 
+[10.5281/zenodo.21451599](https://doi.org/10.5281/zenodo.21451599)
 
 ## License
 
