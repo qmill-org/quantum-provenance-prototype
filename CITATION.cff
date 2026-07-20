@@ -15,6 +15,7 @@ version: 0.1.0
 date-released: "2026-07-20"
 license: MIT
 repository-code: "https://github.com/qmill-org/quantum-provenance-prototype"
+doi: 10.5281/zenodo.21451599
 keywords:
   - quantum computing
   - provenance
