@@ -1,7 +1,8 @@
 """Minimal provider-integration interface for the provenance artifact.
 
-The package is a standalone extraction of the prototype evaluated in the paper; 
-it has no dependency on private QMill code.
+This module is a self-contained copy of the minimal provider-integration surface
+the provenance prototype depends on, so the artifact is independently runnable
+without private QMill code.
 
 The submission-oriented models (:class:`TargetInfo`, :class:`ResolvedTarget`,
 :class:`SubmissionResult`) are present only to complete the adapter contract;
