@@ -36,7 +36,7 @@ src/qmill_quantum_provenance/   # the prototype package
   contract.py       # loads openapi.json, validates records against the schema
   redaction.py      # secret/PII redaction applied before records are emitted
   replay.py         # offline ProviderAdapter that replays a captured fixture
-  integration.py    # inlined minimal provider-integration interface (see above)
+  integration.py    # minimal provider-integration interface (inlined; see module docstring)
   evaluation.py     # reproducible evaluation harness (metrics + experiments)
   generate_examples.py  # regenerates the canonical example records
   adapters/{braket,ibm,ionq}.py  # per-provider provenance adapters
