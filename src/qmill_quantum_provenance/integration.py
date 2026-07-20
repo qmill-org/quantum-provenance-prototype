@@ -1,12 +1,7 @@
 """Minimal provider-integration interface for the provenance artifact.
 
-This module is a self-contained copy of the small surface the provenance
-prototype depends on from ``qmill_common.quantum_providers.integration`` in the
-original codebase (PR #25 on ``qmill-org/common``). Only the abstract
-:class:`ProviderAdapter` contract, the canonical data models, and the
-``ResultUnavailableError`` used by the offline replay flow are reproduced here so
-the artifact is independently runnable without the private ``qmill_common``
-package.
+The package is a standalone extraction of the prototype evaluated in the paper; 
+it has no dependency on private QMill code.
 
 The submission-oriented models (:class:`TargetInfo`, :class:`ResolvedTarget`,
 :class:`SubmissionResult`) are present only to complete the adapter contract;
