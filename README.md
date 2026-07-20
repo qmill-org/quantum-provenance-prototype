@@ -19,7 +19,7 @@ prototype; it does not depend on any private QMill code.
 | Field | Value |
 | --- | --- |
 | Paper | *Toward Standardized Quantum Provenance: A Cross-Provider Analysis, Unified API, and Reference Prototype* |
-| Author | Jouni Peltonen |
+| Artifact author | Jouni Peltonen |
 | Prototype evaluation cutoff date | 2026-07-17 |
 | Provider-interface verification cutoff date | 2026-07-19 |
 | Schema version | `0.1.0-prototype` |
