@@ -12,7 +12,7 @@ authors:
   - family-names: Peltonen
     given-names: Jouni
 version: 0.1.0
-date-released: "2026-07-24"
+date-released: "2026-07-20"
 license: MIT
 repository-code: "https://github.com/qmill-org/quantum-provenance-prototype"
 keywords:
