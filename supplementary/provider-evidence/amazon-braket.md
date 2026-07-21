@@ -41,7 +41,7 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 - The Braket--IonQ case and the direct IBM Quantum case form the principal
   aggregator-versus-direct-provider comparison in the prototype evaluation.
 
-## Legacy fixture evidence note
+## Fixture companion note
 
 The prototype fixture (`tests/fixtures/braket/`) reconstructs the Amazon Braket
 task and device API shape. See also the fixture-specific companion note
