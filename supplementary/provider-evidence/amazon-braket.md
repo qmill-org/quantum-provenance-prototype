@@ -45,5 +45,5 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 The prototype fixture (`tests/fixtures/braket/`) reconstructs the Amazon Braket
 task and device API shape. See also the fixture-specific companion note
-([`braket.md`](braket.md)), which preserves the direct fixture mapping detail
+([`amazon-braket-fixture.md`](amazon-braket-fixture.md)), which preserves the direct fixture mapping detail
 for the three-provider prototype implementation.
