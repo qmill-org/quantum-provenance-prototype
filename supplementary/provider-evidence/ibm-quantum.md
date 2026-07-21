@@ -45,5 +45,5 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 
 The prototype fixture (`tests/fixtures/ibm/`) reconstructs the Qiskit Runtime
 job/result and backend-properties API shape. See also the fixture-specific
-companion note ([`ibm.md`](ibm.md)), which preserves the direct fixture mapping
+companion note ([`ibm-quantum-fixture.md`](ibm-quantum-fixture.md)), which preserves the direct fixture mapping
 detail for the three-provider prototype implementation.
