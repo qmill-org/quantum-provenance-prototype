@@ -39,8 +39,8 @@ required to run the artifact.
 - [`provider-profiles/`](provider-profiles) — structured JSON profiles for the
   prototype-supported fixtures (Amazon Braket, IBM Quantum, IonQ), mapping each
   fixture field to the corresponding concept in public provider schemas.
-- [`provider-evidence/braket.md`](provider-evidence/braket.md),
-  [`provider-evidence/ibm.md`](provider-evidence/ibm.md), and
+- [`provider-evidence/amazon-braket-fixture.md`](provider-evidence/amazon-braket-fixture.md),
+  [`provider-evidence/ibm-quantum-fixture.md`](provider-evidence/ibm-quantum-fixture.md), and
   [`provider-evidence/ionq-fixture.md`](provider-evidence/ionq-fixture.md) —
   fixture-specific companion notes for the executable prototype context.
 
