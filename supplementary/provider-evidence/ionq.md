@@ -37,7 +37,7 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
   (i.e. which exact calibration fields are populated for every account, target,
   or job type) was not verified through authenticated access.
 
-## Legacy fixture evidence note
+## Fixture companion note
 
 The prototype fixture (`tests/fixtures/ionq/`) reconstructs the IonQ jobs API
 shape. Field paths and semantics are taken from the documentation sources
