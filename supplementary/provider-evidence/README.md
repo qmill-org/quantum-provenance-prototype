@@ -46,9 +46,9 @@ directory using relative Markdown links.
 The 15 full ledgers above support the comparative platform analysis. Three
 shorter fixture-focused companion notes also remain for the prototype fixtures:
 
-- [`braket.md`](braket.md) — fixture-specific mapping note for the Braket
+- [`amazon-braket-fixture.md`](amazon-braket-fixture.md) — fixture-specific mapping note for the Amazon Braket
   prototype fixture
-- [`ibm.md`](ibm.md) — fixture-specific mapping note for the IBM prototype
+- [`ibm-quantum-fixture.md`](ibm-quantum-fixture.md) — fixture-specific mapping note for the IBM Quantum prototype
   fixture
 - [`ionq-fixture.md`](ionq-fixture.md) — fixture-specific mapping note for the
   IonQ prototype fixture
