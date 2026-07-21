@@ -41,7 +41,7 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
   established through the open-source SDK. Live field population for every
   account tier, backend, or region was not verified through authenticated access.
 
-## Legacy fixture evidence note
+## Fixture companion note
 
 The prototype fixture (`tests/fixtures/ibm/`) reconstructs the Qiskit Runtime
 job/result and backend-properties API shape. See also the fixture-specific
