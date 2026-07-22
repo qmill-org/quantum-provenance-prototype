@@ -1,7 +1,7 @@
 """Unified Quantum Provenance — research prototype (in-process module).
 
-Public surface for the QAS FastAPI layer to wrap. Two contract operations are
-exposed via :class:`ProvenanceService`:
+Public surface of the prototype. Two contract operations are exposed via
+:class:`ProvenanceService`, mirroring the reduced OpenAPI contract:
 
 - ``create_record`` -> POST /v1/provenance-records
 - ``get_provenance`` -> GET /v1/jobs/{job_id}/provenance
