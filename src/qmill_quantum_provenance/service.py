@@ -1,10 +1,11 @@
 """In-process provenance service with an in-memory record store.
 
 This is the delivery form for the prototype: the two contract operations are
-exposed as Python methods that the QAS FastAPI layer can wrap. No HTTP server
-lives in this repository. Provider branching stays inside adapters; this class
-only performs generic assembly (canonical envelope, application-captured
-context, operation accounting) over an :class:`AdapterResult`.
+exposed as Python methods mirroring the reduced OpenAPI contract. No HTTP
+server lives in this repository. Provider branching stays inside adapters;
+this class only performs generic assembly (canonical envelope,
+application-captured context, operation accounting) over an
+:class:`AdapterResult`.
 """
 
 from __future__ import annotations
