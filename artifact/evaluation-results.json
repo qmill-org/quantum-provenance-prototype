@@ -276,7 +276,7 @@
     "models.py": 383,
     "redaction.py": 55,
     "registry.py": 50,
-    "service.py": 229
+    "service.py": 230
   },
-  "shared_provider_independent_implementation_loc_total": 861
+  "shared_provider_independent_implementation_loc_total": 862
 }

@@ -28,6 +28,23 @@ class ResultUnavailableError(ProviderIntegrationError):
     """Raised when a task result is not yet available."""
 
 
+class JobNotFoundError(ProviderIntegrationError):
+    """The provider no longer (or never) returns the job.
+
+    Live retrieval showed that providers can discard job metadata while result
+    artifacts survive elsewhere, so callers should not read this as "the job
+    never existed".
+    """
+
+
+class AccessDeniedError(ProviderIntegrationError):
+    """Credentials are missing, expired, or lack the scope for the request."""
+
+
+class ThrottledError(ProviderIntegrationError):
+    """The provider rejected the request because of rate limiting."""
+
+
 # --- canonical data models --------------------------------------------------
 
 TargetType = Literal["SIMULATOR", "QPU"]
@@ -158,6 +175,9 @@ class ProviderAdapter(ABC):
 __all__ = [
     "ProviderIntegrationError",
     "ResultUnavailableError",
+    "JobNotFoundError",
+    "AccessDeniedError",
+    "ThrottledError",
     "TargetInfo",
     "ResolvedTarget",
     "SubmissionResult",

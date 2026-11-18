@@ -5,6 +5,10 @@ integration :class:`ProviderAdapter`. ``ReplayIntegrationAdapter`` implements
 that seam from a captured, sanitized fixture so the representative
 completed-job flow runs deterministically without network or credentials.
 Real provider retrieval uses the concrete integration adapters instead.
+
+A fixture may carry ``upstream_errors``: ``{operation: {"error": <class name>,
+"message": ...}}``. The named operation then raises that integration error, so
+captured upstream failures (and injected ones) replay exactly as they occurred.
 """
 
 from __future__ import annotations
@@ -12,6 +16,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any
 
+from . import integration as _integration
 from .integration import ProviderAdapter
 from .integration import ResultUnavailableError
 from .integration import (
@@ -41,6 +46,15 @@ class ReplayIntegrationAdapter(ProviderAdapter):
         self._fixture = fixture
         self._provider = str(fixture.get("provider", "braket"))
 
+    def _raise_recorded(self, operation: str) -> None:
+        recorded = (self._fixture.get("upstream_errors") or {}).get(operation)
+        if recorded is None:
+            return
+        error_type = getattr(_integration, str(recorded.get("error")), None)
+        if not (isinstance(error_type, type) and issubclass(error_type, Exception)):
+            error_type = _integration.ProviderIntegrationError
+        raise error_type(str(recorded.get("message", "")))
+
     # -- retrieval used by provenance adapters -------------------------------
 
     def get_task(self, provider_job_id: str, region: str | None = None) -> TaskHandle:
@@ -54,6 +68,7 @@ class ReplayIntegrationAdapter(ProviderAdapter):
         )
 
     def get_status(self, task: TaskHandle) -> TaskSnapshot:
+        self._raise_recorded("get_status")
         snapshot = self._fixture.get("snapshot", {})
         return TaskSnapshot(
             provider=self._provider,
@@ -68,6 +83,7 @@ class ReplayIntegrationAdapter(ProviderAdapter):
         )
 
     def get_result(self, task: TaskHandle) -> TaskResult:
+        self._raise_recorded("get_result")
         snapshot = self._fixture.get("snapshot", {})
         status = str(snapshot.get("status", "UNKNOWN"))
         result = self._fixture.get("result")
@@ -84,6 +100,7 @@ class ReplayIntegrationAdapter(ProviderAdapter):
         )
 
     def get_device_details(self, target_id: str, region: str | None = None) -> DeviceDetails:
+        self._raise_recorded("get_device_details")
         device = self._fixture.get("device")
         if device is None:
             raise ValueError(f"No device fixture for target {target_id}")
