@@ -1,0 +1,15 @@
+{
+  "capture_tool_revision": "910de1e26db22462f8f9e301268b995ea46abf95",
+  "captured_at": "2026-11-18T15:21:12.551274+00:00",
+  "external_job_id": "arn:aws:braket:eu-north-1:000000000000:quantum-task/0669f519-a54d-4a0a-9cf7-d8a409520fd7",
+  "notes": {},
+  "operations": [
+    {
+      "at": "2026-11-18T15:21:12.267920+00:00",
+      "message": "GetQuantumTask: ResourceNotFoundException: An error occurred (ResourceNotFoundException) when calling the GetQuantumTask operation: Quantum task not found",
+      "operation": "get_status",
+      "outcome": "JobNotFoundError"
+    }
+  ],
+  "provider": "braket"
+}

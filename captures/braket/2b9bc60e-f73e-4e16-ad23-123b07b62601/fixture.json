@@ -1,0 +1,11 @@
+{
+  "external_job_id": "arn:aws:braket:us-east-1:000000000000:quantum-task/2b9bc60e-f73e-4e16-ad23-123b07b62601",
+  "provider": "braket",
+  "region": "us-east-1",
+  "upstream_errors": {
+    "get_status": {
+      "error": "JobNotFoundError",
+      "message": "GetQuantumTask: ResourceNotFoundException: An error occurred (ResourceNotFoundException) when calling the GetQuantumTask operation: Quantum task not found"
+    }
+  }
+}
