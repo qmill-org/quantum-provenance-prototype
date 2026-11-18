@@ -137,11 +137,22 @@ def write_capture(bundle: dict[str, Any], root: Path) -> Path:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("provider", choices=sorted(_INTEGRATIONS))
-    parser.add_argument("job_ids", nargs="+")
+    parser.add_argument("job_ids", nargs="*")
+    parser.add_argument(
+        "--ledger", type=Path, help="also capture every job created in this run ledger"
+    )
     parser.add_argument("--region")
     parser.add_argument("--out", type=Path, default=Path("captures"))
     args = parser.parse_args(argv)
-    for job_id in args.job_ids:
+    job_ids = list(args.job_ids)
+    if args.ledger:
+        for line in args.ledger.read_text(encoding="utf-8").splitlines():
+            entry = json.loads(line) if line else {}
+            if entry.get("outcome") == "created":
+                job_ids.append(entry["task_arn"])
+    if not job_ids:
+        parser.error("give job ids or --ledger")
+    for job_id in job_ids:
         bundle = capture(args.provider, job_id, args.region)
         path = write_capture(bundle, args.out)
         outcomes = ", ".join(

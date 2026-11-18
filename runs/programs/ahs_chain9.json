@@ -1,0 +1,113 @@
+{
+  "braketSchemaHeader": {
+    "name": "braket.ir.ahs.program",
+    "version": "1"
+  },
+  "setup": {
+    "ahs_register": {
+      "sites": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          6.1e-06,
+          0.0
+        ],
+        [
+          1.22e-05,
+          0.0
+        ],
+        [
+          1.83e-05,
+          0.0
+        ],
+        [
+          2.44e-05,
+          0.0
+        ],
+        [
+          3.05e-05,
+          0.0
+        ],
+        [
+          3.66e-05,
+          0.0
+        ],
+        [
+          4.27e-05,
+          0.0
+        ],
+        [
+          4.88e-05,
+          0.0
+        ]
+      ],
+      "filling": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "hamiltonian": {
+    "drivingFields": [
+      {
+        "amplitude": {
+          "time_series": {
+            "values": [
+              0.0,
+              15800000.0,
+              15800000.0,
+              0.0
+            ],
+            "times": [
+              0.0,
+              1e-07,
+              3.9e-06,
+              4e-06
+            ]
+          },
+          "pattern": "uniform"
+        },
+        "phase": {
+          "time_series": {
+            "values": [
+              0.0,
+              0.0
+            ],
+            "times": [
+              0.0,
+              4e-06
+            ]
+          },
+          "pattern": "uniform"
+        },
+        "detuning": {
+          "time_series": {
+            "values": [
+              -20000000.0,
+              -20000000.0,
+              20000000.0,
+              20000000.0
+            ],
+            "times": [
+              0.0,
+              1e-07,
+              3.9e-06,
+              4e-06
+            ]
+          },
+          "pattern": "uniform"
+        }
+      }
+    ],
+    "localDetuning": []
+  }
+}

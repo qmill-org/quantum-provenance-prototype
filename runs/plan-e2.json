@@ -1,0 +1,17 @@
+{
+  "plan": "WP-E2/E3 purpose-run Amazon Braket jobs",
+  "budget_usd": 50.0,
+  "output_prefix": "quantum-provenance/e2",
+  "jobs": [
+    {"key": "e2-ionq-forte1-ghz5", "device": "arn:aws:braket:us-east-1::device/qpu/ionq/Forte-1", "program": "ghz5.qasm", "shots": 100},
+    {"key": "e2-iqm-garnet-bell2", "device": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet", "program": "bell2.qasm", "shots": 1000},
+    {"key": "e2-iqm-garnet-ghz5", "device": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet", "program": "ghz5.qasm", "shots": 1000},
+    {"key": "e2-iqm-emerald-ghz5", "device": "arn:aws:braket:eu-north-1::device/qpu/iqm/Emerald", "program": "ghz5.qasm", "shots": 1000},
+    {"key": "e2-rigetti-cepheus-bell2", "device": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q", "program": "bell2.qasm", "shots": 1000},
+    {"key": "e2-rigetti-cepheus-ghz5", "device": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q", "program": "ghz5.qasm", "shots": 1000},
+    {"key": "e3-aqt-ibexq1-bell2", "device": "arn:aws:braket:eu-north-1::device/qpu/aqt/Ibex-Q1", "program": "bell2.qasm", "shots": 100},
+    {"key": "e3-quera-aquila-chain9-a", "device": "arn:aws:braket:us-east-1::device/qpu/quera/Aquila", "program": "ahs_chain9.json", "shots": 100},
+    {"key": "e3-quera-aquila-chain9-b", "device": "arn:aws:braket:us-east-1::device/qpu/quera/Aquila", "program": "ahs_chain9.json", "shots": 100},
+    {"key": "e5-rigetti-cepheus-cancelled", "device": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q", "program": "bell2.qasm", "shots": 1000, "cancel_after_submit": true}
+  ]
+}

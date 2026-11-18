@@ -42,6 +42,7 @@ from ..integration import (
     TaskSnapshot,
     ThrottledError,
 )
+from .sanitize import ACCOUNT_PLACEHOLDER
 
 _NOT_FOUND = {"ResourceNotFoundException", "NoSuchKey", "NoSuchBucket", "404"}
 _DENIED = {
@@ -159,6 +160,9 @@ class LiveBraketIntegration(ProviderAdapter):
         return self._session.client("braket", region_name=region)
 
     def get_task(self, provider_job_id: str, region: str | None = None) -> TaskHandle:
+        if f":{ACCOUNT_PLACEHOLDER}:" in provider_job_id:
+            account = self._session.client("sts").get_caller_identity()["Account"]
+            provider_job_id = provider_job_id.replace(f":{ACCOUNT_PLACEHOLDER}:", f":{account}:")
         return TaskHandle(
             provider="braket",
             provider_job_id=provider_job_id,
