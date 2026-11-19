@@ -271,12 +271,12 @@
   },
   "schema_version": "0.1.0-prototype",
   "shared_provider_independent_implementation_loc": {
-    "adapter.py": 112,
+    "adapter.py": 114,
     "contract.py": 32,
-    "models.py": 383,
+    "models.py": 386,
     "redaction.py": 55,
     "registry.py": 50,
-    "service.py": 230
+    "service.py": 231
   },
-  "shared_provider_independent_implementation_loc_total": 862
+  "shared_provider_independent_implementation_loc_total": 868
 }

@@ -410,6 +410,7 @@ class ProvenanceRecord:
     execution: Execution | None = None
     characterization: Characterization | None = None
     software: SoftwareContext | None = None
+    extensions: dict[str, dict[str, Any]] | None = None
     schema_version: str = SCHEMA_VERSION
 
     def to_dict(self) -> dict[str, Any]:
@@ -435,6 +436,8 @@ class ProvenanceRecord:
             payload["characterization"] = self.characterization.to_dict()
         if self.software is not None and not self.software.is_empty():
             payload["software"] = self.software.to_dict()
+        if self.extensions:
+            payload["extensions"] = {key: dict(value) for key, value in self.extensions.items()}
         return payload
 
 

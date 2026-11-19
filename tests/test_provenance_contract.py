@@ -81,3 +81,24 @@ def test_checked_in_example_records_are_up_to_date() -> None:
     """
 
     assert generate(check=True) == 0
+
+
+def test_extensions_are_optional_and_namespaced() -> None:
+    from qmill_quantum_provenance.contract import validate_record
+
+    record = _load_json(_EXAMPLES_DIRECTORY / "ibm-completed.json")
+    assert "extensions" not in record
+    validate_record(record)
+
+    record["extensions"] = {"photonic.quandela": {"modes": 24, "detector": "threshold"}}
+    validate_record(record)
+
+    record["extensions"] = {"quandela": {"modes": 24}}
+    try:
+        validate_record(record)
+    except jsonschema.ValidationError:
+        pass
+    else:
+        raise AssertionError(
+            "an extension key without a '<paradigm>.<provider>' namespace must be rejected"
+        )

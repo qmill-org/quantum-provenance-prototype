@@ -675,6 +675,16 @@
                         "items": {
                             "$ref": "#/components/schemas/OperationObservation"
                         }
+                    },
+                    "extensions": {
+                        "type": "object",
+                        "description": "Technology- or provider-specific data without a place in the common core, keyed by namespace '<paradigm>.<provider>' (for example 'photonic.quandela'). Each value is an object owned by that namespace. Optional; consumers that do not know a namespace ignore it.",
+                        "propertyNames": {
+                            "pattern": "^[a-z][a-z0-9_]*\\.[a-z][a-z0-9_]*$"
+                        },
+                        "additionalProperties": {
+                            "type": "object"
+                        }
                     }
                 },
                 "additionalProperties": false

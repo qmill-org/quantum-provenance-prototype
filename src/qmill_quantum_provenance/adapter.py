@@ -12,6 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from datetime import datetime
+from typing import Any
 
 from .models import (
     Artifact,
@@ -114,6 +115,7 @@ class AdapterResult:
     execution: Execution | None = None
     characterization: Characterization | None = None
     software: SoftwareContext | None = None
+    extensions: dict[str, dict[str, Any]] = field(default_factory=dict)
     retrieved_at: datetime | None = None
 
 

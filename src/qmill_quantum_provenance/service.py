@@ -131,6 +131,7 @@ class ProvenanceService:
             execution=result.execution,
             characterization=result.characterization,
             software=software,
+            extensions=dict(result.extensions) or None,
         )
 
     def _apply_source_program(
