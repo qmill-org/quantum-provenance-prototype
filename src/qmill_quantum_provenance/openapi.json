@@ -502,6 +502,16 @@
                         "type": "integer",
                         "minimum": 0
                     },
+                    "outcome_basis": {
+                        "type": "string",
+                        "enum": [
+                            "bitstring",
+                            "fock_state",
+                            "site_occupation",
+                            "other"
+                        ],
+                        "description": "What the keys of measurement_counts, measurement_probabilities and estimated_measurement_counts denote: fixed-width bitstrings, photon-number (Fock) states, atom-site occupations, or another provider-defined basis. Absent in records written before this field existed, where keys are bitstrings."
+                    },
                     "measurement_counts": {
                         "type": "object",
                         "description": "Actual provider-returned or observed integer counts (Braket, IBM). Absent when the provider returns probabilities instead of counts.",

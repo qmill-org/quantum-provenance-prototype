@@ -336,12 +336,14 @@ class Results:
     measurement_counts: dict[str, int] | None = None
     measurement_probabilities: dict[str, float] | None = None
     estimated_measurement_counts: dict[str, int] | None = None
+    outcome_basis: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return _compact(
             {
                 "available": self.available,
                 "shots": self.shots,
+                "outcome_basis": self.outcome_basis,
                 "measurement_counts": self.measurement_counts or None,
                 "measurement_probabilities": self.measurement_probabilities or None,
                 "estimated_measurement_counts": self.estimated_measurement_counts or None,

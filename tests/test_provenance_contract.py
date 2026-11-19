@@ -102,3 +102,18 @@ def test_extensions_are_optional_and_namespaced() -> None:
         raise AssertionError(
             "an extension key without a '<paradigm>.<provider>' namespace must be rejected"
         )
+
+
+def test_outcome_basis_is_optional_and_restricted() -> None:
+    from qmill_quantum_provenance.contract import validate_record
+
+    record = _load_json(_EXAMPLES_DIRECTORY / "braket-completed.json")
+    record["results"]["outcome_basis"] = "fock_state"
+    validate_record(record)
+    record["results"]["outcome_basis"] = "photons"
+    try:
+        validate_record(record)
+    except jsonschema.ValidationError:
+        pass
+    else:
+        raise AssertionError("outcome_basis outside the enumeration must be rejected")
