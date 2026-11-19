@@ -12,8 +12,9 @@ recorded independently in the capture (``native.json`` / ``manifest.json``):
 
 * ``derived_counts_labeled_provider_supplied`` -- counts were expanded from
   provider probabilities but the record marks them as provider-supplied;
-* ``characterization_without_timestamp`` -- characterization is attached but
-  has no observation timestamp, so its temporal association is unverifiable;
+* ``characterization_without_timestamp`` -- characterization is attached
+  without an observation timestamp and the record does not say so
+  (``timestamp_source: none``);
 * ``characterization_postdates_job`` -- the snapshot was observed after the job
   ended (reported with the gap, whatever association the record claims);
 * ``record_not_produced`` -- the service raised instead of returning a record;
@@ -101,12 +102,13 @@ def check_claims(payload: dict[str, Any], manifest: dict[str, Any]) -> list[dict
         captured = _parse(characterization.get("captured_at"))
         ended = _parse((payload.get("job") or {}).get("ended_at"))
         if captured is None:
-            findings.append(
-                {
-                    "check": "characterization_without_timestamp",
-                    "detail": f"association {association!r} has no captured_at",
-                }
-            )
+            if characterization.get("timestamp_source") != "none":
+                findings.append(
+                    {
+                        "check": "characterization_without_timestamp",
+                        "detail": f"association {association!r} has no captured_at",
+                    }
+                )
         elif ended is not None and captured > ended:
             findings.append(
                 {

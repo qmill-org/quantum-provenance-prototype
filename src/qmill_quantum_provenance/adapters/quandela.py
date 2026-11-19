@@ -11,6 +11,7 @@ from datetime import UTC, datetime, timedelta
 from typing import Any
 
 from ..adapter import (
+    characterization_applies,
     RESULT_REPRESENTATIONS,
     mark_not_applicable,
     qualify_missing_results,
@@ -123,7 +124,7 @@ class QuandelaProvenanceAdapter(ProvenanceAdapter):
             qualify_missing_results(evidence, job.status, result_error)
         self._compiled(result, artifacts, evidence, extension)
         execution = self._execution(metadata, evidence)
-        characterization = self._characterization(device, device_details, evidence, extension)
+        characterization = self._characterization(device, job, device_details, evidence, extension)
 
         if extension:
             evidence.append(
@@ -314,8 +315,10 @@ class QuandelaProvenanceAdapter(ProvenanceAdapter):
         )
 
     def _characterization(
-        self, device, details, evidence: list[Evidence], extension
+        self, device, job, details, evidence: list[Evidence], extension
     ) -> Characterization | None:
+        if not characterization_applies(job.status, evidence):
+            return None
         if device.type == "simulator":
             evidence.append(
                 Evidence(
@@ -354,6 +357,7 @@ class QuandelaProvenanceAdapter(ProvenanceAdapter):
         return Characterization(
             association=CharacterizationAssociation.CURRENT_AT_RETRIEVAL,
             captured_at=None,
+            timestamp_source="none",
             metrics=metrics or None,
         )
 

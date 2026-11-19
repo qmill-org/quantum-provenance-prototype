@@ -15,6 +15,8 @@ from typing import Any
 
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    characterization_applies,
+    delta_seconds,
     RESULT_REPRESENTATIONS,
     estimate_counts,
     mark_not_applicable,
@@ -193,7 +195,7 @@ class BraketProvenanceAdapter(ProvenanceAdapter):
         self._build_submitted_artifact(result_data, artifacts, evidence)
         self._build_provider_native_artifact(snapshot, artifacts, evidence)
         execution = self._build_execution(snapshot, evidence)
-        characterization = self._build_characterization(device_details, evidence)
+        characterization = self._build_characterization(device_details, job, evidence)
 
         return AdapterResult(
             job=job,
@@ -533,22 +535,31 @@ class BraketProvenanceAdapter(ProvenanceAdapter):
         return None
 
     def _build_characterization(
-        self, device_details, evidence: list[Evidence]
+        self, device_details, job, evidence: list[Evidence]
     ) -> Characterization | None:
+        if not characterization_applies(job.status, evidence):
+            return None
         calibration = getattr(device_details, "calibration_data", None) if device_details else None
         if isinstance(calibration, dict) and calibration:
             metrics = self._extract_metrics(calibration)
+            captured_at = _parse_timestamp(calibration.get("captured_at"))
+            source = "characterization" if captured_at else "none"
+            notes = "Device snapshot at retrieval time; Braket offers no historical query."
+            if captured_at is None and calibration.get("service_updated_at"):
+                notes += " Only a service-document timestamp exists, which is not used."
             evidence.append(
                 Evidence(
                     path="/characterization",
                     status=EvidenceStatus.PROVIDER_SUPPLIED,
-                    provider_field="device_details.calibration",
-                    notes="Device calibration snapshot at retrieval time.",
+                    provider_field="GetDevice deviceCapabilities (standardized/provider)",
+                    notes=notes,
                 )
             )
             return Characterization(
                 association=CharacterizationAssociation.CURRENT_AT_RETRIEVAL,
-                captured_at=_parse_timestamp(calibration.get("captured_at")),
+                captured_at=captured_at,
+                delta_seconds=delta_seconds(captured_at, job.created_at),
+                timestamp_source=source,
                 metrics=metrics or None,
             )
 

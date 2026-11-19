@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0-prototype",
   "record_id": "qprov:ionq:f09d0b7fd29c07000f3221aad6ddb677",
-  "generated_at": "2026-11-19T13:36:26.669354+00:00",
-  "retrieved_at": "2026-11-19T13:36:26.669344+00:00",
+  "generated_at": "2026-11-19T13:44:12.515240+00:00",
+  "retrieved_at": "2026-11-19T13:44:12.515232+00:00",
   "adapter": {
     "provider": "ionq",
     "name": "ionq-provenance-adapter",
@@ -158,8 +158,8 @@
     {
       "path": "/characterization",
       "status": "provider_supplied",
-      "provider_field": "ionq.characterizations.get()",
-      "notes": "Linked characterization id 0f5d9c2e-1a34-4b78-9e56-7c8d1e2f3a4b."
+      "provider_field": "ionq characterizations",
+      "notes": "Job names characterization 0f5d9c2e-1a34-4b78-9e56-7c8d1e2f3a4b (API v0.3 field)."
     }
   ],
   "warnings": [],
@@ -197,6 +197,8 @@
   "characterization": {
     "association": "provider_linked",
     "captured_at": "2026-03-04T06:00:00+00:00",
+    "delta_seconds": -21600.0,
+    "timestamp_source": "characterization",
     "metrics": [
       {
         "name": "mean_fidelity_1q",

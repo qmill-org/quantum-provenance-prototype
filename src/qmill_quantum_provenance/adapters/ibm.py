@@ -26,6 +26,8 @@ from typing import Any
 
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    characterization_applies,
+    delta_seconds,
     RESULT_REPRESENTATIONS,
     mark_not_applicable,
     qualify_missing_results,
@@ -194,7 +196,7 @@ class IBMProvenanceAdapter(ProvenanceAdapter):
         self._build_compiled_artifact(result_data, artifacts, evidence)
         self._build_provider_native_artifact(snapshot, artifacts, evidence)
         execution = self._build_execution(snapshot, evidence)
-        characterization = self._build_characterization(device_details, snapshot, evidence)
+        characterization = self._build_characterization(device_details, job, evidence)
 
         return AdapterResult(
             job=job,
@@ -498,30 +500,29 @@ class IBMProvenanceAdapter(ProvenanceAdapter):
         return None
 
     def _build_characterization(
-        self, device_details, snapshot, evidence: list[Evidence]
+        self, device_details, job, evidence: list[Evidence]
     ) -> Characterization | None:
+        if not characterization_applies(job.status, evidence):
+            return None
         calibration = getattr(device_details, "calibration_data", None) if device_details else None
         if isinstance(calibration, dict) and calibration:
             metrics = self._extract_metrics(calibration)
             captured_at = _parse_timestamp(
                 calibration.get("captured_at") or calibration.get("last_update_date")
             )
-            run_time = snapshot.created_at
-            delta_seconds: float | None = None
-            if captured_at is not None and run_time is not None:
-                delta_seconds = abs((run_time - captured_at).total_seconds())
-
-            if delta_seconds is None:
+            matched = calibration.get("query") == "as_of_job_creation"
+            delta = delta_seconds(captured_at, job.created_at)
+            if matched:
+                association = CharacterizationAssociation.TIMESTAMP_MATCHED
                 note = (
-                    "Nearest available backend properties snapshot; the calibration "
-                    "timestamp or the job run time was unavailable, so temporal "
-                    "proximity to execution could not be verified."
+                    "Backend properties requested as of job creation; IBM returns the "
+                    "latest snapshot at or before that time."
                 )
             else:
+                association = CharacterizationAssociation.NEAREST_AVAILABLE
                 note = (
-                    "Nearest available backend properties snapshot; captured "
-                    f"{delta_seconds:.0f}s from the job run time (no provider guarantee "
-                    "that this snapshot was the one in force during execution)."
+                    "Nearest available backend properties snapshot; no provider guarantee "
+                    "that it was in force during execution."
                 )
             evidence.append(
                 Evidence(
@@ -532,8 +533,10 @@ class IBMProvenanceAdapter(ProvenanceAdapter):
                 )
             )
             return Characterization(
-                association=CharacterizationAssociation.NEAREST_AVAILABLE,
+                association=association,
                 captured_at=captured_at,
+                delta_seconds=delta,
+                timestamp_source="characterization" if captured_at else "none",
                 metrics=metrics or None,
             )
 

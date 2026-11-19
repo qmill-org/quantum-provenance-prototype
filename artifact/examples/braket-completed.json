@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0-prototype",
   "record_id": "qprov:braket:782f818c22da425e05074b501ca26a26",
-  "generated_at": "2026-11-19T13:36:26.621136+00:00",
-  "retrieved_at": "2026-11-19T13:36:26.621123+00:00",
+  "generated_at": "2026-11-19T13:44:12.459422+00:00",
+  "retrieved_at": "2026-11-19T13:44:12.459410+00:00",
   "adapter": {
     "provider": "braket",
     "name": "braket-provenance-adapter",
@@ -156,8 +156,8 @@
     {
       "path": "/characterization",
       "status": "provider_supplied",
-      "provider_field": "device_details.calibration",
-      "notes": "Device calibration snapshot at retrieval time."
+      "provider_field": "GetDevice deviceCapabilities (standardized/provider)",
+      "notes": "Device snapshot at retrieval time; Braket offers no historical query."
     },
     {
       "path": "/artifacts/2",
@@ -254,6 +254,8 @@
   "characterization": {
     "association": "current_at_retrieval",
     "captured_at": "2026-01-05T06:00:00+00:00",
+    "delta_seconds": -14400.0,
+    "timestamp_source": "characterization",
     "metrics": [
       {
         "name": "one_qubit_readout_fidelity_mean",

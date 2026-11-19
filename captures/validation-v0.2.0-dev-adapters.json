@@ -1,5 +1,5 @@
 {
-  "adapter_revision": "7553f23",
+  "adapter_revision": "5aa23fe",
   "captures": [
     {
       "capture": "04470467-2658-4b06-8e5c-35b841c7b054",
@@ -128,12 +128,7 @@
         "identifier": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
         "platform_provider": "amazon_braket"
       },
-      "findings": [
-        {
-          "check": "characterization_without_timestamp",
-          "detail": "association 'current_at_retrieval' has no captured_at"
-        }
-      ],
+      "findings": [],
       "inventory": {
         "artifact.compiled": "provider_passthrough",
         "characterization": "provider_supplied",
@@ -179,15 +174,10 @@
         "identifier": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
         "platform_provider": "amazon_braket"
       },
-      "findings": [
-        {
-          "check": "characterization_without_timestamp",
-          "detail": "association 'current_at_retrieval' has no captured_at"
-        }
-      ],
+      "findings": [],
       "inventory": {
         "artifact.compiled": "unavailable",
-        "characterization": "provider_supplied",
+        "characterization": "not_applicable",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
         "device.hardware_provider": "derived",
@@ -210,7 +200,8 @@
       },
       "inventory_counts": {
         "derived": 2,
-        "provider_supplied": 9,
+        "not_applicable": 1,
+        "provider_supplied": 8,
         "unavailable": 10
       },
       "provider": "braket",
@@ -274,12 +265,7 @@
         "identifier": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
         "platform_provider": "amazon_braket"
       },
-      "findings": [
-        {
-          "check": "characterization_without_timestamp",
-          "detail": "association 'current_at_retrieval' has no captured_at"
-        }
-      ],
+      "findings": [],
       "inventory": {
         "artifact.compiled": "provider_passthrough",
         "characterization": "provider_supplied",
@@ -597,7 +583,7 @@
       "findings": [],
       "inventory": {
         "artifact.compiled": "unavailable",
-        "characterization": "provider_supplied",
+        "characterization": "not_applicable",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
         "device.hardware_provider": "provider_supplied",
@@ -620,7 +606,8 @@
       },
       "inventory_counts": {
         "derived": 1,
-        "provider_supplied": 10,
+        "not_applicable": 1,
+        "provider_supplied": 9,
         "unavailable": 10
       },
       "provider": "ibm",
@@ -733,7 +720,7 @@
       "findings": [],
       "inventory": {
         "artifact.compiled": "unavailable",
-        "characterization": "unavailable",
+        "characterization": "not_applicable",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
         "device.hardware_provider": "provider_supplied",
@@ -755,8 +742,9 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
+        "not_applicable": 1,
         "provider_supplied": 7,
-        "unavailable": 14
+        "unavailable": 13
       },
       "provider": "ionq",
       "schema_valid": true,
@@ -859,8 +847,6 @@
       }
     }
   ],
-  "finding_counts": {
-    "characterization_without_timestamp": 3
-  },
+  "finding_counts": {},
   "inventory_version": "0.2.0"
 }

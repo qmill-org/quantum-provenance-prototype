@@ -93,3 +93,38 @@ def test_artifacts_name_their_producer_and_keep_the_original_program_digest() ->
     empty = _record(_fixture(FORTE1_VIA_BRAKET))
     assert "compiled" not in {a["role"] for a in empty["artifacts"]}
     assert "present but empty" in _evidence(empty)["/compilation"]["notes"]
+
+
+def test_characterization_states_its_temporal_basis() -> None:
+    ibm = _record(_fixture(COMPLETED_IBM))["characterization"]
+    assert ibm["association"] == "timestamp_matched"
+    assert ibm["timestamp_source"] == "characterization"
+    assert ibm["delta_seconds"] < 0
+
+    rigetti = _record(_fixture(RIGETTI_VIA_BRAKET))["characterization"]
+    assert rigetti["association"] == "current_at_retrieval"
+    assert rigetti["timestamp_source"] == "none"
+    assert "captured_at" not in rigetti
+
+    cancelled = _record(_fixture(CANCELLED))
+    assert "characterization" not in cancelled
+    assert _evidence(cancelled)["/characterization"]["status"] == "not_applicable"
+
+
+def test_ionq_link_requires_the_job_to_name_the_characterization() -> None:
+    fixture = json.loads(
+        (Path(__file__).parent / "fixtures" / "ionq" / "completed.json").read_text()
+    )
+    assert _record(fixture)["characterization"]["association"] == "provider_linked"
+
+    v04 = copy.deepcopy(fixture)
+    v04["snapshot"]["metadata"].pop("characterization_id")
+    v04["device"]["calibration"]["query"] = "latest_at_or_before_submission"
+    matched = _record(v04)["characterization"]
+    assert (matched["association"], matched["timestamp_granularity"]) == (
+        "timestamp_matched",
+        "day",
+    )
+
+    v04["device"]["calibration"].pop("query")
+    assert _record(v04)["characterization"]["association"] == "current_at_retrieval"

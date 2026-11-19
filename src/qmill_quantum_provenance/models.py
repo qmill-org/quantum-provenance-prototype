@@ -320,6 +320,9 @@ class Characterization:
     association: CharacterizationAssociation
     captured_at: datetime | None = None
     metrics: list[CharacterizationMetric] | None = None
+    delta_seconds: float | None = None
+    timestamp_source: str | None = None
+    timestamp_granularity: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
         metrics = [metric.to_dict() for metric in self.metrics] if self.metrics else None
@@ -327,6 +330,9 @@ class Characterization:
             {
                 "association": self.association.value,
                 "captured_at": _iso(self.captured_at),
+                "delta_seconds": self.delta_seconds,
+                "timestamp_source": self.timestamp_source,
+                "timestamp_granularity": self.timestamp_granularity,
                 "metrics": metrics,
             }
         )

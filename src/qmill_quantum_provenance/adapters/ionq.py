@@ -30,6 +30,8 @@ from typing import Any
 
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    characterization_applies,
+    delta_seconds,
     RESULT_REPRESENTATIONS,
     mark_not_applicable,
     qualify_missing_results,
@@ -232,7 +234,7 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
         self._build_compiled_artifact(result_data, artifacts, evidence)
         self._build_provider_native_artifact(snapshot, artifacts, evidence)
         execution = self._build_execution(snapshot, evidence)
-        characterization = self._build_characterization(device_details, evidence)
+        characterization = self._build_characterization(device_details, snapshot, job, evidence)
 
         return AdapterResult(
             job=job,
@@ -569,29 +571,47 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
         return Execution(run_duration_ms=run_ms, total_duration_ms=total_ms)
 
     def _build_characterization(
-        self, device_details, evidence: list[Evidence]
+        self, device_details, snapshot, job, evidence: list[Evidence]
     ) -> Characterization | None:
+        if not characterization_applies(job.status, evidence):
+            return None
         calibration = getattr(device_details, "calibration_data", None) if device_details else None
         if isinstance(calibration, dict) and calibration:
             metrics = self._extract_metrics(calibration)
+            captured_at = _parse_timestamp(
+                calibration.get("captured_at") or calibration.get("date")
+            )
             characterization_id = calibration.get("characterization_id")
+            job_link = (snapshot.metadata or {}).get("characterization_id")
+            if characterization_id and job_link == characterization_id:
+                association = CharacterizationAssociation.PROVIDER_LINKED
+                note = f"Job names characterization {characterization_id} (API v0.3 field)."
+                granularity = None
+            elif calibration.get("query") == "latest_at_or_before_submission":
+                association = CharacterizationAssociation.TIMESTAMP_MATCHED
+                note = (
+                    f"Latest daily characterization at or before submission ({characterization_id}); "
+                    "API v0.4 jobs carry no characterization identifier."
+                )
+                granularity = "day"
+            else:
+                association = CharacterizationAssociation.CURRENT_AT_RETRIEVAL
+                note = "Characterization not linked to the job by the provider."
+                granularity = None
             evidence.append(
                 Evidence(
                     path="/characterization",
                     status=EvidenceStatus.PROVIDER_SUPPLIED,
-                    provider_field="ionq.characterizations.get()",
-                    notes=(
-                        f"Linked characterization id {characterization_id}."
-                        if characterization_id
-                        else "Provider-linked characterization for this job."
-                    ),
+                    provider_field="ionq characterizations",
+                    notes=note,
                 )
             )
             return Characterization(
-                association=CharacterizationAssociation.PROVIDER_LINKED,
-                captured_at=_parse_timestamp(
-                    calibration.get("captured_at") or calibration.get("date")
-                ),
+                association=association,
+                captured_at=captured_at,
+                delta_seconds=delta_seconds(captured_at, job.created_at),
+                timestamp_source="characterization" if captured_at else "none",
+                timestamp_granularity=granularity,
                 metrics=metrics or None,
             )
 
@@ -600,7 +620,7 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
                 path="/characterization",
                 status=EvidenceStatus.UNAVAILABLE,
                 reason=AvailabilityReason.NOT_EXPOSED_BY_PROVIDER,
-                notes="No linked characterization available for this job.",
+                notes="No characterization available for this job.",
             )
         )
         return None

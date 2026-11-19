@@ -251,6 +251,9 @@ class LiveIBMIntegration(ProviderAdapter):
             raise _translate(exc, "IBMBackend configuration/properties") from exc
         props = properties.to_dict() if properties is not None else {}
         self.notes["properties_query"] = "as_of_job_creation" if created else "current"
+        calibration = summarize_properties(props)
+        if calibration is not None:
+            calibration["query"] = self.notes["properties_query"]
         self.native["backend_configuration"] = {
             "backend_name": config.backend_name,
             "backend_version": getattr(config, "backend_version", None),
@@ -266,7 +269,7 @@ class LiveIBMIntegration(ProviderAdapter):
             name=config.backend_name,
             type="QPU" if not getattr(config, "simulator", False) else "SIMULATOR",
             status="ONLINE" if status.operational else "OFFLINE",
-            calibration_data=summarize_properties(props),
+            calibration_data=calibration,
             provider_properties={
                 "num_qubits": config.n_qubits,
                 "processor_type": getattr(config, "processor_type", None),

@@ -212,7 +212,30 @@ def estimate_counts(probabilities: dict[str, float], shots: int) -> dict[str, in
     return {state: int(round(p * shots)) for state, p in probabilities.items()}
 
 
+def characterization_applies(job_status: str, evidence: list[Evidence]) -> bool:
+    """False (and records why) when the job never produced an execution to describe."""
+
+    if job_status in _NOT_RUN:
+        evidence.append(
+            Evidence(
+                path="/characterization",
+                status=EvidenceStatus.NOT_APPLICABLE,
+                notes=f"Job {job_status}; a device snapshot would not describe an execution.",
+            )
+        )
+        return False
+    return True
+
+
+def delta_seconds(captured_at: datetime | None, job_created_at: datetime | None) -> float | None:
+    if captured_at is None or job_created_at is None:
+        return None
+    return round((captured_at - job_created_at).total_seconds(), 3)
+
+
 __all__ = [
+    "characterization_applies",
+    "delta_seconds",
     "RESULT_REPRESENTATIONS",
     "mark_not_applicable",
     "estimate_counts",

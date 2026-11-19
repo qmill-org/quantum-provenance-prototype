@@ -495,6 +495,27 @@
                         "items": {
                             "$ref": "#/components/schemas/CharacterizationMetric"
                         }
+                    },
+                    "delta_seconds": {
+                        "type": "number",
+                        "description": "captured_at minus job creation time, in seconds; negative when the snapshot predates the job."
+                    },
+                    "timestamp_source": {
+                        "type": "string",
+                        "enum": [
+                            "characterization",
+                            "service_document",
+                            "none"
+                        ],
+                        "description": "Where captured_at comes from: a characterization timestamp, only a service or device document timestamp, or nowhere (snapshot untimed)."
+                    },
+                    "timestamp_granularity": {
+                        "type": "string",
+                        "enum": [
+                            "exact",
+                            "day"
+                        ],
+                        "description": "Resolution of captured_at when the provider documents it (for example daily characterizations)."
                     }
                 },
                 "additionalProperties": false

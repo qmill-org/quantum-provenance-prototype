@@ -181,6 +181,7 @@ class LiveIonQIntegration(ProviderAdapter):
             if items:
                 self.native["characterization"] = items[0]
                 calibration = summarize_characterization(items[0])
+                calibration["query"] = "latest_at_or_before_submission"
             self.notes["characterization_query"] = "latest_at_or_before_submission"
         return DeviceDetails(
             provider="ionq",
