@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import re
+from dataclasses import asdict, is_dataclass
 from datetime import date, datetime
 from typing import Any
 
@@ -34,15 +35,26 @@ def mask_identifiers(text: str) -> str:
 
 
 def to_jsonable(value: Any) -> Any:
+    if value is None or isinstance(value, (str, int, float, bool)):
+        return value
     if isinstance(value, (datetime, date)):
         return value.isoformat()
     if isinstance(value, dict):
         return {str(k): to_jsonable(v) for k, v in value.items()}
-    if isinstance(value, (list, tuple)):
+    if isinstance(value, (list, tuple, set)):
         return [to_jsonable(v) for v in value]
     if isinstance(value, bytes):
         return value.decode("utf-8", errors="replace")
-    return value
+    for converter in ("model_dump", "to_dict", "tolist", "item"):
+        method = getattr(value, converter, None)
+        if callable(method):
+            try:
+                return to_jsonable(method())
+            except (TypeError, ValueError):
+                continue
+    if is_dataclass(value) and not isinstance(value, type):
+        return to_jsonable(asdict(value))
+    return repr(value)
 
 
 def sanitize(value: Any) -> Any:

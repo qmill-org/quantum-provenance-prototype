@@ -87,3 +87,48 @@ which are not published, and were then reproduced on purpose-run jobs).
   task the `v0.1.0` record is schema-valid and correctly marks results
   unavailable, but still attaches a `current_at_retrieval` device
   characterization to an execution that did not take place.
+
+## IBM Quantum (captured 2026-11-19)
+
+Seven purpose-run jobs on `ibm_aachen` (Heron r3, eu-de), submitted with
+[`scripts/run_ibm_jobs.py`](../scripts/run_ibm_jobs.py) and listed with their
+application-captured context in [`runs/ledger-ibm.jsonl`](../runs/ledger-ibm.jsonl):
+Sampler Bell-2 and GHZ-5, a Batch of three Sampler Bell-2 jobs compiled at
+optimization levels 0, 1 and 3, an Estimator ⟨ZZ⟩ job, and one Sampler job
+cancelled on purpose. Circuits were compiled by the application (Qiskit
+preset pass manager, `seed_transpiler=1234`); the Bell circuit landed on
+qubits [0, 1], [86, 87] or [87, 88] depending on the optimization level, which
+only the application context records.
+
+The program files use the Braket OpenQASM 3 dialect (built-in `h` and `cnot`,
+no `stdgates.inc`); Qiskit rejects them as written (`gate 'h' is not
+defined`). The run script converts them (add the include, rename `cnot` to
+`cx`) and records both digests: the same "OpenQASM 3" source is not portable
+across providers, which is why the model separates `source` and `submitted`
+artifacts.
+
+All seven `v0.1.0` records are schema-valid. Characterization was retrieved
+as of job creation (`properties(datetime=…)`); the snapshot preceded each job
+by 0.2 h, so IBM supports a timestamp-matched association that the adapter
+labels only `nearest_available`.
+
+### Findings
+
+- **F8 Application-compiled program attributed to the provider.** With
+  Sampler/Estimator V2 the application compiles the ISA circuit and submits
+  it; IBM returns it with the job. The `v0.1.0` record labels it a `compiled`
+  artifact with `provider_passthrough` evidence and no producer, and emits no
+  `submitted` artifact (6 of 6 completed jobs).
+- **F9 Interface drift during the study.** With `qiskit-ibm-runtime` 0.52 job
+  inputs follow `schema_version` `v2.0` (`quantum_program` with
+  `CircuitItem`/`SamplexItem`), not the PUB list assessed in July 2026; both
+  Sampler and Estimator jobs record `primitive_id = "executor"`, so the
+  provider-side job no longer says which primitive was used.
+- **F10 Multi-job lineage is lost.** The three Batch jobs share the provider's
+  batch identifier (`session_id`), but the `v0.1.0` contract has no session,
+  batch or parent field, so the relation disappears from the records.
+- **F11 Expectation-value results reported as a failed retrieval.** The
+  Estimator job returns expectation values and no counts; the `v0.1.0` record
+  says `results.available = false` with reason `upstream_request_failed`, and
+  reports `shots = 64` (shots per twirling randomization recorded by the
+  executor) instead of the 1000 the application requested.

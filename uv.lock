@@ -761,6 +761,7 @@ live = [
     { name = "boto3" },
     { name = "httpx" },
     { name = "qiskit-ibm-runtime" },
+    { name = "qiskit-qasm3-import" },
 ]
 
 [package.metadata]
@@ -770,6 +771,7 @@ requires-dist = [
     { name = "jsonschema", specifier = ">=4.0" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.4" },
     { name = "qiskit-ibm-runtime", marker = "extra == 'live'", specifier = ">=0.52.1" },
+    { name = "qiskit-qasm3-import", marker = "extra == 'live'", specifier = ">=0.6.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.1" },
 ]
 provides-extras = ["dev", "live"]

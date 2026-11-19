@@ -1,0 +1,34 @@
+{
+  "capture_tool_revision": "89b55e6b26638daf6f0e3e2e1b7fb3f18fb7417d",
+  "captured_at": "2026-11-19T08:22:13.710886+00:00",
+  "external_job_id": "dbvb2141qo7s73ejeiig",
+  "notes": {
+    "compiled_program_origin": "application_compiled_job_input",
+    "input_items": [
+      "CircuitItem"
+    ],
+    "input_schema": "v2.0",
+    "measurement_counts_origin": "observed_samples:c",
+    "primitive_recorded": "executor",
+    "properties_query": "as_of_job_creation",
+    "submitted_program_available": true
+  },
+  "operations": [
+    {
+      "at": "2026-11-19T08:22:11.607329+00:00",
+      "operation": "get_status",
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-11-19T08:22:12.508139+00:00",
+      "operation": "get_device_details",
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-11-19T08:22:13.398886+00:00",
+      "operation": "get_result",
+      "outcome": "ok"
+    }
+  ],
+  "provider": "ibm"
+}

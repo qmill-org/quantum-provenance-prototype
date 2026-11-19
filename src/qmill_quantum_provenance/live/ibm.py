@@ -89,23 +89,27 @@ def summarize_properties(props: dict[str, Any]) -> dict[str, Any] | None:
 
 
 def _shots(inputs: dict[str, Any]) -> int | None:
+    """Shots as recorded in the job inputs (schema v2 QuantumProgram or PUBs)."""
+
+    program = inputs.get("quantum_program")
+    if program is not None and isinstance(getattr(program, "shots", None), int):
+        return program.shots
     for pub in inputs.get("pubs") or []:
         if isinstance(pub, (list, tuple)) and len(pub) >= 3 and isinstance(pub[2], int):
             return pub[2]
-        shots = getattr(pub, "shots", None)
-        if isinstance(shots, int):
-            return shots
+        if isinstance(getattr(pub, "shots", None), int):
+            return pub.shots
     for key in ("shots", "default_shots"):
         if isinstance(inputs.get(key), int):
             return inputs[key]
-    options = inputs.get("options") or {}
-    for key in ("default_shots", "shots"):
-        if isinstance(options.get(key), int):
-            return options[key]
     return None
 
 
 def _first_circuit(inputs: dict[str, Any]):
+    program = inputs.get("quantum_program")
+    for item in getattr(program, "items", None) or []:
+        if hasattr(getattr(item, "circuit", None), "num_qubits"):
+            return item.circuit
     for pub in inputs.get("pubs") or []:
         circuit = pub[0] if isinstance(pub, (list, tuple)) else getattr(pub, "circuit", pub)
         if hasattr(circuit, "num_qubits"):
@@ -156,6 +160,11 @@ class LiveIBMIntegration(ProviderAdapter):
         backend_name = getattr(backend, "name", None) or str(backend)
         timestamps = metrics.get("timestamps") or {}
         self._created_at = job.creation_date
+        program = inputs.get("quantum_program")
+        self.notes["input_schema"] = inputs.get("schema_version") or "pubs"
+        self.notes["primitive_recorded"] = getattr(job, "primitive_id", None)
+        if program is not None:
+            self.notes["input_items"] = [type(item).__name__ for item in program.items]
         self.native["job"] = {
             "job_id": job.job_id(),
             "status": status,

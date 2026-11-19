@@ -1,0 +1,35 @@
+{
+  "capture_tool_revision": "89b55e6b26638daf6f0e3e2e1b7fb3f18fb7417d",
+  "captured_at": "2026-11-19T08:22:31.071112+00:00",
+  "external_job_id": "dbvb21mppgvc73e5o390",
+  "notes": {
+    "compiled_program_origin": "application_compiled_job_input",
+    "input_items": [
+      "SamplexItem",
+      "SamplexItem"
+    ],
+    "input_schema": "v2.0",
+    "measurement_counts_origin": "no_bit_arrays",
+    "primitive_recorded": "executor",
+    "properties_query": "as_of_job_creation",
+    "submitted_program_available": true
+  },
+  "operations": [
+    {
+      "at": "2026-11-19T08:22:28.500123+00:00",
+      "operation": "get_status",
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-11-19T08:22:29.780579+00:00",
+      "operation": "get_device_details",
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-11-19T08:22:30.731320+00:00",
+      "operation": "get_result",
+      "outcome": "ok"
+    }
+  ],
+  "provider": "ibm"
+}

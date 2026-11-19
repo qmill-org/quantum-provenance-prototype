@@ -1,0 +1,99 @@
+{
+  "device": {
+    "calibration": {
+      "captured_at": "2026-11-19T08:07:36+00:00",
+      "metrics": {
+        "T1.median_over_qubits[us]": 223.83565818226154,
+        "T2.median_over_qubits[us]": 252.0505305030532,
+        "gate_error.cz.median": 0.0014140315650147811,
+        "gate_error.id.median": 0.00020987958537572516,
+        "gate_error.measure.median": 0.00579833984375,
+        "gate_error.measure_2.median": 0.0242919921875,
+        "gate_error.rx.median": 0.00020987958537572516,
+        "gate_error.rz.median": 0.0,
+        "gate_error.rzz.median": 0.0014132702887137832,
+        "gate_error.sx.median": 0.00020987958537572516,
+        "gate_error.x.median": 0.00020987958537572516,
+        "gate_error.xslow.median": 0.00020987958537572516,
+        "readout_error.median_over_qubits": 0.00579833984375
+      }
+    },
+    "metadata": {
+      "provider": "IBM Quantum"
+    },
+    "name": "ibm_aachen",
+    "provider": "ibm",
+    "provider_properties": {
+      "basis_gates": [
+        "cz",
+        "id",
+        "rz",
+        "sx",
+        "x",
+        "xslow"
+      ],
+      "num_qubits": 156,
+      "processor_type": {
+        "family": "Heron",
+        "revision": "3"
+      }
+    },
+    "provider_target_id": "ibm_aachen",
+    "status": "ONLINE",
+    "target_id": "ibm_aachen",
+    "type": "QPU"
+  },
+  "external_job_id": "dbvb21eppgvc73e5o380",
+  "provider": "ibm",
+  "region": null,
+  "result": {
+    "compiled_circuit": "<program redacted sha256=1daeee779bc30e047392c65acb4b1e4694933d69f540e780afcbc9bc945163de bytes=193>",
+    "compiled_circuit_metrics": null,
+    "measurement_counts": {
+      "00": 550,
+      "01": 2,
+      "10": 6,
+      "11": 442
+    },
+    "raw_payload": null,
+    "status": "DONE"
+  },
+  "snapshot": {
+    "created_at": "2026-11-19T08:19:17.552760+00:00",
+    "ended_at": "2026-11-19T08:19:55.016867Z",
+    "metadata": {
+      "backend_name": "ibm_aachen",
+      "program_id": "executor",
+      "qiskit_version": "qiskit_ibm_runtime-0.52.1,qiskit-2.6.2*",
+      "session_id": null,
+      "shots": 1000,
+      "timestamps": {
+        "created": "2026-11-19T08:19:17.55276Z",
+        "finished": "2026-11-19T08:19:55.016867Z",
+        "running": "2026-11-19T08:19:50.221335Z"
+      },
+      "usage": {
+        "details": [
+          {
+            "metric": {
+              "id": "caffe3ca-729c-5750-8777-df63bbf8bfd9",
+              "value": 2
+            },
+            "unit": "resource_units",
+            "value": 0.032718
+          }
+        ],
+        "qpu_charge_time_seconds": 2,
+        "status": "complete",
+        "unit": "resource_units",
+        "value": 0.032718
+      }
+    },
+    "provider": "ibm",
+    "provider_job_id": "dbvb21eppgvc73e5o380",
+    "provider_target_id": "ibm_aachen",
+    "shots": 1000,
+    "status": "DONE",
+    "target_id": "ibm_aachen"
+  }
+}

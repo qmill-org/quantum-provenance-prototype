@@ -151,6 +151,17 @@ def test_live_ibm_maps_job_and_requests_properties_as_of_job_creation() -> None:
     assert live.notes["compiled_program_origin"] == "application_compiled_job_input"
 
 
+def test_schema_v2_quantum_program_inputs_give_shots_and_circuit() -> None:
+    from qmill_quantum_provenance.live.ibm import _first_circuit, _shots
+
+    circuit = QuantumCircuit(1, 1)
+    item = type("SamplexItem", (), {"circuit": circuit})()
+    program = type("QuantumProgram", (), {"shots": 64, "items": [item]})()
+    inputs = {"schema_version": "v2.0", "quantum_program": program, "options": object()}
+    assert _shots(inputs) == 64
+    assert _first_circuit(inputs) is circuit
+
+
 def test_missing_ibm_job_raises_typed_not_found_error() -> None:
     live = LiveIBMIntegration(service=_Service(missing=True))
     with pytest.raises(JobNotFoundError):
