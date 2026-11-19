@@ -1,0 +1,28 @@
+{
+  "capture_tool_revision": "ad2bbc56fd0d3e8b09b2ccc8a5e110e873d9e071",
+  "captured_at": "2026-11-19T05:48:00.872150+00:00",
+  "external_job_id": "arn:aws:braket:us-east-1:000000000000:quantum-task/c5f722a5-ee93-443e-8d89-f7ab285d7f69",
+  "notes": {
+    "compiled_program": "present_empty",
+    "measurement_counts_origin": "expanded_from_measurementProbabilities",
+    "submitted_program_available": true
+  },
+  "operations": [
+    {
+      "at": "2026-11-19T05:47:58.554458+00:00",
+      "operation": "get_status",
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-11-19T05:47:59.523694+00:00",
+      "operation": "get_device_details",
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-11-19T05:48:00.247850+00:00",
+      "operation": "get_result",
+      "outcome": "ok"
+    }
+  ],
+  "provider": "braket"
+}

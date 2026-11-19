@@ -1,0 +1,226 @@
+{
+  "device": {
+    "calibration": {
+      "captured_at": "2026-11-18T00:00:00+00:00",
+      "metrics": {
+        "provider.fidelity.1Q.mean": 0.9999,
+        "provider.fidelity.2Q.mean": 0.9699,
+        "provider.fidelity.spam.mean": 0.9964,
+        "provider.timing.1Q": 0.00013,
+        "provider.timing.2Q": 0.00097,
+        "provider.timing.T1": 100.0,
+        "provider.timing.T2": 1.0,
+        "provider.timing.readout": 0.00015,
+        "provider.timing.reset": 5e-05,
+        "standardized.T1": 100.0,
+        "standardized.T2": 1.0,
+        "standardized.activeResetDuration": 5e-05,
+        "standardized.readoutDuration": 0.00015,
+        "standardized.singleQubitGateDuration": 0.00013,
+        "standardized.twoQubitGateDuration": 0.00097
+      },
+      "service_updated_at": "2026-11-18T00:00:00+00:00",
+      "standardized": {
+        "T1": {
+          "unit": "s",
+          "value": 100.0
+        },
+        "T2": {
+          "unit": "s",
+          "value": 1.0
+        },
+        "activeResetDuration": {
+          "unit": "s",
+          "value": 5e-05
+        },
+        "braketSchemaHeader": {
+          "name": "braket.device_schema.standardized_gate_model_qpu_device_properties",
+          "version": "3"
+        },
+        "readoutDuration": {
+          "unit": "s",
+          "value": 0.00015
+        },
+        "readoutFidelity": [
+          {
+            "fidelity": 0.9964,
+            "fidelityType": {
+              "description": "Average readout fidelity is estimated with one-qubit randomized benchmarking.",
+              "name": "RANDOMIZED_BENCHMARKING"
+            },
+            "unit": "fraction"
+          }
+        ],
+        "singleQubitFidelity": [
+          {
+            "fidelity": 0.9999,
+            "fidelityType": {
+              "description": "Average single-qubit randomized benchmarking fidelities for individual gate operation. It is regularly measured by IonQ on the device using Clifford Randomized Benchmarking",
+              "name": "RANDOMIZED_BENCHMARKING"
+            },
+            "standardError": 0.0,
+            "unit": "fraction"
+          }
+        ],
+        "singleQubitGateDuration": {
+          "unit": "s",
+          "value": 0.00013
+        },
+        "twoQubitGateDuration": {
+          "unit": "s",
+          "value": 0.00097
+        },
+        "twoQubitGateFidelity": [
+          {
+            "fidelity": 0.9699,
+            "fidelityType": {
+              "description": "Average gate fidelities for a maximally entangling two-qubit native gate. It is regularly measured by IonQ on the device using Direct Randomized Benchmarking",
+              "name": "RANDOMIZED_BENCHMARKING"
+            },
+            "standardError": 0.0,
+            "unit": "fraction"
+          }
+        ],
+        "updatedAt": "2026-11-18T00:00:00+00:00"
+      }
+    },
+    "metadata": {
+      "provider": "IonQ"
+    },
+    "name": "Forte 1",
+    "provider": "braket",
+    "provider_properties": {
+      "nativeGateSet": [
+        "GPI",
+        "GPI2",
+        "ZZ"
+      ],
+      "qubitCount": 36
+    },
+    "provider_target_id": "arn:aws:braket:us-east-1::device/qpu/ionq/Forte-1",
+    "status": "ONLINE",
+    "target_id": "arn:aws:braket:us-east-1::device/qpu/ionq/Forte-1",
+    "type": "QPU"
+  },
+  "external_job_id": "arn:aws:braket:us-east-1:000000000000:quantum-task/c5f722a5-ee93-443e-8d89-f7ab285d7f69",
+  "provider": "braket",
+  "region": "us-east-1",
+  "result": {
+    "compiled_circuit": "",
+    "compiled_circuit_metrics": null,
+    "measurement_counts": {
+      "00000": 48,
+      "00010": 2,
+      "00100": 1,
+      "00111": 1,
+      "10000": 1,
+      "11000": 1,
+      "11100": 1,
+      "11101": 1,
+      "11111": 44
+    },
+    "raw_payload": {
+      "additionalMetadata": {
+        "action": {
+          "braketSchemaHeader": {
+            "name": "braket.ir.openqasm.program",
+            "version": "1"
+          },
+          "source": "<program redacted sha256=f81d514d257f9be4ffec63bfec5760d2123dbc9f6b59527518ac8cb78ca07c00 bytes=127>"
+        },
+        "ionqMetadata": {
+          "braketSchemaHeader": {
+            "name": "braket.task_result.ionq_metadata",
+            "version": "1"
+          },
+          "compiledProgram": ""
+        }
+      },
+      "braketSchemaHeader": {
+        "name": "braket.task_result.gate_model_task_result",
+        "version": "1"
+      },
+      "measuredQubits": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "measurementProbabilities": {
+        "00000": 0.48,
+        "00010": 0.02,
+        "00100": 0.01,
+        "00111": 0.01,
+        "10000": 0.01,
+        "11000": 0.01,
+        "11100": 0.01,
+        "11101": 0.01,
+        "11111": 0.44
+      },
+      "resultTypes": [],
+      "taskMetadata": {
+        "braketSchemaHeader": {
+          "name": "braket.task_result.task_metadata",
+          "version": "1"
+        },
+        "createdAt": "2026-11-18T15:29:09.913Z",
+        "deviceId": "arn:aws:braket:us-east-1::device/qpu/ionq/Forte-1",
+        "deviceParameters": {
+          "braketSchemaHeader": {
+            "name": "braket.device_schema.ionq.ionq_device_parameters",
+            "version": "1"
+          },
+          "errorMitigation": null,
+          "paradigmParameters": {
+            "braketSchemaHeader": {
+              "name": "braket.device_schema.gate_model_parameters",
+              "version": "1"
+            },
+            "disableQubitRewiring": false,
+            "qubitCount": 5
+          }
+        },
+        "endedAt": "2026-11-18T22:40:28.932Z",
+        "id": "arn:aws:braket:us-east-1:000000000000:quantum-task/c5f722a5-ee93-443e-8d89-f7ab285d7f69",
+        "shots": 100,
+        "status": "COMPLETED"
+      }
+    },
+    "status": "COMPLETED"
+  },
+  "snapshot": {
+    "created_at": "2026-11-18T15:29:09.913000+00:00",
+    "ended_at": "2026-11-18T22:40:28.932000+00:00",
+    "metadata": {
+      "actionMetadata": {
+        "actionType": "braket.ir.openqasm.program"
+      },
+      "createdAt": "2026-11-18T15:29:09.913000+00:00",
+      "deviceArn": "arn:aws:braket:us-east-1::device/qpu/ionq/Forte-1",
+      "deviceParameters": "{\"braketSchemaHeader\": {\"name\": \"braket.device_schema.ionq.ionq_device_parameters\", \"version\": \"1\"}, \"paradigmParameters\": {\"braketSchemaHeader\": {\"name\": \"braket.device_schema.gate_model_parameters\", \"version\": \"1\"}, \"qubitCount\": 5, \"disableQubitRewiring\": false}, \"errorMitigation\": null}",
+      "endedAt": "2026-11-18T22:40:28.932000+00:00",
+      "outputS3Bucket": "amazon-braket-us-east-1-000000000000",
+      "outputS3Directory": "quantum-provenance/e2/c5f722a5-ee93-443e-8d89-f7ab285d7f69",
+      "quantumTaskArn": "arn:aws:braket:us-east-1:000000000000:quantum-task/c5f722a5-ee93-443e-8d89-f7ab285d7f69",
+      "queueInfo": {
+        "message": "Task is in COMPLETED status. AmazonBraket does not show queue position for this status.",
+        "position": "None",
+        "queue": "QUANTUM_TASKS_QUEUE",
+        "queuePriority": "Normal"
+      },
+      "shots": 100,
+      "status": "COMPLETED",
+      "tags": {
+        "plan-key": "e2-ionq-forte1-ghz5",
+        "project": "quantum-provenance"
+      }
+    },
+    "provider": "braket",
+    "provider_job_id": "arn:aws:braket:us-east-1:000000000000:quantum-task/c5f722a5-ee93-443e-8d89-f7ab285d7f69",
+    "provider_target_id": "arn:aws:braket:us-east-1::device/qpu/ionq/Forte-1",
+    "shots": 100,
+    "status": "COMPLETED",
+    "target_id": "arn:aws:braket:us-east-1::device/qpu/ionq/Forte-1"
+  }
+}

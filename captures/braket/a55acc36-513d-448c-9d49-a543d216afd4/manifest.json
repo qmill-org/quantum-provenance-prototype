@@ -1,0 +1,25 @@
+{
+  "capture_tool_revision": "ad2bbc56fd0d3e8b09b2ccc8a5e110e873d9e071",
+  "captured_at": "2026-11-19T05:48:12.494060+00:00",
+  "external_job_id": "arn:aws:braket:us-west-1:000000000000:quantum-task/a55acc36-513d-448c-9d49-a543d216afd4",
+  "notes": {},
+  "operations": [
+    {
+      "at": "2026-11-19T05:48:09.585320+00:00",
+      "operation": "get_status",
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-11-19T05:48:10.265900+00:00",
+      "operation": "get_device_details",
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-11-19T05:48:12.494002+00:00",
+      "message": "Task is not complete: CANCELLED",
+      "operation": "get_result",
+      "outcome": "ResultUnavailableError"
+    }
+  ],
+  "provider": "braket"
+}
