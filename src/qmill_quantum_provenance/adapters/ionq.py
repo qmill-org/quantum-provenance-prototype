@@ -30,6 +30,8 @@ from typing import Any
 
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    RESULT_REPRESENTATIONS,
+    mark_not_applicable,
     qualify_missing_results,
     AdapterCapabilities,
     AdapterResult,
@@ -392,7 +394,21 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
                 )
             )
 
+            mark_not_applicable(
+                evidence,
+                ["/results/measurement_counts"],
+                "IonQ returns probabilities, not per-shot counts.",
+            )
             estimated: dict[str, int] | None = None
+            if not snapshot.shots:
+                evidence.append(
+                    Evidence(
+                        path="/results/estimated_measurement_counts",
+                        status=EvidenceStatus.UNAVAILABLE,
+                        reason=AvailabilityReason.INSUFFICIENT_SOURCE_DATA,
+                        notes="The job reports no shot count, so counts cannot be estimated.",
+                    )
+                )
             if snapshot.shots:
                 estimated = _probabilities_to_estimated_counts(probabilities, snapshot.shots)
                 evidence.append(
@@ -412,6 +428,7 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
             return Results(
                 available=True,
                 shots=snapshot.shots,
+                outcome_basis="bitstring",
                 measurement_probabilities=probabilities,
                 estimated_measurement_counts=estimated,
             )
@@ -425,9 +442,15 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
                     provider_field="ionq.jobs.get_results()",
                 )
             )
+            mark_not_applicable(
+                evidence,
+                RESULT_REPRESENTATIONS[1:],
+                "Provider returned integer counts.",
+            )
             return Results(
                 available=True,
                 shots=snapshot.shots,
+                outcome_basis="bitstring",
                 measurement_counts=dict(result_data.measurement_counts),
             )
 

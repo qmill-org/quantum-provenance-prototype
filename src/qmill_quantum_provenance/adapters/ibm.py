@@ -26,6 +26,8 @@ from typing import Any
 
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    RESULT_REPRESENTATIONS,
+    mark_not_applicable,
     qualify_missing_results,
     AdapterCapabilities,
     AdapterResult,
@@ -329,9 +331,15 @@ class IBMProvenanceAdapter(ProvenanceAdapter):
                     provider_field="PrimitiveResult[0].data.<register>.get_counts()",
                 )
             )
+            mark_not_applicable(
+                evidence,
+                RESULT_REPRESENTATIONS[1:],
+                "Observed per-shot counts; no probability representation.",
+            )
             return Results(
                 available=True,
                 shots=snapshot.shots,
+                outcome_basis="bitstring",
                 measurement_counts=dict(result_data.measurement_counts),
             )
 

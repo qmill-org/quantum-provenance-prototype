@@ -1,5 +1,5 @@
 {
-  "attribute_inventory_version": "0.1.0",
+  "attribute_inventory_version": "0.2.0",
   "partial_record_experiment": {
     "change": {
       "affected_attribute": "/characterization",
@@ -65,14 +65,15 @@
   },
   "providers": {
     "braket": {
-      "adapter_loc": 433,
+      "adapter_loc": 485,
       "attribute_evidence_counts": {
         "application_captured": 11,
         "derived": 2,
+        "not_applicable": 2,
         "provider_passthrough": 2,
         "provider_supplied": 10
       },
-      "evidence_total": 25,
+      "evidence_total": 27,
       "fixture_id": "arn:aws:braket:us-east-1:000000000000:quantum-task/11111111-2222-3333-4444-555555555555",
       "inventory_classification": {
         "by_attribute": {
@@ -117,14 +118,15 @@
       "results_available": true
     },
     "ibm": {
-      "adapter_loc": 491,
+      "adapter_loc": 499,
       "attribute_evidence_counts": {
         "application_captured": 11,
         "derived": 3,
+        "not_applicable": 2,
         "provider_passthrough": 2,
         "provider_supplied": 11
       },
-      "evidence_total": 27,
+      "evidence_total": 29,
       "fixture_id": "cx7z8k2m4n5p6q7r8s9t",
       "inventory_classification": {
         "by_attribute": {
@@ -168,13 +170,14 @@
       "results_available": true
     },
     "ionq": {
-      "adapter_loc": 531,
+      "adapter_loc": 554,
       "attribute_evidence_counts": {
         "derived": 2,
+        "not_applicable": 1,
         "provider_passthrough": 2,
         "provider_supplied": 12
       },
-      "evidence_total": 16,
+      "evidence_total": 17,
       "fixture_id": "b7f3d2a1-9c84-4e15-8a76-0f2c1d5e6b3a",
       "inventory_classification": {
         "by_attribute": {
@@ -271,12 +274,12 @@
   },
   "schema_version": "0.1.0-prototype",
   "shared_provider_independent_implementation_loc": {
-    "adapter.py": 164,
+    "adapter.py": 181,
     "contract.py": 32,
     "models.py": 389,
     "redaction.py": 55,
     "registry.py": 54,
     "service.py": 267
   },
-  "shared_provider_independent_implementation_loc_total": 961
+  "shared_provider_independent_implementation_loc_total": 978
 }

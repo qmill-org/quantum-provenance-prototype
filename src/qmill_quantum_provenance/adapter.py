@@ -190,7 +190,32 @@ def qualify_missing_results(
     evidence.append(replacement)
 
 
+RESULT_REPRESENTATIONS = (
+    "/results/measurement_counts",
+    "/results/measurement_probabilities",
+    "/results/estimated_measurement_counts",
+)
+
+
+def mark_not_applicable(
+    evidence: list[Evidence], paths: tuple[str, ...] | list[str], note: str
+) -> None:
+    """Declare result representations that this record does not use."""
+
+    for path in paths:
+        evidence.append(Evidence(path=path, status=EvidenceStatus.NOT_APPLICABLE, notes=note))
+
+
+def estimate_counts(probabilities: dict[str, float], shots: int) -> dict[str, int]:
+    """``round(p * shots)`` per outcome, independently; may not sum to ``shots``."""
+
+    return {state: int(round(p * shots)) for state, p in probabilities.items()}
+
+
 __all__ = [
+    "RESULT_REPRESENTATIONS",
+    "mark_not_applicable",
+    "estimate_counts",
     "reason_for",
     "qualify_missing_results",
     "SourceProgramInput",

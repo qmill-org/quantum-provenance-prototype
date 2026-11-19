@@ -1,7 +1,7 @@
 {
-    "inventory_version": "0.1.0",
+    "inventory_version": "0.2.0",
     "schema_version": "0.1.0-prototype",
-    "description": "Fixed, versioned inventory of provenance attributes evaluated for every provider record. Each attribute is classified per provider as exactly one of the evidence-qualifier statuses (provider_supplied, aggregator_normalized, provider_passthrough, derived, application_captured, unavailable, not_applicable, not_verifiable) or, when an emitted attribute has no classification, unclassified (which fails the evaluation). Classification distinguishes an absent-but-applicable field (unavailable) from an inapplicable field (not_applicable). This inventory enumerates canonical attributes; it is intentionally separate from the count of raw evidence entries in a record.",
+    "description": "Fixed, versioned inventory of provenance attributes evaluated for every provider record. Each attribute is classified per provider as exactly one of the evidence-qualifier statuses (provider_supplied, aggregator_normalized, provider_passthrough, derived, application_captured, unavailable, not_applicable, not_verifiable) or, when an emitted attribute has no classification, unclassified (which fails the evaluation). Classification distinguishes an absent-but-applicable field (unavailable) from an inapplicable field (not_applicable). This inventory enumerates canonical attributes; it is intentionally separate from the count of raw evidence entries in a record. Version 0.2.0 makes result-representation applicability a per-record decision recorded in the evidence (version 0.1.0 hard-coded it by provider and misclassified IonQ results relayed by Amazon Braket); version 0.1.0 is kept in attribute-inventory-v0.1.0.json.",
     "statuses": [
         "provider_supplied",
         "aggregator_normalized",
@@ -105,34 +105,22 @@
             "id": "results.measurement_counts",
             "value_pointer": "/results/measurement_counts",
             "evidence_pointer": "/results/measurement_counts",
-            "applicability": {
-                "not_applicable": [
-                    "ionq"
-                ]
-            },
-            "rationale": "measurement_counts holds actual provider-returned/observed integer counts. IonQ returns a probability histogram rather than observed counts, so this attribute is not applicable to IonQ records."
+            "applicability": "all",
+            "rationale": "Observed integer counts. Applicable to every provider; an adapter whose provider returns probabilities instead (IonQ, IonQ through Amazon Braket) declares it not_applicable in the record's evidence."
         },
         {
             "id": "results.measurement_probabilities",
             "value_pointer": "/results/measurement_probabilities",
             "evidence_pointer": "/results/measurement_probabilities",
-            "applicability": {
-                "applicable_only": [
-                    "ionq"
-                ]
-            },
-            "rationale": "Only IonQ exposes a provider-supplied probability histogram in this prototype; Braket and IBM return observed counts."
+            "applicability": "all",
+            "rationale": "Provider-returned outcome probabilities. Applicable to every provider; adapters declare it not_applicable when the provider returns observed counts."
         },
         {
             "id": "results.estimated_measurement_counts",
             "value_pointer": "/results/estimated_measurement_counts",
             "evidence_pointer": "/results/estimated_measurement_counts",
-            "applicability": {
-                "applicable_only": [
-                    "ionq"
-                ]
-            },
-            "rationale": "Optional counts derived from provider-supplied probabilities and requested shots; not observed counts."
+            "applicability": "all",
+            "rationale": "Counts derived from probabilities and shots; not observed counts. Not applicable when observed counts exist; unavailable when probabilities exist but the shot count is unknown."
         },
         {
             "id": "compilation.compiler",

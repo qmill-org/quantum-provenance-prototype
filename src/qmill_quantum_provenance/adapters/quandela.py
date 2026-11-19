@@ -12,6 +12,8 @@ from datetime import UTC, datetime, timedelta
 from typing import Any
 
 from ..adapter import (
+    RESULT_REPRESENTATIONS,
+    mark_not_applicable,
     qualify_missing_results,
     AdapterCapabilities,
     AdapterResult,
@@ -229,6 +231,11 @@ class QuandelaProvenanceAdapter(ProvenanceAdapter):
             _supplied("/results/measurement_counts", "job result BSCount", "keys are Fock states")
         )
         evidence.append(_supplied("/results/outcome_basis", "job result BSCount"))
+        mark_not_applicable(
+            evidence,
+            RESULT_REPRESENTATIONS[1:],
+            "sample_count job: observed Fock-state counts, no probabilities.",
+        )
         payload = result.raw_payload or {}
         extension["sampling"] = {
             k: payload[k]

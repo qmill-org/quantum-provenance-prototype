@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0-prototype",
   "record_id": "qprov:braket:782f818c22da425e05074b501ca26a26",
-  "generated_at": "2026-07-17T08:15:02.585792+00:00",
-  "retrieved_at": "2026-07-17T08:15:02.585777+00:00",
+  "generated_at": "2026-11-19T13:34:17.236906+00:00",
+  "retrieved_at": "2026-11-19T13:34:17.236894+00:00",
   "adapter": {
     "provider": "braket",
     "name": "braket-provenance-adapter",
@@ -60,6 +60,7 @@
   "results": {
     "available": true,
     "shots": 1000,
+    "outcome_basis": "bitstring",
     "measurement_counts": {
       "00": 511,
       "11": 489
@@ -120,6 +121,16 @@
       "path": "/results/measurement_counts",
       "status": "provider_supplied",
       "provider_field": "GateModelQuantumTaskResult.measurement_counts"
+    },
+    {
+      "path": "/results/measurement_probabilities",
+      "status": "not_applicable",
+      "notes": "Observed per-shot counts; no probability representation."
+    },
+    {
+      "path": "/results/estimated_measurement_counts",
+      "status": "not_applicable",
+      "notes": "Observed per-shot counts; no probability representation."
     },
     {
       "path": "/artifacts/0",

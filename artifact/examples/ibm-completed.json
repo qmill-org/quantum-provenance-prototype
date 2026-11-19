@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0-prototype",
   "record_id": "qprov:ibm:049001a0c6830efb74a6fa0c8ae65e6d",
-  "generated_at": "2026-07-17T08:15:02.640467+00:00",
-  "retrieved_at": "2026-07-17T08:15:02.640442+00:00",
+  "generated_at": "2026-11-19T13:34:17.288041+00:00",
+  "retrieved_at": "2026-11-19T13:34:17.288030+00:00",
   "adapter": {
     "provider": "ibm",
     "name": "ibm-provenance-adapter",
@@ -60,6 +60,7 @@
   "results": {
     "available": true,
     "shots": 4096,
+    "outcome_basis": "bitstring",
     "measurement_counts": {
       "00000": 2013,
       "11111": 1985,
@@ -119,6 +120,16 @@
       "path": "/results/measurement_counts",
       "status": "provider_supplied",
       "provider_field": "PrimitiveResult[0].data.<register>.get_counts()"
+    },
+    {
+      "path": "/results/measurement_probabilities",
+      "status": "not_applicable",
+      "notes": "Observed per-shot counts; no probability representation."
+    },
+    {
+      "path": "/results/estimated_measurement_counts",
+      "status": "not_applicable",
+      "notes": "Observed per-shot counts; no probability representation."
     },
     {
       "path": "/artifacts/0",

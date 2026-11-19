@@ -1,5 +1,5 @@
 {
-  "adapter_revision": "f28d14c",
+  "adapter_revision": "9e1abd9",
   "captures": [
     {
       "capture": "04470467-2658-4b06-8e5c-35b841c7b054",
@@ -26,15 +26,14 @@
         "job.ended_at": "unavailable",
         "job.shots": "unavailable",
         "job.status": "unavailable",
-        "results.estimated_measurement_counts": "not_applicable",
+        "results.estimated_measurement_counts": "unavailable",
         "results.measurement_counts": "unavailable",
-        "results.measurement_probabilities": "not_applicable",
+        "results.measurement_probabilities": "unavailable",
         "software.framework_versions": "unavailable",
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "not_applicable": 2,
-        "unavailable": 19
+        "unavailable": 21
       },
       "provider": "braket",
       "schema_valid": true,
@@ -67,15 +66,14 @@
         "job.ended_at": "unavailable",
         "job.shots": "unavailable",
         "job.status": "unavailable",
-        "results.estimated_measurement_counts": "not_applicable",
+        "results.estimated_measurement_counts": "unavailable",
         "results.measurement_counts": "unavailable",
-        "results.measurement_probabilities": "not_applicable",
+        "results.measurement_probabilities": "unavailable",
         "software.framework_versions": "unavailable",
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "not_applicable": 2,
-        "unavailable": 19
+        "unavailable": 21
       },
       "provider": "braket",
       "schema_valid": true,
@@ -108,15 +106,14 @@
         "job.ended_at": "unavailable",
         "job.shots": "unavailable",
         "job.status": "unavailable",
-        "results.estimated_measurement_counts": "not_applicable",
+        "results.estimated_measurement_counts": "unavailable",
         "results.measurement_counts": "unavailable",
-        "results.measurement_probabilities": "not_applicable",
+        "results.measurement_probabilities": "unavailable",
         "software.framework_versions": "unavailable",
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "not_applicable": 2,
-        "unavailable": 19
+        "unavailable": 21
       },
       "provider": "braket",
       "schema_valid": true,
@@ -209,17 +206,16 @@
         "job.ended_at": "provider_supplied",
         "job.shots": "provider_supplied",
         "job.status": "provider_supplied",
-        "results.estimated_measurement_counts": "not_applicable",
+        "results.estimated_measurement_counts": "unavailable",
         "results.measurement_counts": "unavailable",
-        "results.measurement_probabilities": "not_applicable",
+        "results.measurement_probabilities": "unavailable",
         "software.framework_versions": "unavailable",
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
         "derived": 2,
-        "not_applicable": 2,
         "provider_supplied": 9,
-        "unavailable": 8
+        "unavailable": 10
       },
       "provider": "braket",
       "schema_valid": true,
@@ -237,10 +233,6 @@
         "platform_provider": "amazon_braket"
       },
       "findings": [
-        {
-          "check": "derived_counts_labeled_provider_supplied",
-          "detail": "counts origin 'expanded_from_measurementProbabilities'; record status provider_supplied"
-        },
         {
           "check": "submitted_program_not_mapped",
           "detail": "provider retains the submitted program; record has no submitted artifact"
@@ -263,16 +255,17 @@
         "job.ended_at": "provider_supplied",
         "job.shots": "provider_supplied",
         "job.status": "provider_supplied",
-        "results.estimated_measurement_counts": "not_applicable",
-        "results.measurement_counts": "provider_supplied",
-        "results.measurement_probabilities": "not_applicable",
+        "results.estimated_measurement_counts": "derived",
+        "results.measurement_counts": "not_applicable",
+        "results.measurement_probabilities": "provider_passthrough",
         "software.framework_versions": "unavailable",
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "derived": 2,
-        "not_applicable": 2,
-        "provider_supplied": 10,
+        "derived": 3,
+        "not_applicable": 1,
+        "provider_passthrough": 1,
+        "provider_supplied": 9,
         "unavailable": 7
       },
       "provider": "braket",
@@ -647,18 +640,17 @@
         "job.ended_at": "provider_supplied",
         "job.shots": "provider_supplied",
         "job.status": "provider_supplied",
-        "results.estimated_measurement_counts": "not_applicable",
+        "results.estimated_measurement_counts": "unavailable",
         "results.measurement_counts": "unavailable",
-        "results.measurement_probabilities": "not_applicable",
+        "results.measurement_probabilities": "unavailable",
         "software.framework_versions": "unavailable",
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
         "derived": 3,
-        "not_applicable": 2,
         "provider_passthrough": 1,
         "provider_supplied": 10,
-        "unavailable": 5
+        "unavailable": 7
       },
       "provider": "ibm",
       "schema_valid": true,
@@ -693,17 +685,16 @@
         "job.ended_at": "provider_supplied",
         "job.shots": "provider_supplied",
         "job.status": "provider_supplied",
-        "results.estimated_measurement_counts": "not_applicable",
+        "results.estimated_measurement_counts": "unavailable",
         "results.measurement_counts": "unavailable",
-        "results.measurement_probabilities": "not_applicable",
+        "results.measurement_probabilities": "unavailable",
         "software.framework_versions": "unavailable",
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
         "derived": 1,
-        "not_applicable": 2,
         "provider_supplied": 10,
-        "unavailable": 8
+        "unavailable": 10
       },
       "provider": "ibm",
       "schema_valid": true,
@@ -831,15 +822,14 @@
         "job.shots": "unavailable",
         "job.status": "provider_supplied",
         "results.estimated_measurement_counts": "unavailable",
-        "results.measurement_counts": "not_applicable",
+        "results.measurement_counts": "unavailable",
         "results.measurement_probabilities": "unavailable",
         "software.framework_versions": "unavailable",
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "not_applicable": 1,
         "provider_supplied": 7,
-        "unavailable": 13
+        "unavailable": 14
       },
       "provider": "ionq",
       "schema_valid": true,
@@ -945,8 +935,7 @@
   "finding_counts": {
     "application_compiled_attributed_to_provider": 6,
     "characterization_without_timestamp": 3,
-    "derived_counts_labeled_provider_supplied": 1,
     "submitted_program_not_mapped": 9
   },
-  "inventory_version": "0.1.0"
+  "inventory_version": "0.2.0"
 }

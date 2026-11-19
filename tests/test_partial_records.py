@@ -61,3 +61,18 @@ def test_denied_result_retrieval_keeps_the_rest_of_the_record() -> None:
     assert payload["job"]["status"] == "completed"
     assert payload["results"]["available"] is False
     assert _evidence(payload)["/results"]["reason"] == "authentication_scope_insufficient"
+
+
+FORTE1_VIA_BRAKET = CAPTURES / "braket" / "c5f722a5-ee93-443e-8d89-f7ab285d7f69"
+
+
+def test_ionq_probabilities_relayed_by_braket_are_not_presented_as_counts() -> None:
+    payload = _record(_fixture(FORTE1_VIA_BRAKET))
+    results = payload["results"]
+    assert "measurement_counts" not in results
+    assert results["outcome_basis"] == "bitstring"
+    assert abs(sum(results["measurement_probabilities"].values()) - 1) < 1e-6
+    evidence = _evidence(payload)
+    assert evidence["/results/measurement_probabilities"]["status"] == "provider_passthrough"
+    assert evidence["/results/estimated_measurement_counts"]["status"] == "derived"
+    assert evidence["/results/measurement_counts"]["status"] == "not_applicable"

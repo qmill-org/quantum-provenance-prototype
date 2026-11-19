@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0-prototype",
   "record_id": "qprov:ionq:f09d0b7fd29c07000f3221aad6ddb677",
-  "generated_at": "2026-07-17T08:15:02.645308+00:00",
-  "retrieved_at": "2026-07-17T08:15:02.645299+00:00",
+  "generated_at": "2026-11-19T13:34:17.291086+00:00",
+  "retrieved_at": "2026-11-19T13:34:17.291079+00:00",
   "adapter": {
     "provider": "ionq",
     "name": "ionq-provenance-adapter",
@@ -50,6 +50,7 @@
   "results": {
     "available": true,
     "shots": 1000,
+    "outcome_basis": "bitstring",
     "measurement_probabilities": {
       "00000": 0.492,
       "11111": 0.508
@@ -112,6 +113,11 @@
       "status": "provider_supplied",
       "provider_field": "ionq.jobs.get_results() histogram",
       "notes": "IonQ returns outcome probabilities, not per-shot counts. The provider values are preserved verbatim; integer basis states are rewritten as fixed-width bitstrings."
+    },
+    {
+      "path": "/results/measurement_counts",
+      "status": "not_applicable",
+      "notes": "IonQ returns probabilities, not per-shot counts."
     },
     {
       "path": "/results/estimated_measurement_counts",

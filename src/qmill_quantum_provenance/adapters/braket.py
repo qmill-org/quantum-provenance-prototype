@@ -15,6 +15,9 @@ from typing import Any
 
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    RESULT_REPRESENTATIONS,
+    estimate_counts,
+    mark_not_applicable,
     qualify_missing_results,
     AdapterCapabilities,
     AdapterResult,
@@ -332,17 +335,67 @@ class BraketProvenanceAdapter(ProvenanceAdapter):
         )
 
     def _build_results(self, snapshot, result_data, evidence: list[Evidence]) -> Results:
+        payload = (getattr(result_data, "raw_payload", None) or {}) if result_data else {}
+        probabilities = (
+            None if payload.get("measurements") else payload.get("measurementProbabilities")
+        )
+        if result_data is not None and probabilities:
+            probabilities = {str(k): float(v) for k, v in probabilities.items()}
+            evidence.append(
+                Evidence(
+                    path="/results/measurement_probabilities",
+                    status=EvidenceStatus.PROVIDER_PASSTHROUGH,
+                    provider_field="results.json measurementProbabilities",
+                    notes="Relayed by Amazon Braket from the hardware provider; the "
+                    "result has no per-shot measurements.",
+                )
+            )
+            mark_not_applicable(
+                evidence,
+                ["/results/measurement_counts"],
+                "Provider returned probabilities, not per-shot measurements.",
+            )
+            estimated = None
+            if snapshot.shots:
+                estimated = estimate_counts(probabilities, snapshot.shots)
+                evidence.append(
+                    Evidence(
+                        path="/results/estimated_measurement_counts",
+                        status=EvidenceStatus.DERIVED,
+                        source_paths=["/results/measurement_probabilities", "/job/shots"],
+                        derivation="round(probability * shots) per outcome, independently",
+                        notes="Estimates, not observed counts.",
+                    )
+                )
+            return Results(
+                available=True,
+                shots=snapshot.shots,
+                outcome_basis="bitstring",
+                measurement_probabilities=probabilities,
+                estimated_measurement_counts=estimated,
+            )
+
         if result_data is not None and result_data.measurement_counts:
             evidence.append(
                 Evidence(
                     path="/results/measurement_counts",
                     status=EvidenceStatus.PROVIDER_SUPPLIED,
-                    provider_field="GateModelQuantumTaskResult.measurement_counts",
+                    provider_field=(
+                        "results.json measurements (tallied)"
+                        if payload.get("measurements")
+                        else "GateModelQuantumTaskResult.measurement_counts"
+                    ),
                 )
+            )
+            mark_not_applicable(
+                evidence,
+                RESULT_REPRESENTATIONS[1:],
+                "Observed per-shot counts; no probability representation.",
             )
             return Results(
                 available=True,
                 shots=snapshot.shots,
+                outcome_basis="bitstring",
                 measurement_counts=dict(result_data.measurement_counts),
             )
 
