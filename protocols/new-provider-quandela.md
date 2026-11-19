@@ -96,3 +96,7 @@ generality. These are reported with the result.
 | Date (UTC) | Step | Note |
 |---|---|---|
 | 2026-11-19 | protocol | Written and committed before step 1. |
+| 2026-11-19 | 1 probe | Token accepted on per-platform endpoints (`/api/platforms/<name>/`, Perceval 1.3.1); the listing endpoint `/api/platforms` answers 401 "Invalid token". Free plan: `sim:belenos`, `qpu:belenos`, `qpu:ascella` readable, `sim:altair` 403. `qpu:belenos` in `maintenance`. Evidence: `captures/quandela/platforms-2026-11-19.json`. |
+| 2026-11-19 | 1 probe | Characterization (`perfs`: HOM 88.2 %, g2 1.3 %, per-mode transmission, per-detector dark counts, clock) has **no timestamp**. Specs expose detector type (`threshold`), mode/photon constraints, `pcvl_version`, `software_versions`, known mitigations. Results are Fock-state `samples` / `sample_count` / `probs`. |
+| 2026-11-19 | 1 probe | Observation for step 2 (M6): the reduced `v0.1.0` contract has **no `extensions` member** (Listing 1 of the conceptual API has one); `Device` has `qubit_count` only; `measurement_counts` keys are unconstrained but described as bitstrings. Photonic structure (modes, photons, detector type) has no place in the frozen contract. |
+
