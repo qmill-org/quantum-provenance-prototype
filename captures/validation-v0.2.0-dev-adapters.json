@@ -1,5 +1,5 @@
 {
-  "adapter_revision": "9e1abd9",
+  "adapter_revision": "7553f23",
   "captures": [
     {
       "capture": "04470467-2658-4b06-8e5c-35b841c7b054",
@@ -130,10 +130,6 @@
       },
       "findings": [
         {
-          "check": "submitted_program_not_mapped",
-          "detail": "provider retains the submitted program; record has no submitted artifact"
-        },
-        {
           "check": "characterization_without_timestamp",
           "detail": "association 'current_at_retrieval' has no captured_at"
         }
@@ -232,12 +228,7 @@
         "identifier": "arn:aws:braket:us-east-1::device/qpu/ionq/Forte-1",
         "platform_provider": "amazon_braket"
       },
-      "findings": [
-        {
-          "check": "submitted_program_not_mapped",
-          "detail": "provider retains the submitted program; record has no submitted artifact"
-        }
-      ],
+      "findings": [],
       "inventory": {
         "artifact.compiled": "unavailable",
         "characterization": "provider_supplied",
@@ -284,10 +275,6 @@
         "platform_provider": "amazon_braket"
       },
       "findings": [
-        {
-          "check": "submitted_program_not_mapped",
-          "detail": "provider retains the submitted program; record has no submitted artifact"
-        },
         {
           "check": "characterization_without_timestamp",
           "detail": "association 'current_at_retrieval' has no captured_at"
@@ -338,18 +325,9 @@
         "identifier": "ibm_aachen",
         "platform_provider": "ibm_quantum"
       },
-      "findings": [
-        {
-          "check": "application_compiled_attributed_to_provider",
-          "detail": "compiled artifact produced by the application; record status provider_passthrough"
-        },
-        {
-          "check": "submitted_program_not_mapped",
-          "detail": "provider retains the submitted program; record has no submitted artifact"
-        }
-      ],
+      "findings": [],
       "inventory": {
-        "artifact.compiled": "provider_passthrough",
+        "artifact.compiled": "unavailable",
         "characterization": "provider_supplied",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
@@ -374,9 +352,8 @@
       "inventory_counts": {
         "derived": 3,
         "not_applicable": 2,
-        "provider_passthrough": 1,
         "provider_supplied": 11,
-        "unavailable": 4
+        "unavailable": 5
       },
       "provider": "ibm",
       "schema_valid": true,
@@ -393,18 +370,9 @@
         "identifier": "ibm_aachen",
         "platform_provider": "ibm_quantum"
       },
-      "findings": [
-        {
-          "check": "application_compiled_attributed_to_provider",
-          "detail": "compiled artifact produced by the application; record status provider_passthrough"
-        },
-        {
-          "check": "submitted_program_not_mapped",
-          "detail": "provider retains the submitted program; record has no submitted artifact"
-        }
-      ],
+      "findings": [],
       "inventory": {
-        "artifact.compiled": "provider_passthrough",
+        "artifact.compiled": "unavailable",
         "characterization": "provider_supplied",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
@@ -429,9 +397,8 @@
       "inventory_counts": {
         "derived": 3,
         "not_applicable": 2,
-        "provider_passthrough": 1,
         "provider_supplied": 11,
-        "unavailable": 4
+        "unavailable": 5
       },
       "provider": "ibm",
       "schema_valid": true,
@@ -448,18 +415,9 @@
         "identifier": "ibm_aachen",
         "platform_provider": "ibm_quantum"
       },
-      "findings": [
-        {
-          "check": "application_compiled_attributed_to_provider",
-          "detail": "compiled artifact produced by the application; record status provider_passthrough"
-        },
-        {
-          "check": "submitted_program_not_mapped",
-          "detail": "provider retains the submitted program; record has no submitted artifact"
-        }
-      ],
+      "findings": [],
       "inventory": {
-        "artifact.compiled": "provider_passthrough",
+        "artifact.compiled": "unavailable",
         "characterization": "provider_supplied",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
@@ -484,9 +442,8 @@
       "inventory_counts": {
         "derived": 3,
         "not_applicable": 2,
-        "provider_passthrough": 1,
         "provider_supplied": 11,
-        "unavailable": 4
+        "unavailable": 5
       },
       "provider": "ibm",
       "schema_valid": true,
@@ -503,18 +460,9 @@
         "identifier": "ibm_aachen",
         "platform_provider": "ibm_quantum"
       },
-      "findings": [
-        {
-          "check": "application_compiled_attributed_to_provider",
-          "detail": "compiled artifact produced by the application; record status provider_passthrough"
-        },
-        {
-          "check": "submitted_program_not_mapped",
-          "detail": "provider retains the submitted program; record has no submitted artifact"
-        }
-      ],
+      "findings": [],
       "inventory": {
-        "artifact.compiled": "provider_passthrough",
+        "artifact.compiled": "unavailable",
         "characterization": "provider_supplied",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
@@ -539,9 +487,8 @@
       "inventory_counts": {
         "derived": 3,
         "not_applicable": 2,
-        "provider_passthrough": 1,
         "provider_supplied": 11,
-        "unavailable": 4
+        "unavailable": 5
       },
       "provider": "ibm",
       "schema_valid": true,
@@ -558,18 +505,9 @@
         "identifier": "ibm_aachen",
         "platform_provider": "ibm_quantum"
       },
-      "findings": [
-        {
-          "check": "application_compiled_attributed_to_provider",
-          "detail": "compiled artifact produced by the application; record status provider_passthrough"
-        },
-        {
-          "check": "submitted_program_not_mapped",
-          "detail": "provider retains the submitted program; record has no submitted artifact"
-        }
-      ],
+      "findings": [],
       "inventory": {
-        "artifact.compiled": "provider_passthrough",
+        "artifact.compiled": "unavailable",
         "characterization": "provider_supplied",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
@@ -594,9 +532,8 @@
       "inventory_counts": {
         "derived": 3,
         "not_applicable": 2,
-        "provider_passthrough": 1,
         "provider_supplied": 11,
-        "unavailable": 4
+        "unavailable": 5
       },
       "provider": "ibm",
       "schema_valid": true,
@@ -613,18 +550,9 @@
         "identifier": "ibm_aachen",
         "platform_provider": "ibm_quantum"
       },
-      "findings": [
-        {
-          "check": "application_compiled_attributed_to_provider",
-          "detail": "compiled artifact produced by the application; record status provider_passthrough"
-        },
-        {
-          "check": "submitted_program_not_mapped",
-          "detail": "provider retains the submitted program; record has no submitted artifact"
-        }
-      ],
+      "findings": [],
       "inventory": {
-        "artifact.compiled": "provider_passthrough",
+        "artifact.compiled": "unavailable",
         "characterization": "provider_supplied",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
@@ -648,9 +576,8 @@
       },
       "inventory_counts": {
         "derived": 3,
-        "provider_passthrough": 1,
         "provider_supplied": 10,
-        "unavailable": 7
+        "unavailable": 8
       },
       "provider": "ibm",
       "schema_valid": true,
@@ -933,9 +860,7 @@
     }
   ],
   "finding_counts": {
-    "application_compiled_attributed_to_provider": 6,
-    "characterization_without_timestamp": 3,
-    "submitted_program_not_mapped": 9
+    "characterization_without_timestamp": 3
   },
   "inventory_version": "0.2.0"
 }

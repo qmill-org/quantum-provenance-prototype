@@ -53,7 +53,7 @@ from ..models import (
     normalize_device_type,
     normalize_job_status,
 )
-from ..redaction import redact
+from ..redaction import program_digest, redact
 
 _QUBIT_COUNT_KEYS = ("num_qubits", "n_qubits", "qubitCount", "qubit_count")
 
@@ -357,22 +357,34 @@ class IBMProvenanceAdapter(ProvenanceAdapter):
     ) -> None:
         compiled = result_data.compiled_circuit if result_data is not None else None
         if compiled:
+            digest, size = program_digest(compiled)
             index = len(artifacts)
             artifacts.append(
                 Artifact(
-                    role=ArtifactRole.COMPILED,
+                    role=ArtifactRole.SUBMITTED,
                     media_type="application/x-openqasm;version=3",
-                    description="ISA (backend-native) circuit executed by the Runtime "
-                    "primitive (passthrough, hash only).",
-                    content_hash=_sha256(compiled),
-                    byte_size=len(compiled.encode("utf-8")),
+                    producer="application",
+                    description="ISA circuit compiled and submitted by the application, "
+                    "returned by IBM with the job inputs (hash only).",
+                    content_hash=ContentHash("sha256", digest),
+                    byte_size=size,
                 )
             )
             evidence.append(
                 Evidence(
                     path=f"/artifacts/{index}",
                     status=EvidenceStatus.PROVIDER_PASSTHROUGH,
-                    provider_field="RuntimeJob ISA circuit",
+                    provider_field="RuntimeJobV2.inputs ISA circuit",
+                    notes="Sampler/Estimator V2 run application-compiled ISA circuits; "
+                    "IBM returns no provider-compiled program.",
+                )
+            )
+            evidence.append(
+                Evidence(
+                    path="/compilation",
+                    status=EvidenceStatus.UNAVAILABLE,
+                    reason=AvailabilityReason.NOT_EXPOSED_BY_PROVIDER,
+                    notes="No provider-compiled program; compilation happened in the application.",
                 )
             )
         else:

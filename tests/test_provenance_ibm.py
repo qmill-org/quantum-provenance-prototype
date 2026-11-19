@@ -99,10 +99,13 @@ def test_ibm_mapping_normalizes_expected_fields() -> None:
     assert ("/execution/run_duration_ms", "derived") in statuses
     assert ("/characterization", "provider_supplied") in statuses
 
-    # Compiled ISA + provider-native artifacts are hash-only passthrough.
-    roles = {artifact.role.value for artifact in record.artifacts}
-    assert "compiled" in roles
-    assert "provider_native" in roles
+    # The returned ISA circuit was compiled by the application (Sampler/Estimator
+    # V2), so it is a submitted artifact produced by the application; IBM
+    # returns no provider-compiled program.
+    by_role = {artifact.role.value: artifact for artifact in record.artifacts}
+    assert by_role["submitted"].producer == "application"
+    assert "compiled" not in by_role
+    assert "provider_native" in by_role
 
 
 def test_partial_record_marks_characterization_unavailable() -> None:

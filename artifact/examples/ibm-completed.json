@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0-prototype",
   "record_id": "qprov:ibm:049001a0c6830efb74a6fa0c8ae65e6d",
-  "generated_at": "2026-11-19T13:34:17.288041+00:00",
-  "retrieved_at": "2026-11-19T13:34:17.288030+00:00",
+  "generated_at": "2026-11-19T13:36:26.666162+00:00",
+  "retrieved_at": "2026-11-19T13:36:26.666147+00:00",
   "adapter": {
     "provider": "ibm",
     "name": "ibm-provenance-adapter",
@@ -28,9 +28,10 @@
   },
   "artifacts": [
     {
-      "role": "compiled",
+      "role": "submitted",
       "media_type": "application/x-openqasm;version=3",
-      "description": "ISA (backend-native) circuit executed by the Runtime primitive (passthrough, hash only).",
+      "producer": "application",
+      "description": "ISA circuit compiled and submitted by the application, returned by IBM with the job inputs (hash only).",
       "content_hash": {
         "algorithm": "sha256",
         "value": "873832e23a4e06f5e7af6bc7dc6e7c3cb7188b8d5019421b1cc15b1325ff878c"
@@ -134,7 +135,14 @@
     {
       "path": "/artifacts/0",
       "status": "provider_passthrough",
-      "provider_field": "RuntimeJob ISA circuit"
+      "provider_field": "RuntimeJobV2.inputs ISA circuit",
+      "notes": "Sampler/Estimator V2 run application-compiled ISA circuits; IBM returns no provider-compiled program."
+    },
+    {
+      "path": "/compilation",
+      "status": "unavailable",
+      "reason": "not_exposed_by_provider",
+      "notes": "No provider-compiled program; compilation happened in the application."
     },
     {
       "path": "/artifacts/1",

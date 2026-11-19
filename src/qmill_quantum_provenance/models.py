@@ -168,6 +168,7 @@ class Artifact:
     role: ArtifactRole
     media_type: str
     description: str | None = None
+    producer: str | None = None
     reference: str | None = None
     content_hash: ContentHash | None = None
     byte_size: int | None = None
@@ -177,6 +178,7 @@ class Artifact:
             {
                 "role": self.role.value,
                 "media_type": self.media_type,
+                "producer": self.producer,
                 "description": self.description,
                 "reference": self.reference,
                 "content_hash": self.content_hash.to_dict() if self.content_hash else None,

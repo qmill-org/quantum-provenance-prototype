@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0-prototype",
   "record_id": "qprov:braket:782f818c22da425e05074b501ca26a26",
-  "generated_at": "2026-11-19T13:34:17.236906+00:00",
-  "retrieved_at": "2026-11-19T13:34:17.236894+00:00",
+  "generated_at": "2026-11-19T13:36:26.621136+00:00",
+  "retrieved_at": "2026-11-19T13:36:26.621123+00:00",
   "adapter": {
     "provider": "braket",
     "name": "braket-provenance-adapter",
@@ -29,8 +29,9 @@
   "artifacts": [
     {
       "role": "compiled",
-      "media_type": "application/x-openqasm;version=3",
-      "description": "Provider-compiled program (passthrough, hash only).",
+      "media_type": "text/plain",
+      "producer": "provider",
+      "description": "Program compiled by the hardware provider, relayed by Amazon Braket (hash only).",
       "content_hash": {
         "algorithm": "sha256",
         "value": "1f6a04607d4d67b84864440fff65603d336bfcdf8a67e81b38329fee7776d9e2"

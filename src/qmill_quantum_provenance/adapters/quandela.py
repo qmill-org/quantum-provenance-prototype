@@ -7,7 +7,6 @@ structure without a core field goes to ``extensions["photonic.quandela"]``.
 
 from __future__ import annotations
 
-import hashlib
 from datetime import UTC, datetime, timedelta
 from typing import Any
 
@@ -21,6 +20,7 @@ from ..adapter import (
     ProvenanceCollectionRequest,
 )
 from ..integration import ProviderAdapter, ProviderIntegrationError
+from ..redaction import program_digest
 from ..models import (
     Artifact,
     ArtifactRole,
@@ -264,9 +264,10 @@ class QuandelaProvenanceAdapter(ProvenanceAdapter):
             Artifact(
                 role=ArtifactRole.COMPILED,
                 media_type="application/x-perceval-serialized",
+                producer="provider",
                 description="Experiment as compiled by the provider onto the chip (hash only).",
-                content_hash=ContentHash("sha256", hashlib.sha256(compiled.encode()).hexdigest()),
-                byte_size=len(compiled.encode()),
+                content_hash=ContentHash("sha256", program_digest(compiled)[0]),
+                byte_size=program_digest(compiled)[1],
             )
         )
         evidence.append(

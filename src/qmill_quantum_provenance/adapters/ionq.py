@@ -57,7 +57,7 @@ from ..models import (
     normalize_device_type,
     normalize_job_status,
 )
-from ..redaction import redact
+from ..redaction import program_digest, redact
 
 _QUBIT_COUNT_KEYS = ("qubits", "num_qubits", "n_qubits", "qubitCount", "qubit_count")
 
@@ -473,10 +473,11 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
                 Artifact(
                     role=ArtifactRole.COMPILED,
                     media_type="application/json",
+                    producer="provider",
                     description="IonQ native-gate circuit executed on the QPU "
                     "(passthrough, hash only).",
-                    content_hash=_sha256(compiled),
-                    byte_size=len(compiled.encode("utf-8")),
+                    content_hash=ContentHash("sha256", program_digest(compiled)[0]),
+                    byte_size=program_digest(compiled)[1],
                 )
             )
             evidence.append(

@@ -76,3 +76,20 @@ def test_ionq_probabilities_relayed_by_braket_are_not_presented_as_counts() -> N
     assert evidence["/results/measurement_probabilities"]["status"] == "provider_passthrough"
     assert evidence["/results/estimated_measurement_counts"]["status"] == "derived"
     assert evidence["/results/measurement_counts"]["status"] == "not_applicable"
+
+
+RIGETTI_VIA_BRAKET = CAPTURES / "braket" / "e4279728-4620-487c-9879-f302eef1ed6f"
+
+
+def test_artifacts_name_their_producer_and_keep_the_original_program_digest() -> None:
+    payload = _record(_fixture(RIGETTI_VIA_BRAKET))
+    by_role = {artifact["role"]: artifact for artifact in payload["artifacts"]}
+    assert by_role["submitted"]["producer"] == "application"
+    assert by_role["compiled"]["producer"] == "provider"
+    native = json.loads((RIGETTI_VIA_BRAKET / "native.json").read_text())
+    placeholder = native["results_json"]["additionalMetadata"]["action"]["source"]
+    assert by_role["submitted"]["content_hash"]["value"] in placeholder
+
+    empty = _record(_fixture(FORTE1_VIA_BRAKET))
+    assert "compiled" not in {a["role"] for a in empty["artifacts"]}
+    assert "present but empty" in _evidence(empty)["/compilation"]["notes"]

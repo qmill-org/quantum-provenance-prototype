@@ -263,6 +263,15 @@
                     "media_type": {
                         "type": "string"
                     },
+                    "producer": {
+                        "type": "string",
+                        "enum": [
+                            "application",
+                            "provider",
+                            "aggregator"
+                        ],
+                        "description": "Who produced the artifact's content: the submitting application, the hardware or platform provider, or a cloud aggregator. Independent of who retains or returns it (that is the evidence status)."
+                    },
                     "description": {
                         "type": "string"
                     },

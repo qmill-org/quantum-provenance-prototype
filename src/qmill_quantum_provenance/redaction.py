@@ -10,6 +10,8 @@ record.
 
 from __future__ import annotations
 
+import hashlib
+import re
 from typing import Any
 
 
@@ -69,4 +71,21 @@ def find_secret_keys(value: Any, _path: str = "") -> list[str]:
     return found
 
 
-__all__ = ["REDACTED", "is_secret_key", "redact", "find_secret_keys"]
+_PROGRAM_PLACEHOLDER = re.compile(r"^<program redacted sha256=([0-9a-f]{64}) bytes=(\d+)>$")
+
+
+def program_digest(text: str) -> tuple[str, int]:
+    """SHA-256 and byte size of program text, or of the original behind a capture digest.
+
+    Sanitized captures replace program text by ``<program redacted sha256=… bytes=…>``;
+    the digest then identifies the original program rather than the placeholder.
+    """
+
+    match = _PROGRAM_PLACEHOLDER.match(text)
+    if match:
+        return match.group(1), int(match.group(2))
+    data = text.encode("utf-8")
+    return hashlib.sha256(data).hexdigest(), len(data)
+
+
+__all__ = ["REDACTED", "is_secret_key", "redact", "find_secret_keys", "program_digest"]

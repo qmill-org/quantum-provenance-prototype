@@ -176,3 +176,7 @@ def test_claim_check_flags_application_compiled_program_attributed_to_provider()
     manifest = {"notes": {"compiled_program_origin": "application_compiled_job_input"}}
     checks = {finding["check"] for finding in check_claims(payload, manifest)}
     assert "application_compiled_attributed_to_provider" in checks
+
+    payload["artifacts"] = [{"role": "submitted", "producer": "application"}]
+    checks = {finding["check"] for finding in check_claims(payload, manifest)}
+    assert "application_compiled_attributed_to_provider" not in checks

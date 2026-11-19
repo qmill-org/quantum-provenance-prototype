@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0-prototype",
   "record_id": "qprov:ionq:f09d0b7fd29c07000f3221aad6ddb677",
-  "generated_at": "2026-11-19T13:34:17.291086+00:00",
-  "retrieved_at": "2026-11-19T13:34:17.291079+00:00",
+  "generated_at": "2026-11-19T13:36:26.669354+00:00",
+  "retrieved_at": "2026-11-19T13:36:26.669344+00:00",
   "adapter": {
     "provider": "ionq",
     "name": "ionq-provenance-adapter",
@@ -30,6 +30,7 @@
     {
       "role": "compiled",
       "media_type": "application/json",
+      "producer": "provider",
       "description": "IonQ native-gate circuit executed on the QPU (passthrough, hash only).",
       "content_hash": {
         "algorithm": "sha256",

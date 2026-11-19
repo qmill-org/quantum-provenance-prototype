@@ -22,7 +22,7 @@
           "characterization_status": "unavailable",
           "characterization_unavailable": true,
           "record_validates": true,
-          "unavailable_attributes": 3,
+          "unavailable_attributes": 4,
           "unclassified": 0
         },
         "ionq": {
@@ -65,7 +65,7 @@
   },
   "providers": {
     "braket": {
-      "adapter_loc": 485,
+      "adapter_loc": 526,
       "attribute_evidence_counts": {
         "application_captured": 11,
         "derived": 2,
@@ -118,19 +118,20 @@
       "results_available": true
     },
     "ibm": {
-      "adapter_loc": 499,
+      "adapter_loc": 511,
       "attribute_evidence_counts": {
         "application_captured": 11,
         "derived": 3,
         "not_applicable": 2,
         "provider_passthrough": 2,
-        "provider_supplied": 11
+        "provider_supplied": 11,
+        "unavailable": 1
       },
-      "evidence_total": 29,
+      "evidence_total": 30,
       "fixture_id": "cx7z8k2m4n5p6q7r8s9t",
       "inventory_classification": {
         "by_attribute": {
-          "artifact.compiled": "provider_passthrough",
+          "artifact.compiled": "unavailable",
           "characterization": "provider_supplied",
           "compilation.compiler": "application_captured",
           "compilation.logical_to_physical_mapping": "application_captured",
@@ -156,8 +157,8 @@
           "application_captured": 4,
           "derived": 3,
           "not_applicable": 2,
-          "provider_passthrough": 1,
-          "provider_supplied": 11
+          "provider_supplied": 11,
+          "unavailable": 1
         },
         "unclassified": 0
       },
@@ -170,7 +171,7 @@
       "results_available": true
     },
     "ionq": {
-      "adapter_loc": 554,
+      "adapter_loc": 555,
       "attribute_evidence_counts": {
         "derived": 2,
         "not_applicable": 1,
@@ -276,10 +277,10 @@
   "shared_provider_independent_implementation_loc": {
     "adapter.py": 181,
     "contract.py": 32,
-    "models.py": 389,
-    "redaction.py": 55,
+    "models.py": 391,
+    "redaction.py": 68,
     "registry.py": 54,
     "service.py": 267
   },
-  "shared_provider_independent_implementation_loc_total": 978
+  "shared_provider_independent_implementation_loc_total": 993
 }

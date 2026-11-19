@@ -76,18 +76,17 @@ def check_claims(payload: dict[str, Any], manifest: dict[str, Any]) -> list[dict
 
     roles = {artifact.get("role") for artifact in payload.get("artifacts") or []}
     if notes.get("compiled_program_origin") == "application_compiled_job_input":
-        for index, artifact in enumerate(payload.get("artifacts") or []):
-            status = evidence.get(f"/artifacts/{index}")
-            if artifact.get("role") == "compiled" and status in {
-                "provider_supplied",
-                "provider_passthrough",
-            }:
-                findings.append(
-                    {
-                        "check": "application_compiled_attributed_to_provider",
-                        "detail": f"compiled artifact produced by the application; record status {status}",
-                    }
-                )
+        artifacts = payload.get("artifacts") or []
+        if not any(artifact.get("producer") == "application" for artifact in artifacts):
+            statuses = sorted({evidence.get(f"/artifacts/{i}", "?") for i in range(len(artifacts))})
+            findings.append(
+                {
+                    "check": "application_compiled_attributed_to_provider",
+                    "detail": "program compiled by the application; no artifact names the "
+                    f"application as producer (artifact evidence: {statuses})",
+                }
+            )
+
     if notes.get("submitted_program_available") and "submitted" not in roles:
         findings.append(
             {

@@ -44,7 +44,7 @@ from ..models import (
     normalize_device_type,
     normalize_job_status,
 )
-from ..redaction import redact
+from ..redaction import program_digest, redact
 
 _QUBIT_COUNT_KEYS = ("qubitCount", "qubit_count", "num_qubits", "qubitcount")
 
@@ -190,6 +190,7 @@ class BraketProvenanceAdapter(ProvenanceAdapter):
         if not results.available:
             qualify_missing_results(evidence, job.status, result_error)
         self._build_compiled_artifact(result_data, artifacts, evidence)
+        self._build_submitted_artifact(result_data, artifacts, evidence)
         self._build_provider_native_artifact(snapshot, artifacts, evidence)
         execution = self._build_execution(snapshot, evidence)
         characterization = self._build_characterization(device_details, evidence)
@@ -413,14 +414,17 @@ class BraketProvenanceAdapter(ProvenanceAdapter):
     ) -> None:
         compiled = result_data.compiled_circuit if result_data is not None else None
         if compiled:
+            digest, size = program_digest(compiled)
             index = len(artifacts)
             artifacts.append(
                 Artifact(
                     role=ArtifactRole.COMPILED,
-                    media_type="application/x-openqasm;version=3",
-                    description="Provider-compiled program (passthrough, hash only).",
-                    content_hash=_sha256(compiled),
-                    byte_size=len(compiled.encode("utf-8")),
+                    media_type="text/plain",
+                    producer="provider",
+                    description="Program compiled by the hardware provider, relayed by "
+                    "Amazon Braket (hash only).",
+                    content_hash=ContentHash("sha256", digest),
+                    byte_size=size,
                 )
             )
             evidence.append(
@@ -430,15 +434,53 @@ class BraketProvenanceAdapter(ProvenanceAdapter):
                     provider_field="additionalMetadata.*.compiledProgram",
                 )
             )
-        else:
-            evidence.append(
-                Evidence(
-                    path="/compilation",
-                    status=EvidenceStatus.UNAVAILABLE,
-                    reason=AvailabilityReason.NOT_EXPOSED_BY_PROVIDER,
-                    notes="Simulator/QPU did not expose a compiled program.",
-                )
+            return
+        evidence.append(
+            Evidence(
+                path="/compilation",
+                status=EvidenceStatus.UNAVAILABLE,
+                reason=AvailabilityReason.NOT_EXPOSED_BY_PROVIDER,
+                notes=(
+                    "compiledProgram is present but empty."
+                    if compiled == ""
+                    else "The device did not expose a compiled program."
+                ),
             )
+        )
+
+    def _build_submitted_artifact(
+        self, result_data, artifacts: list[Artifact], evidence: list[Evidence]
+    ) -> None:
+        payload = (getattr(result_data, "raw_payload", None) or {}) if result_data else {}
+        action = (payload.get("additionalMetadata") or {}).get("action") or {}
+        source = action.get("source")
+        if not isinstance(source, str) or not source:
+            return
+        digest, size = program_digest(source)
+        header = (action.get("braketSchemaHeader") or {}).get("name", "")
+        index = len(artifacts)
+        artifacts.append(
+            Artifact(
+                role=ArtifactRole.SUBMITTED,
+                media_type=(
+                    "application/x-openqasm;version=3"
+                    if "openqasm" in header
+                    else "application/json"
+                ),
+                producer="application",
+                description="Program as submitted by the application, retained by Amazon "
+                "Braket with the task (hash only).",
+                content_hash=ContentHash("sha256", digest),
+                byte_size=size,
+            )
+        )
+        evidence.append(
+            Evidence(
+                path=f"/artifacts/{index}",
+                status=EvidenceStatus.PROVIDER_PASSTHROUGH,
+                provider_field="additionalMetadata.action.source",
+            )
+        )
 
     def _build_provider_native_artifact(
         self, snapshot, artifacts: list[Artifact], evidence: list[Evidence]
