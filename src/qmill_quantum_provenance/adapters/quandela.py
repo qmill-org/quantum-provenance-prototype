@@ -12,12 +12,13 @@ from datetime import UTC, datetime, timedelta
 from typing import Any
 
 from ..adapter import (
+    qualify_missing_results,
     AdapterCapabilities,
     AdapterResult,
     ProvenanceAdapter,
     ProvenanceCollectionRequest,
 )
-from ..integration import ProviderAdapter, ResultUnavailableError
+from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..models import (
     Artifact,
     ArtifactRole,
@@ -104,16 +105,20 @@ class QuandelaProvenanceAdapter(ProvenanceAdapter):
                 warnings.append(Warning("device_details_unavailable", str(exc)))
 
         result = None
+        result_error: ProviderIntegrationError | None = None
         try:
             result = integration.get_result(handle)
             operations.append(OperationObservation("adapter", "get_result"))
-        except ResultUnavailableError as exc:
+        except ProviderIntegrationError as exc:
+            result_error = exc
             warnings.append(Warning("results_unavailable", str(exc)))
 
         metadata = snapshot.metadata or {}
         job = self._job(request, snapshot, metadata, evidence)
         device = self._device(platform, device_details, evidence, extension)
         results = self._results(result, evidence, extension)
+        if not results.available:
+            qualify_missing_results(evidence, job.status, result_error)
         self._compiled(result, artifacts, evidence, extension)
         execution = self._execution(metadata, evidence)
         characterization = self._characterization(device, device_details, evidence, extension)

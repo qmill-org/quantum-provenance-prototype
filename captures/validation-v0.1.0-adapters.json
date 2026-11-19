@@ -770,98 +770,6 @@
         "get_result": "ResultUnavailableError",
         "get_status": "ok"
       }
-    },
-    {
-      "capture": "5614c93a-8d77-43f0-81c6-7a13a935255e",
-      "device": {
-        "hardware_provider": "quandela",
-        "identifier": "sim:belenos",
-        "platform_provider": "quandela_cloud"
-      },
-      "findings": [],
-      "inventory": {
-        "artifact.compiled": "provider_supplied",
-        "characterization": "not_applicable",
-        "compilation.compiler": "unavailable",
-        "compilation.logical_to_physical_mapping": "unavailable",
-        "device.hardware_provider": "provider_supplied",
-        "device.identifier": "application_captured",
-        "device.platform_provider": "provider_supplied",
-        "device.qubit_count": "not_applicable",
-        "device.type": "provider_supplied",
-        "execution.queue_duration_ms": "derived",
-        "execution.run_duration_ms": "provider_supplied",
-        "execution.total_duration_ms": "derived",
-        "job.created_at": "provider_supplied",
-        "job.ended_at": "derived",
-        "job.shots": "provider_supplied",
-        "job.status": "provider_supplied",
-        "results.estimated_measurement_counts": "not_applicable",
-        "results.measurement_counts": "provider_supplied",
-        "results.measurement_probabilities": "not_applicable",
-        "software.framework_versions": "unavailable",
-        "software.provider_client": "unavailable"
-      },
-      "inventory_counts": {
-        "application_captured": 1,
-        "derived": 3,
-        "not_applicable": 4,
-        "provider_supplied": 9,
-        "unavailable": 4
-      },
-      "provider": "quandela",
-      "schema_valid": true,
-      "upstream": {
-        "get_device_details": "ok",
-        "get_result": "ok",
-        "get_status": "ok"
-      }
-    },
-    {
-      "capture": "9cf68122-1ede-4934-9535-0b9dab297c79",
-      "device": {
-        "hardware_provider": "quandela",
-        "identifier": "sim:belenos",
-        "platform_provider": "quandela_cloud"
-      },
-      "findings": [],
-      "inventory": {
-        "artifact.compiled": "provider_supplied",
-        "characterization": "not_applicable",
-        "compilation.compiler": "unavailable",
-        "compilation.logical_to_physical_mapping": "unavailable",
-        "device.hardware_provider": "provider_supplied",
-        "device.identifier": "application_captured",
-        "device.platform_provider": "provider_supplied",
-        "device.qubit_count": "not_applicable",
-        "device.type": "provider_supplied",
-        "execution.queue_duration_ms": "derived",
-        "execution.run_duration_ms": "provider_supplied",
-        "execution.total_duration_ms": "derived",
-        "job.created_at": "provider_supplied",
-        "job.ended_at": "derived",
-        "job.shots": "provider_supplied",
-        "job.status": "provider_supplied",
-        "results.estimated_measurement_counts": "not_applicable",
-        "results.measurement_counts": "provider_supplied",
-        "results.measurement_probabilities": "not_applicable",
-        "software.framework_versions": "unavailable",
-        "software.provider_client": "unavailable"
-      },
-      "inventory_counts": {
-        "application_captured": 1,
-        "derived": 3,
-        "not_applicable": 4,
-        "provider_supplied": 9,
-        "unavailable": 4
-      },
-      "provider": "quandela",
-      "schema_valid": true,
-      "upstream": {
-        "get_device_details": "ok",
-        "get_result": "ok",
-        "get_status": "ok"
-      }
     }
   ],
   "finding_counts": {
@@ -871,5 +779,6 @@
     "record_not_produced": 3,
     "submitted_program_not_mapped": 9
   },
-  "inventory_version": "0.1.0"
+  "inventory_version": "0.1.0",
+  "scope": "v0.1.0 provenance adapters (Braket, IBM, IonQ) over held-out live captures; frozen, not regenerated after adapter changes"
 }

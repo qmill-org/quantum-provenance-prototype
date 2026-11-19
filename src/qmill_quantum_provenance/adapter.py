@@ -14,12 +14,20 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Any
 
+from .integration import (
+    AccessDeniedError,
+    JobNotFoundError,
+    ProviderIntegrationError,
+    ResultUnavailableError,
+)
 from .models import (
     Artifact,
+    AvailabilityReason,
     Characterization,
     Compilation,
     Device,
     Evidence,
+    EvidenceStatus,
     Execution,
     Job,
     OperationObservation,
@@ -133,7 +141,58 @@ class ProvenanceAdapter(ABC):
         """Retrieve the provider job and map it to provider-independent sections."""
 
 
+_NOT_RUN = {"cancelled", "failed"}
+_PENDING = {"created", "queued", "running"}
+
+
+def reason_for(error: Exception) -> AvailabilityReason:
+    """Availability reason for a failed upstream operation."""
+
+    if isinstance(error, JobNotFoundError):
+        return AvailabilityReason.NOT_FOUND_BY_PROVIDER
+    if isinstance(error, AccessDeniedError):
+        return AvailabilityReason.AUTHENTICATION_SCOPE_INSUFFICIENT
+    return AvailabilityReason.UPSTREAM_REQUEST_FAILED
+
+
+def qualify_missing_results(
+    evidence: list[Evidence], job_status: str, error: ProviderIntegrationError | None
+) -> None:
+    """Replace a generic ``/results`` unavailability with the actual reason.
+
+    A cancelled or failed job has no results to retrieve (``not_applicable``);
+    a job still pending has none yet; otherwise the upstream error decides.
+    """
+
+    if job_status in _NOT_RUN:
+        replacement = Evidence(
+            path="/results",
+            status=EvidenceStatus.NOT_APPLICABLE,
+            notes=f"Job {job_status}; there are no results to retrieve.",
+        )
+    elif job_status in _PENDING or isinstance(error, ResultUnavailableError):
+        replacement = Evidence(
+            path="/results",
+            status=EvidenceStatus.UNAVAILABLE,
+            reason=AvailabilityReason.NOT_EXPOSED_BY_PROVIDER,
+            notes=f"Results not available for a job in state {job_status!r}.",
+        )
+    elif error is not None:
+        replacement = Evidence(
+            path="/results",
+            status=EvidenceStatus.UNAVAILABLE,
+            reason=reason_for(error),
+            notes=str(error)[:200],
+        )
+    else:
+        return
+    evidence[:] = [item for item in evidence if item.path != "/results"]
+    evidence.append(replacement)
+
+
 __all__ = [
+    "reason_for",
+    "qualify_missing_results",
     "SourceProgramInput",
     "ApplicationCompilationContext",
     "ApplicationSoftwareContext",

@@ -21,19 +21,25 @@ from .adapter import (
     ProvenanceAdapter,
     ProvenanceCollectionRequest,
     SourceProgramInput,
+    reason_for,
 )
+from .integration import ProviderIntegrationError
 from .models import (
     Adapter,
     Artifact,
     ArtifactRole,
     Compilation,
     ContentHash,
+    Device,
     Evidence,
     EvidenceStatus,
+    Job,
     MappingEntry,
     OperationObservation,
     ProvenanceRecord,
+    Results,
     SoftwareContext,
+    Warning,
     canonical_job_id,
 )
 from .registry import ProvenanceAdapterRegistry, default_registry
@@ -79,7 +85,10 @@ class ProvenanceService:
             scope=request.scope,
             region=request.region,
         )
-        result = adapter.collect(collection)
+        try:
+            result = adapter.collect(collection)
+        except ProviderIntegrationError as exc:
+            result = self._failed_collection(collection, exc)
         record = self._assemble(canonical, request, adapter, result)
         self._store[canonical] = record
         return record, existing is None
@@ -90,6 +99,36 @@ class ProvenanceService:
         return self._store.get(job_id)
 
     # -- assembly ------------------------------------------------------------
+
+    def _failed_collection(
+        self, collection: ProvenanceCollectionRequest, error: ProviderIntegrationError
+    ) -> AdapterResult:
+        """Partial result when the provider job itself could not be retrieved.
+
+        Application-captured context is still merged by ``_assemble``, so the
+        record keeps what the application knows and states why the rest is
+        missing.
+        """
+
+        reason = reason_for(error)
+        note = f"{type(error).__name__}: {error}"[:300]
+        return AdapterResult(
+            job=Job(
+                canonical_id=collection.canonical_id,
+                provider=collection.provider,
+                external_id=collection.external_job_id,
+                status="unknown",
+            ),
+            device=Device(provider=collection.provider, identifier="unknown"),
+            results=Results(available=False),
+            evidence=[
+                Evidence(path=path, status=EvidenceStatus.UNAVAILABLE, reason=reason, notes=note)
+                for path in ("/job/status", "/device/identifier", "/results")
+            ],
+            warnings=[Warning("upstream_failure", note)],
+            operations=[OperationObservation("adapter", "collect_failed")],
+            retrieved_at=self._clock(),
+        )
 
     def _assemble(
         self,

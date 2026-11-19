@@ -24,8 +24,9 @@ import json
 from datetime import UTC, datetime
 from typing import Any
 
-from ..integration import ProviderAdapter, ResultUnavailableError
+from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    qualify_missing_results,
     AdapterCapabilities,
     AdapterResult,
     ProvenanceAdapter,
@@ -175,15 +176,19 @@ class IBMProvenanceAdapter(ProvenanceAdapter):
                 warnings.append(Warning("device_details_unavailable", str(exc)))
 
         result_data = None
+        result_error: ProviderIntegrationError | None = None
         try:
             result_data = integration.get_result(handle)
             operations.append(OperationObservation("adapter", "get_result"))
-        except ResultUnavailableError as exc:
+        except ProviderIntegrationError as exc:
+            result_error = exc
             warnings.append(Warning("results_unavailable", str(exc)))
 
         job = self._build_job(request, snapshot, evidence)
         device = self._build_device(target, device_details, evidence)
         results = self._build_results(snapshot, result_data, evidence)
+        if not results.available:
+            qualify_missing_results(evidence, job.status, result_error)
         self._build_compiled_artifact(result_data, artifacts, evidence)
         self._build_provider_native_artifact(snapshot, artifacts, evidence)
         execution = self._build_execution(snapshot, evidence)

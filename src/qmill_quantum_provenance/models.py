@@ -40,6 +40,7 @@ class AvailabilityReason(str, Enum):
     NOT_CAPTURED_BY_APPLICATION = "not_captured_by_application"
     AUTHENTICATION_SCOPE_INSUFFICIENT = "authentication_scope_insufficient"
     UPSTREAM_REQUEST_FAILED = "upstream_request_failed"
+    NOT_FOUND_BY_PROVIDER = "not_found_by_provider"
     INSUFFICIENT_SOURCE_DATA = "insufficient_source_data"
     DISCARDED_BY_RETENTION_POLICY = "discarded_by_retention_policy"
     EXPIRED_PROVIDER_ARTIFACT = "expired_provider_artifact"

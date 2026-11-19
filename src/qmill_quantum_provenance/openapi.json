@@ -145,6 +145,7 @@
                     "not_captured_by_application",
                     "authentication_scope_insufficient",
                     "upstream_request_failed",
+                    "not_found_by_provider",
                     "insufficient_source_data",
                     "discarded_by_retention_policy",
                     "expired_provider_artifact",
