@@ -44,7 +44,7 @@ class ProvenanceAdapterRegistry:
 
 
 def default_registry() -> ProvenanceAdapterRegistry:
-    """Registry with the providers implemented so far (Braket, IBM, IonQ)."""
+    """Registry with the providers implemented so far (Braket, IBM, IonQ, Quandela)."""
 
     registry = ProvenanceAdapterRegistry()
 
@@ -65,7 +65,14 @@ def default_registry() -> ProvenanceAdapterRegistry:
 
     registry.register("braket", _braket)
     registry.register("ibm", _ibm)
+
+    def _quandela() -> ProvenanceAdapter:
+        from .adapters.quandela import QuandelaProvenanceAdapter
+
+        return QuandelaProvenanceAdapter()
+
     registry.register("ionq", _ionq)
+    registry.register("quandela", _quandela)
     return registry
 
 

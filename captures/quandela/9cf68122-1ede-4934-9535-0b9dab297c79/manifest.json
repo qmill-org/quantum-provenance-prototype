@@ -1,0 +1,28 @@
+{
+  "capture_tool_revision": "5d4b3d6960f5e7ad8bf52c3b1b8b1017a0032e17",
+  "captured_at": "2026-11-19T08:56:53.203124+00:00",
+  "external_job_id": "sim:belenos/9cf68122-1ede-4934-9535-0b9dab297c79",
+  "notes": {
+    "compiled_program_origin": "provider_compiled_artifact",
+    "measurement_counts_origin": "observed_samples_fock_states",
+    "platform_source": "application_reference"
+  },
+  "operations": [
+    {
+      "at": "2026-11-19T08:56:50.352154+00:00",
+      "operation": "get_status",
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-11-19T08:56:51.172715+00:00",
+      "operation": "get_device_details",
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-11-19T08:56:51.871023+00:00",
+      "operation": "get_result",
+      "outcome": "ok"
+    }
+  ],
+  "provider": "quandela"
+}

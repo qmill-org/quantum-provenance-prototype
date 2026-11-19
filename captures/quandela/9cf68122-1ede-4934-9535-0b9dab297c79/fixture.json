@@ -1,0 +1,111 @@
+{
+  "device": {
+    "calibration": null,
+    "metadata": {
+      "provider": "Quandela"
+    },
+    "name": "Belenos simulator",
+    "provider": "quandela",
+    "provider_properties": {
+      "available_commands": [
+        "probs",
+        "samples",
+        "sample_count",
+        "entropy"
+      ],
+      "connected_input_modes": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        9,
+        12,
+        13,
+        16,
+        18,
+        20,
+        22
+      ],
+      "constraints": {
+        "max_mode_count": 24,
+        "max_photon_count": 12,
+        "max_sample_count": null,
+        "min_mode_count": 1,
+        "min_photon_count": 1,
+        "support_multi_photon": false
+      },
+      "detector": "threshold",
+      "known_mitigations": [
+        "PhotonRecycling",
+        "CompilationAveraging",
+        "DistinguishablePhoton",
+        "DetectorBalancing"
+      ],
+      "pcvl_version": "1.3.0",
+      "software_versions": {
+        "exqalibur": "1.4.2",
+        "hardware-core": "3.9.3",
+        "mosaiq-belenos": "2.9.1",
+        "pcvl-worker": "2.1.1",
+        "perceval-quandela": "1.3.0",
+        "universalchipworker": "2.1.0"
+      }
+    },
+    "provider_target_id": "sim:belenos",
+    "status": "available",
+    "target_id": "sim:belenos",
+    "type": "simulator"
+  },
+  "external_job_id": "sim:belenos/9cf68122-1ede-4934-9535-0b9dab297c79",
+  "provider": "quandela",
+  "region": null,
+  "result": {
+    "compiled_circuit": "<program redacted sha256=cec0f93f8b2b9732f2635e54d7e6344a495749b050ed7f29808a37800b5b7134 bytes=16334>",
+    "compiled_circuit_metrics": {
+      "modes": 24
+    },
+    "measurement_counts": {
+      "|0,0,0,2>": 161,
+      "|0,0,1,1>": 62,
+      "|0,0,2,0>": 7,
+      "|0,1,0,1>": 379,
+      "|0,1,1,0>": 52,
+      "|0,2,0,0>": 147,
+      "|1,0,0,1>": 99,
+      "|1,0,1,0>": 11,
+      "|1,1,0,0>": 67,
+      "|2,0,0,0>": 15
+    },
+    "raw_payload": {
+      "computed_experiment_modes": 24,
+      "duration": 15,
+      "global_perf": 0.003618017087671912,
+      "intermediate_results": [],
+      "logical_perf": 0.9999986512139818,
+      "physical_perf": 0.003618021967609356,
+      "results_type": null,
+      "shots": 32686
+    },
+    "status": "completed"
+  },
+  "snapshot": {
+    "created_at": "2026-11-19T08:53:52.521082+00:00",
+    "ended_at": null,
+    "metadata": {
+      "creation_datetime": 1795078432.521082,
+      "duration": 15,
+      "failure_code": null,
+      "progress": 1.0,
+      "shots": 32686,
+      "start_time": 1795078436.668974,
+      "status_message": null
+    },
+    "provider": "quandela",
+    "provider_job_id": "sim:belenos/9cf68122-1ede-4934-9535-0b9dab297c79",
+    "provider_target_id": "sim:belenos",
+    "shots": 32686,
+    "status": "completed",
+    "target_id": "sim:belenos"
+  }
+}

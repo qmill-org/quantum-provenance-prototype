@@ -35,6 +35,7 @@ _INTEGRATIONS = {
     "braket": "qmill_quantum_provenance.live.braket:LiveBraketIntegration",
     "ibm": "qmill_quantum_provenance.live.ibm:LiveIBMIntegration",
     "ionq": "qmill_quantum_provenance.live.ionq:LiveIonQIntegration",
+    "quandela": "qmill_quantum_provenance.live.quandela:LiveQuandelaIntegration",
 }
 
 

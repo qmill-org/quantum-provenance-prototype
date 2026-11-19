@@ -35,6 +35,7 @@ from .adapter import (
 from .adapters.braket import BraketProvenanceAdapter
 from .adapters.ibm import IBMProvenanceAdapter
 from .adapters.ionq import IonQProvenanceAdapter
+from .adapters.quandela import QuandelaProvenanceAdapter
 from .contract import load_contract, validate_record
 from .models import SCHEMA_VERSION
 from .registry import ProvenanceAdapterRegistry
@@ -50,6 +51,7 @@ _ADAPTER_BUILDERS: dict[str, Callable[[ReplayIntegrationAdapter], ProvenanceAdap
     "braket": lambda replay: BraketProvenanceAdapter(replay),
     "ibm": lambda replay: IBMProvenanceAdapter(replay),
     "ionq": lambda replay: IonQProvenanceAdapter(replay),
+    "quandela": lambda replay: QuandelaProvenanceAdapter(replay),
 }
 
 # provider -> adapter source file (for LOC accounting)
@@ -57,6 +59,7 @@ _ADAPTER_SOURCES: dict[str, str] = {
     "braket": "adapters/braket.py",
     "ibm": "adapters/ibm.py",
     "ionq": "adapters/ionq.py",
+    "quandela": "adapters/quandela.py",
 }
 
 # shared, provider-independent provenance implementation modules
