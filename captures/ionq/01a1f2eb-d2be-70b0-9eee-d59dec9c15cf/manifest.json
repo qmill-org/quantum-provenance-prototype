@@ -1,0 +1,25 @@
+{
+  "capture_tool_revision": "83b37e0a36d2ebfef6e8fe1add5cbf9974f618e8",
+  "captured_at": "2026-11-19T08:30:12.620004+00:00",
+  "external_job_id": "01a1f2eb-d2be-70b0-9eee-d59dec9c15cf",
+  "notes": {},
+  "operations": [
+    {
+      "at": "2026-11-19T08:30:11.996021+00:00",
+      "operation": "get_status",
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-11-19T08:30:12.291773+00:00",
+      "operation": "get_device_details",
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-11-19T08:30:12.619984+00:00",
+      "message": "Job is failed: {'code': 'CompilationError', 'message': 'Circuit failed to compile: Syntax error: line 5:7'}",
+      "operation": "get_result",
+      "outcome": "ResultUnavailableError"
+    }
+  ],
+  "provider": "ionq"
+}

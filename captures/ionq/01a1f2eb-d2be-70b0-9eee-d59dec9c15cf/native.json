@@ -1,0 +1,79 @@
+{
+  "backend": {
+    "average_queue_time": 0,
+    "backend": "simulator",
+    "degraded": false,
+    "last_updated": "2026-11-19T08:30:12Z",
+    "noise_models": [
+      "aria-1",
+      "aria-2",
+      "forte-1",
+      "forte-enterprise-1",
+      "ideal"
+    ],
+    "qubits": 29,
+    "status": "available",
+    "supported_error_mitigations": [
+      "Debias",
+      "Sharpen"
+    ],
+    "supported_gates": [
+      "x",
+      "y",
+      "z",
+      "h",
+      "s",
+      "si",
+      "t",
+      "ti",
+      "v",
+      "vi",
+      "rx",
+      "ry",
+      "rz",
+      "cnot",
+      "swap",
+      "xx",
+      "yy",
+      "zz",
+      "not"
+    ],
+    "supported_native_gates": [
+      "gpi",
+      "gpi2",
+      "zz"
+    ]
+  },
+  "job": {
+    "backend": "simulator",
+    "child_job_ids": null,
+    "completed_at": null,
+    "cost_model": "2QGE_operations",
+    "dry_run": false,
+    "execution_duration_ms": null,
+    "failure": {
+      "code": "CompilationError",
+      "message": "Circuit failed to compile: Syntax error: line 5:7"
+    },
+    "id": "01a1f2eb-d2be-70b0-9eee-d59dec9c15cf",
+    "metadata": null,
+    "name": "e5-ionq-invalid-gate",
+    "noise": {
+      "model": "ideal"
+    },
+    "output": {},
+    "parent_job_id": null,
+    "predicted_execution_duration_ms": null,
+    "predicted_wait_time_ms": null,
+    "project_id": "d28772a8-1b94-424d-a48d-e83d3fc33943",
+    "results": null,
+    "session_id": null,
+    "settings": {},
+    "started_at": null,
+    "stats": {},
+    "status": "failed",
+    "submitted_at": "2026-11-19T08:28:23.617Z",
+    "submitter_id": "129a6513-e1fd-4acc-88a0-274d24b29955",
+    "type": "ionq.circuit.v1"
+  }
+}

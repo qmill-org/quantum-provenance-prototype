@@ -1,0 +1,27 @@
+{
+  "capture_tool_revision": "83b37e0a36d2ebfef6e8fe1add5cbf9974f618e8",
+  "captured_at": "2026-11-19T08:30:11.988394+00:00",
+  "external_job_id": "01a1f2eb-d155-7632-bc4e-f340de096f01",
+  "notes": {
+    "compiled_program_origin": "provider_compiled_artifact",
+    "measurement_counts_origin": "none_provider_returns_probabilities"
+  },
+  "operations": [
+    {
+      "at": "2026-11-19T08:30:10.774090+00:00",
+      "operation": "get_status",
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-11-19T08:30:11.066536+00:00",
+      "operation": "get_device_details",
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-11-19T08:30:11.349328+00:00",
+      "operation": "get_result",
+      "outcome": "ok"
+    }
+  ],
+  "provider": "ionq"
+}

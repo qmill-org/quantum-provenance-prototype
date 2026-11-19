@@ -1,0 +1,77 @@
+{
+  "device": {
+    "calibration": null,
+    "metadata": {
+      "current_characterization_id": null,
+      "provider": "IonQ"
+    },
+    "name": "simulator",
+    "provider": "ionq",
+    "provider_properties": {
+      "qubits": 29
+    },
+    "provider_target_id": "simulator",
+    "status": "available",
+    "target_id": "simulator",
+    "type": "SIMULATOR"
+  },
+  "external_job_id": "01a1f2eb-cee6-715d-b36e-478c679f0819",
+  "provider": "ionq",
+  "region": null,
+  "result": {
+    "compiled_circuit": "<program redacted sha256=91eea5f778ec0f31f4f39322f50c2ad060baf5e2c0e2938b82e9a972426096f5 bytes=174>",
+    "compiled_circuit_metrics": {
+      "circuits": 1,
+      "gate_counts": {
+        "1q": 1,
+        "2q": 1
+      },
+      "kwh": 0,
+      "qubits": 2
+    },
+    "measurement_counts": {},
+    "raw_payload": {
+      "histogram": {
+        "0": 0.5,
+        "3": 0.5
+      },
+      "qubits": 2
+    },
+    "status": "completed"
+  },
+  "snapshot": {
+    "created_at": "2026-11-19T08:28:22.632Z",
+    "ended_at": "2026-11-19T08:29:30.310Z",
+    "metadata": {
+      "child_job_ids": null,
+      "dry_run": false,
+      "execution_duration_ms": 0,
+      "failure": null,
+      "name": "e2-ionq-sim-bell2",
+      "noise": {
+        "model": "ideal"
+      },
+      "parent_job_id": null,
+      "predicted_execution_duration_ms": null,
+      "predicted_wait_time_ms": null,
+      "session_id": null,
+      "settings": {},
+      "stats": {
+        "circuits": 1,
+        "gate_counts": {
+          "1q": 1,
+          "2q": 1
+        },
+        "kwh": 0,
+        "qubits": 2
+      },
+      "type": "ionq.circuit.v1"
+    },
+    "provider": "ionq",
+    "provider_job_id": "01a1f2eb-cee6-715d-b36e-478c679f0819",
+    "provider_target_id": "simulator",
+    "shots": null,
+    "status": "completed",
+    "target_id": "simulator"
+  }
+}

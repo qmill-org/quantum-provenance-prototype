@@ -1,0 +1,92 @@
+{
+  "device": {
+    "calibration": null,
+    "metadata": {
+      "current_characterization_id": null,
+      "provider": "IonQ"
+    },
+    "name": "simulator",
+    "provider": "ionq",
+    "provider_properties": {
+      "qubits": 29
+    },
+    "provider_target_id": "simulator",
+    "status": "available",
+    "target_id": "simulator",
+    "type": "SIMULATOR"
+  },
+  "external_job_id": "01a1f2eb-d155-7632-bc4e-f340de096f01",
+  "provider": "ionq",
+  "region": null,
+  "result": {
+    "compiled_circuit": "<program redacted sha256=5dce4e4158931759b10bf552fa46f35f9f05fb24220a67da1c03bb63356d5a52 bytes=327>",
+    "compiled_circuit_metrics": {
+      "circuits": 1,
+      "gate_counts": {
+        "1q": 1,
+        "2q": 4
+      },
+      "kwh": 0,
+      "qubits": 5
+    },
+    "measurement_counts": {},
+    "raw_payload": {
+      "histogram": {
+        "0": 0.467,
+        "1": 0.005,
+        "15": 0.002,
+        "16": 0.001,
+        "22": 0.001,
+        "23": 0.001,
+        "24": 0.003,
+        "27": 0.004,
+        "28": 0.003,
+        "29": 0.003,
+        "3": 0.006,
+        "30": 0.008,
+        "31": 0.483,
+        "4": 0.005,
+        "7": 0.007,
+        "8": 0.001
+      },
+      "qubits": 5
+    },
+    "status": "completed"
+  },
+  "snapshot": {
+    "created_at": "2026-11-19T08:28:23.256Z",
+    "ended_at": "2026-11-19T08:29:29.408Z",
+    "metadata": {
+      "child_job_ids": null,
+      "dry_run": false,
+      "execution_duration_ms": 0,
+      "failure": null,
+      "name": "e2-ionq-noisy-forte1-ghz5",
+      "noise": {
+        "model": "forte-1",
+        "seed": 1709821538
+      },
+      "parent_job_id": null,
+      "predicted_execution_duration_ms": null,
+      "predicted_wait_time_ms": null,
+      "session_id": null,
+      "settings": {},
+      "stats": {
+        "circuits": 1,
+        "gate_counts": {
+          "1q": 1,
+          "2q": 4
+        },
+        "kwh": 0,
+        "qubits": 5
+      },
+      "type": "ionq.circuit.v1"
+    },
+    "provider": "ionq",
+    "provider_job_id": "01a1f2eb-d155-7632-bc4e-f340de096f01",
+    "provider_target_id": "simulator",
+    "shots": 1000,
+    "status": "completed",
+    "target_id": "simulator"
+  }
+}

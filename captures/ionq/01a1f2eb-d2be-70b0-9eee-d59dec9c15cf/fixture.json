@@ -1,0 +1,57 @@
+{
+  "device": {
+    "calibration": null,
+    "metadata": {
+      "current_characterization_id": null,
+      "provider": "IonQ"
+    },
+    "name": "simulator",
+    "provider": "ionq",
+    "provider_properties": {
+      "qubits": 29
+    },
+    "provider_target_id": "simulator",
+    "status": "available",
+    "target_id": "simulator",
+    "type": "SIMULATOR"
+  },
+  "external_job_id": "01a1f2eb-d2be-70b0-9eee-d59dec9c15cf",
+  "provider": "ionq",
+  "region": null,
+  "snapshot": {
+    "created_at": "2026-11-19T08:28:23.617Z",
+    "ended_at": null,
+    "metadata": {
+      "child_job_ids": null,
+      "dry_run": false,
+      "execution_duration_ms": null,
+      "failure": {
+        "code": "CompilationError",
+        "message": "Circuit failed to compile: Syntax error: line 5:7"
+      },
+      "name": "e5-ionq-invalid-gate",
+      "noise": {
+        "model": "ideal"
+      },
+      "parent_job_id": null,
+      "predicted_execution_duration_ms": null,
+      "predicted_wait_time_ms": null,
+      "session_id": null,
+      "settings": {},
+      "stats": {},
+      "type": "ionq.circuit.v1"
+    },
+    "provider": "ionq",
+    "provider_job_id": "01a1f2eb-d2be-70b0-9eee-d59dec9c15cf",
+    "provider_target_id": "simulator",
+    "shots": null,
+    "status": "failed",
+    "target_id": "simulator"
+  },
+  "upstream_errors": {
+    "get_result": {
+      "error": "ResultUnavailableError",
+      "message": "Job is failed: {'code': 'CompilationError', 'message': 'Circuit failed to compile: Syntax error: line 5:7'}"
+    }
+  }
+}

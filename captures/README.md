@@ -132,3 +132,38 @@ labels only `nearest_available`.
   says `results.available = false` with reason `upstream_request_failed`, and
   reports `shots = 64` (shots per twirling randomization recorded by the
   executor) instead of the 1000 the application requested.
+
+## IonQ direct API v0.4 (captured 2026-11-19)
+
+Three purpose-run jobs on the free IonQ cloud simulator, submitted with
+[`scripts/run_ionq_jobs.py`](../scripts/run_ionq_jobs.py)
+([`runs/ledger-ionq.jsonl`](../runs/ledger-ionq.jsonl)): Bell-2 on the ideal
+simulator, GHZ-5 with the `forte-1` noise model, and a job with a deliberately
+invalid gate. The application converts the shared OpenQASM programs to
+`ionq.circuit.v1` JSON before submission. Characterization retrieval was also
+exercised read-only against `qpu.forte-1`.
+
+The direct path keeps result semantics right where the Braket path does not
+(F3): probabilities are `provider_supplied`, estimated counts `derived`, and
+observed counts `not_applicable`. IonQ retains provider-compiled circuits as
+job artifacts (`ionq.native.v1`, `ionq.qasm3.v1`), and its v0.4 job resource
+carries `session_id`, `parent_job_id` and `child_job_ids` — native multi-job
+lineage (cf. F10). The invalid gate was accepted (HTTP 201), stayed
+`submitted` for minutes, then failed with `CompilationError`; the record has
+status `failed` and the reason only inside a free-text warning.
+
+### Findings
+
+- **F12 Silent degradation after a field rename.** API v0.4 reports
+  `execution_duration_ms`; the `v0.1.0` adapter reads the v0.3 name
+  `execution_time_ms` and reports the run duration as `unavailable` without
+  any warning. The record stays schema-valid, so the break is visible only by
+  comparing against the provider response. Likewise, v0.4 jobs no longer carry
+  the `characterization_id` the `v0.1.0` fixture used for the
+  `provider_linked` association; the backend exposes only its current
+  characterization, and history must be matched by date (`end=` query, daily
+  snapshots dated 00:00 UTC).
+- **F13 Simulation provenance has no place in the record.** The noisy job's
+  noise model (`forte-1`) and seed are recorded by IonQ but the contract has
+  no field for them, so the record shows a plain `simulator` run; the ideal
+  simulator job records `shots = null` although 1000 were requested.
