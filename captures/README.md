@@ -43,7 +43,7 @@ The three tasks belong to the publicly archived realization-divergence
 campaign (183 tasks, 14–18 August 2026; Zenodo 10.5281/zenodo.22471564).
 
 Validation of the `v0.1.0` adapters:
-[`braket-validation-v0.1.0-adapters.json`](braket-validation-v0.1.0-adapters.json).
+[`validation-v0.1.0-adapters.json`](validation-v0.1.0-adapters.json) (all providers).
 
 ### Findings
 
