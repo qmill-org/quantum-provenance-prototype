@@ -99,15 +99,15 @@ def test_service_document_timestamp_is_not_a_characterization_timestamp() -> Non
             "service": {"updatedAt": "2026-11-15T00:00:00+00:00"},
             "standardized": {
                 "oneQubitProperties": {
-                    "0": {"T1": {"value": 2e-5}, "oneQubitFidelity": []},
-                    "1": {"T1": {"value": 4e-5}, "oneQubitFidelity": []},
+                    "0": {"T1": {"value": 2e-5, "unit": "S"}, "oneQubitFidelity": []},
+                    "1": {"T1": {"value": 4e-5, "unit": "S"}, "oneQubitFidelity": []},
                 }
             },
         }
     )
     assert summary["captured_at"] is None
     assert summary["service_updated_at"] == "2026-11-15T00:00:00+00:00"
-    assert summary["metrics"]["standardized.T1.mean_over_qubits"] == pytest.approx(3e-5)
+    assert summary["metrics"]["standardized.T1[S].median_over_qubits"] == pytest.approx(3e-5)
 
 
 def test_sanitize_masks_account_ids_secrets_and_program_text() -> None:

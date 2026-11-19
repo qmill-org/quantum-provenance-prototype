@@ -31,7 +31,10 @@ from typing import Any
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from .sanitize import sanitize
 
-_INTEGRATIONS = {"braket": "qmill_quantum_provenance.live.braket:LiveBraketIntegration"}
+_INTEGRATIONS = {
+    "braket": "qmill_quantum_provenance.live.braket:LiveBraketIntegration",
+    "ibm": "qmill_quantum_provenance.live.ibm:LiveIBMIntegration",
+}
 
 
 def _integration(provider: str) -> ProviderAdapter:

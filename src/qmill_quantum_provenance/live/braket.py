@@ -15,16 +15,17 @@ Braket SDK-based integration hands to an application:
 * ``calibration_data.captured_at`` is taken only from
   ``standardized.updatedAt``. The service-document ``service.updatedAt`` is not
   a characterization timestamp and is recorded separately.
-* Per-qubit standardized properties are summarized as means over qubits or
-  pairs, named ``...mean_over_qubits`` / ``...mean_over_pairs``; the full
-  standardized block is kept under ``calibration_data.standardized``.
+* Per-qubit standardized properties are summarized as medians over qubits or
+  pairs (``...median_over_qubits`` / ``...median_over_pairs``, provider unit in
+  brackets); the full standardized block is kept under
+  ``calibration_data.standardized``.
 """
 
 from __future__ import annotations
 
 import json
 from collections import Counter
-from statistics import fmean
+from statistics import median
 from typing import Any
 
 from ..integration import (
@@ -104,16 +105,19 @@ def summarize_calibration(capabilities: dict[str, Any]) -> dict[str, Any] | None
         series: dict[str, list[float]] = {}
         for props in one_qubit.values():
             for name in ("T1", "T2"):
-                value = (props.get(name) or {}).get("value")
-                if isinstance(value, (int, float)):
-                    series.setdefault(f"standardized.{name}", []).append(float(value))
+                entry = props.get(name) or {}
+                if isinstance(entry.get("value"), (int, float)):
+                    unit = f"[{entry['unit']}]" if entry.get("unit") else ""
+                    series.setdefault(f"standardized.{name}{unit}", []).append(
+                        float(entry["value"])
+                    )
             for entry in props.get("oneQubitFidelity") or []:
                 kind = (entry.get("fidelityType") or {}).get("name", "UNKNOWN")
                 if isinstance(entry.get("fidelity"), (int, float)):
                     series.setdefault(f"standardized.oneQubitFidelity.{kind}", []).append(
                         float(entry["fidelity"])
                     )
-        metrics.update({f"{k}.mean_over_qubits": fmean(v) for k, v in series.items()})
+        metrics.update({f"{k}.median_over_qubits": median(v) for k, v in series.items()})
 
     two_qubit = standardized.get("twoQubitProperties") or {}
     if two_qubit:
@@ -126,7 +130,7 @@ def summarize_calibration(capabilities: dict[str, Any]) -> dict[str, Any] | None
                     series.setdefault(
                         f"standardized.twoQubitGateFidelity.{gate}.{kind}", []
                     ).append(float(entry["fidelity"]))
-        metrics.update({f"{k}.mean_over_pairs": fmean(v) for k, v in series.items()})
+        metrics.update({f"{k}.median_over_pairs": median(v) for k, v in series.items()})
 
     for key, value in standardized.items():
         if isinstance(value, dict) and isinstance(value.get("value"), (int, float)):

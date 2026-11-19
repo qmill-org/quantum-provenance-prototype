@@ -18,7 +18,10 @@ recorded independently in the capture (``native.json`` / ``manifest.json``):
   ended (reported with the gap, whatever association the record claims);
 * ``record_not_produced`` -- the service raised instead of returning a record;
 * ``submitted_program_not_mapped`` -- the provider retains the submitted
-  program but the record carries no ``submitted`` artifact.
+  program but the record carries no ``submitted`` artifact;
+* ``application_compiled_attributed_to_provider`` -- the compiled program was
+  produced by the application (and only returned by the provider) but the
+  record attributes it to the provider.
 """
 
 from __future__ import annotations
@@ -72,6 +75,19 @@ def check_claims(payload: dict[str, Any], manifest: dict[str, Any]) -> list[dict
         )
 
     roles = {artifact.get("role") for artifact in payload.get("artifacts") or []}
+    if notes.get("compiled_program_origin") == "application_compiled_job_input":
+        for index, artifact in enumerate(payload.get("artifacts") or []):
+            status = evidence.get(f"/artifacts/{index}")
+            if artifact.get("role") == "compiled" and status in {
+                "provider_supplied",
+                "provider_passthrough",
+            }:
+                findings.append(
+                    {
+                        "check": "application_compiled_attributed_to_provider",
+                        "detail": f"compiled artifact produced by the application; record status {status}",
+                    }
+                )
     if notes.get("submitted_program_available") and "submitted" not in roles:
         findings.append(
             {
