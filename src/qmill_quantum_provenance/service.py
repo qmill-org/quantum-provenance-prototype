@@ -10,6 +10,7 @@ application-captured context, operation accounting) over an
 
 from __future__ import annotations
 
+import dataclasses
 from collections.abc import Callable
 from datetime import UTC, datetime
 
@@ -34,6 +35,7 @@ from .models import (
     Evidence,
     EvidenceStatus,
     Job,
+    JobRelations,
     MappingEntry,
     OperationObservation,
     ProvenanceRecord,
@@ -146,6 +148,7 @@ class ProvenanceService:
             result.compilation, request.compilation_context, evidence
         )
         software = self._merge_software(result.software, request.software_context, evidence)
+        job = self._apply_experiment_id(result.job, request.experiment_id, evidence)
 
         operations = list(result.operations)
         operations.append(OperationObservation(actor="qmill", operation="create_provenance_record"))
@@ -159,7 +162,7 @@ class ProvenanceService:
                 name=getattr(adapter, "name", type(adapter).__name__),
                 version=getattr(adapter, "version", "0.1.0-prototype"),
             ),
-            job=result.job,
+            job=job,
             device=result.device,
             results=result.results,
             artifacts=artifacts,
@@ -172,6 +175,23 @@ class ProvenanceService:
             software=software,
             extensions=dict(result.extensions) or None,
         )
+
+    def _apply_experiment_id(
+        self, job: Job, experiment_id: str | None, evidence: list[Evidence]
+    ) -> Job:
+        if not experiment_id:
+            return job
+        relations = dataclasses.replace(
+            job.relations or JobRelations(), experiment_id=experiment_id
+        )
+        evidence.append(
+            Evidence(
+                path="/job/relations/experiment_id",
+                status=EvidenceStatus.APPLICATION_CAPTURED,
+                notes="Logical experiment identifier supplied by the submitting application.",
+            )
+        )
+        return dataclasses.replace(job, relations=relations)
 
     def _apply_source_program(
         self,

@@ -15,6 +15,8 @@ from typing import Any
 
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    failure_with_evidence,
+    relations_with_evidence,
     characterization_applies,
     delta_seconds,
     RESULT_REPRESENTATIONS,
@@ -27,6 +29,7 @@ from ..adapter import (
     ProvenanceCollectionRequest,
 )
 from ..models import (
+    JobRelations,
     Artifact,
     ArtifactRole,
     AvailabilityReason,
@@ -232,6 +235,20 @@ class BraketProvenanceAdapter(ProvenanceAdapter):
         _record_timestamp_evidence(
             snapshot, evidence, "AwsQuantumTask.metadata() createdAt/endedAt"
         )
+        metadata = snapshot.metadata or {}
+        relations = relations_with_evidence(
+            evidence,
+            # Only a raw GetQuantumTask response defines the optional jobArn field.
+            exposed="quantumTaskArn" in metadata,
+            provider_field="GetQuantumTask.jobArn",
+            relations=JobRelations(parent_job_id=metadata.get("jobArn")),
+        )
+        failure = failure_with_evidence(
+            evidence,
+            status,
+            provider_field="GetQuantumTask.failureReason",
+            message=metadata.get("failureReason"),
+        )
         return Job(
             canonical_id=request.canonical_id,
             provider="braket",
@@ -240,6 +257,8 @@ class BraketProvenanceAdapter(ProvenanceAdapter):
             created_at=snapshot.created_at,
             ended_at=snapshot.ended_at,
             shots=snapshot.shots,
+            relations=relations,
+            failure=failure,
         )
 
     def _build_device(self, target, device_details, evidence: list[Evidence]) -> Device:

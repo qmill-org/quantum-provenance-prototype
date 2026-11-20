@@ -30,6 +30,8 @@ from typing import Any
 
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    failure_with_evidence,
+    relations_with_evidence,
     characterization_applies,
     delta_seconds,
     RESULT_REPRESENTATIONS,
@@ -41,6 +43,7 @@ from ..adapter import (
     ProvenanceCollectionRequest,
 )
 from ..models import (
+    JobRelations,
     Artifact,
     ArtifactRole,
     AvailabilityReason,
@@ -269,6 +272,27 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
                 )
             )
         _record_timestamp_evidence(snapshot, evidence, "ionq.jobs.get() request/response times")
+        metadata = snapshot.metadata or {}
+        failure_info = metadata.get("failure") or {}
+        if not isinstance(failure_info, dict):
+            failure_info = {"message": failure_info}
+        relations = relations_with_evidence(
+            evidence,
+            exposed=any(k in metadata for k in ("session_id", "parent_job_id", "child_job_ids")),
+            provider_field="v0.4 job session_id / parent_job_id / child_job_ids",
+            relations=JobRelations(
+                session_id=metadata.get("session_id"),
+                parent_job_id=metadata.get("parent_job_id"),
+                child_job_ids=list(metadata.get("child_job_ids") or []) or None,
+            ),
+        )
+        failure = failure_with_evidence(
+            evidence,
+            status,
+            provider_field="job failure.code / failure.message",
+            code=failure_info.get("code"),
+            message=failure_info.get("message") or failure_info.get("error"),
+        )
         return Job(
             canonical_id=request.canonical_id,
             provider="ionq",
@@ -277,6 +301,8 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
             created_at=snapshot.created_at,
             ended_at=snapshot.ended_at,
             shots=snapshot.shots,
+            relations=relations,
+            failure=failure,
         )
 
     def _build_device(self, target, device_details, evidence: list[Evidence]) -> Device:

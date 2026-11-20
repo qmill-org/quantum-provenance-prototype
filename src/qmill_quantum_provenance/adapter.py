@@ -30,6 +30,8 @@ from .models import (
     EvidenceStatus,
     Execution,
     Job,
+    JobFailure,
+    JobRelations,
     OperationObservation,
     Results,
     SoftwareContext,
@@ -77,6 +79,7 @@ class CreateProvenanceRecordRequest:
     source_program: SourceProgramInput | None = None
     compilation_context: ApplicationCompilationContext | None = None
     software_context: ApplicationSoftwareContext | None = None
+    experiment_id: str | None = None
 
 
 @dataclass(frozen=True)
@@ -233,8 +236,99 @@ def delta_seconds(captured_at: datetime | None, job_created_at: datetime | None)
     return round((captured_at - job_created_at).total_seconds(), 3)
 
 
+def relations_with_evidence(
+    evidence: list[Evidence],
+    *,
+    exposed: bool,
+    provider_field: str,
+    relations: JobRelations | None = None,
+    notes: str | None = None,
+) -> JobRelations | None:
+    """Record job-relation evidence and return the relations to emit.
+
+    ``exposed`` says whether the provider has relation fields at all. A provider
+    that exposes them but reports none for this job describes a standalone job
+    (``not_applicable``); a provider without such fields leaves the relation
+    unknown (``unavailable``).
+    """
+
+    if relations is not None and not relations.is_empty():
+        evidence.append(
+            Evidence(
+                path="/job/relations",
+                status=EvidenceStatus.PROVIDER_SUPPLIED,
+                provider_field=provider_field,
+                notes=notes,
+            )
+        )
+        return relations
+    if exposed:
+        evidence.append(
+            Evidence(
+                path="/job/relations",
+                status=EvidenceStatus.NOT_APPLICABLE,
+                provider_field=provider_field,
+                notes=notes
+                or "Provider reports no session, batch or parent/child job; standalone job.",
+            )
+        )
+    else:
+        evidence.append(
+            Evidence(
+                path="/job/relations",
+                status=EvidenceStatus.UNAVAILABLE,
+                reason=AvailabilityReason.NOT_EXPOSED_BY_PROVIDER,
+                notes=notes or "Provider job record has no session, batch or parent/child field.",
+            )
+        )
+    return None
+
+
+def failure_with_evidence(
+    evidence: list[Evidence],
+    job_status: str,
+    *,
+    provider_field: str,
+    code: Any = None,
+    message: Any = None,
+) -> JobFailure | None:
+    """Record failure evidence; a failure applies only to a failed job."""
+
+    if job_status != "failed":
+        evidence.append(
+            Evidence(
+                path="/job/failure",
+                status=EvidenceStatus.NOT_APPLICABLE,
+                notes=f"Job {job_status}; no failure to report.",
+            )
+        )
+        return None
+    if code or message:
+        evidence.append(
+            Evidence(
+                path="/job/failure",
+                status=EvidenceStatus.PROVIDER_SUPPLIED,
+                provider_field=provider_field,
+            )
+        )
+        return JobFailure(
+            code=str(code) if code else None, message=str(message) if message else None
+        )
+    evidence.append(
+        Evidence(
+            path="/job/failure",
+            status=EvidenceStatus.UNAVAILABLE,
+            reason=AvailabilityReason.NOT_EXPOSED_BY_PROVIDER,
+            notes="Job failed; provider gave no failure code or message.",
+        )
+    )
+    return None
+
+
 __all__ = [
     "characterization_applies",
+    "failure_with_evidence",
+    "relations_with_evidence",
     "delta_seconds",
     "RESULT_REPRESENTATIONS",
     "mark_not_applicable",

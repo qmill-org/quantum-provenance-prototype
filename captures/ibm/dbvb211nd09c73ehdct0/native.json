@@ -110,5 +110,51 @@
       }
     },
     "shots": 1000
+  },
+  "session": {
+    "accepting_jobs": false,
+    "activated_at": "2026-11-19T08:19:21.392Z",
+    "active_ttl": 7200,
+    "backend_name": "ibm_aachen",
+    "closed_at": "2026-11-19T08:19:48.566Z",
+    "elapsed_time": 6,
+    "id": "6af94c4e-9fd8-435f-b39e-8ff7da263275",
+    "interactive_ttl": 1,
+    "last_job_completed": "2026-11-19T08:19:48.566Z",
+    "last_job_started": "2026-11-19T08:19:41.164Z",
+    "max_ttl": 28800,
+    "mode": "batch",
+    "started_at": "2026-11-19T08:19:21.392Z",
+    "state": "closed",
+    "state_reason": "session_closed_early",
+    "timestamps": [
+      {
+        "status": "open",
+        "timestamp": "2026-11-19T08:19:15.143Z"
+      },
+      {
+        "status": "active",
+        "timestamp": "2026-11-19T08:19:21.392Z"
+      },
+      {
+        "status": "closed",
+        "timestamp": "2026-11-19T08:19:48.566Z"
+      }
+    ],
+    "usage": {
+      "details": [
+        {
+          "metric": {
+            "id": "caffe3ca-729c-5750-8777-df63bbf8bfd9",
+            "value": 6
+          },
+          "unit": "resource_units",
+          "value": 0.100002
+        }
+      ],
+      "unit": "resource_units",
+      "value": 0.100002
+    },
+    "user_id": "iam-ServiceId-<masked>"
   }
 }

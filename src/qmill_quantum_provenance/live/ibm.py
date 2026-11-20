@@ -175,6 +175,24 @@ class LiveIBMIntegration(ProviderAdapter):
             "usage_estimation": getattr(job, "usage_estimation", None),
         }
         self.native["metrics"] = metrics
+        session_id = getattr(job, "session_id", None)
+        session_mode = None
+        if session_id:
+            # Batch vs session mode is only on the session resource; the SDK has
+            # no public accessor for it.
+            try:
+                details = self._service._get_api_client().session_details(session_id) or {}
+            except Exception as exc:
+                self.notes["session_details_error"] = f"{type(exc).__name__}: {exc}"[:200]
+            else:
+                self.native["session"] = details
+                session_mode = details.get("mode")
+        error_message = None
+        if status in ("ERROR", "FAILED"):
+            try:
+                error_message = job.error_message()
+            except Exception as exc:
+                self.notes["error_message_error"] = f"{type(exc).__name__}: {exc}"[:200]
         task.target_id = task.provider_target_id = backend_name
         return TaskSnapshot(
             provider="ibm",
@@ -188,7 +206,9 @@ class LiveIBMIntegration(ProviderAdapter):
             metadata={
                 "backend_name": backend_name,
                 "program_id": getattr(job, "primitive_id", None),
-                "session_id": getattr(job, "session_id", None),
+                "session_id": session_id,
+                "session_mode": session_mode,
+                "error_message": error_message,
                 "timestamps": timestamps,
                 "usage": metrics.get("usage"),
                 "qiskit_version": metrics.get("qiskit_version"),

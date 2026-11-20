@@ -198,6 +198,56 @@ class Adapter:
 
 
 @dataclass(frozen=True)
+class JobRelations:
+    """How this job relates to other jobs and to the logical experiment.
+
+    ``session_id`` and ``batch_id`` group jobs that share a provider execution
+    window; ``parent_job_id``/``child_job_ids`` express provider-side job
+    hierarchies (multi-circuit jobs, hybrid jobs); ``experiment_id`` is the
+    application's own grouping of many jobs into one logical experiment.
+    """
+
+    session_id: str | None = None
+    batch_id: str | None = None
+    parent_job_id: str | None = None
+    child_job_ids: list[str] | None = None
+    experiment_id: str | None = None
+
+    def is_empty(self) -> bool:
+        return not any(
+            (
+                self.session_id,
+                self.batch_id,
+                self.parent_job_id,
+                self.child_job_ids,
+                self.experiment_id,
+            )
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        return _compact(
+            {
+                "session_id": self.session_id,
+                "batch_id": self.batch_id,
+                "parent_job_id": self.parent_job_id,
+                "child_job_ids": list(self.child_job_ids) if self.child_job_ids else None,
+                "experiment_id": self.experiment_id,
+            }
+        )
+
+
+@dataclass(frozen=True)
+class JobFailure:
+    """Provider-reported reason a job failed, verbatim."""
+
+    code: str | None = None
+    message: str | None = None
+
+    def to_dict(self) -> dict[str, Any]:
+        return _compact({"code": self.code, "message": self.message})
+
+
+@dataclass(frozen=True)
 class Job:
     canonical_id: str
     provider: str
@@ -206,6 +256,8 @@ class Job:
     created_at: datetime | None = None
     ended_at: datetime | None = None
     shots: int | None = None
+    relations: JobRelations | None = None
+    failure: JobFailure | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return _compact(
@@ -217,6 +269,12 @@ class Job:
                 "created_at": _iso(self.created_at),
                 "ended_at": _iso(self.ended_at),
                 "shots": self.shots,
+                "relations": (
+                    self.relations.to_dict()
+                    if self.relations and not self.relations.is_empty()
+                    else None
+                ),
+                "failure": self.failure.to_dict() if self.failure else None,
             }
         )
 

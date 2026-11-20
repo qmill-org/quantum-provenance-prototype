@@ -15,21 +15,21 @@
           "characterization_status": "unavailable",
           "characterization_unavailable": true,
           "record_validates": true,
-          "unavailable_attributes": 3,
+          "unavailable_attributes": 4,
           "unclassified": 0
         },
         "ibm": {
           "characterization_status": "unavailable",
           "characterization_unavailable": true,
           "record_validates": true,
-          "unavailable_attributes": 4,
+          "unavailable_attributes": 5,
           "unclassified": 0
         },
         "ionq": {
           "characterization_status": "unavailable",
           "characterization_unavailable": true,
           "record_validates": true,
-          "unavailable_attributes": 7,
+          "unavailable_attributes": 8,
           "unclassified": 0
         }
       }
@@ -65,15 +65,16 @@
   },
   "providers": {
     "braket": {
-      "adapter_loc": 537,
+      "adapter_loc": 555,
       "attribute_evidence_counts": {
         "application_captured": 11,
         "derived": 2,
-        "not_applicable": 2,
+        "not_applicable": 3,
         "provider_passthrough": 2,
-        "provider_supplied": 10
+        "provider_supplied": 10,
+        "unavailable": 1
       },
-      "evidence_total": 27,
+      "evidence_total": 29,
       "fixture_id": "arn:aws:braket:us-east-1:000000000000:quantum-task/11111111-2222-3333-4444-555555555555",
       "inventory_classification": {
         "by_attribute": {
@@ -91,6 +92,8 @@
           "execution.total_duration_ms": "derived",
           "job.created_at": "provider_supplied",
           "job.ended_at": "provider_supplied",
+          "job.failure": "not_applicable",
+          "job.relations": "unavailable",
           "job.shots": "provider_supplied",
           "job.status": "provider_supplied",
           "results.estimated_measurement_counts": "not_applicable",
@@ -102,10 +105,10 @@
         "counts": {
           "application_captured": 4,
           "derived": 2,
-          "not_applicable": 2,
+          "not_applicable": 3,
           "provider_passthrough": 1,
           "provider_supplied": 10,
-          "unavailable": 2
+          "unavailable": 3
         },
         "unclassified": 0
       },
@@ -118,16 +121,16 @@
       "results_available": true
     },
     "ibm": {
-      "adapter_loc": 515,
+      "adapter_loc": 545,
       "attribute_evidence_counts": {
         "application_captured": 11,
         "derived": 3,
-        "not_applicable": 2,
+        "not_applicable": 3,
         "provider_passthrough": 2,
         "provider_supplied": 11,
-        "unavailable": 1
+        "unavailable": 2
       },
-      "evidence_total": 30,
+      "evidence_total": 32,
       "fixture_id": "cx7z8k2m4n5p6q7r8s9t",
       "inventory_classification": {
         "by_attribute": {
@@ -145,6 +148,8 @@
           "execution.total_duration_ms": "derived",
           "job.created_at": "provider_supplied",
           "job.ended_at": "provider_supplied",
+          "job.failure": "not_applicable",
+          "job.relations": "unavailable",
           "job.shots": "provider_supplied",
           "job.status": "provider_supplied",
           "results.estimated_measurement_counts": "not_applicable",
@@ -156,9 +161,9 @@
         "counts": {
           "application_captured": 4,
           "derived": 3,
-          "not_applicable": 2,
+          "not_applicable": 3,
           "provider_supplied": 11,
-          "unavailable": 1
+          "unavailable": 2
         },
         "unclassified": 0
       },
@@ -171,14 +176,15 @@
       "results_available": true
     },
     "ionq": {
-      "adapter_loc": 575,
+      "adapter_loc": 601,
       "attribute_evidence_counts": {
         "derived": 2,
-        "not_applicable": 1,
+        "not_applicable": 2,
         "provider_passthrough": 2,
-        "provider_supplied": 12
+        "provider_supplied": 12,
+        "unavailable": 1
       },
-      "evidence_total": 17,
+      "evidence_total": 19,
       "fixture_id": "b7f3d2a1-9c84-4e15-8a76-0f2c1d5e6b3a",
       "inventory_classification": {
         "by_attribute": {
@@ -196,6 +202,8 @@
           "execution.total_duration_ms": "derived",
           "job.created_at": "provider_supplied",
           "job.ended_at": "provider_supplied",
+          "job.failure": "not_applicable",
+          "job.relations": "unavailable",
           "job.shots": "provider_supplied",
           "job.status": "provider_supplied",
           "results.estimated_measurement_counts": "derived",
@@ -206,10 +214,10 @@
         },
         "counts": {
           "derived": 2,
-          "not_applicable": 1,
+          "not_applicable": 2,
           "provider_passthrough": 1,
           "provider_supplied": 12,
-          "unavailable": 5
+          "unavailable": 6
         },
         "unclassified": 0
       },
@@ -275,12 +283,12 @@
   },
   "schema_version": "0.1.0-prototype",
   "shared_provider_independent_implementation_loc": {
-    "adapter.py": 199,
+    "adapter.py": 286,
     "contract.py": 32,
-    "models.py": 397,
+    "models.py": 445,
     "redaction.py": 68,
     "registry.py": 54,
-    "service.py": 267
+    "service.py": 286
   },
-  "shared_provider_independent_implementation_loc_total": 1017
+  "shared_provider_independent_implementation_loc_total": 1171
 }

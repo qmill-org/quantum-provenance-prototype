@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0-prototype",
   "record_id": "qprov:ionq:f09d0b7fd29c07000f3221aad6ddb677",
-  "generated_at": "2026-11-19T13:44:12.515240+00:00",
-  "retrieved_at": "2026-11-19T13:44:12.515232+00:00",
+  "generated_at": "2026-11-20T05:51:14.343607+00:00",
+  "retrieved_at": "2026-11-20T05:51:14.343600+00:00",
   "adapter": {
     "provider": "ionq",
     "name": "ionq-provenance-adapter",
@@ -81,6 +81,17 @@
       "path": "/job/ended_at",
       "status": "provider_supplied",
       "provider_field": "ionq.jobs.get() request/response times"
+    },
+    {
+      "path": "/job/relations",
+      "status": "unavailable",
+      "reason": "not_exposed_by_provider",
+      "notes": "Provider job record has no session, batch or parent/child field."
+    },
+    {
+      "path": "/job/failure",
+      "status": "not_applicable",
+      "notes": "Job completed; no failure to report."
     },
     {
       "path": "/device/identifier",

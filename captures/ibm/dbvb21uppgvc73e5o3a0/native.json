@@ -49,7 +49,7 @@
         }
       ],
       "qpu_charge_time_seconds": 0,
-      "status": "pending",
+      "status": "complete",
       "unit": "resource_units",
       "value": 0
     }

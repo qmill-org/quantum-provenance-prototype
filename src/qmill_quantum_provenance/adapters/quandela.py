@@ -11,6 +11,8 @@ from datetime import UTC, datetime, timedelta
 from typing import Any
 
 from ..adapter import (
+    failure_with_evidence,
+    relations_with_evidence,
     characterization_applies,
     RESULT_REPRESENTATIONS,
     mark_not_applicable,
@@ -178,14 +180,25 @@ class QuandelaProvenanceAdapter(ProvenanceAdapter):
                     "/job/shots", "job status.shots", "photon-detection shots, not accepted samples"
                 )
             )
+        status = normalize_job_status(snapshot.status)
+        relations = relations_with_evidence(evidence, exposed=False, provider_field="job status")
+        failure = failure_with_evidence(
+            evidence,
+            status,
+            provider_field="job status.failure_code / status_message",
+            code=metadata.get("failure_code"),
+            message=metadata.get("status_message"),
+        )
         return Job(
             canonical_id=request.canonical_id,
             provider="quandela",
             external_id=request.external_job_id,
-            status=normalize_job_status(snapshot.status),
+            status=status,
             created_at=created,
             ended_at=ended,
             shots=snapshot.shots,
+            relations=relations,
+            failure=failure,
         )
 
     def _device(self, platform, details, evidence: list[Evidence], extension: dict) -> Device:

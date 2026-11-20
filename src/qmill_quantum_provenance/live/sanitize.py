@@ -16,6 +16,9 @@ ACCOUNT_PLACEHOLDER = "000000000000"
 # the default Braket result bucket name (``amazon-braket-<region>-<account>``).
 _ARN_ACCOUNT = re.compile(r"(arn:aws:[a-z0-9-]+:[a-z0-9-]*:)(\d{12})(:)")
 _BUCKET_ACCOUNT = re.compile(r"(amazon-braket-[a-z0-9-]+?-)(\d{12})\b")
+# IBM Cloud IAM principals (e.g. the session resource's ``user_id``).
+_IBM_IAM_ID = re.compile(r"\b(iam-ServiceId-|iam-Profile-|IBMid-)[A-Za-z0-9-]+")
+IBM_IAM_PLACEHOLDER = "<masked>"
 
 
 # Fields holding program text. Submitted and compiled programs can embed
@@ -31,7 +34,8 @@ def digest_program(text: str) -> str:
 
 def mask_identifiers(text: str) -> str:
     text = _ARN_ACCOUNT.sub(rf"\g<1>{ACCOUNT_PLACEHOLDER}\g<3>", text)
-    return _BUCKET_ACCOUNT.sub(rf"\g<1>{ACCOUNT_PLACEHOLDER}", text)
+    text = _BUCKET_ACCOUNT.sub(rf"\g<1>{ACCOUNT_PLACEHOLDER}", text)
+    return _IBM_IAM_ID.sub(rf"\g<1>{IBM_IAM_PLACEHOLDER}", text)
 
 
 def to_jsonable(value: Any) -> Any:

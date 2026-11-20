@@ -64,9 +64,11 @@
     "ended_at": "2026-11-19T08:19:38.670199Z",
     "metadata": {
       "backend_name": "ibm_aachen",
+      "error_message": null,
       "program_id": "executor",
       "qiskit_version": "qiskit_ibm_runtime-0.52.1,qiskit-2.6.2*",
       "session_id": "6af94c4e-9fd8-435f-b39e-8ff7da263275",
+      "session_mode": "batch",
       "shots": 1000,
       "timestamps": {
         "created": "2026-11-19T08:19:16.260471Z",

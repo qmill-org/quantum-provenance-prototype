@@ -348,6 +348,12 @@
                     "shots": {
                         "type": "integer",
                         "minimum": 0
+                    },
+                    "relations": {
+                        "$ref": "#/components/schemas/JobRelations"
+                    },
+                    "failure": {
+                        "$ref": "#/components/schemas/JobFailure"
                     }
                 },
                 "additionalProperties": false
@@ -835,6 +841,11 @@
                     },
                     "software_context": {
                         "$ref": "#/components/schemas/ApplicationSoftwareContext"
+                    },
+                    "experiment_id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "Optional application identifier of the logical experiment this job belongs to; recorded as job.relations.experiment_id with application_captured evidence."
                     }
                 },
                 "additionalProperties": false
@@ -860,6 +871,49 @@
                         "type": "string"
                     },
                     "instance": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "JobRelations": {
+                "type": "object",
+                "description": "Relations of this job to other jobs and to the application's logical experiment. Provider-reported fields are evidenced at /job/relations; experiment_id is application-captured and evidenced at /job/relations/experiment_id. Absent fields mean no relation was reported.",
+                "properties": {
+                    "session_id": {
+                        "type": "string",
+                        "description": "Provider session (interactive execution window) that ran this job."
+                    },
+                    "batch_id": {
+                        "type": "string",
+                        "description": "Provider batch that grouped this job with others for scheduling."
+                    },
+                    "parent_job_id": {
+                        "type": "string",
+                        "description": "Provider job that contains or spawned this job, e.g. a multi-circuit parent job or a hybrid job."
+                    },
+                    "child_job_ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Provider jobs contained in or spawned by this job."
+                    },
+                    "experiment_id": {
+                        "type": "string",
+                        "description": "Application-supplied identifier of the logical experiment that spans one or more jobs."
+                    }
+                },
+                "additionalProperties": false
+            },
+            "JobFailure": {
+                "type": "object",
+                "description": "Provider-reported failure of a failed job, verbatim and not normalized across providers.",
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    },
+                    "message": {
                         "type": "string"
                     }
                 },

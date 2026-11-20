@@ -128,3 +128,52 @@ def test_ionq_link_requires_the_job_to_name_the_characterization() -> None:
 
     v04["device"]["calibration"].pop("query")
     assert _record(v04)["characterization"]["association"] == "current_at_retrieval"
+
+
+IBM_BATCH = [
+    CAPTURES / "ibm" / name
+    for name in ("dbvb20s1qo7s73ejeii0", "dbvb211nd09c73ehdct0", "dbvb2141qo7s73ejeiig")
+]
+IONQ_FAILED = CAPTURES / "ionq" / "01a1f2eb-d2be-70b0-9eee-d59dec9c15cf"
+
+
+def test_jobs_run_in_one_ibm_batch_share_a_batch_relation() -> None:
+    records = [_record(_fixture(directory)) for directory in IBM_BATCH]
+    batch_ids = {payload["job"]["relations"]["batch_id"] for payload in records}
+    assert len(batch_ids) == 1
+    assert all("session_id" not in payload["job"]["relations"] for payload in records)
+    assert _evidence(records[0])["/job/relations"]["status"] == "provider_supplied"
+
+
+def test_standalone_and_unknown_relations_are_distinguished() -> None:
+    standalone = _record(_fixture(COMPLETED_IBM))
+    assert "relations" not in standalone["job"]
+    assert _evidence(standalone)["/job/relations"]["status"] == "not_applicable"
+
+    quandela = _record(_fixture(CAPTURES / "quandela" / "5614c93a-8d77-43f0-81c6-7a13a935255e"))
+    evidence = _evidence(quandela)["/job/relations"]
+    assert (evidence["status"], evidence["reason"]) == ("unavailable", "not_exposed_by_provider")
+
+
+def test_application_experiment_id_spans_jobs_with_its_own_evidence() -> None:
+    fixture = _fixture(IBM_BATCH[0])
+    service = build_service({"ibm": fixture})
+    record, _ = service.create_record(
+        CreateProvenanceRecordRequest(
+            provider="ibm", external_job_id=fixture["external_job_id"], experiment_id="exp-42"
+        )
+    )
+    payload = record.to_dict()
+    validate_record(payload)
+    assert payload["job"]["relations"]["experiment_id"] == "exp-42"
+    assert "batch_id" in payload["job"]["relations"]
+    assert _evidence(payload)["/job/relations/experiment_id"]["status"] == "application_captured"
+
+
+def test_failed_job_carries_the_provider_failure_verbatim() -> None:
+    payload = _record(_fixture(IONQ_FAILED))
+    assert payload["job"]["status"] == "failed"
+    assert payload["job"]["failure"]["code"] == "CompilationError"
+    assert "Syntax error" in payload["job"]["failure"]["message"]
+    assert _evidence(payload)["/job/failure"]["status"] == "provider_supplied"
+    assert _evidence(_record(_fixture(COMPLETED_IBM)))["/job/failure"]["status"] == "not_applicable"

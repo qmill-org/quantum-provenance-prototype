@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0-prototype",
   "record_id": "qprov:braket:782f818c22da425e05074b501ca26a26",
-  "generated_at": "2026-11-19T13:44:12.459422+00:00",
-  "retrieved_at": "2026-11-19T13:44:12.459410+00:00",
+  "generated_at": "2026-11-20T05:51:14.282284+00:00",
+  "retrieved_at": "2026-11-20T05:51:14.282272+00:00",
   "adapter": {
     "provider": "braket",
     "name": "braket-provenance-adapter",
@@ -87,6 +87,17 @@
       "path": "/job/ended_at",
       "status": "provider_supplied",
       "provider_field": "AwsQuantumTask.metadata() createdAt/endedAt"
+    },
+    {
+      "path": "/job/relations",
+      "status": "unavailable",
+      "reason": "not_exposed_by_provider",
+      "notes": "Provider job record has no session, batch or parent/child field."
+    },
+    {
+      "path": "/job/failure",
+      "status": "not_applicable",
+      "notes": "Job completed; no failure to report."
     },
     {
       "path": "/device/identifier",

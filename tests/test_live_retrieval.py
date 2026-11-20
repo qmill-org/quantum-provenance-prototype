@@ -118,10 +118,12 @@ def test_sanitize_masks_account_ids_secrets_and_program_text() -> None:
             "bucket": _TASK["outputS3Bucket"],
             "action": {"source": "OPENQASM 3.0; secret_algorithm;"},
             "ionqMetadata": {"compiledProgram": ""},
+            "session": {"user_id": "iam-ServiceId-844e473a-0b26-46f5-8483"},
         }
     )
     text = json.dumps(cleaned)
     assert ACCOUNT not in text
+    assert cleaned["session"]["user_id"] == "iam-ServiceId-<masked>"
     assert '"s"' not in text
     assert "secret_algorithm" not in text
     assert cleaned["action"]["source"].startswith("<program redacted sha256=")

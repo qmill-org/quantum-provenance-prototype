@@ -26,6 +26,8 @@ from typing import Any
 
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    failure_with_evidence,
+    relations_with_evidence,
     characterization_applies,
     delta_seconds,
     RESULT_REPRESENTATIONS,
@@ -37,6 +39,7 @@ from ..adapter import (
     ProvenanceCollectionRequest,
 )
 from ..models import (
+    JobRelations,
     Artifact,
     ArtifactRole,
     AvailabilityReason,
@@ -231,6 +234,31 @@ class IBMProvenanceAdapter(ProvenanceAdapter):
                 )
             )
         _record_timestamp_evidence(snapshot, evidence, "RuntimeJobV2.metrics() timestamps")
+        metadata = snapshot.metadata or {}
+        session_id = metadata.get("session_id")
+        mode = metadata.get("session_mode")
+        relations = relations_with_evidence(
+            evidence,
+            exposed="session_id" in metadata,
+            provider_field="RuntimeJobV2.session_id; sessions/{id}.mode",
+            relations=JobRelations(
+                batch_id=session_id if mode == "batch" else None,
+                session_id=session_id if mode != "batch" else None,
+            ),
+            notes=(
+                f"execution mode {mode!r}"
+                if session_id and mode
+                else "session mode not retrieved; grouping kind unknown"
+                if session_id
+                else None
+            ),
+        )
+        failure = failure_with_evidence(
+            evidence,
+            status,
+            provider_field="RuntimeJobV2.error_message()",
+            message=metadata.get("error_message"),
+        )
         return Job(
             canonical_id=request.canonical_id,
             provider="ibm",
@@ -239,6 +267,8 @@ class IBMProvenanceAdapter(ProvenanceAdapter):
             created_at=snapshot.created_at,
             ended_at=snapshot.ended_at,
             shots=snapshot.shots,
+            relations=relations,
+            failure=failure,
         )
 
     def _build_device(self, target, device_details, evidence: list[Evidence]) -> Device:

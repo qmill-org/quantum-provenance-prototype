@@ -39,6 +39,18 @@
             "applicability": "all"
         },
         {
+            "id": "job.relations",
+            "value_pointer": "/job/relations",
+            "evidence_pointer": "/job/relations",
+            "applicability": "all"
+        },
+        {
+            "id": "job.failure",
+            "value_pointer": "/job/failure",
+            "evidence_pointer": "/job/failure",
+            "applicability": "all"
+        },
+        {
             "id": "device.identifier",
             "value_pointer": "/device/identifier",
             "evidence_pointer": "/device/identifier",
