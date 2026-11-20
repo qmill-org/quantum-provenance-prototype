@@ -8,7 +8,7 @@ from dataclasses import asdict, is_dataclass
 from datetime import date, datetime
 from typing import Any
 
-from ..redaction import redact
+from ..redaction import redact, redact_text
 
 ACCOUNT_PLACEHOLDER = "000000000000"
 
@@ -33,6 +33,7 @@ def digest_program(text: str) -> str:
 
 
 def mask_identifiers(text: str) -> str:
+    text = redact_text(text) or text
     text = _ARN_ACCOUNT.sub(rf"\g<1>{ACCOUNT_PLACEHOLDER}\g<3>", text)
     text = _BUCKET_ACCOUNT.sub(rf"\g<1>{ACCOUNT_PLACEHOLDER}", text)
     return _IBM_IAM_ID.sub(rf"\g<1>{IBM_IAM_PLACEHOLDER}", text)

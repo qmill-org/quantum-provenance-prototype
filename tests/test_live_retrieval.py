@@ -197,3 +197,16 @@ def test_analog_shots_use_the_sdk_site_convention_and_unknown_layouts_are_not_ta
     assert (counts, origin) == ({"rge": 2}, "observed_ahs_site_states")
     counts, origin = counts_from_result({"measurements": [{"bits": "01"}]}, 1)
     assert (counts, origin) == ({}, "unrecognized_shot_format")
+
+
+def test_credentials_inside_free_text_are_redacted() -> None:
+    from qmill_quantum_provenance.redaction import redact_text
+
+    text = redact_text(
+        "HTTP 403 https://s3/x?X-Amz-Signature=deadbeef&X-Amz-Credential=AKIAABCDEFGHIJKLMNOP "
+        "Authorization: Bearer abc.def.ghi; api_key=foo"
+    )
+    for secret in ("deadbeef", "AKIAABCDEFGHIJKLMNOP", "abc.def.ghi", "foo"):
+        assert secret not in text
+    assert redact_text("Job not found: d1abc") == "Job not found: d1abc"
+    assert redact_text("X-Amz-Signature=deadbeef") == "X-Amz-Signature=***redacted***"

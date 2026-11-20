@@ -44,6 +44,7 @@ from .models import (
     Warning,
     canonical_job_id,
 )
+from .redaction import redact_text
 from .registry import ProvenanceAdapterRegistry, default_registry
 
 
@@ -187,8 +188,9 @@ class ProvenanceService:
             device=result.device,
             results=result.results,
             artifacts=artifacts,
-            evidence=evidence,
-            warnings=warnings,
+            # Provider messages can echo credentials (signed URLs, headers).
+            evidence=[dataclasses.replace(e, notes=redact_text(e.notes)) for e in evidence],
+            warnings=[Warning(w.code, redact_text(w.message) or "") for w in warnings],
             operations=operations,
             compilation=compilation,
             execution=result.execution,

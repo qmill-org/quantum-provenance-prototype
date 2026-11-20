@@ -20,17 +20,21 @@ def _load_json(path: Path) -> dict[str, object]:
         return json.load(stream)
 
 
-def test_openapi_contract_is_reduced_to_two_operations() -> None:
+def test_openapi_contract_operations() -> None:
     contract = _load_json(contract_path())
 
     assert contract["openapi"] == "3.1.0"
     assert contract["info"]["version"] == "0.1.0-prototype"
     assert "ProvenanceRecord" in contract["components"]["schemas"]
 
-    paths = contract["paths"]
-    assert set(paths) == {"/v1/provenance-records", "/v1/jobs/{job_id}/provenance"}
-    assert "post" in paths["/v1/provenance-records"]
-    assert "get" in paths["/v1/jobs/{job_id}/provenance"]
+    operations = {(method, path) for path, ops in contract["paths"].items() for method in ops}
+    assert operations == {
+        ("post", "/v1/provenance-records"),
+        ("get", "/v1/jobs/{job_id}/provenance"),
+        ("get", "/v1/jobs/{job_id}/provenance/versions"),
+        ("post", "/v1/jobs/{job_id}/provenance/refresh"),
+    }
+    assert contract["security"] == [{"bearerApiKey": []}]
 
 
 def test_provenance_examples_validate_against_canonical_record_schema() -> None:

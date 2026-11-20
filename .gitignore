@@ -18,3 +18,5 @@ venv/
 
 # Live captures of non-public jobs (kept local, never published)
 captures-private/
+.schemathesis/
+.hypothesis/

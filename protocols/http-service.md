@@ -51,8 +51,25 @@ Those remain deployment concerns (§5.2.3, adoption).
 
 Results are recorded below, including any defect the tests find.
 
+## Results (2026-11-20)
+
+| ID | Result |
+|---|---|
+| S1 | Pass: all four operations answer 401 with `WWW-Authenticate: Bearer` for no key, a wrong key and a non-bearer scheme; only `/v1/openapi.json` is public. |
+| S2 | Pass: a read-only key gets 403 on create and refresh, 200 on read. |
+| S3 | Pass: another tenant gets 404 on read, versions and refresh; the same provider job registered by two tenants yields two records. |
+| S4 | Pass: a request naming another tenant's scope gets 403. |
+| S5 | **Failed first**, then pass: provider error messages were copied verbatim into record warnings and evidence notes, so a credential echoed by a provider (a signed-URL token, an `Authorization` header) reached the HTTP response and the database (F18). The redaction layer masked secret-named fields only. Fixed by redacting credentials in free text (`redact_text`) at the record boundary and in capture sanitization; environment secrets and API keys never appeared. |
+| S6 | Pass: the key file holds SHA-256 hashes only. |
+| S7 | Pass: no planted secret or API key in the SQLite file (after the S5 fix). |
+| S8 | **Failed first**, then pass: a `version` larger than a 64-bit integer caused a server error; such versions now answer 404. Then pytest-integrated Schemathesis (40 examples per operation) and the Schemathesis CLI against a running uvicorn service (all checks, positive and negative data, examples, coverage, fuzzing and stateful phases through the contract's new links): 1,593 generated cases, all conforming, no server error. |
+
+CC-9 also gained a request example and OpenAPI links from the create response
+to the three job operations, which the stateful phase follows.
+
 ## Log
 
 | Date | Change | Reason |
 |---|---|---|
 | 2026-11-20 | Plan committed. | — |
+| 2026-11-20 | Implementation, results, F18 (credential in provider error text) and the version-overflow defect, both found by the planned tests and fixed. | — |

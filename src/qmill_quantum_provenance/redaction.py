@@ -55,6 +55,29 @@ def redact(value: Any, _depth: int = 0) -> Any:
     return value
 
 
+# Credentials embedded in free text, e.g. provider error messages that echo a
+# signed URL or request header: "...?token=abc", "Authorization: Bearer abc".
+_TEXT_PATTERNS = (
+    re.compile(
+        r"(?i)((?:^|[?&;\s])(?:[a-z0-9_.-]*(?:token|secret|password|passwd|signature|credential|"
+        r"api[_-]?key|access[_-]?key|sig))=)[^&\s\"',;]+"
+    ),
+    re.compile(r"(?i)(\b(?:bearer|basic|apikey|token)\s+)[A-Za-z0-9._~+/=-]{6,}"),
+    re.compile(r"(?i)(\b(?:api[_-]?key|token|secret|password)\s*[:=]\s*)[^\s\"',;&]+"),
+    re.compile(r"()\b(?:AKIA|ASIA)[0-9A-Z]{16}\b"),
+)
+
+
+def redact_text(text: str | None) -> str | None:
+    """Mask credentials that appear inside free text."""
+
+    if not text:
+        return text
+    for pattern in _TEXT_PATTERNS:
+        text = pattern.sub(lambda m: f"{m.group(1)}{REDACTED}", text)
+    return text
+
+
 def find_secret_keys(value: Any, _path: str = "") -> list[str]:
     """Return JSON-pointer-ish paths of any secret-looking keys found."""
 
@@ -88,4 +111,11 @@ def program_digest(text: str) -> tuple[str, int]:
     return hashlib.sha256(data).hexdigest(), len(data)
 
 
-__all__ = ["REDACTED", "is_secret_key", "redact", "find_secret_keys", "program_digest"]
+__all__ = [
+    "REDACTED",
+    "is_secret_key",
+    "redact",
+    "redact_text",
+    "find_secret_keys",
+    "program_digest",
+]

@@ -3,7 +3,7 @@
     "info": {
         "title": "QMill Unified Quantum Provenance API (research prototype)",
         "version": "0.1.0-prototype",
-        "description": "Reduced prototype contract. Canonical machine-readable source for the provenance domain schema exposed by the in-process provenance service. Two operations only: register/assemble a record and retrieve a canonical record. Application-captured context is carried on the create request and marked as such in evidence."
+        "description": "Prototype contract. Canonical machine-readable source for the provenance domain schema, served in-process by the provenance service and over HTTP by the reference service. Operations: register/assemble a record, retrieve the current or an earlier version, list versions, and refresh (re-assemble as a new version). Application-captured context is carried on the create request and marked as such in evidence."
     },
     "paths": {
         "/v1/provenance-records": {
@@ -16,6 +16,10 @@
                         "application/json": {
                             "schema": {
                                 "$ref": "#/components/schemas/CreateProvenanceRecordRequest"
+                            },
+                            "example": {
+                                "provider": "ibm",
+                                "external_job_id": "dbvb21eppgvc73e5o380"
                             }
                         }
                     }
@@ -23,20 +27,72 @@
                 "responses": {
                     "200": {
                         "description": "Existing record returned (idempotent create for an already-registered job).",
+                        "headers": {
+                            "Provenance-Record-Version": {
+                                "$ref": "#/components/headers/RecordVersion"
+                            }
+                        },
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/ProvenanceRecord"
                                 }
                             }
+                        },
+                        "links": {
+                            "GetJobProvenance": {
+                                "operationId": "getJobProvenance",
+                                "parameters": {
+                                    "job_id": "$response.body#/record_id"
+                                },
+                                "description": "Retrieve the record just registered."
+                            },
+                            "ListProvenanceVersions": {
+                                "operationId": "listProvenanceVersions",
+                                "parameters": {
+                                    "job_id": "$response.body#/record_id"
+                                }
+                            },
+                            "RefreshJobProvenance": {
+                                "operationId": "refreshJobProvenance",
+                                "parameters": {
+                                    "job_id": "$response.body#/record_id"
+                                }
+                            }
                         }
                     },
                     "201": {
                         "description": "Provenance record created.",
+                        "headers": {
+                            "Provenance-Record-Version": {
+                                "$ref": "#/components/headers/RecordVersion"
+                            }
+                        },
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/ProvenanceRecord"
+                                }
+                            }
+                        },
+                        "links": {
+                            "GetJobProvenance": {
+                                "operationId": "getJobProvenance",
+                                "parameters": {
+                                    "job_id": "$response.body#/record_id"
+                                },
+                                "description": "Retrieve the record just registered."
+                            },
+                            "ListProvenanceVersions": {
+                                "operationId": "listProvenanceVersions",
+                                "parameters": {
+                                    "job_id": "$response.body#/record_id"
+                                }
+                            },
+                            "RefreshJobProvenance": {
+                                "operationId": "refreshJobProvenance",
+                                "parameters": {
+                                    "job_id": "$response.body#/record_id"
                                 }
                             }
                         }
@@ -49,6 +105,12 @@
                     },
                     "422": {
                         "$ref": "#/components/responses/Problem"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
                     }
                 }
             }
@@ -60,11 +122,19 @@
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/JobId"
+                    },
+                    {
+                        "$ref": "#/components/parameters/Version"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Best available, possibly partial provenance record.",
+                        "headers": {
+                            "Provenance-Record-Version": {
+                                "$ref": "#/components/headers/RecordVersion"
+                            }
+                        },
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -72,6 +142,85 @@
                                 }
                             }
                         }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/Problem"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Problem"
+                    }
+                }
+            }
+        },
+        "/v1/jobs/{job_id}/provenance/versions": {
+            "get": {
+                "summary": "List the stored versions of a provenance record",
+                "operationId": "listProvenanceVersions",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/JobId"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Stored versions, oldest first.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RecordVersionList"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/Problem"
+                    }
+                }
+            }
+        },
+        "/v1/jobs/{job_id}/provenance/refresh": {
+            "post": {
+                "summary": "Re-assemble a provenance record from the provider as a new version",
+                "operationId": "refreshJobProvenance",
+                "description": "Re-runs retrieval with the request that created the record. Earlier versions are kept unchanged.",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/JobId"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "New version assembled.",
+                        "headers": {
+                            "Provenance-Record-Version": {
+                                "$ref": "#/components/headers/RecordVersion"
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProvenanceRecord"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/Unauthorized"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
                     },
                     "404": {
                         "$ref": "#/components/responses/Problem"
@@ -90,11 +239,48 @@
                     "$ref": "#/components/schemas/CanonicalId"
                 },
                 "description": "Canonical job ID, not a raw provider job ID."
+            },
+            "Version": {
+                "name": "version",
+                "in": "query",
+                "required": false,
+                "schema": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "description": "Return this stored version instead of the latest."
             }
         },
         "responses": {
             "Problem": {
                 "description": "Problem response.",
+                "content": {
+                    "application/problem+json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Problem"
+                        }
+                    }
+                }
+            },
+            "Unauthorized": {
+                "description": "Missing or invalid API key.",
+                "headers": {
+                    "WWW-Authenticate": {
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "content": {
+                    "application/problem+json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Problem"
+                        }
+                    }
+                }
+            },
+            "Forbidden": {
+                "description": "The API key lacks the permission, or the request names another tenant's scope.",
                 "content": {
                     "application/problem+json": {
                         "schema": {
@@ -934,7 +1120,65 @@
                     }
                 },
                 "additionalProperties": false
+            },
+            "RecordVersionList": {
+                "type": "object",
+                "required": [
+                    "record_id",
+                    "versions"
+                ],
+                "properties": {
+                    "record_id": {
+                        "$ref": "#/components/schemas/CanonicalId"
+                    },
+                    "versions": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "version",
+                                "generated_at",
+                                "retrieved_at"
+                            ],
+                            "properties": {
+                                "version": {
+                                    "type": "integer",
+                                    "minimum": 1
+                                },
+                                "generated_at": {
+                                    "$ref": "#/components/schemas/Timestamp"
+                                },
+                                "retrieved_at": {
+                                    "$ref": "#/components/schemas/Timestamp"
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "securitySchemes": {
+            "bearerApiKey": {
+                "type": "http",
+                "scheme": "bearer",
+                "description": "Service API key. Keys are bound to a tenant (the record `scope`) and to read and/or write permission."
+            }
+        },
+        "headers": {
+            "RecordVersion": {
+                "description": "Version of the returned record; every assembly of a job is stored as a new version.",
+                "schema": {
+                    "type": "integer",
+                    "minimum": 1
+                }
             }
         }
-    }
+    },
+    "security": [
+        {
+            "bearerApiKey": []
+        }
+    ]
 }

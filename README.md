@@ -84,6 +84,37 @@ python -m qmill_quantum_provenance.evaluation --output artifact/evaluation-resul
 python -m qmill_quantum_provenance.generate_examples
 ```
 
+### Reference HTTP service
+
+A reference service (not a production deployment) serves the contract over
+HTTP with SQLite persistence, API-key authentication bound to a tenant, record
+versions and refresh. Scope and security tests:
+[`protocols/http-service.md`](protocols/http-service.md).
+
+```bash
+uv pip install -e ".[http,dev]"
+
+# keys.json holds only SHA-256 hashes of API keys:
+python - <<'PY'
+import json; from qmill_quantum_provenance.server.auth import hash_key
+json.dump([{"sha256": hash_key("change-me"), "tenant": "t1",
+            "permissions": ["read", "write"]}], open("keys.json", "w"))
+PY
+
+# replay mode serves the committed captures; QPROV_MODE=live uses provider
+# credentials from the server environment
+QPROV_KEYS_FILE=keys.json QPROV_DB=provenance.sqlite QPROV_MODE=replay \
+    python -m qmill_quantum_provenance.server
+
+curl -s -X POST localhost:8000/v1/provenance-records \
+    -H "Authorization: Bearer change-me" -H "Content-Type: application/json" \
+    -d '{"provider": "ibm", "external_job_id": "dbvb21eppgvc73e5o380"}'
+
+# contract conformance against the running service
+st run http://127.0.0.1:8000/v1/openapi.json -H "Authorization: Bearer change-me" \
+    --checks all --mode all --max-examples 200
+```
+
 ## Expected output
 
 - **Tests:** `34 passed`.

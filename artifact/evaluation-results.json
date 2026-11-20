@@ -289,9 +289,9 @@
     "adapter.py": 567,
     "contract.py": 32,
     "models.py": 457,
-    "redaction.py": 68,
+    "redaction.py": 91,
     "registry.py": 54,
-    "service.py": 336
+    "service.py": 337
   },
-  "shared_provider_independent_implementation_loc_total": 1514
+  "shared_provider_independent_implementation_loc_total": 1538
 }
