@@ -47,3 +47,7 @@ The prototype fixture (`tests/fixtures/braket/`) reconstructs the Amazon Braket
 task and device API shape. See also the fixture-specific companion note
 ([`amazon-braket-fixture.md`](amazon-braket-fixture.md)), which preserves the direct fixture mapping detail
 for the three-provider prototype implementation.
+
+## Erratum (2026-11-20)
+
+The table lists Amazon Braket SDK 1.123.0. The latest stable release on or before the 2026-07-19 cutoff was **1.124.0** (published 2026-07-14); the second coding (revision) reads 1.124.0. The July 2026 text above is kept as recorded.

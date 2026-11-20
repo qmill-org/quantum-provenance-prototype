@@ -52,3 +52,14 @@ shorter fixture-focused companion notes also remain for the prototype fixtures:
   fixture
 - [`ionq-fixture.md`](ionq-fixture.md) — fixture-specific mapping note for the
   IonQ prototype fixture
+
+## Errata (2026-11-20)
+
+A check of release dates against the 2026-07-19 cutoff found listed versions
+that were not the latest stable release at the cutoff (Qiskit IBM Runtime,
+Ocean SDK, Amazon Braket SDK, Perceval, and the IQM clients used by VTT QX),
+and one entry (QuEra) that describes the July evidence as authenticated. Each
+affected ledger keeps its July text and ends with a dated erratum:
+[ibm-quantum.md](ibm-quantum.md), [d-wave.md](d-wave.md),
+[amazon-braket.md](amazon-braket.md), [quera.md](quera.md),
+[quandela.md](quandela.md), [vtt-qx.md](vtt-qx.md).

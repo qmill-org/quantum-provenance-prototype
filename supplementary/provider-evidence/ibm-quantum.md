@@ -47,3 +47,7 @@ The prototype fixture (`tests/fixtures/ibm/`) reconstructs the Qiskit Runtime
 job/result and backend-properties API shape. See also the fixture-specific
 companion note ([`ibm-quantum-fixture.md`](ibm-quantum-fixture.md)), which preserves the direct fixture mapping
 detail for the three-provider prototype implementation.
+
+## Erratum (2026-11-20)
+
+The table lists Qiskit IBM Runtime 0.47.0. The latest stable release on or before the 2026-07-19 cutoff was **0.48.0** (published 2026-07-14). The mapping findings are not affected by the version listed; the second coding (revision) reads 0.48.0. The July 2026 text above is kept as recorded.

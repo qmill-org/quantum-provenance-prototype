@@ -45,3 +45,7 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 - The documented interface structure is established through the open-source
   Ocean SDK. Live field population for every problem type, solver, or account
   tier was not verified through authenticated access.
+
+## Erratum (2026-11-20)
+
+The table lists Ocean SDK 9.3.0. The latest stable release on or before the 2026-07-19 cutoff was **9.4.0** (published 2026-06-18); the second coding (revision) reads 9.4.0. The July 2026 text above is kept as recorded.

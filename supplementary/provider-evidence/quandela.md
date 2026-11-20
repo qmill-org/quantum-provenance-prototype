@@ -42,3 +42,7 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
   Perceval framework. Live field population and result structure for every
   device configuration or account type was not verified through authenticated
   access.
+
+## Erratum (2026-11-20)
+
+The table lists the Perceval PyPI package at the cutoff as 1.2.3. The latest stable release of `perceval-quandela` on or before the 2026-07-19 cutoff was **1.2.4** (published 2026-07-02), matching the source release listed above. The July 2026 text above is kept as recorded.

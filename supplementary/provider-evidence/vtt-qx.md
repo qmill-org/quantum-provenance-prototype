@@ -41,3 +41,7 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 - The documented interface structure applicable to VTT QX is established
   through the IQM open-source client. Live field population for VTT QX-specific
   configurations was not verified through authenticated access.
+
+## Erratum (2026-11-20)
+
+The table lists IQM Client 34–35 and IQM Pulla 13–14. At the 2026-07-19 cutoff the latest releases were **IQM Client 34.0.4** and **IQM Pulla 13.0.4** (both published 2026-06-16); versions 35 and 14 were published on 2026-07-23, after the cutoff. The July 2026 text above is kept as recorded.

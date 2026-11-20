@@ -43,3 +43,7 @@ accessible and reviewed against the repository evaluation cutoff of July 2026.
 - The documented interface structure is established through the open-source
   Bloqade framework and Braket documentation. Live field population for every
   configuration or access mode was not verified through authenticated access.
+
+## Erratum (2026-11-20)
+
+The table lists Amazon Braket SDK 1.123.0; the latest stable release on or before the 2026-07-19 cutoff was **1.124.0** (published 2026-07-14). The entry also reads "authenticated Braket API (AHS schema)", which contradicts the evidence boundary above: the July 2026 assessment used the public Braket API reference, schemas and SDK only, and no authenticated request was made. Authenticated retrieval of QuEra Aquila jobs was added in the revision (November 2026; `captures/braket/808c58a0…`, `captures/braket/4852fae4…`) and is reported separately from this ledger. The July 2026 text above is kept as recorded.
