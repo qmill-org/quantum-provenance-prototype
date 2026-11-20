@@ -680,6 +680,16 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
         if not characterization_applies(job.status, evidence):
             return None
         calibration = getattr(device_details, "calibration_data", None) if device_details else None
+        if not calibration and str(getattr(device_details, "type", "")).upper() == "SIMULATOR":
+            evidence.append(
+                Evidence(
+                    path="/characterization",
+                    status=EvidenceStatus.NOT_APPLICABLE,
+                    notes="Simulator; no hardware characterization (a noise model, if used, "
+                    f"is in /extensions/{SIMULATION_NAMESPACE}).",
+                )
+            )
+            return None
         if isinstance(calibration, dict) and calibration:
             metrics = self._extract_metrics(calibration)
             captured_at = _parse_timestamp(

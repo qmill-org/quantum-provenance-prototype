@@ -1,87 +1,29 @@
 {
   "attribute_inventory_version": "0.2.0",
-  "partial_record_experiment": {
-    "change": {
-      "affected_attribute": "/characterization",
-      "omitted": "device_calibration_data",
-      "type": "partial_provider_record"
-    },
-    "measured": {
-      "all_records_validate": true,
-      "characterization_degrades_everywhere": true,
-      "no_unclassified_attributes": true,
-      "per_provider": {
-        "braket": {
-          "characterization_status": "unavailable",
-          "characterization_unavailable": true,
-          "record_validates": true,
-          "unavailable_attributes": 8,
-          "unclassified": 0
-        },
-        "ibm": {
-          "characterization_status": "unavailable",
-          "characterization_unavailable": true,
-          "record_validates": true,
-          "unavailable_attributes": 6,
-          "unclassified": 0
-        },
-        "ionq": {
-          "characterization_status": "unavailable",
-          "characterization_unavailable": true,
-          "record_validates": true,
-          "unavailable_attributes": 9,
-          "unclassified": 0
-        }
-      }
-    }
-  },
-  "provider_input_experiment": {
-    "change": {
-      "affected_attribute": "/device/qubit_count",
-      "provider": "ibm",
-      "renamed_field": "device.provider_properties.num_qubits",
-      "renamed_to": "qubit_total",
-      "type": "provider_input_field_rename"
-    },
-    "measured": {
-      "affected_attribute_degraded_to_unavailable": true,
-      "affected_attribute_status_after": "unavailable",
-      "ibm_record_still_validates": true,
-      "isolation_holds": true,
-      "other_providers_unchanged": {
-        "braket": true,
-        "ionq": true
-      },
-      "qubit_count_after": null,
-      "qubit_count_before": 156
-    },
-    "touch_set": {
-      "files": 1,
-      "rule": "a provider-side input change is repaired in exactly one adapter file; the contract, shared implementation, and other adapters are untouched.",
-      "to_restore_attribute": [
-        "src/qmill_quantum_provenance/adapters/ibm.py"
-      ]
-    }
+  "experiments": {
+    "baseline_comparison": "artifact/baseline-comparison.json",
+    "failure_injection": "artifact/failure-injection.json",
+    "live_validation": "captures/validation-v0.2.0-adapters.json"
   },
   "providers": {
     "braket": {
       "adapter_loc": 628,
       "attribute_evidence_counts": {
-        "application_captured": 11,
-        "derived": 2,
-        "not_applicable": 1,
-        "provider_passthrough": 2,
+        "application_captured": 5,
+        "derived": 3,
+        "not_applicable": 3,
+        "provider_passthrough": 3,
         "provider_supplied": 9,
         "unavailable": 3
       },
-      "evidence_total": 28,
-      "fixture_id": "arn:aws:braket:us-east-1:000000000000:quantum-task/11111111-2222-3333-4444-555555555555",
+      "evidence_total": 26,
+      "fixture_id": "arn:aws:braket:us-east-1:000000000000:quantum-task/c5f722a5-ee93-443e-8d89-f7ab285d7f69",
       "inventory_classification": {
         "by_attribute": {
-          "artifact.compiled": "provider_passthrough",
+          "artifact.compiled": "unavailable",
           "characterization": "provider_supplied",
-          "compilation.compiler": "application_captured",
-          "compilation.logical_to_physical_mapping": "application_captured",
+          "compilation.compiler": "unavailable",
+          "compilation.logical_to_physical_mapping": "unavailable",
           "device.hardware_provider": "derived",
           "device.identifier": "provider_supplied",
           "device.platform_provider": "provider_supplied",
@@ -94,22 +36,22 @@
           "job.created_at": "provider_supplied",
           "job.ended_at": "provider_supplied",
           "job.failure": "not_applicable",
-          "job.relations": "unavailable",
+          "job.relations": "not_applicable",
           "job.shots": "provider_supplied",
           "job.status": "provider_supplied",
-          "results.estimated_measurement_counts": "unavailable",
-          "results.measurement_counts": "unavailable",
-          "results.measurement_probabilities": "unavailable",
+          "results.estimated_measurement_counts": "derived",
+          "results.measurement_counts": "not_applicable",
+          "results.measurement_probabilities": "provider_passthrough",
           "software.framework_versions": "application_captured",
           "software.provider_client": "application_captured"
         },
         "counts": {
-          "application_captured": 4,
-          "derived": 2,
-          "not_applicable": 1,
+          "application_captured": 2,
+          "derived": 3,
+          "not_applicable": 3,
           "provider_passthrough": 1,
           "provider_supplied": 9,
-          "unavailable": 7
+          "unavailable": 6
         },
         "unclassified": 0
       },
@@ -118,21 +60,21 @@
         "provider_reported": 0,
         "qmill_facing": 1
       },
-      "record_id": "qprov:braket:782f818c22da425e05074b501ca26a26",
-      "results_available": false
+      "record_id": "qprov:braket:1157a7055a74f5350154078b654d30ff",
+      "results_available": true
     },
     "ibm": {
       "adapter_loc": 636,
       "attribute_evidence_counts": {
-        "application_captured": 11,
-        "derived": 3,
-        "not_applicable": 3,
+        "application_captured": 12,
+        "derived": 4,
+        "not_applicable": 4,
         "provider_passthrough": 2,
         "provider_supplied": 11,
-        "unavailable": 4
+        "unavailable": 2
       },
-      "evidence_total": 34,
-      "fixture_id": "cx7z8k2m4n5p6q7r8s9t",
+      "evidence_total": 35,
+      "fixture_id": "dbvb21eppgvc73e5o380",
       "inventory_classification": {
         "by_attribute": {
           "artifact.compiled": "unavailable",
@@ -144,14 +86,14 @@
           "device.platform_provider": "provider_supplied",
           "device.qubit_count": "provider_supplied",
           "device.type": "provider_supplied",
-          "execution.executed_shots": "unavailable",
+          "execution.executed_shots": "derived",
           "execution.queue_duration_ms": "derived",
           "execution.run_duration_ms": "derived",
           "execution.total_duration_ms": "derived",
           "job.created_at": "provider_supplied",
           "job.ended_at": "provider_supplied",
           "job.failure": "not_applicable",
-          "job.relations": "unavailable",
+          "job.relations": "not_applicable",
           "job.shots": "provider_supplied",
           "job.status": "provider_supplied",
           "results.estimated_measurement_counts": "not_applicable",
@@ -162,10 +104,10 @@
         },
         "counts": {
           "application_captured": 4,
-          "derived": 3,
-          "not_applicable": 3,
+          "derived": 4,
+          "not_applicable": 4,
           "provider_supplied": 11,
-          "unavailable": 3
+          "unavailable": 1
         },
         "unclassified": 0
       },
@@ -174,24 +116,25 @@
         "provider_reported": 0,
         "qmill_facing": 1
       },
-      "record_id": "qprov:ibm:049001a0c6830efb74a6fa0c8ae65e6d",
+      "record_id": "qprov:ibm:0b59ab0be052dd532c945bef49194bbb",
       "results_available": true
     },
     "ionq": {
-      "adapter_loc": 670,
+      "adapter_loc": 680,
       "attribute_evidence_counts": {
+        "application_captured": 4,
         "derived": 2,
-        "not_applicable": 2,
+        "not_applicable": 4,
         "provider_passthrough": 2,
         "provider_supplied": 12,
-        "unavailable": 2
+        "unavailable": 1
       },
-      "evidence_total": 20,
-      "fixture_id": "b7f3d2a1-9c84-4e15-8a76-0f2c1d5e6b3a",
+      "evidence_total": 25,
+      "fixture_id": "01a1f2eb-d155-7632-bc4e-f340de096f01",
       "inventory_classification": {
         "by_attribute": {
           "artifact.compiled": "provider_passthrough",
-          "characterization": "provider_supplied",
+          "characterization": "not_applicable",
           "compilation.compiler": "unavailable",
           "compilation.logical_to_physical_mapping": "unavailable",
           "device.hardware_provider": "provider_supplied",
@@ -206,21 +149,22 @@
           "job.created_at": "provider_supplied",
           "job.ended_at": "provider_supplied",
           "job.failure": "not_applicable",
-          "job.relations": "unavailable",
+          "job.relations": "not_applicable",
           "job.shots": "provider_supplied",
           "job.status": "provider_supplied",
           "results.estimated_measurement_counts": "derived",
           "results.measurement_counts": "not_applicable",
           "results.measurement_probabilities": "provider_supplied",
           "software.framework_versions": "unavailable",
-          "software.provider_client": "unavailable"
+          "software.provider_client": "application_captured"
         },
         "counts": {
+          "application_captured": 1,
           "derived": 2,
-          "not_applicable": 2,
+          "not_applicable": 4,
           "provider_passthrough": 1,
-          "provider_supplied": 12,
-          "unavailable": 7
+          "provider_supplied": 11,
+          "unavailable": 5
         },
         "unclassified": 0
       },
@@ -229,61 +173,67 @@
         "provider_reported": 0,
         "qmill_facing": 1
       },
-      "record_id": "qprov:ionq:f09d0b7fd29c07000f3221aad6ddb677",
+      "record_id": "qprov:ionq:a071968a021ec5f137878edb4b97f4d2",
+      "results_available": true
+    },
+    "quandela": {
+      "adapter_loc": 379,
+      "attribute_evidence_counts": {
+        "application_captured": 5,
+        "derived": 3,
+        "not_applicable": 5,
+        "provider_supplied": 11,
+        "unavailable": 1
+      },
+      "evidence_total": 25,
+      "fixture_id": "sim:belenos/5614c93a-8d77-43f0-81c6-7a13a935255e",
+      "inventory_classification": {
+        "by_attribute": {
+          "artifact.compiled": "provider_supplied",
+          "characterization": "not_applicable",
+          "compilation.compiler": "unavailable",
+          "compilation.logical_to_physical_mapping": "unavailable",
+          "device.hardware_provider": "provider_supplied",
+          "device.identifier": "application_captured",
+          "device.platform_provider": "provider_supplied",
+          "device.qubit_count": "not_applicable",
+          "device.type": "provider_supplied",
+          "execution.executed_shots": "provider_supplied",
+          "execution.queue_duration_ms": "derived",
+          "execution.run_duration_ms": "provider_supplied",
+          "execution.total_duration_ms": "derived",
+          "job.created_at": "provider_supplied",
+          "job.ended_at": "derived",
+          "job.failure": "not_applicable",
+          "job.relations": "unavailable",
+          "job.shots": "application_captured",
+          "job.status": "provider_supplied",
+          "results.estimated_measurement_counts": "not_applicable",
+          "results.measurement_counts": "provider_supplied",
+          "results.measurement_probabilities": "not_applicable",
+          "software.framework_versions": "unavailable",
+          "software.provider_client": "application_captured"
+        },
+        "counts": {
+          "application_captured": 3,
+          "derived": 3,
+          "not_applicable": 5,
+          "provider_supplied": 9,
+          "unavailable": 4
+        },
+        "unclassified": 0
+      },
+      "operations": {
+        "adapter_upstream": 4,
+        "provider_reported": 0,
+        "qmill_facing": 1
+      },
+      "record_id": "qprov:quandela:5d27907cad1c18e3502f2f2b950c711d",
       "results_available": true
     }
   },
   "report_format": "qmill.provenance.evaluation",
   "report_version": "0.2.0",
-  "schema_change_experiment": {
-    "change": {
-      "attribute": "cost",
-      "location": "/cost",
-      "type": "additive_optional_attribute"
-    },
-    "measured": {
-      "backward_compatible": true,
-      "change_is_necessary": true,
-      "examples_checked": 3,
-      "new_attribute_accepted_by_extended": true,
-      "new_attribute_rejected_by_original": true,
-      "per_example": [
-        {
-          "example": "braket-completed.json",
-          "valid_extended": true,
-          "valid_original": true
-        },
-        {
-          "example": "ibm-completed.json",
-          "valid_extended": true,
-          "valid_original": true
-        },
-        {
-          "example": "ionq-completed.json",
-          "valid_extended": true,
-          "valid_original": true
-        }
-      ]
-    },
-    "touch_set": {
-      "per_provider_adapter": {
-        "rule": "one localized change per provider that can source the attribute (0..N); adapters that cannot source it are unchanged."
-      },
-      "shared_implementation": [
-        "src/qmill_quantum_provenance/openapi.json",
-        "src/qmill_quantum_provenance/models.py",
-        "src/qmill_quantum_provenance/adapter.py",
-        "src/qmill_quantum_provenance/service.py"
-      ],
-      "shared_implementation_files": 4,
-      "unchanged_infrastructure": [
-        "src/qmill_quantum_provenance/registry.py",
-        "src/qmill_quantum_provenance/replay.py",
-        "src/qmill_quantum_provenance/contract.py",
-        "src/qmill_quantum_provenance/evaluation.py"
-      ]
-    }
-  },
   "schema_version": "0.1.0-prototype",
   "shared_provider_independent_implementation_loc": {
     "adapter.py": 567,

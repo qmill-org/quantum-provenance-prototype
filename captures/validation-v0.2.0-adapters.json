@@ -1010,7 +1010,7 @@
       "findings": [],
       "inventory": {
         "artifact.compiled": "provider_passthrough",
-        "characterization": "unavailable",
+        "characterization": "not_applicable",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
         "device.hardware_provider": "provider_supplied",
@@ -1036,10 +1036,10 @@
       },
       "inventory_counts": {
         "derived": 1,
-        "not_applicable": 4,
+        "not_applicable": 5,
         "provider_passthrough": 1,
         "provider_supplied": 10,
-        "unavailable": 8
+        "unavailable": 7
       },
       "provider": "ionq",
       "schema_valid": true,
@@ -1059,7 +1059,7 @@
       "findings": [],
       "inventory": {
         "artifact.compiled": "provider_passthrough",
-        "characterization": "unavailable",
+        "characterization": "not_applicable",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
         "device.hardware_provider": "provider_supplied",
@@ -1085,10 +1085,10 @@
       },
       "inventory_counts": {
         "derived": 2,
-        "not_applicable": 3,
+        "not_applicable": 4,
         "provider_passthrough": 1,
         "provider_supplied": 11,
-        "unavailable": 7
+        "unavailable": 6
       },
       "provider": "ionq",
       "schema_valid": true,
@@ -1155,7 +1155,7 @@
       "findings": [],
       "inventory": {
         "artifact.compiled": "provider_passthrough",
-        "characterization": "unavailable",
+        "characterization": "not_applicable",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
         "device.hardware_provider": "provider_supplied",
@@ -1181,10 +1181,10 @@
       },
       "inventory_counts": {
         "derived": 2,
-        "not_applicable": 3,
+        "not_applicable": 4,
         "provider_passthrough": 1,
         "provider_supplied": 11,
-        "unavailable": 7
+        "unavailable": 6
       },
       "provider": "ionq",
       "schema_valid": true,
@@ -1204,7 +1204,7 @@
       "findings": [],
       "inventory": {
         "artifact.compiled": "unavailable",
-        "characterization": "unavailable",
+        "characterization": "not_applicable",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
         "device.hardware_provider": "provider_supplied",
@@ -1230,9 +1230,9 @@
       },
       "inventory_counts": {
         "derived": 1,
-        "not_applicable": 5,
+        "not_applicable": 6,
         "provider_supplied": 10,
-        "unavailable": 8
+        "unavailable": 7
       },
       "provider": "ionq",
       "schema_valid": true,
@@ -1252,7 +1252,7 @@
       "findings": [],
       "inventory": {
         "artifact.compiled": "provider_passthrough",
-        "characterization": "unavailable",
+        "characterization": "not_applicable",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
         "device.hardware_provider": "provider_supplied",
@@ -1278,10 +1278,10 @@
       },
       "inventory_counts": {
         "derived": 1,
-        "not_applicable": 3,
+        "not_applicable": 4,
         "provider_passthrough": 1,
         "provider_supplied": 11,
-        "unavailable": 8
+        "unavailable": 7
       },
       "provider": "ionq",
       "schema_valid": true,
@@ -1301,7 +1301,7 @@
       "findings": [],
       "inventory": {
         "artifact.compiled": "provider_passthrough",
-        "characterization": "unavailable",
+        "characterization": "not_applicable",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
         "device.hardware_provider": "provider_supplied",
@@ -1327,10 +1327,10 @@
       },
       "inventory_counts": {
         "derived": 1,
-        "not_applicable": 3,
+        "not_applicable": 4,
         "provider_passthrough": 1,
         "provider_supplied": 11,
-        "unavailable": 8
+        "unavailable": 7
       },
       "provider": "ionq",
       "schema_valid": true,

@@ -1,9 +1,11 @@
 """Regenerate the canonical example provenance records under docs/.
 
-The example records in ``artifact/examples/`` are the
-adapter output for the sanitized ``completed.json`` fixtures. They are checked
-into the repo (and validated by ``test_provenance_contract.py``), so they must
-be regenerated whenever the adapters, the model, or the fixtures change.
+The example records in ``artifact/examples/`` are the adapter output for the
+evaluation captures (one real, purpose-run job per provider path; see
+``evaluation.EVALUATION_CAPTURES``), built with the application context from
+the run ledgers. They are checked into the repo (and validated by
+``test_provenance_contract.py``), so they must be regenerated whenever the
+adapters, the model, or the captures change.
 
 Usage::
 
@@ -14,7 +16,7 @@ Usage::
     # ignoring the wall-clock generated_at/retrieved_at fields
     python -m qmill_quantum_provenance.generate_examples --check
 
-Runs entirely off the sanitized fixtures with no network or credentials.
+Replays the sanitized captures; no network or credentials.
 """
 
 from __future__ import annotations

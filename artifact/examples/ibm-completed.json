@@ -1,26 +1,26 @@
 {
   "schema_version": "0.1.0-prototype",
-  "record_id": "qprov:ibm:049001a0c6830efb74a6fa0c8ae65e6d",
-  "generated_at": "2026-11-20T10:33:57.642434+00:00",
-  "retrieved_at": "2026-11-20T10:33:57.642423+00:00",
+  "record_id": "qprov:ibm:0b59ab0be052dd532c945bef49194bbb",
+  "generated_at": "2026-11-20T10:51:24.135943+00:00",
+  "retrieved_at": "2026-11-20T10:51:24.135924+00:00",
   "adapter": {
     "provider": "ibm",
     "name": "ibm-provenance-adapter",
     "version": "0.1.0-prototype"
   },
   "job": {
-    "canonical_id": "qprov:ibm:049001a0c6830efb74a6fa0c8ae65e6d",
+    "canonical_id": "qprov:ibm:0b59ab0be052dd532c945bef49194bbb",
     "provider": "ibm",
-    "external_id": "cx7z8k2m4n5p6q7r8s9t",
+    "external_id": "dbvb21eppgvc73e5o380",
     "status": "completed",
-    "created_at": "2026-02-10T09:15:00+00:00",
-    "ended_at": "2026-02-10T09:15:47.250000+00:00",
-    "shots": 4096
+    "created_at": "2026-11-19T08:19:17.552760+00:00",
+    "ended_at": "2026-11-19T08:19:55.016867+00:00",
+    "shots": 1000
   },
   "device": {
     "provider": "ibm",
-    "identifier": "ibm_fez",
-    "name": "ibm_fez",
+    "identifier": "ibm_aachen",
+    "name": "ibm_aachen",
     "type": "qpu",
     "qubit_count": 156,
     "platform_provider": "ibm_quantum",
@@ -34,9 +34,9 @@
       "description": "ISA circuit compiled and submitted by the application, returned by IBM with the job inputs (hash only).",
       "content_hash": {
         "algorithm": "sha256",
-        "value": "873832e23a4e06f5e7af6bc7dc6e7c3cb7188b8d5019421b1cc15b1325ff878c"
+        "value": "1daeee779bc30e047392c65acb4b1e4694933d69f540e780afcbc9bc945163de"
       },
-      "byte_size": 200
+      "byte_size": 193
     },
     {
       "role": "provider_native",
@@ -44,29 +44,29 @@
       "description": "Sanitized IBM Runtime job metadata (content hash only).",
       "content_hash": {
         "algorithm": "sha256",
-        "value": "1ee6d02684dc1037cb83c2aca22e5b0c891b3f74d5baba73bd7ed6d01f3788ea"
+        "value": "85837f712ec743eab007de798052c418d522ba6372bcad277eb02aeb6d2cafbf"
       }
     },
     {
       "role": "source",
       "media_type": "application/x-openqasm;version=3",
       "description": "Application-captured source program (openqasm3)",
-      "reference": "app://demo/ibm/bell",
+      "reference": "runs/programs/bell2.qasm",
       "content_hash": {
         "algorithm": "sha256",
-        "value": "4be8a60e128394ba12fd636deb8cef92a01ddb35f7ae34b1a5043ce14045771f"
+        "value": "fc354b10607b27536ea4c85a2bb8c1627a92fbc09ab36d02144053ce6b1cb046"
       }
     }
   ],
   "results": {
     "available": true,
-    "shots": 4096,
+    "shots": 1000,
     "outcome_basis": "bitstring",
     "measurement_counts": {
-      "00000": 2013,
-      "11111": 1985,
-      "00001": 49,
-      "10000": 49
+      "00": 550,
+      "01": 2,
+      "10": 6,
+      "11": 442
     }
   },
   "evidence": [
@@ -78,7 +78,7 @@
     {
       "path": "/job/shots",
       "status": "provider_supplied",
-      "provider_field": "RuntimeJobV2.metrics().usage / metadata.shots",
+      "provider_field": "job inputs quantum_program.passthrough_data.post_processor.shots",
       "notes": "Shots requested by the primitive caller, as recorded with the job."
     },
     {
@@ -93,9 +93,9 @@
     },
     {
       "path": "/job/relations",
-      "status": "unavailable",
-      "reason": "not_exposed_by_provider",
-      "notes": "Provider job record has no session, batch or parent/child field."
+      "status": "not_applicable",
+      "provider_field": "RuntimeJobV2.session_id; sessions/{id}.mode",
+      "notes": "Provider reports no session, batch or parent/child job; standalone job."
     },
     {
       "path": "/job/failure",
@@ -193,15 +193,19 @@
     },
     {
       "path": "/execution/executed_shots",
-      "status": "unavailable",
-      "reason": "not_exposed_by_provider",
-      "notes": "Provider reports no executed-shot count separate from the request."
+      "status": "derived",
+      "source_paths": [
+        "job inputs quantum_program.items[].shape",
+        "quantum_program.shots"
+      ],
+      "derivation": "sum over items of randomizations x executor shots",
+      "notes": "Executor shots per randomization: 1000."
     },
     {
       "path": "/characterization",
       "status": "provider_supplied",
       "provider_field": "IBMBackend.properties()",
-      "notes": "Nearest available backend properties snapshot; no provider guarantee that it was in force during execution."
+      "notes": "Backend properties requested as of job creation; IBM returns the latest snapshot at or before that time."
     },
     {
       "path": "/artifacts",
@@ -225,6 +229,10 @@
     },
     {
       "path": "/compilation/optimization_level",
+      "status": "application_captured"
+    },
+    {
+      "path": "/compilation/random_seed",
       "status": "application_captured"
     },
     {
@@ -285,72 +293,95 @@
     }
   ],
   "compilation": {
-    "compiler_name": "qiskit-transpiler",
-    "compiler_version": "2.5.0",
-    "optimization_level": 3,
+    "compiler_name": "qiskit preset pass manager",
+    "compiler_version": "2.6.2",
+    "optimization_level": 2,
+    "random_seed": 1234,
     "logical_to_physical_mapping": [
       {
         "logical": 0,
-        "physical": 0
+        "physical": 87
       },
       {
         "logical": 1,
-        "physical": 1
-      },
-      {
-        "logical": 2,
-        "physical": 2
-      },
-      {
-        "logical": 3,
-        "physical": 3
-      },
-      {
-        "logical": 4,
-        "physical": 4
+        "physical": 88
       }
     ]
   },
   "execution": {
-    "queue_duration_ms": 42000,
-    "run_duration_ms": 5250,
-    "total_duration_ms": 47250
+    "queue_duration_ms": 32668,
+    "run_duration_ms": 4795,
+    "total_duration_ms": 37464,
+    "executed_shots": 1000
   },
   "characterization": {
-    "association": "nearest_available",
-    "captured_at": "2026-02-10T06:00:00+00:00",
-    "delta_seconds": -11700.0,
+    "association": "timestamp_matched",
+    "captured_at": "2026-11-19T08:07:36+00:00",
+    "delta_seconds": -701.553,
     "timestamp_source": "characterization",
     "metrics": [
       {
-        "name": "median_t1_us",
-        "value": 189.4,
-        "unit": "microseconds"
+        "name": "T1.median_over_qubits[us]",
+        "value": 223.83565818226154
       },
       {
-        "name": "median_t2_us",
-        "value": 121.7,
-        "unit": "microseconds"
+        "name": "T2.median_over_qubits[us]",
+        "value": 252.0505305030532
       },
       {
-        "name": "median_readout_error",
-        "value": 0.0142
+        "name": "gate_error.cz.median",
+        "value": 0.0014140315650147811
       },
       {
-        "name": "median_ecr_error",
-        "value": 0.0031
+        "name": "gate_error.id.median",
+        "value": 0.00020987958537572516
+      },
+      {
+        "name": "gate_error.measure.median",
+        "value": 0.00579833984375
+      },
+      {
+        "name": "gate_error.measure_2.median",
+        "value": 0.0242919921875
+      },
+      {
+        "name": "gate_error.rx.median",
+        "value": 0.00020987958537572516
+      },
+      {
+        "name": "gate_error.rz.median",
+        "value": 0.0
+      },
+      {
+        "name": "gate_error.rzz.median",
+        "value": 0.0014132702887137832
+      },
+      {
+        "name": "gate_error.sx.median",
+        "value": 0.00020987958537572516
+      },
+      {
+        "name": "gate_error.x.median",
+        "value": 0.00020987958537572516
+      },
+      {
+        "name": "gate_error.xslow.median",
+        "value": 0.00020987958537572516
+      },
+      {
+        "name": "readout_error.median_over_qubits",
+        "value": 0.00579833984375
       }
     ]
   },
   "software": {
     "provider_client": "qiskit-ibm-runtime",
-    "provider_client_version": "0.43.0",
-    "compiler_name": "qiskit-transpiler",
-    "compiler_version": "2.5.0",
-    "python_version": "3.12",
+    "provider_client_version": "0.52.1",
+    "compiler_name": "qiskit",
+    "compiler_version": "2.6.2",
+    "python_version": "3.12.12",
     "framework_versions": {
-      "qiskit": "2.5.0",
-      "qiskit-ibm-runtime": "0.43.0"
+      "qiskit": "2.6.2"
     }
   }
 }

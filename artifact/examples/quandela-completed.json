@@ -1,0 +1,289 @@
+{
+  "schema_version": "0.1.0-prototype",
+  "record_id": "qprov:quandela:5d27907cad1c18e3502f2f2b950c711d",
+  "generated_at": "2026-11-20T10:51:24.148628+00:00",
+  "retrieved_at": "2026-11-20T10:51:24.148616+00:00",
+  "adapter": {
+    "provider": "quandela",
+    "name": "quandela-provenance-adapter",
+    "version": "0.2.0-dev"
+  },
+  "job": {
+    "canonical_id": "qprov:quandela:5d27907cad1c18e3502f2f2b950c711d",
+    "provider": "quandela",
+    "external_id": "sim:belenos/5614c93a-8d77-43f0-81c6-7a13a935255e",
+    "status": "completed",
+    "created_at": "2026-11-19T08:52:48.663211+00:00",
+    "ended_at": "2026-11-19T08:53:17.455556+00:00",
+    "shots": 1000
+  },
+  "device": {
+    "provider": "quandela",
+    "identifier": "sim:belenos",
+    "name": "Belenos simulator",
+    "type": "simulator",
+    "platform_provider": "quandela_cloud",
+    "hardware_provider": "quandela"
+  },
+  "artifacts": [
+    {
+      "role": "compiled",
+      "media_type": "application/x-perceval-serialized",
+      "producer": "provider",
+      "description": "Experiment as compiled by the provider onto the chip (hash only).",
+      "content_hash": {
+        "algorithm": "sha256",
+        "value": "7b69d51c95bf0e8ed4262fc3cf0b4a82449c62984a568ddfa273f0106a54e3d7"
+      },
+      "byte_size": 16374
+    }
+  ],
+  "results": {
+    "available": true,
+    "outcome_basis": "fock_state",
+    "measurement_counts": {
+      "|0,2>": 467,
+      "|1,1>": 48,
+      "|2,0>": 485
+    }
+  },
+  "evidence": [
+    {
+      "path": "/job/status",
+      "status": "provider_supplied",
+      "provider_field": "job status.status"
+    },
+    {
+      "path": "/job/created_at",
+      "status": "provider_supplied",
+      "provider_field": "job status.creation_datetime"
+    },
+    {
+      "path": "/job/ended_at",
+      "status": "derived",
+      "source_paths": [
+        "job status.start_time",
+        "job status.duration"
+      ],
+      "derivation": "start_time + duration (duration in whole seconds)"
+    },
+    {
+      "path": "/job/relations",
+      "status": "unavailable",
+      "reason": "not_exposed_by_provider",
+      "notes": "Provider job record has no session, batch or parent/child field."
+    },
+    {
+      "path": "/job/failure",
+      "status": "not_applicable",
+      "notes": "Job completed; no failure to report."
+    },
+    {
+      "path": "/device/identifier",
+      "status": "application_captured",
+      "notes": "Job status and result do not name the platform; taken from the job reference."
+    },
+    {
+      "path": "/device/platform_provider",
+      "status": "provider_supplied",
+      "provider_field": "api.cloud.quandela.com"
+    },
+    {
+      "path": "/device/hardware_provider",
+      "status": "provider_supplied",
+      "provider_field": "api.cloud.quandela.com"
+    },
+    {
+      "path": "/device/qubit_count",
+      "status": "not_applicable",
+      "notes": "Photonic platform: capacity in modes and photons, see /extensions/photonic.quandela."
+    },
+    {
+      "path": "/device/type",
+      "status": "provider_supplied",
+      "provider_field": "platform.type"
+    },
+    {
+      "path": "/results/measurement_counts",
+      "status": "provider_supplied",
+      "provider_field": "job result BSCount",
+      "notes": "keys are Fock states"
+    },
+    {
+      "path": "/results/outcome_basis",
+      "status": "provider_supplied",
+      "provider_field": "job result BSCount"
+    },
+    {
+      "path": "/results/measurement_probabilities",
+      "status": "not_applicable",
+      "notes": "sample_count job: observed Fock-state counts, no probabilities."
+    },
+    {
+      "path": "/results/estimated_measurement_counts",
+      "status": "not_applicable",
+      "notes": "sample_count job: observed Fock-state counts, no probabilities."
+    },
+    {
+      "path": "/artifacts/0",
+      "status": "provider_supplied",
+      "provider_field": "job result.computed_experiment"
+    },
+    {
+      "path": "/execution/run_duration_ms",
+      "status": "provider_supplied",
+      "provider_field": "job status.duration",
+      "notes": "whole seconds"
+    },
+    {
+      "path": "/execution/queue_duration_ms",
+      "status": "derived",
+      "source_paths": [
+        "job status.creation_datetime",
+        "job status.start_time"
+      ],
+      "derivation": "start_time - creation_datetime"
+    },
+    {
+      "path": "/execution/total_duration_ms",
+      "status": "derived",
+      "source_paths": [
+        "/execution/queue_duration_ms",
+        "/execution/run_duration_ms"
+      ],
+      "derivation": "queue + run"
+    },
+    {
+      "path": "/execution/executed_shots",
+      "status": "provider_supplied",
+      "provider_field": "job status.shots",
+      "notes": "Photon-detection events; accepted samples are fewer (see extension)."
+    },
+    {
+      "path": "/characterization",
+      "status": "not_applicable",
+      "notes": "Simulated platform; no hardware characterization."
+    },
+    {
+      "path": "/extensions/photonic.quandela",
+      "status": "provider_supplied",
+      "provider_field": "platform specs, job status and result"
+    },
+    {
+      "path": "/software/provider_client",
+      "status": "application_captured"
+    },
+    {
+      "path": "/software/provider_client_version",
+      "status": "application_captured"
+    },
+    {
+      "path": "/software/python_version",
+      "status": "application_captured"
+    },
+    {
+      "path": "/job/shots",
+      "status": "application_captured",
+      "notes": "Requested shots supplied by the submitting application; the provider does not record the request."
+    }
+  ],
+  "warnings": [],
+  "operations": [
+    {
+      "actor": "adapter",
+      "operation": "get_task",
+      "count": 1
+    },
+    {
+      "actor": "adapter",
+      "operation": "get_status",
+      "count": 1
+    },
+    {
+      "actor": "adapter",
+      "operation": "get_device_details",
+      "count": 1
+    },
+    {
+      "actor": "adapter",
+      "operation": "get_result",
+      "count": 1
+    },
+    {
+      "actor": "qmill",
+      "operation": "create_provenance_record",
+      "count": 1
+    }
+  ],
+  "execution": {
+    "queue_duration_ms": 11792,
+    "run_duration_ms": 17000,
+    "total_duration_ms": 28792,
+    "executed_shots": 33533
+  },
+  "software": {
+    "provider_client": "perceval-quandela",
+    "provider_client_version": "1.3.1",
+    "python_version": "3.12.12"
+  },
+  "extensions": {
+    "photonic.quandela": {
+      "platform": {
+        "available_commands": [
+          "probs",
+          "samples",
+          "sample_count",
+          "entropy"
+        ],
+        "connected_input_modes": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          9,
+          12,
+          13,
+          16,
+          18,
+          20,
+          22
+        ],
+        "constraints": {
+          "max_mode_count": 24,
+          "max_photon_count": 12,
+          "max_sample_count": null,
+          "min_mode_count": 1,
+          "min_photon_count": 1,
+          "support_multi_photon": false
+        },
+        "detector": "threshold",
+        "known_mitigations": [
+          "PhotonRecycling",
+          "CompilationAveraging",
+          "DistinguishablePhoton",
+          "DetectorBalancing"
+        ],
+        "pcvl_version": "1.3.0",
+        "software_versions": {
+          "exqalibur": "1.4.2",
+          "hardware-core": "3.9.3",
+          "mosaiq-belenos": "2.9.1",
+          "pcvl-worker": "2.1.1",
+          "perceval-quandela": "1.3.0",
+          "universalchipworker": "2.1.0"
+        }
+      },
+      "sampling": {
+        "shots": 33533,
+        "physical_perf": 0.0036207545152529166,
+        "logical_perf": 0.9999984237744383,
+        "global_perf": 0.003620748808127097,
+        "duration": 17,
+        "accepted_samples": 1000
+      },
+      "intermediate_results_count": 0,
+      "compiled_modes": 24
+    }
+  }
+}

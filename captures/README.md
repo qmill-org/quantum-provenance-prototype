@@ -47,7 +47,7 @@ Validation reports, one per adapter version, over the same captures:
 - [`validation-v0.1.0-adapters.json`](validation-v0.1.0-adapters.json) — the
   published `v0.1.0` adapters (Braket, IBM, IonQ). Frozen: not regenerated
   after the adapters changed.
-- [`validation-v0.2.0-dev-adapters.json`](validation-v0.2.0-dev-adapters.json)
+- [`validation-v0.2.0-adapters.json`](validation-v0.2.0-adapters.json)
   — the development adapters (all providers, including Quandela).
 
 ### Findings

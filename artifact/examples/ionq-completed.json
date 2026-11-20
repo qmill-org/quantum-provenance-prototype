@@ -1,28 +1,28 @@
 {
   "schema_version": "0.1.0-prototype",
-  "record_id": "qprov:ionq:f09d0b7fd29c07000f3221aad6ddb677",
-  "generated_at": "2026-11-20T10:33:57.645986+00:00",
-  "retrieved_at": "2026-11-20T10:33:57.645978+00:00",
+  "record_id": "qprov:ionq:a071968a021ec5f137878edb4b97f4d2",
+  "generated_at": "2026-11-20T10:51:24.142392+00:00",
+  "retrieved_at": "2026-11-20T10:51:24.142384+00:00",
   "adapter": {
     "provider": "ionq",
     "name": "ionq-provenance-adapter",
     "version": "0.1.0-prototype"
   },
   "job": {
-    "canonical_id": "qprov:ionq:f09d0b7fd29c07000f3221aad6ddb677",
+    "canonical_id": "qprov:ionq:a071968a021ec5f137878edb4b97f4d2",
     "provider": "ionq",
-    "external_id": "b7f3d2a1-9c84-4e15-8a76-0f2c1d5e6b3a",
+    "external_id": "01a1f2eb-d155-7632-bc4e-f340de096f01",
     "status": "completed",
-    "created_at": "2026-03-04T12:00:00+00:00",
-    "ended_at": "2026-03-04T12:00:03.500000+00:00",
+    "created_at": "2026-11-19T08:28:23.256000+00:00",
+    "ended_at": "2026-11-19T08:29:29.408000+00:00",
     "shots": 1000
   },
   "device": {
     "provider": "ionq",
-    "identifier": "qpu.aria-1",
-    "name": "IonQ Aria-1",
-    "type": "qpu",
-    "qubit_count": 25,
+    "identifier": "simulator",
+    "name": "simulator",
+    "type": "simulator",
+    "qubit_count": 29,
     "platform_provider": "ionq",
     "hardware_provider": "ionq"
   },
@@ -34,9 +34,9 @@
       "description": "IonQ native-gate circuit executed on the QPU (passthrough, hash only).",
       "content_hash": {
         "algorithm": "sha256",
-        "value": "68e54564ad1b3e626f713a74aacc59e9363c8a98c7dbd622b0bc558f7f835e84"
+        "value": "5dce4e4158931759b10bf552fa46f35f9f05fb24220a67da1c03bb63356d5a52"
       },
-      "byte_size": 122
+      "byte_size": 327
     },
     {
       "role": "provider_native",
@@ -44,7 +44,17 @@
       "description": "Sanitized IonQ job metadata (content hash only).",
       "content_hash": {
         "algorithm": "sha256",
-        "value": "9fb27b319545532fd1579574434da5a20d47b67295cecbaf2793aaf82a3f7353"
+        "value": "31fdf7095918bdaaf2bba46e023e43c4e0f78f41c513ee5776746a7e445ca4cd"
+      }
+    },
+    {
+      "role": "source",
+      "media_type": "application/x-openqasm;version=3",
+      "description": "Application-captured source program (openqasm3)",
+      "reference": "runs/programs/ghz5.qasm",
+      "content_hash": {
+        "algorithm": "sha256",
+        "value": "f81d514d257f9be4ffec63bfec5760d2123dbc9f6b59527518ac8cb78ca07c00"
       }
     }
   ],
@@ -53,12 +63,40 @@
     "shots": 1000,
     "outcome_basis": "bitstring",
     "measurement_probabilities": {
-      "00000": 0.492,
-      "11111": 0.508
+      "00000": 0.467,
+      "00001": 0.005,
+      "01111": 0.002,
+      "10000": 0.001,
+      "10110": 0.001,
+      "10111": 0.001,
+      "11000": 0.003,
+      "11011": 0.004,
+      "11100": 0.003,
+      "11101": 0.003,
+      "00011": 0.006,
+      "11110": 0.008,
+      "11111": 0.483,
+      "00100": 0.005,
+      "00111": 0.007,
+      "01000": 0.001
     },
     "estimated_measurement_counts": {
-      "00000": 492,
-      "11111": 508
+      "00000": 467,
+      "00001": 5,
+      "01111": 2,
+      "10000": 1,
+      "10110": 1,
+      "10111": 1,
+      "11000": 3,
+      "11011": 4,
+      "11100": 3,
+      "11101": 3,
+      "00011": 6,
+      "11110": 8,
+      "11111": 483,
+      "00100": 5,
+      "00111": 7,
+      "01000": 1
     }
   },
   "evidence": [
@@ -84,9 +122,9 @@
     },
     {
       "path": "/job/relations",
-      "status": "unavailable",
-      "reason": "not_exposed_by_provider",
-      "notes": "Provider job record has no session, batch or parent/child field."
+      "status": "not_applicable",
+      "provider_field": "v0.4 job session_id / parent_job_id / child_job_ids",
+      "notes": "Provider reports no session, batch or parent/child job; standalone job."
     },
     {
       "path": "/job/failure",
@@ -155,7 +193,7 @@
     {
       "path": "/execution/run_duration_ms",
       "status": "provider_supplied",
-      "provider_field": "ionq.jobs.get().execution_time_ms"
+      "provider_field": "ionq.jobs.get().execution_duration_ms"
     },
     {
       "path": "/execution/total_duration_ms",
@@ -174,9 +212,31 @@
     },
     {
       "path": "/characterization",
+      "status": "not_applicable",
+      "notes": "Simulator; no hardware characterization (a noise model, if used, is in /extensions/simulation.ionq)."
+    },
+    {
+      "path": "/extensions/simulation.ionq",
       "status": "provider_supplied",
-      "provider_field": "ionq characterizations",
-      "notes": "Job names characterization 0f5d9c2e-1a34-4b78-9e56-7c8d1e2f3a4b (API v0.3 field)."
+      "provider_field": "job noise.model / noise.seed",
+      "notes": "'ideal' is exact simulation; other models emulate the named QPU's noise."
+    },
+    {
+      "path": "/artifacts/2",
+      "status": "application_captured",
+      "notes": "Source program supplied by the submitting application."
+    },
+    {
+      "path": "/software/provider_client",
+      "status": "application_captured"
+    },
+    {
+      "path": "/software/provider_client_version",
+      "status": "application_captured"
+    },
+    {
+      "path": "/software/python_version",
+      "status": "application_captured"
     }
   ],
   "warnings": [],
@@ -208,37 +268,18 @@
     }
   ],
   "execution": {
-    "run_duration_ms": 2200,
-    "total_duration_ms": 3500
+    "run_duration_ms": 0,
+    "total_duration_ms": 66152
   },
-  "characterization": {
-    "association": "provider_linked",
-    "captured_at": "2026-03-04T06:00:00+00:00",
-    "delta_seconds": -21600.0,
-    "timestamp_source": "characterization",
-    "metrics": [
-      {
-        "name": "mean_fidelity_1q",
-        "value": 0.9989
-      },
-      {
-        "name": "mean_fidelity_2q",
-        "value": 0.9932
-      },
-      {
-        "name": "spam_fidelity",
-        "value": 0.9959
-      },
-      {
-        "name": "t1_us",
-        "value": 100000000.0,
-        "unit": "microseconds"
-      },
-      {
-        "name": "t2_us",
-        "value": 1000000.0,
-        "unit": "microseconds"
-      }
-    ]
+  "software": {
+    "provider_client": "httpx",
+    "provider_client_version": "0.28.1",
+    "python_version": "3.12.12"
+  },
+  "extensions": {
+    "simulation.ionq": {
+      "noise_model": "forte-1",
+      "seed": 1709821538
+    }
   }
 }
