@@ -118,7 +118,7 @@ def test_sanitize_masks_account_ids_secrets_and_program_text() -> None:
             "bucket": _TASK["outputS3Bucket"],
             "action": {"source": "OPENQASM 3.0; secret_algorithm;"},
             "ionqMetadata": {"compiledProgram": ""},
-            "session": {"user_id": "iam-ServiceId-844e473a-0b26-46f5-8483"},
+            "session": {"user_id": "iam-ServiceId-00000000-1111-2222-3333"},
         }
     )
     text = json.dumps(cleaned)
