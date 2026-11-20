@@ -35,6 +35,13 @@ JOBS = [
     {"key": "e2-ionq-sim-bell2", "program": "bell2.qasm", "noise": None},
     {"key": "e2-ionq-noisy-forte1-ghz5", "program": "ghz5.qasm", "noise": {"model": "forte-1"}},
     {"key": "e5-ionq-invalid-gate", "program": "bell2.qasm", "noise": None, "corrupt": True},
+    # Hold-out set H1 (protocols/baseline-comparison.md).
+    {
+        "key": "h1-ionq-noisy-aria1-bell2",
+        "program": "bell2.qasm",
+        "noise": {"model": "aria-1", "seed": 42},
+    },
+    {"key": "h1-ionq-multicircuit", "programs": ["bell2.qasm", "ghz5.qasm"], "noise": None},
 ]
 
 
@@ -73,12 +80,28 @@ def main() -> int:
         if job["key"] in done:
             print(f"{job['key']}: already in ledger, skipping")
             continue
-        source = (PROGRAMS / job["program"]).read_text(encoding="utf-8")
-        circuit = to_ionq_circuit(source)
+        programs = job.get("programs") or [job["program"]]
+        source = "\n".join((PROGRAMS / name).read_text(encoding="utf-8") for name in programs)
+        if len(programs) > 1:
+            parts = [
+                to_ionq_circuit((PROGRAMS / name).read_text(encoding="utf-8")) for name in programs
+            ]
+            circuit = {
+                "gateset": "qis",
+                "qubits": max(part["qubits"] for part in parts),
+                "circuits": [
+                    {"name": name, "circuit": part["circuit"]}
+                    for name, part in zip(programs, parts, strict=True)
+                ],
+            }
+            job_type = "ionq.multi-circuit.v1"
+        else:
+            circuit = to_ionq_circuit(source)
+            job_type = "ionq.circuit.v1"
         if job.get("corrupt"):
             circuit["circuit"][0]["gate"] = "not_a_gate"
         payload = {
-            "type": "ionq.circuit.v1",
+            "type": job_type,
             "name": job["key"],
             "backend": "simulator",
             "shots": SHOTS,
@@ -87,7 +110,7 @@ def main() -> int:
         if job["noise"]:
             payload["noise"] = job["noise"]
         converted = json.dumps(circuit, sort_keys=True)
-        print(f"{job['key']}: {len(circuit['circuit'])} gates, noise={job['noise']}")
+        print(f"{job['key']}: {job_type}, noise={job['noise']}")
         if not args.submit:
             continue
 
@@ -101,12 +124,12 @@ def main() -> int:
             "http_status": response.status_code,
             "application_context": {
                 "source_program": {
-                    "reference": f"runs/programs/{job['program']}",
+                    "reference": ", ".join(f"runs/programs/{name}" for name in programs),
                     "sha256": _digest(source),
                     "dialect": "braket-openqasm3",
                 },
                 "converted_program": {
-                    "format": "ionq.circuit.v1 (qis)",
+                    "format": f"{job_type} (qis)",
                     "sha256": _digest(converted),
                     "conversion": "scripts/run_ionq_jobs.py:to_ionq_circuit"
                     + ("; first gate deliberately invalid" if job.get("corrupt") else ""),

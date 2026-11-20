@@ -45,7 +45,17 @@ def interferometer4() -> tuple[pcvl.Circuit, pcvl.BasicState]:
     return circuit, pcvl.BasicState([1, 0, 1, 0])
 
 
-EXPERIMENTS = {"hom2": hom2, "interferometer4": interferometer4}
+def interferometer6() -> tuple[pcvl.Circuit, pcvl.BasicState]:
+    circuit = pcvl.Circuit(6)
+    for mode in (0, 2, 4):
+        circuit.add(mode, pcvl.BS())
+    circuit.add(1, pcvl.PS(0.4)).add(1, pcvl.BS()).add(3, pcvl.PS(1.1)).add(3, pcvl.BS())
+    for mode in (0, 2, 4):
+        circuit.add(mode, pcvl.BS())
+    return circuit, pcvl.BasicState([1, 0, 1, 0, 1, 0])
+
+
+EXPERIMENTS = {"hom2": hom2, "interferometer4": interferometer4, "interferometer6": interferometer6}
 
 
 def _done(platform_name: str) -> set[str]:
@@ -60,11 +70,12 @@ def main() -> int:
     parser.add_argument("platform")
     parser.add_argument("--submit", action="store_true")
     parser.add_argument("--only", nargs="*")
+    parser.add_argument("--prefix", default="e3", help="ledger key prefix (h1: hold-out set)")
     args = parser.parse_args()
     done = _done(args.platform)
 
     for name, build in EXPERIMENTS.items():
-        key = f"e3-quandela-{args.platform.replace(':', '-')}-{name}"
+        key = f"{args.prefix}-quandela-{args.platform.replace(':', '-')}-{name}"
         if args.only and name not in args.only:
             continue
         if key in done:

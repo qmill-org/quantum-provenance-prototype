@@ -48,6 +48,21 @@ JOBS = [
     {"key": "e2-ibm-batch-bell2-o3", "program": "bell2.qasm", "kind": "batch", "opt": 3},
     {"key": "e2-ibm-estimator-bell2-zz", "program": "bell2.qasm", "kind": "estimator", "opt": 2},
     {"key": "e5-ibm-sampler-cancelled", "program": "bell2.qasm", "kind": "cancel", "opt": 2},
+    # Hold-out set H1 (protocols/baseline-comparison.md).
+    {
+        "key": "h1-ibm-sampler-ghz5-twirled",
+        "program": "ghz5.qasm",
+        "kind": "sampler_twirled",
+        "opt": 2,
+    },
+    {
+        "key": "h1-ibm-estimator-ghz5-r0",
+        "program": "ghz5.qasm",
+        "kind": "estimator",
+        "opt": 2,
+        "observable": "IIIZZ",
+        "resilience_level": 0,
+    },
 ]
 SHOTS = 1000
 
@@ -76,6 +91,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("backend")
     parser.add_argument("--submit", action="store_true")
+    parser.add_argument("--only", nargs="*", help="submit only these keys")
     args = parser.parse_args()
 
     service = QiskitRuntimeService(
@@ -93,6 +109,8 @@ def main() -> int:
 
     prepared = []
     for job in JOBS:
+        if args.only and job["key"] not in args.only:
+            continue
         if job["key"] in done:
             print(f"{job['key']}: already in ledger, skipping")
             continue
@@ -161,11 +179,21 @@ def main() -> int:
                 runtime_job.cancel()
                 extra = {"cancel_requested_at": datetime.now(UTC).isoformat()}
             record(job, context, runtime_job, **extra)
+        elif job["kind"] == "sampler_twirled":
+            sampler = SamplerV2(mode=backend)
+            sampler.options.twirling.enable_gates = True
+            sampler.options.twirling.enable_measure = True
+            record(job, context, sampler.run([isa], shots=SHOTS), twirling="gates+measure")
         elif job["kind"] == "estimator":
-            observable = SparsePauliOp("ZZ").apply_layout(isa.layout)
+            label = job.get("observable", "ZZ")
+            observable = SparsePauliOp(label).apply_layout(isa.layout)
             estimator = EstimatorV2(mode=backend)
             estimator.options.default_shots = SHOTS
-            record(job, context, estimator.run([(isa, observable)]), observable="ZZ")
+            extra = {"observable": label}
+            if "resilience_level" in job:
+                estimator.options.resilience_level = job["resilience_level"]
+                extra["resilience_level"] = job["resilience_level"]
+            record(job, context, estimator.run([(isa, observable)]), **extra)
     return 0
 
 
