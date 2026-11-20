@@ -1,0 +1,96 @@
+{
+  "backend": {
+    "average_queue_time": 0,
+    "backend": "simulator",
+    "degraded": false,
+    "last_updated": "2026-11-20T09:13:33Z",
+    "noise_models": [
+      "aria-1",
+      "aria-2",
+      "forte-1",
+      "forte-enterprise-1",
+      "ideal"
+    ],
+    "qubits": 29,
+    "status": "available",
+    "supported_error_mitigations": [
+      "Debias",
+      "Sharpen"
+    ],
+    "supported_gates": [
+      "x",
+      "y",
+      "z",
+      "h",
+      "s",
+      "si",
+      "t",
+      "ti",
+      "v",
+      "vi",
+      "rx",
+      "ry",
+      "rz",
+      "cnot",
+      "swap",
+      "xx",
+      "yy",
+      "zz",
+      "not"
+    ],
+    "supported_native_gates": [
+      "gpi",
+      "gpi2",
+      "zz"
+    ]
+  },
+  "job": {
+    "backend": "simulator",
+    "child_job_ids": [
+      "06b000ed-feec-76fe-8000-e3d6ea87294d",
+      "06b000ed-feed-7745-8000-255add763441"
+    ],
+    "completed_at": "2026-11-20T09:12:02.240Z",
+    "cost_model": "2QGE_operations",
+    "dry_run": false,
+    "execution_duration_ms": 0,
+    "failure": null,
+    "id": "01a1f83a-1870-7461-aec9-0a9777ba0fdf",
+    "metadata": null,
+    "name": "h1-ionq-multicircuit",
+    "noise": {
+      "model": "ideal"
+    },
+    "output": {},
+    "parent_job_id": null,
+    "predicted_execution_duration_ms": null,
+    "predicted_wait_time_ms": null,
+    "project_id": "d28772a8-1b94-424d-a48d-e83d3fc33943",
+    "results": {
+      "ionq.result.probabilities-aggregate.json.v1": {
+        "format": "ionq.result.probabilities-aggregate.json.v1",
+        "id": "probabilities-aggregate",
+        "media_type": "application/json"
+      },
+      "probabilities": {
+        "url": "/v0.4/jobs/01a1f83a-1870-7461-aec9-0a9777ba0fdf/results/probabilities/aggregated"
+      }
+    },
+    "session_id": null,
+    "settings": {},
+    "started_at": "2026-11-20T09:12:01.674Z",
+    "stats": {
+      "circuits": 2,
+      "gate_counts": {
+        "1q": 2,
+        "2q": 5
+      },
+      "kwh": 0,
+      "qubits": 5
+    },
+    "status": "completed",
+    "submitted_at": "2026-11-20T09:11:59.347Z",
+    "submitter_id": "129a6513-e1fd-4acc-88a0-274d24b29955",
+    "type": "ionq.multi-circuit.v1"
+  }
+}

@@ -204,3 +204,12 @@ captured after the `baseline-freeze` tag.
   unrecognized result format; the adapter labels the outcomes
   `site_occupation`. Both jobs re-captured; dominant outcome `rgrgrgrgr`
   (alternating order), as expected for the program.
+
+## IonQ hold-out jobs H1 (captured 2026-11-20)
+
+- **F16 Advertised result location ignored.** For `ionq.multi-circuit.v1`
+  jobs IonQ advertises the results at `results.probabilities.url`
+  (`.../results/probabilities/aggregated`, one distribution per child job).
+  The retrieval layer requests the fixed path `/results/probabilities`, gets
+  404, and the record states that the provider no longer has the results
+  (`not_found_by_provider`), which is false.

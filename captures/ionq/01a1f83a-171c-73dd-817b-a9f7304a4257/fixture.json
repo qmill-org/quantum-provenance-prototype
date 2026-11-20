@@ -1,0 +1,80 @@
+{
+  "device": {
+    "calibration": null,
+    "metadata": {
+      "current_characterization_id": null,
+      "provider": "IonQ"
+    },
+    "name": "simulator",
+    "provider": "ionq",
+    "provider_properties": {
+      "qubits": 29
+    },
+    "provider_target_id": "simulator",
+    "status": "available",
+    "target_id": "simulator",
+    "type": "SIMULATOR"
+  },
+  "external_job_id": "01a1f83a-171c-73dd-817b-a9f7304a4257",
+  "provider": "ionq",
+  "region": null,
+  "result": {
+    "compiled_circuit": "<program redacted sha256=0a78d90c42f4f1094a4228827a07550fd7b6fda97ca01e236dd4f19ec918bb30 bytes=168>",
+    "compiled_circuit_metrics": {
+      "circuits": 1,
+      "gate_counts": {
+        "1q": 1,
+        "2q": 1
+      },
+      "kwh": 0,
+      "qubits": 2
+    },
+    "measurement_counts": {},
+    "raw_payload": {
+      "histogram": {
+        "0": 0.478,
+        "1": 0.003,
+        "2": 0.005,
+        "3": 0.514
+      },
+      "qubits": 2
+    },
+    "status": "completed"
+  },
+  "snapshot": {
+    "created_at": "2026-11-20T09:11:59.008Z",
+    "ended_at": "2026-11-20T09:12:02.413Z",
+    "metadata": {
+      "child_job_ids": null,
+      "dry_run": false,
+      "execution_duration_ms": 0,
+      "failure": null,
+      "name": "h1-ionq-noisy-aria1-bell2",
+      "noise": {
+        "model": "aria-1",
+        "seed": 42
+      },
+      "parent_job_id": null,
+      "predicted_execution_duration_ms": null,
+      "predicted_wait_time_ms": null,
+      "session_id": null,
+      "settings": {},
+      "stats": {
+        "circuits": 1,
+        "gate_counts": {
+          "1q": 1,
+          "2q": 1
+        },
+        "kwh": 0,
+        "qubits": 2
+      },
+      "type": "ionq.circuit.v1"
+    },
+    "provider": "ionq",
+    "provider_job_id": "01a1f83a-171c-73dd-817b-a9f7304a4257",
+    "provider_target_id": "simulator",
+    "shots": 1000,
+    "status": "completed",
+    "target_id": "simulator"
+  }
+}

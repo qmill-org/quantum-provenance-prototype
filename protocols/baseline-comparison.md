@@ -128,6 +128,23 @@ paths no development capture exercised:
 
 Plus the jobs pending at the freeze (AQT Ibex-Q1, Quandela Belenos QPU).
 
+### 2026-11-20: H1 IonQ jobs (aria-1 noisy Bell; multi-circuit Bell + GHZ-5)
+
+Scored as pre-registered (cumulative hold-out, with Aquila): frozen questions
+B 26/2/9/0, V1 24/0/4/9, V2 35/0/2/0, V2f 35/0/2/0.
+
+**Unscored failure (F16).** The multi-circuit job completed, but the IonQ
+retrieval layer requests `/results/probabilities`, while IonQ advertises a
+different location for multi-circuit jobs in the job itself
+(`results.probabilities.url` → `.../results/probabilities/aggregated`, keyed by
+child job). The request returns 404, and V2 records the results as
+unavailable with reason `not_found_by_provider`, which is false. The oracle
+cannot score this: it reads the raw data the same retrieval layer captured,
+so a retrieval miss makes the question not applicable instead of wrong. This
+is a limit of an oracle built on the capture layer. V2 does carry the two
+child job identifiers (`job.relations.child_job_ids`, provider-supplied);
+B and V1 cannot.
+
 ## Threats stated in advance
 
 - The baseline, the readers and the questions are designed by the authors of
@@ -246,3 +263,4 @@ whether derived values are relabelled observations or computed estimates
 | 2026-11-20 | Arm V2f added: V2 as frozen at `baseline-freeze`, run from a worktree, so every hold-out capture is scored with and without post-freeze changes. | Hold-out discipline after the first post-freeze change. |
 | 2026-11-20 | Q1 reader: `measurement_counts` always read as observed counts (the contract's definition); previously counts with `derived` evidence were read as client-computed. | The frozen rule contradicted the contract text the protocol requires readers to use; it first mattered for the analog counts. Development results unchanged. |
 | 2026-11-20 | Hold-out job set H1 registered (above) before submission. | Hold-out set otherwise only Aquila, AQT and Belenos. |
+| 2026-11-20 | H1 IonQ results recorded as scored; F16 recorded as unscored, with the oracle limitation. | Results reported before any fix. |

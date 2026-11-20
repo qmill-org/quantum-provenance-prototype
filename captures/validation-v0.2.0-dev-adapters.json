@@ -1,5 +1,5 @@
 {
-  "adapter_revision": "68b466e",
+  "adapter_revision": "94f00a9",
   "captures": [
     {
       "capture": "04470467-2658-4b06-8e5c-35b841c7b054",
@@ -997,6 +997,103 @@
       "upstream": {
         "get_device_details": "ok",
         "get_result": "ResultUnavailableError",
+        "get_status": "ok"
+      }
+    },
+    {
+      "capture": "01a1f83a-171c-73dd-817b-a9f7304a4257",
+      "device": {
+        "hardware_provider": "ionq",
+        "identifier": "simulator",
+        "platform_provider": "ionq"
+      },
+      "findings": [],
+      "inventory": {
+        "artifact.compiled": "provider_passthrough",
+        "characterization": "unavailable",
+        "compilation.compiler": "unavailable",
+        "compilation.logical_to_physical_mapping": "unavailable",
+        "device.hardware_provider": "provider_supplied",
+        "device.identifier": "provider_supplied",
+        "device.platform_provider": "provider_supplied",
+        "device.qubit_count": "provider_supplied",
+        "device.type": "provider_supplied",
+        "execution.executed_shots": "unavailable",
+        "execution.queue_duration_ms": "unavailable",
+        "execution.run_duration_ms": "provider_supplied",
+        "execution.total_duration_ms": "derived",
+        "job.created_at": "provider_supplied",
+        "job.ended_at": "provider_supplied",
+        "job.failure": "not_applicable",
+        "job.relations": "not_applicable",
+        "job.shots": "provider_supplied",
+        "job.status": "provider_supplied",
+        "results.estimated_measurement_counts": "derived",
+        "results.measurement_counts": "not_applicable",
+        "results.measurement_probabilities": "provider_supplied",
+        "software.framework_versions": "unavailable",
+        "software.provider_client": "unavailable"
+      },
+      "inventory_counts": {
+        "derived": 2,
+        "not_applicable": 3,
+        "provider_passthrough": 1,
+        "provider_supplied": 11,
+        "unavailable": 7
+      },
+      "provider": "ionq",
+      "schema_valid": true,
+      "upstream": {
+        "get_device_details": "ok",
+        "get_result": "ok",
+        "get_status": "ok"
+      }
+    },
+    {
+      "capture": "01a1f83a-1870-7461-aec9-0a9777ba0fdf",
+      "device": {
+        "hardware_provider": "ionq",
+        "identifier": "simulator",
+        "platform_provider": "ionq"
+      },
+      "findings": [],
+      "inventory": {
+        "artifact.compiled": "unavailable",
+        "characterization": "unavailable",
+        "compilation.compiler": "unavailable",
+        "compilation.logical_to_physical_mapping": "unavailable",
+        "device.hardware_provider": "provider_supplied",
+        "device.identifier": "provider_supplied",
+        "device.platform_provider": "provider_supplied",
+        "device.qubit_count": "provider_supplied",
+        "device.type": "provider_supplied",
+        "execution.executed_shots": "not_applicable",
+        "execution.queue_duration_ms": "unavailable",
+        "execution.run_duration_ms": "provider_supplied",
+        "execution.total_duration_ms": "derived",
+        "job.created_at": "provider_supplied",
+        "job.ended_at": "provider_supplied",
+        "job.failure": "not_applicable",
+        "job.relations": "provider_supplied",
+        "job.shots": "unavailable",
+        "job.status": "provider_supplied",
+        "results.estimated_measurement_counts": "unavailable",
+        "results.measurement_counts": "unavailable",
+        "results.measurement_probabilities": "unavailable",
+        "software.framework_versions": "unavailable",
+        "software.provider_client": "unavailable"
+      },
+      "inventory_counts": {
+        "derived": 1,
+        "not_applicable": 2,
+        "provider_supplied": 10,
+        "unavailable": 11
+      },
+      "provider": "ionq",
+      "schema_valid": true,
+      "upstream": {
+        "get_device_details": "ok",
+        "get_result": "JobNotFoundError",
         "get_status": "ok"
       }
     },

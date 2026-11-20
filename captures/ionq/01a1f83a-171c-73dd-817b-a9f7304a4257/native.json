@@ -1,0 +1,142 @@
+{
+  "backend": {
+    "average_queue_time": 0,
+    "backend": "simulator",
+    "degraded": false,
+    "last_updated": "2026-11-20T09:13:32Z",
+    "noise_models": [
+      "aria-1",
+      "aria-2",
+      "forte-1",
+      "forte-enterprise-1",
+      "ideal"
+    ],
+    "qubits": 29,
+    "status": "available",
+    "supported_error_mitigations": [
+      "Debias",
+      "Sharpen"
+    ],
+    "supported_gates": [
+      "x",
+      "y",
+      "z",
+      "h",
+      "s",
+      "si",
+      "t",
+      "ti",
+      "v",
+      "vi",
+      "rx",
+      "ry",
+      "rz",
+      "cnot",
+      "swap",
+      "xx",
+      "yy",
+      "zz",
+      "not"
+    ],
+    "supported_native_gates": [
+      "gpi",
+      "gpi2",
+      "zz"
+    ]
+  },
+  "job": {
+    "backend": "simulator",
+    "child_job_ids": null,
+    "completed_at": "2026-11-20T09:12:02.413Z",
+    "cost_model": "2QGE_operations",
+    "dry_run": false,
+    "execution_duration_ms": 0,
+    "failure": null,
+    "id": "01a1f83a-171c-73dd-817b-a9f7304a4257",
+    "metadata": null,
+    "name": "h1-ionq-noisy-aria1-bell2",
+    "noise": {
+      "model": "aria-1",
+      "seed": 42
+    },
+    "output": {
+      "compilation": {
+        "compiled_circuits": {
+          "ionq.native.v1": {
+            "format": "ionq.native.v1",
+            "id": "493a9ad1-796a-4ba2-9a4f-5d3c1c37ed1f",
+            "media_type": "application/json"
+          },
+          "ionq.qasm3.v1": {
+            "format": "ionq.qasm3.v1",
+            "id": "fbf74f3a-302d-41b4-a4b9-19995d0bb1da",
+            "media_type": "text/plain"
+          }
+        },
+        "gate_basis": "MS",
+        "precision": "1E-3",
+        "service_version": "v0.4"
+      },
+      "error_mitigation": {
+        "debiasing": false,
+        "symmetry_verification": {
+          "applied": false,
+          "num_allowed_states": null
+        }
+      }
+    },
+    "parent_job_id": null,
+    "predicted_execution_duration_ms": null,
+    "predicted_wait_time_ms": null,
+    "project_id": "d28772a8-1b94-424d-a48d-e83d3fc33943",
+    "results": {
+      "histogram": {
+        "url": "/v0.4/jobs/01a1f83a-171c-73dd-817b-a9f7304a4257/results/histogram"
+      },
+      "ionq.result.histogram.json.v2": {
+        "format": "ionq.result.histogram.json.v2",
+        "id": "a021bc86-9232-4264-9d60-95e0faf88147",
+        "media_type": "application/json"
+      },
+      "ionq.result.probabilities.json.v2": {
+        "format": "ionq.result.probabilities.json.v2",
+        "id": "d645f9cc-cb44-43f2-91d4-19a09b22ecdb",
+        "media_type": "application/json"
+      },
+      "ionq.result.shots.json.v2": {
+        "format": "ionq.result.shots.json.v2",
+        "id": "c0bc7839-8dd1-42f0-b9f7-28b5c262cbc3",
+        "media_type": "application/json"
+      },
+      "probabilities": {
+        "url": "/v0.4/jobs/01a1f83a-171c-73dd-817b-a9f7304a4257/results/probabilities"
+      },
+      "shots": {
+        "url": "/v0.4/jobs/01a1f83a-171c-73dd-817b-a9f7304a4257/results/shots"
+      }
+    },
+    "session_id": null,
+    "settings": {},
+    "shots": 1000,
+    "started_at": "2026-11-20T09:12:02.290Z",
+    "stats": {
+      "circuits": 1,
+      "gate_counts": {
+        "1q": 1,
+        "2q": 1
+      },
+      "kwh": 0,
+      "qubits": 2
+    },
+    "status": "completed",
+    "submitted_at": "2026-11-20T09:11:59.008Z",
+    "submitter_id": "129a6513-e1fd-4acc-88a0-274d24b29955",
+    "type": "ionq.circuit.v1"
+  },
+  "probabilities": {
+    "0": 0.478,
+    "1": 0.003,
+    "2": 0.005,
+    "3": 0.514
+  }
+}

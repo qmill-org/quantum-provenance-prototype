@@ -4,7 +4,7 @@
   "arms": {
     "B": "flat baseline (comparison/baseline.py)",
     "V1": "v0.1.0",
-    "V2": "63ce25f",
+    "V2": "7e6b0e1",
     "V2f": "baseline-freeze (adapters as frozen for the hold-out set)"
   },
   "summary": {
@@ -413,14 +413,14 @@
     "holdout": {
       "B": {
         "total": {
-          "correct": 14,
+          "correct": 26,
           "misleading": 2,
-          "undeterminable": 2,
+          "undeterminable": 9,
           "no_record": 0
         },
         "per_question": {
           "Q0": {
-            "correct": 2,
+            "correct": 4,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
@@ -428,28 +428,40 @@
           "Q1": {
             "correct": 2,
             "misleading": 0,
+            "undeterminable": 1,
+            "no_record": 0
+          },
+          "Q2": {
+            "correct": 1,
+            "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q4": {
-            "correct": 0,
+            "correct": 2,
             "misleading": 2,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q6": {
-            "correct": 2,
+            "correct": 3,
             "misleading": 0,
-            "undeterminable": 0,
+            "undeterminable": 1,
             "no_record": 0
           },
           "Q7": {
             "correct": 2,
             "misleading": 0,
-            "undeterminable": 0,
+            "undeterminable": 1,
             "no_record": 0
           },
           "Q8": {
+            "correct": 0,
+            "misleading": 0,
+            "undeterminable": 4,
+            "no_record": 0
+          },
+          "Q10": {
             "correct": 0,
             "misleading": 0,
             "undeterminable": 2,
@@ -462,19 +474,19 @@
             "no_record": 0
           },
           "N1": {
-            "correct": 2,
+            "correct": 4,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "N2": {
-            "correct": 2,
+            "correct": 4,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "N3": {
-            "correct": 2,
+            "correct": 4,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
@@ -483,113 +495,137 @@
       },
       "V1": {
         "total": {
-          "correct": 16,
+          "correct": 24,
+          "misleading": 0,
+          "undeterminable": 4,
+          "no_record": 9
+        },
+        "per_question": {
+          "Q0": {
+            "correct": 3,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 1
+          },
+          "Q1": {
+            "correct": 3,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q2": {
+            "correct": 1,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q4": {
+            "correct": 3,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 1
+          },
+          "Q6": {
+            "correct": 3,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 1
+          },
+          "Q7": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 1
+          },
+          "Q8": {
+            "correct": 0,
+            "misleading": 0,
+            "undeterminable": 3,
+            "no_record": 1
+          },
+          "Q10": {
+            "correct": 0,
+            "misleading": 0,
+            "undeterminable": 1,
+            "no_record": 1
+          },
+          "Q11": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "N1": {
+            "correct": 3,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 1
+          },
+          "N2": {
+            "correct": 3,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 1
+          },
+          "N3": {
+            "correct": 3,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 1
+          }
+        }
+      },
+      "V2": {
+        "total": {
+          "correct": 35,
           "misleading": 0,
           "undeterminable": 2,
           "no_record": 0
         },
         "per_question": {
           "Q0": {
-            "correct": 2,
+            "correct": 4,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q1": {
-            "correct": 2,
+            "correct": 3,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q2": {
+            "correct": 1,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q4": {
-            "correct": 2,
+            "correct": 4,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q6": {
-            "correct": 2,
+            "correct": 3,
             "misleading": 0,
-            "undeterminable": 0,
+            "undeterminable": 1,
             "no_record": 0
           },
           "Q7": {
-            "correct": 2,
+            "correct": 3,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q8": {
-            "correct": 0,
+            "correct": 3,
             "misleading": 0,
-            "undeterminable": 2,
+            "undeterminable": 1,
             "no_record": 0
           },
-          "Q11": {
-            "correct": 2,
-            "misleading": 0,
-            "undeterminable": 0,
-            "no_record": 0
-          },
-          "N1": {
-            "correct": 2,
-            "misleading": 0,
-            "undeterminable": 0,
-            "no_record": 0
-          },
-          "N2": {
-            "correct": 2,
-            "misleading": 0,
-            "undeterminable": 0,
-            "no_record": 0
-          },
-          "N3": {
-            "correct": 2,
-            "misleading": 0,
-            "undeterminable": 0,
-            "no_record": 0
-          }
-        }
-      },
-      "V2": {
-        "total": {
-          "correct": 18,
-          "misleading": 0,
-          "undeterminable": 0,
-          "no_record": 0
-        },
-        "per_question": {
-          "Q0": {
-            "correct": 2,
-            "misleading": 0,
-            "undeterminable": 0,
-            "no_record": 0
-          },
-          "Q1": {
-            "correct": 2,
-            "misleading": 0,
-            "undeterminable": 0,
-            "no_record": 0
-          },
-          "Q4": {
-            "correct": 2,
-            "misleading": 0,
-            "undeterminable": 0,
-            "no_record": 0
-          },
-          "Q6": {
-            "correct": 2,
-            "misleading": 0,
-            "undeterminable": 0,
-            "no_record": 0
-          },
-          "Q7": {
-            "correct": 2,
-            "misleading": 0,
-            "undeterminable": 0,
-            "no_record": 0
-          },
-          "Q8": {
+          "Q10": {
             "correct": 2,
             "misleading": 0,
             "undeterminable": 0,
@@ -602,19 +638,19 @@
             "no_record": 0
           },
           "N1": {
-            "correct": 2,
+            "correct": 4,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "N2": {
-            "correct": 2,
+            "correct": 4,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "N3": {
-            "correct": 2,
+            "correct": 4,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
@@ -623,43 +659,55 @@
       },
       "V2f": {
         "total": {
-          "correct": 18,
+          "correct": 35,
           "misleading": 0,
-          "undeterminable": 0,
+          "undeterminable": 2,
           "no_record": 0
         },
         "per_question": {
           "Q0": {
-            "correct": 2,
+            "correct": 4,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q1": {
-            "correct": 2,
+            "correct": 3,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q2": {
+            "correct": 1,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q4": {
-            "correct": 2,
+            "correct": 4,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q6": {
-            "correct": 2,
+            "correct": 3,
             "misleading": 0,
-            "undeterminable": 0,
+            "undeterminable": 1,
             "no_record": 0
           },
           "Q7": {
-            "correct": 2,
+            "correct": 3,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q8": {
+            "correct": 3,
+            "misleading": 0,
+            "undeterminable": 1,
+            "no_record": 0
+          },
+          "Q10": {
             "correct": 2,
             "misleading": 0,
             "undeterminable": 0,
@@ -672,19 +720,19 @@
             "no_record": 0
           },
           "N1": {
-            "correct": 2,
+            "correct": 4,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "N2": {
-            "correct": 2,
+            "correct": 4,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "N3": {
-            "correct": 2,
+            "correct": 4,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
@@ -4220,6 +4268,274 @@
             "Q9": "correct",
             "Q8": "correct",
             "Q5": "correct",
+            "Q6": "undeterminable",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "ionq/01a1f83a-171c-73dd-817b-a9f7304a4257",
+      "set": "holdout",
+      "truth": {
+        "Q0": true,
+        "Q4": "ionq",
+        "Q1": "probabilities",
+        "Q2": "provider",
+        "Q10": "aria-1",
+        "Q8": "none",
+        "Q6": 1000,
+        "N1": "simulator",
+        "N2": [
+          "2026-11-20T09:11:59.008000+00:00",
+          "2026-11-20T09:12:02.413000+00:00"
+        ],
+        "N3": 29
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q1": "undeterminable",
+            "Q2": "provider",
+            "Q10": "undeterminable",
+            "Q8": "undeterminable",
+            "Q6": 1000,
+            "N1": "simulator",
+            "N2": [
+              "2026-11-20T09:11:59.008000+00:00",
+              "2026-11-20T09:12:02.413000+00:00"
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "undeterminable",
+            "Q2": "correct",
+            "Q10": "undeterminable",
+            "Q8": "undeterminable",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q1": "probabilities",
+            "Q2": "provider",
+            "Q10": "undeterminable",
+            "Q8": "undeterminable",
+            "Q6": 1000,
+            "N1": "simulator",
+            "N2": [
+              "2026-11-20T09:11:59.008000+00:00",
+              "2026-11-20T09:12:02.413000+00:00"
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q10": "undeterminable",
+            "Q8": "undeterminable",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q1": "probabilities",
+            "Q2": "provider",
+            "Q10": "aria-1",
+            "Q8": "none",
+            "Q6": 1000,
+            "N1": "simulator",
+            "N2": [
+              "2026-11-20T09:11:59.008000+00:00",
+              "2026-11-20T09:12:02.413000+00:00"
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q10": "correct",
+            "Q8": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q1": "probabilities",
+            "Q2": "provider",
+            "Q10": "aria-1",
+            "Q8": "none",
+            "Q6": 1000,
+            "N1": "simulator",
+            "N2": [
+              "2026-11-20T09:11:59.008000+00:00",
+              "2026-11-20T09:12:02.413000+00:00"
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q10": "correct",
+            "Q8": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "ionq/01a1f83a-1870-7461-aec9-0a9777ba0fdf",
+      "set": "holdout",
+      "truth": {
+        "Q0": true,
+        "Q4": "ionq",
+        "Q10": "ideal",
+        "Q7": "none",
+        "Q8": "none",
+        "Q6": 1000,
+        "N1": "simulator",
+        "N2": [
+          "2026-11-20T09:11:59.347000+00:00",
+          "2026-11-20T09:12:02.240000+00:00"
+        ],
+        "N3": 29
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q10": "undeterminable",
+            "Q7": "undeterminable",
+            "Q8": "undeterminable",
+            "Q6": "undeterminable",
+            "N1": "simulator",
+            "N2": [
+              "2026-11-20T09:11:59.347000+00:00",
+              "2026-11-20T09:12:02.240000+00:00"
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q10": "undeterminable",
+            "Q7": "undeterminable",
+            "Q8": "undeterminable",
+            "Q6": "undeterminable",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": "no_record",
+            "Q4": "no_record",
+            "Q10": "no_record",
+            "Q7": "no_record",
+            "Q8": "no_record",
+            "Q6": "no_record",
+            "N1": "no_record",
+            "N2": "no_record",
+            "N3": "no_record"
+          },
+          "scores": {
+            "Q0": "no_record",
+            "Q4": "no_record",
+            "Q10": "no_record",
+            "Q7": "no_record",
+            "Q8": "no_record",
+            "Q6": "no_record",
+            "N1": "no_record",
+            "N2": "no_record",
+            "N3": "no_record"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q10": "ideal",
+            "Q7": "none",
+            "Q8": "undeterminable",
+            "Q6": "undeterminable",
+            "N1": "simulator",
+            "N2": [
+              "2026-11-20T09:11:59.347000+00:00",
+              "2026-11-20T09:12:02.240000+00:00"
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q10": "correct",
+            "Q7": "correct",
+            "Q8": "undeterminable",
+            "Q6": "undeterminable",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q10": "ideal",
+            "Q7": "none",
+            "Q8": "undeterminable",
+            "Q6": "undeterminable",
+            "N1": "simulator",
+            "N2": [
+              "2026-11-20T09:11:59.347000+00:00",
+              "2026-11-20T09:12:02.240000+00:00"
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q10": "correct",
+            "Q7": "correct",
+            "Q8": "undeterminable",
             "Q6": "undeterminable",
             "N1": "correct",
             "N2": "correct",
