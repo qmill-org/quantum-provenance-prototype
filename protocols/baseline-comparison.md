@@ -161,6 +161,30 @@ Reading notes:
 - Neutral questions: B and V2 tie on N1 and N3; B leaves the Quandela end time
   undeterminable (N2) because it does not derive it.
 
+## Results — hold-out set
+
+### 2026-11-20: QuEra Aquila ×2 (analog Hamiltonian simulation via Braket)
+
+Captured after the freeze (`4852fae4`, `808c58a0`). Scored as pre-registered:
+
+| Arm | correct / misleading / undeterminable / no record |
+|---|---|
+| B | 14 / 2 / 2 / 0 (misleading: Q4 operator ×2) |
+| V1 | 16 / 0 / 2 / 0 |
+| V2 | 18 / 0 / 0 / 0 |
+
+**Unscored failure found on the hold-out set (F15).** In every arm the
+result is `measurement_counts = {"shotMetadatashotResult": 100}`: the shared
+Braket retrieval layer tallies a shot by joining its elements, assuming a list
+of bits, and an AHS shot is an object (`shotMetadata`, `shotResult` with pre-
+and post-sequence site occupations). V2 labels these counts
+`provider_supplied` with `outcome_basis: bitstring`; no drift warning fires
+and the live validator reports no finding, because a result was produced.
+The pre-registered Q1 asks only which kind of result the provider returned
+(observed per-shot measurements: correct in all arms), not whether the
+recorded outcomes are correct, so the scored table does not show the failure.
+This is reported as a limitation of the question set, not re-scored.
+
 ## Log
 
 | Date | Change | Reason |
@@ -168,3 +192,4 @@ Reading notes:
 | 2026-11-20 | Protocol committed. | — |
 | 2026-11-20 | Baseline `qpu_name` taken from the target the job names instead of the device's display name. | First run scored correct display names ("Forte 1") as misleading against device identifiers; the job's own target field is the more direct accessor. Before freeze; no hold-out data. |
 | 2026-11-20 | V1 harness: a recorded provider error is raised with its recorded class when `v0.1.0` defines it (as the current replay does), not as a generic error. | The generic error made `v0.1.0` drop three records it produces in the frozen `v0.1.0` report (cancelled/failed jobs). Harness only. Before freeze. |
+| 2026-11-20 | Hold-out results for the two Aquila jobs recorded as scored; F15 recorded as an unscored failure. No change to adapters, oracle or readers yet. | Hold-out discipline: results are reported before any fix. |

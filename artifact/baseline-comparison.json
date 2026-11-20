@@ -4,7 +4,7 @@
   "arms": {
     "B": "flat baseline (comparison/baseline.py)",
     "V1": "v0.1.0",
-    "V2": "824f512"
+    "V2": "e299bc6"
   },
   "summary": {
     "development": {
@@ -290,6 +290,200 @@
           }
         }
       }
+    },
+    "holdout": {
+      "B": {
+        "total": {
+          "correct": 14,
+          "misleading": 2,
+          "undeterminable": 2,
+          "no_record": 0
+        },
+        "per_question": {
+          "Q0": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q1": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q4": {
+            "correct": 0,
+            "misleading": 2,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q6": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q7": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q8": {
+            "correct": 0,
+            "misleading": 0,
+            "undeterminable": 2,
+            "no_record": 0
+          },
+          "N1": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "N2": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "N3": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          }
+        }
+      },
+      "V1": {
+        "total": {
+          "correct": 16,
+          "misleading": 0,
+          "undeterminable": 2,
+          "no_record": 0
+        },
+        "per_question": {
+          "Q0": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q1": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q4": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q6": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q7": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q8": {
+            "correct": 0,
+            "misleading": 0,
+            "undeterminable": 2,
+            "no_record": 0
+          },
+          "N1": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "N2": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "N3": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          }
+        }
+      },
+      "V2": {
+        "total": {
+          "correct": 18,
+          "misleading": 0,
+          "undeterminable": 0,
+          "no_record": 0
+        },
+        "per_question": {
+          "Q0": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q1": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q4": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q6": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q7": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q8": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "N1": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "N2": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "N3": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          }
+        }
+      }
     }
   },
   "captures": [
@@ -520,6 +714,214 @@
             "Q2": "correct",
             "Q8": "correct",
             "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "braket/4852fae4-439c-4640-ad66-9a0a37d77f0f",
+      "set": "holdout",
+      "truth": {
+        "Q0": true,
+        "Q4": "quera",
+        "Q1": "observed_counts",
+        "Q7": 100,
+        "Q8": "none",
+        "Q6": 100,
+        "N1": "arn:aws:braket:us-east-1::device/qpu/quera/Aquila",
+        "N2": [
+          "2026-11-18T15:29:24.640000+00:00",
+          "2026-11-20T07:24:42.849000+00:00"
+        ],
+        "N3": 256
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "braket",
+            "Q1": "observed_counts",
+            "Q7": 100,
+            "Q8": "undeterminable",
+            "Q6": 100,
+            "N1": "arn:aws:braket:us-east-1::device/qpu/quera/Aquila",
+            "N2": [
+              "2026-11-18T15:29:24.640000+00:00",
+              "2026-11-20T07:24:42.849000+00:00"
+            ],
+            "N3": 256
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "misleading",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q8": "undeterminable",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "quera",
+            "Q1": "observed_counts",
+            "Q7": 100,
+            "Q8": "undeterminable",
+            "Q6": 100,
+            "N1": "arn:aws:braket:us-east-1::device/qpu/quera/Aquila",
+            "N2": [
+              "2026-11-18T15:29:24.640000+00:00",
+              "2026-11-20T07:24:42.849000+00:00"
+            ],
+            "N3": 256
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q8": "undeterminable",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "quera",
+            "Q1": "observed_counts",
+            "Q7": 100,
+            "Q8": "none",
+            "Q6": 100,
+            "N1": "arn:aws:braket:us-east-1::device/qpu/quera/Aquila",
+            "N2": [
+              "2026-11-18T15:29:24.640000+00:00",
+              "2026-11-20T07:24:42.849000+00:00"
+            ],
+            "N3": 256
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "braket/808c58a0-b1d5-4165-9a9b-1fd85258677e",
+      "set": "holdout",
+      "truth": {
+        "Q0": true,
+        "Q4": "quera",
+        "Q1": "observed_counts",
+        "Q7": 100,
+        "Q8": "none",
+        "Q6": 100,
+        "N1": "arn:aws:braket:us-east-1::device/qpu/quera/Aquila",
+        "N2": [
+          "2026-11-18T15:29:23.601000+00:00",
+          "2026-11-20T07:23:48.972000+00:00"
+        ],
+        "N3": 256
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "braket",
+            "Q1": "observed_counts",
+            "Q7": 100,
+            "Q8": "undeterminable",
+            "Q6": 100,
+            "N1": "arn:aws:braket:us-east-1::device/qpu/quera/Aquila",
+            "N2": [
+              "2026-11-18T15:29:23.601000+00:00",
+              "2026-11-20T07:23:48.972000+00:00"
+            ],
+            "N3": 256
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "misleading",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q8": "undeterminable",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "quera",
+            "Q1": "observed_counts",
+            "Q7": 100,
+            "Q8": "undeterminable",
+            "Q6": 100,
+            "N1": "arn:aws:braket:us-east-1::device/qpu/quera/Aquila",
+            "N2": [
+              "2026-11-18T15:29:23.601000+00:00",
+              "2026-11-20T07:23:48.972000+00:00"
+            ],
+            "N3": 256
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q8": "undeterminable",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "quera",
+            "Q1": "observed_counts",
+            "Q7": 100,
+            "Q8": "none",
+            "Q6": 100,
+            "N1": "arn:aws:braket:us-east-1::device/qpu/quera/Aquila",
+            "N2": [
+              "2026-11-18T15:29:23.601000+00:00",
+              "2026-11-20T07:23:48.972000+00:00"
+            ],
+            "N3": 256
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
             "Q6": "correct",
             "N1": "correct",
             "N2": "correct",

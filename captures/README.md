@@ -184,3 +184,17 @@ status `failed` and the reason only inside a free-text warning.
   simulator job records `shots = null` although 1000 were requested.
   (Addressed in `v0.2.0`: noise model and seed in
   `extensions["simulation.ionq"]`; requested shots application-captured.)
+
+## QuEra Aquila via Braket (captured 2026-11-20, hold-out)
+
+Two purpose-run analog Hamiltonian simulation jobs (9-atom chain, 100 shots),
+captured after the `baseline-freeze` tag.
+
+- **F15 Analog results silently corrupted.** Each AHS shot is an object with
+  `shotMetadata` and `shotResult` (`preSequence`, `postSequence` site
+  occupations). The Braket retrieval layer tallies shots by joining a shot's
+  elements as bits, which for an object yields its key names: all 100 shots
+  become one outcome `"shotMetadatashotResult"`. The `v0.2.0-dev` adapter
+  records these as provider-supplied bitstring counts, with no warning and no
+  validator finding. Found on the first jobs of a paradigm the adapters were
+  not revised on (non-gate, R1.3).
