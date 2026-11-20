@@ -234,14 +234,14 @@
   },
   "report_format": "qmill.provenance.evaluation",
   "report_version": "0.2.0",
-  "schema_version": "0.1.0-prototype",
+  "schema_version": "0.2.0",
   "shared_provider_independent_implementation_loc": {
     "adapter.py": 567,
     "contract.py": 32,
     "models.py": 457,
     "redaction.py": 91,
     "registry.py": 54,
-    "service.py": 337
+    "service.py": 338
   },
-  "shared_provider_independent_implementation_loc_total": 1538
+  "shared_provider_independent_implementation_loc_total": 1539
 }

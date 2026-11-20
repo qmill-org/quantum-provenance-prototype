@@ -211,7 +211,7 @@ def _simulation_extension(
 class IonQProvenanceAdapter(ProvenanceAdapter):
     provider = "ionq"
     name = "ionq-provenance-adapter"
-    version = "0.1.0-prototype"
+    version = "0.2.0"
 
     def __init__(self, integration_adapter: ProviderAdapter | None = None) -> None:
         self._integration = integration_adapter

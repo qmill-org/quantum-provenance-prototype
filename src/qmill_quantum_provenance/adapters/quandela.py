@@ -87,7 +87,7 @@ _EXPECTED_FIELDS = (
 class QuandelaProvenanceAdapter(ProvenanceAdapter):
     provider = "quandela"
     name = "quandela-provenance-adapter"
-    version = "0.2.0-dev"
+    version = "0.2.0"
 
     def __init__(self, integration_adapter: ProviderAdapter | None = None) -> None:
         self._integration = integration_adapter

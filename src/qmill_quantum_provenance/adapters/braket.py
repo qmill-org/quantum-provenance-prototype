@@ -145,7 +145,7 @@ def _is_ahs(measurements: list[Any]) -> bool:
 class BraketProvenanceAdapter(ProvenanceAdapter):
     provider = "braket"
     name = "braket-provenance-adapter"
-    version = "0.1.0-prototype"
+    version = "0.2.0"
 
     def __init__(self, integration_adapter: ProviderAdapter | None = None) -> None:
         self._integration = integration_adapter

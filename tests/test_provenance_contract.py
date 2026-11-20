@@ -24,7 +24,7 @@ def test_openapi_contract_operations() -> None:
     contract = _load_json(contract_path())
 
     assert contract["openapi"] == "3.1.0"
-    assert contract["info"]["version"] == "0.1.0-prototype"
+    assert contract["info"]["version"] == "0.2.0"
     assert "ProvenanceRecord" in contract["components"]["schemas"]
 
     operations = {(method, path) for path, ops in contract["paths"].items() for method in ops}

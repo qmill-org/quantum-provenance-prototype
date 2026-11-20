@@ -1,6 +1,6 @@
 {
  "protocol": "protocols/failure-injection.md",
- "revision": "f2e105e",
+ "revision": "5d1284e",
  "stage_a": {
   "summary": {
    "braket": {

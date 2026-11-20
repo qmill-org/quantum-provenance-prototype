@@ -1,6 +1,6 @@
 [project]
 name = "qmill-quantum-provenance"
-version = "0.1.0"
+version = "0.2.0"
 description = "Unified quantum provenance research prototype — reproducible paper artifact"
 readme = "README.md"
 license = { file = "LICENSE" }

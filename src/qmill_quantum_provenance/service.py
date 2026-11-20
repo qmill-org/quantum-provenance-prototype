@@ -26,6 +26,7 @@ from .adapter import (
 )
 from .integration import ProviderIntegrationError
 from .models import (
+    SCHEMA_VERSION,
     Adapter,
     Artifact,
     ArtifactRole,
@@ -182,7 +183,7 @@ class ProvenanceService:
             adapter=Adapter(
                 provider=adapter.provider,
                 name=getattr(adapter, "name", type(adapter).__name__),
-                version=getattr(adapter, "version", "0.1.0-prototype"),
+                version=getattr(adapter, "version", SCHEMA_VERSION),
             ),
             job=job,
             device=result.device,

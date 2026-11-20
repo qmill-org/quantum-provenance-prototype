@@ -2,7 +2,7 @@
 
 These dataclasses mirror the reduced OpenAPI contract at
 ``qmill_quantum_provenance/openapi.json`` (schema version
-``0.1.0-prototype``). ``to_dict`` produces JSON that validates against the
+``0.2.0``). ``to_dict`` produces JSON that validates against the
 ``ProvenanceRecord`` schema. The contract JSON remains the source of truth;
 this module is the typed, in-process representation used by the service and
 provider adapters.
@@ -17,7 +17,7 @@ from enum import Enum
 from typing import Any
 
 
-SCHEMA_VERSION = "0.1.0-prototype"
+SCHEMA_VERSION = "0.2.0"
 
 
 class EvidenceStatus(str, Enum):

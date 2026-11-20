@@ -1,12 +1,12 @@
 {
-  "schema_version": "0.1.0-prototype",
+  "schema_version": "0.2.0",
   "record_id": "qprov:ionq:a071968a021ec5f137878edb4b97f4d2",
-  "generated_at": "2026-11-20T10:51:24.142392+00:00",
-  "retrieved_at": "2026-11-20T10:51:24.142384+00:00",
+  "generated_at": "2026-11-20T10:53:01.194556+00:00",
+  "retrieved_at": "2026-11-20T10:53:01.194543+00:00",
   "adapter": {
     "provider": "ionq",
     "name": "ionq-provenance-adapter",
-    "version": "0.1.0-prototype"
+    "version": "0.2.0"
   },
   "job": {
     "canonical_id": "qprov:ionq:a071968a021ec5f137878edb4b97f4d2",

@@ -2,7 +2,7 @@
     "openapi": "3.1.0",
     "info": {
         "title": "QMill Unified Quantum Provenance API (research prototype)",
-        "version": "0.1.0-prototype",
+        "version": "0.2.0",
         "description": "Prototype contract. Canonical machine-readable source for the provenance domain schema, served in-process by the provenance service and over HTTP by the reference service. Operations: register/assemble a record, retrieve the current or an earlier version, list versions, and refresh (re-assemble as a new version). Application-captured context is carried on the create request and marked as such in evidence."
     },
     "paths": {
@@ -861,7 +861,11 @@
                 "properties": {
                     "schema_version": {
                         "type": "string",
-                        "const": "0.1.0-prototype"
+                        "enum": [
+                            "0.2.0",
+                            "0.1.0-prototype"
+                        ],
+                        "description": "Contract version the record was written under. 0.2.0 changes are additive, so 0.1.0-prototype records remain valid."
                     },
                     "record_id": {
                         "$ref": "#/components/schemas/CanonicalId"

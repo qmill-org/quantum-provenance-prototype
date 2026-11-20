@@ -1,12 +1,12 @@
 {
-  "schema_version": "0.1.0-prototype",
+  "schema_version": "0.2.0",
   "record_id": "qprov:ibm:0b59ab0be052dd532c945bef49194bbb",
-  "generated_at": "2026-11-20T10:51:24.135943+00:00",
-  "retrieved_at": "2026-11-20T10:51:24.135924+00:00",
+  "generated_at": "2026-11-20T10:53:01.187972+00:00",
+  "retrieved_at": "2026-11-20T10:53:01.187960+00:00",
   "adapter": {
     "provider": "ibm",
     "name": "ibm-provenance-adapter",
-    "version": "0.1.0-prototype"
+    "version": "0.2.0"
   },
   "job": {
     "canonical_id": "qprov:ibm:0b59ab0be052dd532c945bef49194bbb",
