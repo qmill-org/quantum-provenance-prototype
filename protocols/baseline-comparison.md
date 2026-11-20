@@ -1,0 +1,122 @@
+# Baseline comparison protocol (WP-E4)
+
+Addresses R2.2 (explicit baseline), R1.4 (compare correctness, not effort) and
+R1.2 (self-confirming evaluation). Committed **before** the baseline, the
+oracle and the record readers are implemented; changes after this commit are
+logged at the end with their reason.
+
+## Question
+
+Given the same provider data, does a record produced under the evidence-aware
+contract let a consumer answer provenance questions **correctly** more often,
+and **mislead** less often, than a flat common-field record?
+
+Effort (lines of code, development time) is not measured (R1.4).
+
+## Arms
+
+| Arm | What | Code |
+|---|---|---|
+| **B** — flat baseline | The QProv-aligned attribute set of Figure 2 as flat fields, without evidence, association, missingness or producer qualifiers. Each field is filled from the integration seam with the most direct accessor, the way a developer using the provider SDK's default accessors would. It is not a reimplementation of QProv. | `comparison/baseline.py` |
+| **V1** — as submitted | `v0.1.0` adapters and contract (tag `v0.1.0`), unchanged. | git worktree of `v0.1.0` |
+| **V2** — revised | `v0.2.0` adapters and contract as frozen by tag `baseline-freeze`. | this repository |
+
+All arms read the **same** input: the capture's `fixture.json` through the
+integration seam (`TaskSnapshot`, `TaskResult`, `DeviceDetails`). Recorded
+provider errors (`upstream_errors`) are raised by the replay in every arm, so
+an arm sees the failure the provider actually returned. V1 never supported
+Quandela; its Quandela cells are scored "no record".
+
+### Baseline fields (fixed)
+
+`provider` (platform the job was retrieved from), `job_id`, `status` (provider
+string, lower-cased), `created_at`, `ended_at`, `shots`, `qpu_name`,
+`is_simulator`, `qubit_count`, `last_calibrated` and `calibration` (device
+characterization as returned with the device details), `counts`
+(`TaskResult.measurement_counts`), `compiled_circuit`
+(`TaskResult.compiled_circuit`), `execution_time_ms`, `retrieved_at`. A field
+the seam does not fill is `null`. If retrieving the job fails, the baseline
+produces no record.
+
+## Ground truth (oracle)
+
+For each capture the oracle derives the true answer from the **provider's raw
+responses** (`native.json`), the capture manifest written at retrieval time,
+and the application's run ledger (`runs/ledger*.jsonl`, for what the
+application requested). The oracle does not call any arm's mapping code. A
+question the oracle cannot answer for a capture is not applicable there.
+
+## Questions
+
+A **reader** per arm answers each question from the record alone, using only
+the documented meaning of that arm's fields (baseline: field names; V1/V2:
+the contract's descriptions, evidence and association states). Readers do not
+parse identifiers or consult provider documentation.
+
+Targeted questions (derived from findings F1–F14, which is why the hold-out
+set below matters):
+
+| ID | Question | Finding |
+|---|---|---|
+| Q1 | What kind of result did the provider return: observed counts, probabilities only, or values derived by client software? | F3, F11, F14 |
+| Q2 | Who produced the program presented as compiled or executed: provider or application? | F8 |
+| Q3 | How does the device characterization relate in time to the execution: matched to it, taken after the job ended, or untimed? | F6, F7 |
+| Q4 | Who operates the hardware, as distinct from the platform? | R1 (Table 9) |
+| Q5 | When results are absent, why: job did not run, not yet available, or job no longer retrievable? | F2, F7 |
+| Q6 | How many shots did the application request? | F11, F13 |
+| Q7 | How many shots were executed? | F14 |
+| Q8 | Which batch or session did the job run in? | F10 |
+| Q9 | Why did a failed job fail? | — |
+| Q10 | Which noise model produced a simulator result? | F13 |
+
+Neutral questions (no qualifier needed; included so that the comparison does
+not only test what V2 fixed):
+
+| ID | Question |
+|---|---|
+| N1 | Which device ran the job? |
+| N2 | When was the job created, and when did it end? |
+| N3 | How many qubits does the device have? |
+
+Record existence (Q0): did the arm produce a record at all?
+
+## Scoring
+
+Each applicable (capture, question) pair is scored for each arm:
+
+- **correct** — the reader's answer equals the oracle's;
+- **misleading** — the record states, or by its field definitions implies, a
+  wrong answer;
+- **undeterminable** — the record does not allow an answer (field absent, or
+  present without the information needed);
+- **no record** — the arm produced no record.
+
+Primary outcome: misleading answers per arm. Secondary: correct and
+undeterminable answers. Reported per question and per capture set, as counts
+(no significance testing; the unit is a real job, and there are few).
+
+## Capture sets
+
+- **Development set** — the 21 captures existing at this commit. V2 was
+  revised on these captures, so V2's results here are expected and are
+  reported as such, not as evidence.
+- **Hold-out set** — captures taken after tag `baseline-freeze`: the jobs
+  still pending at this commit (AQT Ibex-Q1, QuEra Aquila ×2, Quandela Belenos
+  QPU) and any later purpose-run jobs. Neither the adapters nor the readers or
+  the oracle are changed after the freeze without a log entry here; if they
+  are, hold-out results are reported both before and after the change.
+
+## Threats stated in advance
+
+- The baseline, the readers and the questions are designed by the authors of
+  V2; the targeted questions come from defects V2 was revised to fix. The
+  neutral questions and the hold-out set are the counterweights.
+- The baseline's reader takes field names at face value (e.g. `provider`
+  read as the operator, `counts` as observed counts). A sensitivity reading in
+  which a consumer parses device identifiers is reported for Q4.
+
+## Log
+
+| Date | Change | Reason |
+|---|---|---|
+| 2026-11-20 | Protocol committed. | — |
