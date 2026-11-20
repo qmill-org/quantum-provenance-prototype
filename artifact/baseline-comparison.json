@@ -1,0 +1,2444 @@
+{
+  "protocol": "protocols/baseline-comparison.md",
+  "freeze_tag": "baseline-freeze",
+  "arms": {
+    "B": "flat baseline (comparison/baseline.py)",
+    "V1": "v0.1.0",
+    "V2": "824f512"
+  },
+  "summary": {
+    "development": {
+      "B": {
+        "total": {
+          "correct": 140,
+          "misleading": 16,
+          "undeterminable": 29,
+          "no_record": 6
+        },
+        "per_question": {
+          "Q0": {
+            "correct": 18,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 3
+          },
+          "Q1": {
+            "correct": 11,
+            "misleading": 1,
+            "undeterminable": 3,
+            "no_record": 0
+          },
+          "Q2": {
+            "correct": 8,
+            "misleading": 6,
+            "undeterminable": 1,
+            "no_record": 0
+          },
+          "Q3": {
+            "correct": 13,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q4": {
+            "correct": 12,
+            "misleading": 6,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q5": {
+            "correct": 3,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 3
+          },
+          "Q6": {
+            "correct": 14,
+            "misleading": 2,
+            "undeterminable": 2,
+            "no_record": 0
+          },
+          "Q7": {
+            "correct": 11,
+            "misleading": 1,
+            "undeterminable": 1,
+            "no_record": 0
+          },
+          "Q8": {
+            "correct": 0,
+            "misleading": 0,
+            "undeterminable": 16,
+            "no_record": 0
+          },
+          "Q9": {
+            "correct": 0,
+            "misleading": 0,
+            "undeterminable": 1,
+            "no_record": 0
+          },
+          "Q10": {
+            "correct": 0,
+            "misleading": 0,
+            "undeterminable": 3,
+            "no_record": 0
+          },
+          "N1": {
+            "correct": 18,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "N2": {
+            "correct": 16,
+            "misleading": 0,
+            "undeterminable": 2,
+            "no_record": 0
+          },
+          "N3": {
+            "correct": 16,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          }
+        }
+      },
+      "V1": {
+        "total": {
+          "correct": 136,
+          "misleading": 9,
+          "undeterminable": 24,
+          "no_record": 22
+        },
+        "per_question": {
+          "Q0": {
+            "correct": 16,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 5
+          },
+          "Q1": {
+            "correct": 11,
+            "misleading": 2,
+            "undeterminable": 0,
+            "no_record": 2
+          },
+          "Q2": {
+            "correct": 6,
+            "misleading": 6,
+            "undeterminable": 1,
+            "no_record": 2
+          },
+          "Q3": {
+            "correct": 13,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q4": {
+            "correct": 16,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 2
+          },
+          "Q5": {
+            "correct": 3,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 3
+          },
+          "Q6": {
+            "correct": 14,
+            "misleading": 0,
+            "undeterminable": 2,
+            "no_record": 2
+          },
+          "Q7": {
+            "correct": 9,
+            "misleading": 1,
+            "undeterminable": 1,
+            "no_record": 2
+          },
+          "Q8": {
+            "correct": 0,
+            "misleading": 0,
+            "undeterminable": 16,
+            "no_record": 0
+          },
+          "Q9": {
+            "correct": 0,
+            "misleading": 0,
+            "undeterminable": 1,
+            "no_record": 0
+          },
+          "Q10": {
+            "correct": 0,
+            "misleading": 0,
+            "undeterminable": 3,
+            "no_record": 0
+          },
+          "N1": {
+            "correct": 16,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 2
+          },
+          "N2": {
+            "correct": 16,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 2
+          },
+          "N3": {
+            "correct": 16,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          }
+        }
+      },
+      "V2": {
+        "total": {
+          "correct": 187,
+          "misleading": 0,
+          "undeterminable": 4,
+          "no_record": 0
+        },
+        "per_question": {
+          "Q0": {
+            "correct": 21,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q1": {
+            "correct": 15,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q2": {
+            "correct": 15,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q3": {
+            "correct": 13,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q4": {
+            "correct": 18,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q5": {
+            "correct": 6,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q6": {
+            "correct": 14,
+            "misleading": 0,
+            "undeterminable": 4,
+            "no_record": 0
+          },
+          "Q7": {
+            "correct": 13,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q8": {
+            "correct": 16,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q9": {
+            "correct": 1,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q10": {
+            "correct": 3,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "N1": {
+            "correct": 18,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "N2": {
+            "correct": 18,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "N3": {
+            "correct": 16,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          }
+        }
+      }
+    }
+  },
+  "captures": [
+    {
+      "capture": "braket/04470467-2658-4b06-8e5c-35b841c7b054",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q5": "not_retrievable"
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": "no_record",
+            "Q5": "no_record"
+          },
+          "scores": {
+            "Q0": "no_record",
+            "Q5": "no_record"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": "no_record",
+            "Q5": "no_record"
+          },
+          "scores": {
+            "Q0": "no_record",
+            "Q5": "no_record"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q5": "not_retrievable"
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q5": "correct"
+          }
+        }
+      }
+    },
+    {
+      "capture": "braket/0669f519-a54d-4a0a-9cf7-d8a409520fd7",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q5": "not_retrievable"
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": "no_record",
+            "Q5": "no_record"
+          },
+          "scores": {
+            "Q0": "no_record",
+            "Q5": "no_record"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": "no_record",
+            "Q5": "no_record"
+          },
+          "scores": {
+            "Q0": "no_record",
+            "Q5": "no_record"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q5": "not_retrievable"
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q5": "correct"
+          }
+        }
+      }
+    },
+    {
+      "capture": "braket/2b9bc60e-f73e-4e16-ad23-123b07b62601",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q5": "not_retrievable"
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": "no_record",
+            "Q5": "no_record"
+          },
+          "scores": {
+            "Q0": "no_record",
+            "Q5": "no_record"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": "no_record",
+            "Q5": "no_record"
+          },
+          "scores": {
+            "Q0": "no_record",
+            "Q5": "no_record"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q5": "not_retrievable"
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q5": "correct"
+          }
+        }
+      }
+    },
+    {
+      "capture": "braket/309e744e-f2ad-4152-8977-6c8dec2c9829",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q4": "iqm",
+        "Q1": "observed_counts",
+        "Q7": 1000,
+        "Q2": "provider",
+        "Q8": "none",
+        "Q3": "unknown_time",
+        "Q6": 1000,
+        "N1": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet",
+        "N2": [
+          "2026-11-20T05:45:34.934000+00:00",
+          "2026-11-20T05:45:36.486000+00:00"
+        ],
+        "N3": 20
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "braket",
+            "Q1": "observed_counts",
+            "Q7": 1000,
+            "Q2": "provider",
+            "Q8": "undeterminable",
+            "Q3": "unknown_time",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet",
+            "N2": [
+              "2026-11-20T05:45:34.934000+00:00",
+              "2026-11-20T05:45:36.486000+00:00"
+            ],
+            "N3": 20
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "misleading",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q2": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "iqm",
+            "Q1": "observed_counts",
+            "Q7": 1000,
+            "Q2": "provider",
+            "Q8": "undeterminable",
+            "Q3": "unknown_time",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet",
+            "N2": [
+              "2026-11-20T05:45:34.934000+00:00",
+              "2026-11-20T05:45:36.486000+00:00"
+            ],
+            "N3": 20
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q2": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "iqm",
+            "Q1": "observed_counts",
+            "Q7": 1000,
+            "Q2": "provider",
+            "Q8": "none",
+            "Q3": "unknown_time",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet",
+            "N2": [
+              "2026-11-20T05:45:34.934000+00:00",
+              "2026-11-20T05:45:36.486000+00:00"
+            ],
+            "N3": 20
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q2": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "braket/8110d507-c11a-4473-88e0-0dfa04c468ec",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q4": "rigetti",
+        "Q1": "observed_counts",
+        "Q7": 1000,
+        "Q2": "provider",
+        "Q8": "none",
+        "Q3": "unknown_time",
+        "Q6": 1000,
+        "N1": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
+        "N2": [
+          "2026-11-18T15:29:19.522000+00:00",
+          "2026-11-18T16:00:03.559000+00:00"
+        ],
+        "N3": 107
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "braket",
+            "Q1": "observed_counts",
+            "Q7": 1000,
+            "Q2": "provider",
+            "Q8": "undeterminable",
+            "Q3": "unknown_time",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
+            "N2": [
+              "2026-11-18T15:29:19.522000+00:00",
+              "2026-11-18T16:00:03.559000+00:00"
+            ],
+            "N3": 107
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "misleading",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q2": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "rigetti",
+            "Q1": "observed_counts",
+            "Q7": 1000,
+            "Q2": "provider",
+            "Q8": "undeterminable",
+            "Q3": "unknown_time",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
+            "N2": [
+              "2026-11-18T15:29:19.522000+00:00",
+              "2026-11-18T16:00:03.559000+00:00"
+            ],
+            "N3": 107
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q2": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "rigetti",
+            "Q1": "observed_counts",
+            "Q7": 1000,
+            "Q2": "provider",
+            "Q8": "none",
+            "Q3": "unknown_time",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
+            "N2": [
+              "2026-11-18T15:29:19.522000+00:00",
+              "2026-11-18T16:00:03.559000+00:00"
+            ],
+            "N3": 107
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q2": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "braket/a55acc36-513d-448c-9d49-a543d216afd4",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q4": "rigetti",
+        "Q8": "none",
+        "Q5": "did_not_run",
+        "Q3": "no_execution",
+        "Q6": 1000,
+        "N1": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
+        "N2": [
+          "2026-11-18T15:29:26.927000+00:00",
+          "2026-11-18T15:29:28.285000+00:00"
+        ],
+        "N3": 107
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "braket",
+            "Q8": "undeterminable",
+            "Q5": "did_not_run",
+            "Q3": "no_execution",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
+            "N2": [
+              "2026-11-18T15:29:26.927000+00:00",
+              "2026-11-18T15:29:28.285000+00:00"
+            ],
+            "N3": 107
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "misleading",
+            "Q8": "undeterminable",
+            "Q5": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "rigetti",
+            "Q8": "undeterminable",
+            "Q5": "did_not_run",
+            "Q3": "no_execution",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
+            "N2": [
+              "2026-11-18T15:29:26.927000+00:00",
+              "2026-11-18T15:29:28.285000+00:00"
+            ],
+            "N3": 107
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q8": "undeterminable",
+            "Q5": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "rigetti",
+            "Q8": "none",
+            "Q5": "did_not_run",
+            "Q3": "no_execution",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
+            "N2": [
+              "2026-11-18T15:29:26.927000+00:00",
+              "2026-11-18T15:29:28.285000+00:00"
+            ],
+            "N3": 107
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q8": "correct",
+            "Q5": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "braket/c5f722a5-ee93-443e-8d89-f7ab285d7f69",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q4": "ionq",
+        "Q1": "probabilities",
+        "Q2": "application",
+        "Q8": "none",
+        "Q3": "matched",
+        "Q6": 100,
+        "N1": "arn:aws:braket:us-east-1::device/qpu/ionq/Forte-1",
+        "N2": [
+          "2026-11-18T15:29:09.913000+00:00",
+          "2026-11-18T22:40:28.932000+00:00"
+        ],
+        "N3": 36
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "braket",
+            "Q1": "observed_counts",
+            "Q2": "undeterminable",
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 100,
+            "N1": "arn:aws:braket:us-east-1::device/qpu/ionq/Forte-1",
+            "N2": [
+              "2026-11-18T15:29:09.913000+00:00",
+              "2026-11-18T22:40:28.932000+00:00"
+            ],
+            "N3": 36
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "misleading",
+            "Q1": "misleading",
+            "Q2": "undeterminable",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q1": "observed_counts",
+            "Q2": "undeterminable",
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 100,
+            "N1": "arn:aws:braket:us-east-1::device/qpu/ionq/Forte-1",
+            "N2": [
+              "2026-11-18T15:29:09.913000+00:00",
+              "2026-11-18T22:40:28.932000+00:00"
+            ],
+            "N3": 36
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "misleading",
+            "Q2": "undeterminable",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q1": "probabilities",
+            "Q2": "application",
+            "Q8": "none",
+            "Q3": "matched",
+            "Q6": 100,
+            "N1": "arn:aws:braket:us-east-1::device/qpu/ionq/Forte-1",
+            "N2": [
+              "2026-11-18T15:29:09.913000+00:00",
+              "2026-11-18T22:40:28.932000+00:00"
+            ],
+            "N3": 36
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "braket/e4279728-4620-487c-9879-f302eef1ed6f",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q4": "rigetti",
+        "Q1": "observed_counts",
+        "Q7": 1000,
+        "Q2": "provider",
+        "Q8": "none",
+        "Q3": "unknown_time",
+        "Q6": 1000,
+        "N1": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
+        "N2": [
+          "2026-11-18T15:29:17.017000+00:00",
+          "2026-11-18T16:00:03.244000+00:00"
+        ],
+        "N3": 107
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "braket",
+            "Q1": "observed_counts",
+            "Q7": 1000,
+            "Q2": "provider",
+            "Q8": "undeterminable",
+            "Q3": "unknown_time",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
+            "N2": [
+              "2026-11-18T15:29:17.017000+00:00",
+              "2026-11-18T16:00:03.244000+00:00"
+            ],
+            "N3": 107
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "misleading",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q2": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "rigetti",
+            "Q1": "observed_counts",
+            "Q7": 1000,
+            "Q2": "provider",
+            "Q8": "undeterminable",
+            "Q3": "unknown_time",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
+            "N2": [
+              "2026-11-18T15:29:17.017000+00:00",
+              "2026-11-18T16:00:03.244000+00:00"
+            ],
+            "N3": 107
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q2": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "rigetti",
+            "Q1": "observed_counts",
+            "Q7": 1000,
+            "Q2": "provider",
+            "Q8": "none",
+            "Q3": "unknown_time",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
+            "N2": [
+              "2026-11-18T15:29:17.017000+00:00",
+              "2026-11-18T16:00:03.244000+00:00"
+            ],
+            "N3": 107
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q2": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "braket/f26d102d-8fc8-4fa2-9544-7cc68a443df0",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q4": "iqm",
+        "Q1": "observed_counts",
+        "Q7": 1000,
+        "Q2": "provider",
+        "Q8": "none",
+        "Q3": "unknown_time",
+        "Q6": 1000,
+        "N1": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet",
+        "N2": [
+          "2026-11-20T05:45:35.552000+00:00",
+          "2026-11-20T05:45:37.009000+00:00"
+        ],
+        "N3": 20
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "braket",
+            "Q1": "observed_counts",
+            "Q7": 1000,
+            "Q2": "provider",
+            "Q8": "undeterminable",
+            "Q3": "unknown_time",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet",
+            "N2": [
+              "2026-11-20T05:45:35.552000+00:00",
+              "2026-11-20T05:45:37.009000+00:00"
+            ],
+            "N3": 20
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "misleading",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q2": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "iqm",
+            "Q1": "observed_counts",
+            "Q7": 1000,
+            "Q2": "provider",
+            "Q8": "undeterminable",
+            "Q3": "unknown_time",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet",
+            "N2": [
+              "2026-11-20T05:45:35.552000+00:00",
+              "2026-11-20T05:45:37.009000+00:00"
+            ],
+            "N3": 20
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q2": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "iqm",
+            "Q1": "observed_counts",
+            "Q7": 1000,
+            "Q2": "provider",
+            "Q8": "none",
+            "Q3": "unknown_time",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet",
+            "N2": [
+              "2026-11-20T05:45:35.552000+00:00",
+              "2026-11-20T05:45:37.009000+00:00"
+            ],
+            "N3": 20
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q2": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "ibm/dbvb20s1qo7s73ejeii0",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q4": "ibm",
+        "Q1": "observed_counts",
+        "Q2": "application",
+        "Q7": 1000,
+        "Q8": "batch:6af94c4e-9fd8-435f-b39e-8ff7da263275",
+        "Q3": "matched",
+        "Q6": 1000,
+        "N1": "ibm_aachen",
+        "N2": [
+          "2026-11-19T08:19:15.719598+00:00",
+          "2026-11-19T08:19:30.575849+00:00"
+        ],
+        "N3": 156
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "provider",
+            "Q7": 1000,
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:15.719598+00:00",
+              "2026-11-19T08:19:30.575849+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "misleading",
+            "Q7": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "provider",
+            "Q7": 1000,
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:15.719598+00:00",
+              "2026-11-19T08:19:30.575849+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "misleading",
+            "Q7": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "application",
+            "Q7": 1000,
+            "Q8": "batch:6af94c4e-9fd8-435f-b39e-8ff7da263275",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:15.719598+00:00",
+              "2026-11-19T08:19:30.575849+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "ibm/dbvb211nd09c73ehdct0",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q4": "ibm",
+        "Q1": "observed_counts",
+        "Q2": "application",
+        "Q7": 1000,
+        "Q8": "batch:6af94c4e-9fd8-435f-b39e-8ff7da263275",
+        "Q3": "matched",
+        "Q6": 1000,
+        "N1": "ibm_aachen",
+        "N2": [
+          "2026-11-19T08:19:16.796507+00:00",
+          "2026-11-19T08:19:46.543616+00:00"
+        ],
+        "N3": 156
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "provider",
+            "Q7": 1000,
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:16.796507+00:00",
+              "2026-11-19T08:19:46.543616+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "misleading",
+            "Q7": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "provider",
+            "Q7": 1000,
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:16.796507+00:00",
+              "2026-11-19T08:19:46.543616+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "misleading",
+            "Q7": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "application",
+            "Q7": 1000,
+            "Q8": "batch:6af94c4e-9fd8-435f-b39e-8ff7da263275",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:16.796507+00:00",
+              "2026-11-19T08:19:46.543616+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "ibm/dbvb2141qo7s73ejeiig",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q4": "ibm",
+        "Q1": "observed_counts",
+        "Q2": "application",
+        "Q7": 1000,
+        "Q8": "batch:6af94c4e-9fd8-435f-b39e-8ff7da263275",
+        "Q3": "matched",
+        "Q6": 1000,
+        "N1": "ibm_aachen",
+        "N2": [
+          "2026-11-19T08:19:16.260471+00:00",
+          "2026-11-19T08:19:38.670199+00:00"
+        ],
+        "N3": 156
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "provider",
+            "Q7": 1000,
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:16.260471+00:00",
+              "2026-11-19T08:19:38.670199+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "misleading",
+            "Q7": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "provider",
+            "Q7": 1000,
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:16.260471+00:00",
+              "2026-11-19T08:19:38.670199+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "misleading",
+            "Q7": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "application",
+            "Q7": 1000,
+            "Q8": "batch:6af94c4e-9fd8-435f-b39e-8ff7da263275",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:16.260471+00:00",
+              "2026-11-19T08:19:38.670199+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "ibm/dbvb21eppgvc73e5o380",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q4": "ibm",
+        "Q1": "observed_counts",
+        "Q2": "application",
+        "Q7": 1000,
+        "Q8": "none",
+        "Q3": "matched",
+        "Q6": 1000,
+        "N1": "ibm_aachen",
+        "N2": [
+          "2026-11-19T08:19:17.552760+00:00",
+          "2026-11-19T08:19:55.016867+00:00"
+        ],
+        "N3": 156
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "provider",
+            "Q7": 1000,
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:17.552760+00:00",
+              "2026-11-19T08:19:55.016867+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "misleading",
+            "Q7": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "provider",
+            "Q7": 1000,
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:17.552760+00:00",
+              "2026-11-19T08:19:55.016867+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "misleading",
+            "Q7": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "application",
+            "Q7": 1000,
+            "Q8": "none",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:17.552760+00:00",
+              "2026-11-19T08:19:55.016867+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "ibm/dbvb21gjgbds73eh5jjg",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q4": "ibm",
+        "Q1": "observed_counts",
+        "Q2": "application",
+        "Q7": 1000,
+        "Q8": "none",
+        "Q3": "matched",
+        "Q6": 1000,
+        "N1": "ibm_aachen",
+        "N2": [
+          "2026-11-19T08:19:18.175652+00:00",
+          "2026-11-19T08:20:01.950612+00:00"
+        ],
+        "N3": 156
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "provider",
+            "Q7": 1000,
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:18.175652+00:00",
+              "2026-11-19T08:20:01.950612+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "misleading",
+            "Q7": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "provider",
+            "Q7": 1000,
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:18.175652+00:00",
+              "2026-11-19T08:20:01.950612+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "misleading",
+            "Q7": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "application",
+            "Q7": 1000,
+            "Q8": "none",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:18.175652+00:00",
+              "2026-11-19T08:20:01.950612+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "ibm/dbvb21mppgvc73e5o390",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q4": "ibm",
+        "Q1": "client_derived",
+        "Q2": "application",
+        "Q7": 2048,
+        "Q8": "none",
+        "Q3": "matched",
+        "Q6": 1000,
+        "N1": "ibm_aachen",
+        "N2": [
+          "2026-11-19T08:19:18.943384+00:00",
+          "2026-11-19T08:20:08.605881+00:00"
+        ],
+        "N3": 156
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "undeterminable",
+            "Q2": "provider",
+            "Q7": 1000,
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:18.943384+00:00",
+              "2026-11-19T08:20:08.605881+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "undeterminable",
+            "Q2": "misleading",
+            "Q7": "misleading",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "retrieval_failed",
+            "Q2": "provider",
+            "Q7": 1000,
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:18.943384+00:00",
+              "2026-11-19T08:20:08.605881+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "misleading",
+            "Q2": "misleading",
+            "Q7": "misleading",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "client_derived",
+            "Q2": "application",
+            "Q7": 2048,
+            "Q8": "none",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:18.943384+00:00",
+              "2026-11-19T08:20:08.605881+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "ibm/dbvb21uppgvc73e5o3a0",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q4": "ibm",
+        "Q8": "none",
+        "Q5": "did_not_run",
+        "Q3": "no_execution",
+        "Q6": 1000,
+        "N1": "ibm_aachen",
+        "N2": [
+          "2026-11-19T08:19:19.577463+00:00",
+          "2026-11-19T08:19:20.497279+00:00"
+        ],
+        "N3": 156
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q8": "undeterminable",
+            "Q5": "did_not_run",
+            "Q3": "no_execution",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:19.577463+00:00",
+              "2026-11-19T08:19:20.497279+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q8": "undeterminable",
+            "Q5": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q8": "undeterminable",
+            "Q5": "did_not_run",
+            "Q3": "no_execution",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:19.577463+00:00",
+              "2026-11-19T08:19:20.497279+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q8": "undeterminable",
+            "Q5": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q8": "none",
+            "Q5": "did_not_run",
+            "Q3": "no_execution",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:19.577463+00:00",
+              "2026-11-19T08:19:20.497279+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q8": "correct",
+            "Q5": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "ionq/01a1f2eb-cee6-715d-b36e-478c679f0819",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q4": "ionq",
+        "Q1": "probabilities",
+        "Q2": "provider",
+        "Q10": "ideal",
+        "Q7": "none",
+        "Q8": "none",
+        "Q6": 1000,
+        "N1": "simulator",
+        "N2": [
+          "2026-11-19T08:28:22.632000+00:00",
+          "2026-11-19T08:29:30.310000+00:00"
+        ],
+        "N3": 29
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q1": "undeterminable",
+            "Q2": "provider",
+            "Q10": "undeterminable",
+            "Q7": "undeterminable",
+            "Q8": "undeterminable",
+            "Q6": "undeterminable",
+            "N1": "simulator",
+            "N2": [
+              "2026-11-19T08:28:22.632000+00:00",
+              "2026-11-19T08:29:30.310000+00:00"
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "undeterminable",
+            "Q2": "correct",
+            "Q10": "undeterminable",
+            "Q7": "undeterminable",
+            "Q8": "undeterminable",
+            "Q6": "undeterminable",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q1": "probabilities",
+            "Q2": "provider",
+            "Q10": "undeterminable",
+            "Q7": "undeterminable",
+            "Q8": "undeterminable",
+            "Q6": "undeterminable",
+            "N1": "simulator",
+            "N2": [
+              "2026-11-19T08:28:22.632000+00:00",
+              "2026-11-19T08:29:30.310000+00:00"
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q10": "undeterminable",
+            "Q7": "undeterminable",
+            "Q8": "undeterminable",
+            "Q6": "undeterminable",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q1": "probabilities",
+            "Q2": "provider",
+            "Q10": "ideal",
+            "Q7": "none",
+            "Q8": "none",
+            "Q6": "undeterminable",
+            "N1": "simulator",
+            "N2": [
+              "2026-11-19T08:28:22.632000+00:00",
+              "2026-11-19T08:29:30.310000+00:00"
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q10": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q6": "undeterminable",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "ionq/01a1f2eb-d155-7632-bc4e-f340de096f01",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q4": "ionq",
+        "Q1": "probabilities",
+        "Q2": "provider",
+        "Q10": "forte-1",
+        "Q8": "none",
+        "Q6": 1000,
+        "N1": "simulator",
+        "N2": [
+          "2026-11-19T08:28:23.256000+00:00",
+          "2026-11-19T08:29:29.408000+00:00"
+        ],
+        "N3": 29
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q1": "undeterminable",
+            "Q2": "provider",
+            "Q10": "undeterminable",
+            "Q8": "undeterminable",
+            "Q6": 1000,
+            "N1": "simulator",
+            "N2": [
+              "2026-11-19T08:28:23.256000+00:00",
+              "2026-11-19T08:29:29.408000+00:00"
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "undeterminable",
+            "Q2": "correct",
+            "Q10": "undeterminable",
+            "Q8": "undeterminable",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q1": "probabilities",
+            "Q2": "provider",
+            "Q10": "undeterminable",
+            "Q8": "undeterminable",
+            "Q6": 1000,
+            "N1": "simulator",
+            "N2": [
+              "2026-11-19T08:28:23.256000+00:00",
+              "2026-11-19T08:29:29.408000+00:00"
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q10": "undeterminable",
+            "Q8": "undeterminable",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q1": "probabilities",
+            "Q2": "provider",
+            "Q10": "forte-1",
+            "Q8": "none",
+            "Q6": 1000,
+            "N1": "simulator",
+            "N2": [
+              "2026-11-19T08:28:23.256000+00:00",
+              "2026-11-19T08:29:29.408000+00:00"
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q10": "correct",
+            "Q8": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "ionq/01a1f2eb-d2be-70b0-9eee-d59dec9c15cf",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q4": "ionq",
+        "Q10": "ideal",
+        "Q9": "CompilationError",
+        "Q8": "none",
+        "Q5": "did_not_run",
+        "Q6": 1000,
+        "N1": "simulator",
+        "N2": [
+          "2026-11-19T08:28:23.617000+00:00",
+          null
+        ],
+        "N3": 29
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q10": "undeterminable",
+            "Q9": "undeterminable",
+            "Q8": "undeterminable",
+            "Q5": "did_not_run",
+            "Q6": "undeterminable",
+            "N1": "simulator",
+            "N2": [
+              "2026-11-19T08:28:23.617000+00:00",
+              null
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q10": "undeterminable",
+            "Q9": "undeterminable",
+            "Q8": "undeterminable",
+            "Q5": "correct",
+            "Q6": "undeterminable",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q10": "undeterminable",
+            "Q9": "undeterminable",
+            "Q8": "undeterminable",
+            "Q5": "did_not_run",
+            "Q6": "undeterminable",
+            "N1": "simulator",
+            "N2": [
+              "2026-11-19T08:28:23.617000+00:00",
+              null
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q10": "undeterminable",
+            "Q9": "undeterminable",
+            "Q8": "undeterminable",
+            "Q5": "correct",
+            "Q6": "undeterminable",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q10": "ideal",
+            "Q9": "CompilationError",
+            "Q8": "none",
+            "Q5": "did_not_run",
+            "Q6": "undeterminable",
+            "N1": "simulator",
+            "N2": [
+              "2026-11-19T08:28:23.617000+00:00",
+              null
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q10": "correct",
+            "Q9": "correct",
+            "Q8": "correct",
+            "Q5": "correct",
+            "Q6": "undeterminable",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "quandela/5614c93a-8d77-43f0-81c6-7a13a935255e",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q4": "quandela",
+        "Q1": "observed_counts",
+        "Q2": "provider",
+        "Q7": 33533,
+        "Q6": 1000,
+        "N1": "sim:belenos",
+        "N2": [
+          "2026-11-19T08:52:48.663211+00:00",
+          "2026-11-19T08:53:17.455556+00:00"
+        ]
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "quandela",
+            "Q1": "observed_counts",
+            "Q2": "provider",
+            "Q7": 33533,
+            "Q6": 33533,
+            "N1": "sim:belenos",
+            "N2": [
+              "2026-11-19T08:52:48.663211+00:00",
+              null
+            ]
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q6": "misleading",
+            "N1": "correct",
+            "N2": "undeterminable"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": "no_record",
+            "Q4": "no_record",
+            "Q1": "no_record",
+            "Q2": "no_record",
+            "Q7": "no_record",
+            "Q6": "no_record",
+            "N1": "no_record",
+            "N2": "no_record"
+          },
+          "scores": {
+            "Q0": "no_record",
+            "Q4": "no_record",
+            "Q1": "no_record",
+            "Q2": "no_record",
+            "Q7": "no_record",
+            "Q6": "no_record",
+            "N1": "no_record",
+            "N2": "no_record"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "quandela",
+            "Q1": "observed_counts",
+            "Q2": "provider",
+            "Q7": 33533,
+            "Q6": "undeterminable",
+            "N1": "sim:belenos",
+            "N2": [
+              "2026-11-19T08:52:48.663211+00:00",
+              "2026-11-19T08:53:17.455556+00:00"
+            ]
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q6": "undeterminable",
+            "N1": "correct",
+            "N2": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "quandela/9cf68122-1ede-4934-9535-0b9dab297c79",
+      "set": "development",
+      "truth": {
+        "Q0": true,
+        "Q4": "quandela",
+        "Q1": "observed_counts",
+        "Q2": "provider",
+        "Q7": 32686,
+        "Q6": 1000,
+        "N1": "sim:belenos",
+        "N2": [
+          "2026-11-19T08:53:52.521082+00:00",
+          "2026-11-19T08:54:11.668974+00:00"
+        ]
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "quandela",
+            "Q1": "observed_counts",
+            "Q2": "provider",
+            "Q7": 32686,
+            "Q6": 32686,
+            "N1": "sim:belenos",
+            "N2": [
+              "2026-11-19T08:53:52.521082+00:00",
+              null
+            ]
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q6": "misleading",
+            "N1": "correct",
+            "N2": "undeterminable"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": "no_record",
+            "Q4": "no_record",
+            "Q1": "no_record",
+            "Q2": "no_record",
+            "Q7": "no_record",
+            "Q6": "no_record",
+            "N1": "no_record",
+            "N2": "no_record"
+          },
+          "scores": {
+            "Q0": "no_record",
+            "Q4": "no_record",
+            "Q1": "no_record",
+            "Q2": "no_record",
+            "Q7": "no_record",
+            "Q6": "no_record",
+            "N1": "no_record",
+            "N2": "no_record"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "quandela",
+            "Q1": "observed_counts",
+            "Q2": "provider",
+            "Q7": 32686,
+            "Q6": "undeterminable",
+            "N1": "sim:belenos",
+            "N2": [
+              "2026-11-19T08:53:52.521082+00:00",
+              "2026-11-19T08:54:11.668974+00:00"
+            ]
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q6": "undeterminable",
+            "N1": "correct",
+            "N2": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    }
+  ]
+}

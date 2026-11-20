@@ -115,6 +115,52 @@ undeterminable answers. Reported per question and per capture set, as counts
   read as the operator, `counts` as observed counts). A sensitivity reading in
   which a consumer parses device identifiers is reported for Q4.
 
+## Results — development set (21 captures, freeze `824f512`)
+
+Counts of (capture, question) pairs: correct / misleading / undeterminable /
+no record. Full detail: `artifact/baseline-comparison.json`.
+
+| Question | B | V1 | V2 |
+|---|---|---|---|
+| Q0 record produced | 18/0/0/3 | 16/0/0/5 | 21/0/0/0 |
+| Q1 result kind | 11/1/3/0 | 11/2/0/2 | 15/0/0/0 |
+| Q2 program producer | 8/6/1/0 | 6/6/1/2 | 15/0/0/0 |
+| Q3 characterization timing | 13/0/0/0 | 13/0/0/0 | 13/0/0/0 |
+| Q4 hardware operator | 12/6/0/0 | 16/0/0/2 | 18/0/0/0 |
+| Q5 why results are absent | 3/0/0/3 | 3/0/0/3 | 6/0/0/0 |
+| Q6 requested shots | 14/2/2/0 | 14/0/2/2 | 14/0/4/0 |
+| Q7 executed shots | 11/1/1/0 | 9/1/1/2 | 13/0/0/0 |
+| Q8 batch/session | 0/0/16/0 | 0/0/16/0 | 16/0/0/0 |
+| Q9 failure reason | 0/0/1/0 | 0/0/1/0 | 1/0/0/0 |
+| Q10 noise model | 0/0/3/0 | 0/0/3/0 | 3/0/0/0 |
+| N1 device | 18/0/0/0 | 16/0/0/2 | 18/0/0/0 |
+| N2 created/ended | 16/0/2/0 | 16/0/0/2 | 18/0/0/0 |
+| N3 qubit count | 16/0/0/0 | 16/0/0/0 | 16/0/0/0 |
+| **Total** | **140/16/29/6** | **136/9/24/22** | **187/0/4/0** |
+
+Reading notes:
+
+- V2 was revised on these captures, so its zero misleading answers here are
+  expected, not evidence; the hold-out set is the test.
+- Misleading answers in B: probabilities shown as counts (Q1, Braket–IonQ);
+  application-compiled IBM circuits read as the provider's (Q2, 6); the
+  platform read as the hardware operator (Q4, 6 Braket jobs; 0 under the
+  cautious reading); photon detections read as requested shots (Q6, Quandela
+  ×2); executor shots for the Estimator (Q7). V1 shares Q1, Q2 and Q7, and
+  adds an Estimator result reported as a failed retrieval.
+- No arm misleads on Q3: once the seam supplies a characterization timestamp,
+  a consumer can compare it with the job's times. The association states add
+  nothing measurable here; the value is the timestamp itself (and, for the
+  untimed Braket devices, its explicit absence).
+- V2's four undeterminable answers are requested shots that the provider does
+  not record (Quandela, IonQ simulator); the application can supply them.
+- All arms share the integration seam, so seam fixes made during this work
+  (IBM properties as of job creation, IBM requested shots) benefit B and V1
+  too: the comparison isolates the mapping, and understates the difference
+  to a baseline written directly against provider SDKs.
+- Neutral questions: B and V2 tie on N1 and N3; B leaves the Quandela end time
+  undeterminable (N2) because it does not derive it.
+
 ## Log
 
 | Date | Change | Reason |
