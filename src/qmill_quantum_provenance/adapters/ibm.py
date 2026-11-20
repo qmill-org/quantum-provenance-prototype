@@ -26,6 +26,7 @@ from typing import Any
 
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    check_status_recognized,
     add_executed_shots,
     check_expected_fields,
     check_result_recognized,
@@ -223,6 +224,7 @@ class IBMProvenanceAdapter(ProvenanceAdapter):
         if not results.available:
             qualify_missing_results(evidence, job.status, result_error)
         check_result_recognized(job.status, result_data is not None, results, warnings)
+        check_status_recognized(snapshot.status, warnings)
         check_expected_fields(snapshot.metadata, _EXPECTED_FIELDS, job.status, warnings)
         schema = (snapshot.metadata or {}).get("input_schema")
         if schema is not None and schema not in _KNOWN_INPUT_SCHEMAS:

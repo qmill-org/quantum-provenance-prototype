@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0-prototype",
   "record_id": "qprov:braket:782f818c22da425e05074b501ca26a26",
-  "generated_at": "2026-11-20T06:24:22.491626+00:00",
-  "retrieved_at": "2026-11-20T06:24:22.491486+00:00",
+  "generated_at": "2026-11-20T07:46:53.745214+00:00",
+  "retrieved_at": "2026-11-20T07:46:53.745199+00:00",
   "adapter": {
     "provider": "braket",
     "name": "braket-provenance-adapter",

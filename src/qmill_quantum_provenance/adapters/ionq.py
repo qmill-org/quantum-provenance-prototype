@@ -30,6 +30,7 @@ from typing import Any
 
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    check_status_recognized,
     add_executed_shots,
     check_expected_fields,
     check_result_recognized,
@@ -180,6 +181,31 @@ _EXPECTED_FIELDS = (
 )
 
 
+SIMULATION_NAMESPACE = "simulation.ionq"
+
+
+def _simulation_extension(
+    metadata: dict[str, Any] | None, device_type: str, evidence: list[Evidence]
+) -> dict[str, Any]:
+    """Noise model and seed of a simulator job (F13); no core field holds them."""
+
+    noise = (metadata or {}).get("noise")
+    if device_type != "simulator" or not isinstance(noise, dict) or not noise.get("model"):
+        return {}
+    simulation = {"noise_model": noise["model"]}
+    if noise.get("seed") is not None:
+        simulation["seed"] = noise["seed"]
+    evidence.append(
+        Evidence(
+            path=f"/extensions/{SIMULATION_NAMESPACE}",
+            status=EvidenceStatus.PROVIDER_SUPPLIED,
+            provider_field="job noise.model / noise.seed",
+            notes="'ideal' is exact simulation; other models emulate the named QPU's noise.",
+        )
+    )
+    return {SIMULATION_NAMESPACE: simulation}
+
+
 class IonQProvenanceAdapter(ProvenanceAdapter):
     provider = "ionq"
     name = "ionq-provenance-adapter"
@@ -246,6 +272,7 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
         if not results.available:
             qualify_missing_results(evidence, job.status, result_error)
         check_result_recognized(job.status, result_data is not None, results, warnings)
+        check_status_recognized(snapshot.status, warnings)
         check_expected_fields(snapshot.metadata, _EXPECTED_FIELDS, job.status, warnings)
         self._build_compiled_artifact(result_data, artifacts, evidence)
         self._build_provider_native_artifact(snapshot, artifacts, evidence)
@@ -265,6 +292,7 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
             ),
         )
         characterization = self._build_characterization(device_details, snapshot, job, evidence)
+        extensions = _simulation_extension(snapshot.metadata, device.type, evidence)
 
         return AdapterResult(
             job=job,
@@ -277,6 +305,7 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
             execution=execution,
             characterization=characterization,
             retrieved_at=datetime.now(UTC),
+            extensions=extensions,
         )
 
     # -- section builders ----------------------------------------------------

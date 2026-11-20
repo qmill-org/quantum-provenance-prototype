@@ -11,6 +11,7 @@ from datetime import UTC, datetime, timedelta
 from typing import Any
 
 from ..adapter import (
+    check_status_recognized,
     add_executed_shots,
     check_expected_fields,
     check_result_recognized,
@@ -136,6 +137,7 @@ class QuandelaProvenanceAdapter(ProvenanceAdapter):
         if not results.available:
             qualify_missing_results(evidence, job.status, result_error)
         check_result_recognized(job.status, result is not None, results, warnings)
+        check_status_recognized(snapshot.status, warnings)
         check_expected_fields(snapshot.metadata, _EXPECTED_FIELDS, job.status, warnings)
         self._compiled(result, artifacts, evidence, extension)
         execution = self._execution(metadata, evidence)

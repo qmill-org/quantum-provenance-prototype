@@ -65,7 +65,7 @@
   },
   "providers": {
     "braket": {
-      "adapter_loc": 572,
+      "adapter_loc": 574,
       "attribute_evidence_counts": {
         "application_captured": 11,
         "derived": 2,
@@ -122,7 +122,7 @@
       "results_available": true
     },
     "ibm": {
-      "adapter_loc": 615,
+      "adapter_loc": 617,
       "attribute_evidence_counts": {
         "application_captured": 11,
         "derived": 3,
@@ -178,7 +178,7 @@
       "results_available": true
     },
     "ionq": {
-      "adapter_loc": 623,
+      "adapter_loc": 647,
       "attribute_evidence_counts": {
         "derived": 2,
         "not_applicable": 2,
@@ -286,12 +286,12 @@
   },
   "schema_version": "0.1.0-prototype",
   "shared_provider_independent_implementation_loc": {
-    "adapter.py": 401,
+    "adapter.py": 414,
     "contract.py": 32,
-    "models.py": 447,
+    "models.py": 455,
     "redaction.py": 68,
     "registry.py": 54,
     "service.py": 317
   },
-  "shared_provider_independent_implementation_loc_total": 1319
+  "shared_provider_independent_implementation_loc_total": 1340
 }

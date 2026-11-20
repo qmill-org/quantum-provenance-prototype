@@ -12,6 +12,7 @@ from qmill_quantum_provenance.adapter import CreateProvenanceRecordRequest
 from qmill_quantum_provenance.contract import validate_record
 from qmill_quantum_provenance.evaluation import build_service, load_inventory
 from qmill_quantum_provenance.live.validate import check_claims, validate_capture
+from qmill_quantum_provenance.models import normalize_job_status
 
 CAPTURES = Path(__file__).resolve().parents[1] / "captures"
 IONQ_V04 = CAPTURES / "ionq" / "01a1f2eb-d155-7632-bc4e-f340de096f01"
@@ -100,3 +101,27 @@ def test_live_capture_conformance(directory: Path) -> None:
     entry = validate_capture(directory, load_inventory())
     assert entry.get("schema_valid") is True
     assert [f["check"] for f in entry["findings"]] == KNOWN_FINDINGS.get(directory.name, [])
+
+
+@pytest.mark.parametrize(
+    ("raw", "expected"),
+    [
+        ("waiting", "queued"),
+        ("ready", "queued"),
+        ("submitted", "created"),
+        ("started", "running"),
+        ("SUCCESS", "completed"),
+        ("INITIALIZING", "created"),
+    ],
+)
+def test_provider_queue_and_run_states_are_normalized(raw: str, expected: str) -> None:
+    assert normalize_job_status(raw) == expected
+
+
+def test_an_unknown_provider_status_is_reported_as_drift() -> None:
+    fixture = copy.deepcopy(_fixture(IONQ_V04))
+    fixture["snapshot"]["status"] = "paused"
+    payload = _record(fixture)
+    assert payload["job"]["status"] == "unknown"
+    assert "unrecognized_provider_status" in _codes(payload)
+    assert not _codes(_record(_fixture(IONQ_V04)))

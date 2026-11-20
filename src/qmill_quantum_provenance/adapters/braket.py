@@ -15,6 +15,7 @@ from typing import Any
 
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    check_status_recognized,
     add_executed_shots,
     check_result_recognized,
     failure_with_evidence,
@@ -197,6 +198,7 @@ class BraketProvenanceAdapter(ProvenanceAdapter):
         if not results.available:
             qualify_missing_results(evidence, job.status, result_error)
         check_result_recognized(job.status, result_data is not None, results, warnings)
+        check_status_recognized(snapshot.status, warnings)
         self._build_compiled_artifact(result_data, artifacts, evidence)
         self._build_submitted_artifact(result_data, artifacts, evidence)
         self._build_provider_native_artifact(snapshot, artifacts, evidence)

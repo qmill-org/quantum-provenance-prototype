@@ -88,3 +88,15 @@ def test_braket_executed_shots_come_from_per_shot_measurements_only() -> None:
     relayed = _record(BRAKET_IONQ)
     assert "executed_shots" not in (relayed.get("execution") or {})
     assert _evidence(relayed)["/execution/executed_shots"]["status"] == "unavailable"
+
+
+IONQ_NOISY = CAPTURES / "ionq" / "01a1f2eb-d155-7632-bc4e-f340de096f01"
+
+
+def test_simulator_noise_model_and_seed_go_to_the_simulation_extension() -> None:
+    noisy = _record(IONQ_NOISY)
+    simulation = noisy["extensions"]["simulation.ionq"]
+    assert simulation["noise_model"] == "forte-1" and isinstance(simulation["seed"], int)
+    assert _evidence(noisy)["/extensions/simulation.ionq"]["status"] == "provider_supplied"
+    ideal = _record(IONQ_IDEAL)
+    assert ideal["extensions"]["simulation.ionq"] == {"noise_model": "ideal"}

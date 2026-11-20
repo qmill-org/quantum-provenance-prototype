@@ -182,3 +182,5 @@ status `failed` and the reason only inside a free-text warning.
   noise model (`forte-1`) and seed are recorded by IonQ but the contract has
   no field for them, so the record shows a plain `simulator` run; the ideal
   simulator job records `shots = null` although 1000 were requested.
+  (Addressed in `v0.2.0`: noise model and seed in
+  `extensions["simulation.ionq"]`; requested shots application-captured.)

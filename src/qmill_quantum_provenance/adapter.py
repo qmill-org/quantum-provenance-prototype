@@ -36,6 +36,7 @@ from .models import (
     Results,
     SoftwareContext,
     Warning,
+    is_recognized_job_status,
 )
 
 
@@ -398,6 +399,7 @@ DRIFT_WARNING_CODES = frozenset(
         "expected_provider_field_missing",
         "unrecognized_result_format",
         "unrecognized_provider_schema",
+        "unrecognized_provider_status",
     }
 )
 
@@ -438,6 +440,19 @@ def check_expected_fields(
             )
 
 
+def check_status_recognized(raw: str | None, warnings: list[Warning]) -> None:
+    """Warn when the provider reports a job state the normalizer does not know."""
+
+    if raw and not is_recognized_job_status(raw):
+        warnings.append(
+            Warning(
+                "unrecognized_provider_status",
+                f"Provider job status {raw!r} is not a known state; job.status reported "
+                "unknown. The provider interface may have changed.",
+            )
+        )
+
+
 def check_result_recognized(
     job_status: str, result_retrieved: bool, results: Results, warnings: list[Warning]
 ) -> None:
@@ -456,6 +471,7 @@ def check_result_recognized(
 __all__ = [
     "add_executed_shots",
     "check_expected_fields",
+    "check_status_recognized",
     "check_result_recognized",
     "DRIFT_WARNING_CODES",
     "ExpectedField",

@@ -101,24 +101,43 @@ def canonical_job_id(provider: str, external_job_id: str, scope: str | None = No
     return f"qprov:{provider}:{digest}"
 
 
+# Provider status vocabularies (lower-cased) mapped to the record's job states:
+# Amazon Braket (CREATED, QUEUED, RUNNING, COMPLETED, FAILED, CANCELLING,
+# CANCELLED), IBM Qiskit Runtime (INITIALIZING, QUEUED, RUNNING, DONE, ERROR,
+# CANCELLED), IonQ v0.3/v0.4 (submitted, ready, running/started, completed,
+# failed, canceled) and Quandela/Perceval (waiting, running, success/completed,
+# error, cancel_requested, canceled). A requested cancellation is reported as
+# cancelled, as before.
+_JOB_STATUS_MAP = {
+    "created": "created",
+    "initialized": "created",
+    "initializing": "created",
+    "submitted": "created",
+    "queued": "queued",
+    "waiting": "queued",
+    "ready": "queued",
+    "running": "running",
+    "started": "running",
+    "completed": "completed",
+    "done": "completed",
+    "success": "completed",
+    "failed": "failed",
+    "error": "failed",
+    "cancelled": "cancelled",
+    "canceled": "cancelled",
+    "cancelling": "cancelled",
+    "cancel_requested": "cancelled",
+}
+
+
+def is_recognized_job_status(raw: str | None) -> bool:
+    return bool(raw) and raw.strip().lower() in _JOB_STATUS_MAP
+
+
 def normalize_job_status(raw: str | None) -> str:
     if not raw:
         return "unknown"
-    lowered = raw.strip().lower()
-    mapping = {
-        "completed": "completed",
-        "done": "completed",
-        "failed": "failed",
-        "error": "failed",
-        "cancelled": "cancelled",
-        "canceled": "cancelled",
-        "cancelling": "cancelled",
-        "queued": "queued",
-        "running": "running",
-        "created": "created",
-        "initialized": "created",
-    }
-    return mapping.get(lowered, "unknown")
+    return _JOB_STATUS_MAP.get(raw.strip().lower(), "unknown")
 
 
 def normalize_device_type(raw: str | None) -> str:
