@@ -1,5 +1,5 @@
 {
-  "adapter_revision": "05e083d",
+  "adapter_revision": "965756a",
   "captures": [
     {
       "capture": "04470467-2658-4b06-8e5c-35b841c7b054",
@@ -125,6 +125,54 @@
       "schema_valid": true,
       "upstream": {
         "get_status": "JobNotFoundError"
+      }
+    },
+    {
+      "capture": "309e744e-f2ad-4152-8977-6c8dec2c9829",
+      "device": {
+        "hardware_provider": "iqm",
+        "identifier": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet",
+        "platform_provider": "amazon_braket"
+      },
+      "findings": [],
+      "inventory": {
+        "artifact.compiled": "provider_passthrough",
+        "characterization": "provider_supplied",
+        "compilation.compiler": "unavailable",
+        "compilation.logical_to_physical_mapping": "unavailable",
+        "device.hardware_provider": "derived",
+        "device.identifier": "provider_supplied",
+        "device.platform_provider": "provider_supplied",
+        "device.qubit_count": "provider_supplied",
+        "device.type": "provider_supplied",
+        "execution.queue_duration_ms": "unavailable",
+        "execution.run_duration_ms": "unavailable",
+        "execution.total_duration_ms": "derived",
+        "job.created_at": "provider_supplied",
+        "job.ended_at": "provider_supplied",
+        "job.failure": "not_applicable",
+        "job.relations": "not_applicable",
+        "job.shots": "provider_supplied",
+        "job.status": "provider_supplied",
+        "results.estimated_measurement_counts": "not_applicable",
+        "results.measurement_counts": "provider_supplied",
+        "results.measurement_probabilities": "not_applicable",
+        "software.framework_versions": "unavailable",
+        "software.provider_client": "unavailable"
+      },
+      "inventory_counts": {
+        "derived": 2,
+        "not_applicable": 4,
+        "provider_passthrough": 1,
+        "provider_supplied": 10,
+        "unavailable": 6
+      },
+      "provider": "braket",
+      "schema_valid": true,
+      "upstream": {
+        "get_device_details": "ok",
+        "get_result": "ok",
+        "get_status": "ok"
       }
     },
     {
@@ -275,6 +323,54 @@
       "device": {
         "hardware_provider": "rigetti",
         "identifier": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
+        "platform_provider": "amazon_braket"
+      },
+      "findings": [],
+      "inventory": {
+        "artifact.compiled": "provider_passthrough",
+        "characterization": "provider_supplied",
+        "compilation.compiler": "unavailable",
+        "compilation.logical_to_physical_mapping": "unavailable",
+        "device.hardware_provider": "derived",
+        "device.identifier": "provider_supplied",
+        "device.platform_provider": "provider_supplied",
+        "device.qubit_count": "provider_supplied",
+        "device.type": "provider_supplied",
+        "execution.queue_duration_ms": "unavailable",
+        "execution.run_duration_ms": "unavailable",
+        "execution.total_duration_ms": "derived",
+        "job.created_at": "provider_supplied",
+        "job.ended_at": "provider_supplied",
+        "job.failure": "not_applicable",
+        "job.relations": "not_applicable",
+        "job.shots": "provider_supplied",
+        "job.status": "provider_supplied",
+        "results.estimated_measurement_counts": "not_applicable",
+        "results.measurement_counts": "provider_supplied",
+        "results.measurement_probabilities": "not_applicable",
+        "software.framework_versions": "unavailable",
+        "software.provider_client": "unavailable"
+      },
+      "inventory_counts": {
+        "derived": 2,
+        "not_applicable": 4,
+        "provider_passthrough": 1,
+        "provider_supplied": 10,
+        "unavailable": 6
+      },
+      "provider": "braket",
+      "schema_valid": true,
+      "upstream": {
+        "get_device_details": "ok",
+        "get_result": "ok",
+        "get_status": "ok"
+      }
+    },
+    {
+      "capture": "f26d102d-8fc8-4fa2-9544-7cc68a443df0",
+      "device": {
+        "hardware_provider": "iqm",
+        "identifier": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet",
         "platform_provider": "amazon_braket"
       },
       "findings": [],

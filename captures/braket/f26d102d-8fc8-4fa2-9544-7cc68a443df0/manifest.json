@@ -1,0 +1,28 @@
+{
+  "capture_tool_revision": "965756ae00d8c6283c51cf9d0cd21a31dc3a1553",
+  "captured_at": "2026-11-20T05:52:17.947617+00:00",
+  "external_job_id": "arn:aws:braket:eu-north-1:000000000000:quantum-task/f26d102d-8fc8-4fa2-9544-7cc68a443df0",
+  "notes": {
+    "compiled_program": "present",
+    "measurement_counts_origin": "observed_measurements",
+    "submitted_program_available": true
+  },
+  "operations": [
+    {
+      "at": "2026-11-20T05:52:17.520999+00:00",
+      "operation": "get_status",
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-11-20T05:52:17.682470+00:00",
+      "operation": "get_device_details",
+      "outcome": "ok"
+    },
+    {
+      "at": "2026-11-20T05:52:17.838225+00:00",
+      "operation": "get_result",
+      "outcome": "ok"
+    }
+  ],
+  "provider": "braket"
+}

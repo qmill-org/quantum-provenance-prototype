@@ -1,0 +1,6309 @@
+{
+  "get_device": {
+    "deviceArn": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet",
+    "deviceCapabilities": {
+      "action": {
+        "braket.ir.openqasm.program": {
+          "actionType": "braket.ir.openqasm.program",
+          "disabledQubitRewiringSupported": false,
+          "forbiddenArrayOperations": [
+            "concatenation",
+            "negativeIndex",
+            "range",
+            "rangeWithStep",
+            "slicing",
+            "selection"
+          ],
+          "forbiddenPragmas": [
+            "braket_unitary_matrix",
+            "braket_result_type_state_vector",
+            "braket_result_type_density_matrix",
+            "braket_result_type_amplitude"
+          ],
+          "maximumClassicalArrays": 1,
+          "maximumQubitArrays": 1,
+          "requiresAllQubitsMeasurement": false,
+          "requiresContiguousQubitIndices": false,
+          "supportPhysicalQubits": true,
+          "supportedModifiers": [],
+          "supportedOperations": [
+            "ccnot",
+            "cnot",
+            "cphaseshift",
+            "cphaseshift00",
+            "cphaseshift01",
+            "cphaseshift10",
+            "cswap",
+            "swap",
+            "iswap",
+            "pswap",
+            "ecr",
+            "cy",
+            "cz",
+            "xy",
+            "xx",
+            "yy",
+            "zz",
+            "h",
+            "i",
+            "phaseshift",
+            "rx",
+            "ry",
+            "rz",
+            "s",
+            "si",
+            "t",
+            "ti",
+            "v",
+            "vi",
+            "x",
+            "y",
+            "z",
+            "prx",
+            "cc_prx",
+            "measure_ff",
+            "barrier",
+            "if"
+          ],
+          "supportedPragmas": [
+            "verbatim",
+            "braket_result_type_sample",
+            "braket_result_type_expectation",
+            "braket_result_type_variance",
+            "braket_result_type_probability"
+          ],
+          "supportedResultTypes": [
+            {
+              "maxShots": 20000,
+              "minShots": 1,
+              "name": "Sample",
+              "observables": [
+                "x",
+                "y",
+                "z",
+                "h",
+                "i"
+              ]
+            },
+            {
+              "maxShots": 20000,
+              "minShots": 1,
+              "name": "Expectation",
+              "observables": [
+                "x",
+                "y",
+                "z",
+                "h",
+                "i"
+              ]
+            },
+            {
+              "maxShots": 20000,
+              "minShots": 1,
+              "name": "Variance",
+              "observables": [
+                "x",
+                "y",
+                "z",
+                "h",
+                "i"
+              ]
+            },
+            {
+              "maxShots": 20000,
+              "minShots": 1,
+              "name": "Probability"
+            }
+          ],
+          "supportsPartialVerbatimBox": true,
+          "supportsUnassignedMeasurements": false,
+          "version": [
+            "1.0"
+          ]
+        },
+        "braket.ir.openqasm.program_set": {
+          "actionType": "braket.ir.openqasm.program_set",
+          "maximumExecutables": 100,
+          "maximumTotalShots": 200000,
+          "version": [
+            "1"
+          ]
+        }
+      },
+      "braketSchemaHeader": {
+        "name": "braket.device_schema.iqm.iqm_device_capabilities",
+        "version": "1"
+      },
+      "deviceParameters": {
+        "definitions": {
+          "GateModelParameters": {
+            "description": "Defines parameters common to all gate model devices.\n\nAttributes:\n    qubitCount: Number of qubits used by the circuit.\n    disableQubitRewiring: Whether to run the circuit with the exact qubits chosen,\n        without any rewiring downstream.\n        If ``True``, no qubit rewiring is allowed; if ``False``, qubit rewiring is allowed.\n\nExamples:\n    >>> import json\n    >>> input_json = {\n    ...    \"braketSchemaHeader\": {\n    ...        \"name\": \"braket.device_schema.gate_model_parameters\",\n    ...        \"version\": \"1\",\n    ...    },\n    ...    \"qubitCount\": 1,\n    ...    \"disableQubitRewiring\": True\n    ... }\n    >>> GateModelParameters.parse_raw_schema(json.dumps(input_json))",
+            "properties": {
+              "braketSchemaHeader": {
+                "const": {
+                  "name": "braket.device_schema.gate_model_parameters",
+                  "version": "1"
+                },
+                "default": {
+                  "name": "braket.device_schema.gate_model_parameters",
+                  "version": "1"
+                },
+                "title": "Braketschemaheader"
+              },
+              "disableQubitRewiring": {
+                "default": false,
+                "title": "Disablequbitrewiring",
+                "type": "boolean"
+              },
+              "qubitCount": {
+                "minimum": 0,
+                "title": "Qubitcount",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "qubitCount"
+            ],
+            "title": "GateModelParameters",
+            "type": "object"
+          }
+        },
+        "description": "This defines the parameters common to all the IQM devices.\n\nAttributes:\n    paradigmParameters: Parameters that are common to gatemodel paradigm",
+        "properties": {
+          "braketSchemaHeader": {
+            "const": {
+              "name": "braket.device_schema.iqm.iqm_device_parameters",
+              "version": "1"
+            },
+            "default": {
+              "name": "braket.device_schema.iqm.iqm_device_parameters",
+              "version": "1"
+            },
+            "title": "Braketschemaheader"
+          },
+          "paradigmParameters": {
+            "$ref": "#/definitions/GateModelParameters"
+          }
+        },
+        "required": [
+          "paradigmParameters"
+        ],
+        "title": "IqmDeviceParameters",
+        "type": "object"
+      },
+      "paradigm": {
+        "braketSchemaHeader": {
+          "name": "braket.device_schema.gate_model_qpu_paradigm_properties",
+          "version": "1"
+        },
+        "connectivity": {
+          "connectivityGraph": {
+            "1": [
+              "2",
+              "4"
+            ],
+            "10": [
+              "5",
+              "9",
+              "11",
+              "15"
+            ],
+            "11": [
+              "6",
+              "10",
+              "12",
+              "16"
+            ],
+            "12": [
+              "7",
+              "11",
+              "17"
+            ],
+            "13": [
+              "8",
+              "14"
+            ],
+            "14": [
+              "9",
+              "13",
+              "15",
+              "18"
+            ],
+            "15": [
+              "10",
+              "14",
+              "16",
+              "19"
+            ],
+            "16": [
+              "11",
+              "15",
+              "17",
+              "20"
+            ],
+            "17": [
+              "12",
+              "16"
+            ],
+            "18": [
+              "14",
+              "19"
+            ],
+            "19": [
+              "15",
+              "18",
+              "20"
+            ],
+            "2": [
+              "1",
+              "5"
+            ],
+            "20": [
+              "16",
+              "19"
+            ],
+            "3": [
+              "4",
+              "8"
+            ],
+            "4": [
+              "1",
+              "3",
+              "5",
+              "9"
+            ],
+            "5": [
+              "2",
+              "4",
+              "6",
+              "10"
+            ],
+            "6": [
+              "5",
+              "7",
+              "11"
+            ],
+            "7": [
+              "6",
+              "12"
+            ],
+            "8": [
+              "3",
+              "9",
+              "13"
+            ],
+            "9": [
+              "4",
+              "8",
+              "10",
+              "14"
+            ]
+          },
+          "fullyConnected": false
+        },
+        "nativeGateSet": [
+          "cz",
+          "prx",
+          "cc_prx",
+          "measure_ff",
+          "barrier"
+        ],
+        "qubitCount": 20
+      },
+      "provider": {
+        "braketSchemaHeader": {
+          "name": "braket.device_schema.iqm.iqm_provider_properties",
+          "version": "1"
+        },
+        "properties": {
+          "one_qubit": {
+            "1": {
+              "T1": 2.9802637003167408e-05,
+              "T1_std_err": 3.0157735478390156e-06,
+              "T2": 1.0257193329000153e-05,
+              "T2_echo": 1.577359502311101e-05,
+              "T2_echo_std_err": 7.847793987959389e-07,
+              "T2_std_err": 6.556072264229333e-07,
+              "f1Q_simultaneous_RB": 0.9995944106272592,
+              "f1Q_simultaneous_RB_std_err": 1.2734507063674552e-05,
+              "fRO": 0.9897666803110929,
+              "readout_error_0_to_1": 0.01,
+              "readout_error_1_to_0": 0.0146
+            },
+            "10": {
+              "T1": 2.984639689402595e-05,
+              "T1_std_err": 1.1516422165442144e-06,
+              "T2": 9.690760744911619e-06,
+              "T2_echo": 2.2466151755224745e-05,
+              "T2_echo_std_err": 1.1007761402294885e-06,
+              "T2_std_err": 5.888605312367578e-07,
+              "f1Q_simultaneous_RB": 0.9993162868192278,
+              "f1Q_simultaneous_RB_std_err": 1.5610671554079914e-05,
+              "fRO": 0.9488837888587524,
+              "readout_error_0_to_1": 0.0198,
+              "readout_error_1_to_0": 0.0948
+            },
+            "11": {
+              "T1": 5.7396832673896336e-05,
+              "T1_std_err": 2.7002562202953517e-06,
+              "T2": 1.1938579674155068e-05,
+              "T2_echo": 2.4854802192165602e-05,
+              "T2_echo_std_err": 1.8208991496309197e-06,
+              "T2_std_err": 8.988515762849732e-07,
+              "f1Q_simultaneous_RB": 0.9995161220282522,
+              "f1Q_simultaneous_RB_std_err": 1.7824149956126845e-05,
+              "fRO": 0.9844945213975604,
+              "readout_error_0_to_1": 0.0236,
+              "readout_error_1_to_0": 0.0398
+            },
+            "12": {
+              "T1": 6.218313724694148e-05,
+              "T1_std_err": 4.526717546372244e-06,
+              "T2": 1.5909063033840798e-05,
+              "T2_echo": 3.3618772981664024e-05,
+              "T2_echo_std_err": 2.0029158299819094e-06,
+              "T2_std_err": 8.495029821997596e-07,
+              "f1Q_simultaneous_RB": 0.9974040620740359,
+              "f1Q_simultaneous_RB_std_err": 0.00022546557788216624,
+              "fRO": 0.9950738916256158,
+              "readout_error_0_to_1": 0.0212,
+              "readout_error_1_to_0": 0.0156
+            },
+            "13": {
+              "T1": 5.622503113361783e-05,
+              "T1_std_err": 4.107798266179247e-06,
+              "T2": 1.3262075364973932e-05,
+              "T2_echo": 3.0400837611702895e-05,
+              "T2_echo_std_err": 1.4454517169583478e-06,
+              "T2_std_err": 9.938894861194966e-07,
+              "f1Q_simultaneous_RB": 0.9994147006248938,
+              "f1Q_simultaneous_RB_std_err": 2.143783595459171e-05,
+              "fRO": 0.9781409601634321,
+              "readout_error_0_to_1": 0.0196,
+              "readout_error_1_to_0": 0.0422
+            },
+            "14": {
+              "T1": 5.2180129204862336e-05,
+              "T1_std_err": 6.6953655779183746e-06,
+              "T2": 8.958904076486583e-06,
+              "T2_echo": 2.3002028918857863e-05,
+              "T2_echo_std_err": 1.3196269699559876e-06,
+              "T2_std_err": 3.0565786854394047e-07,
+              "f1Q_simultaneous_RB": 0.9997371797683281,
+              "f1Q_simultaneous_RB_std_err": 1.2428357502533353e-05,
+              "fRO": 0.9901679639492011,
+              "readout_error_0_to_1": 0.0276,
+              "readout_error_1_to_0": 0.0316
+            },
+            "15": {
+              "T1": 2.8173041140546688e-05,
+              "T1_std_err": 2.5867381101702592e-06,
+              "T2": 1.1907851950385889e-05,
+              "T2_echo": 2.0971056853935107e-05,
+              "T2_echo_std_err": 1.6190654967976245e-06,
+              "T2_std_err": 8.972506156873154e-07,
+              "f1Q_simultaneous_RB": 0.9995350230081004,
+              "f1Q_simultaneous_RB_std_err": 2.5022553295259874e-05,
+              "fRO": 0.9859482410028305,
+              "readout_error_0_to_1": 0.0058,
+              "readout_error_1_to_0": 0.0302
+            },
+            "16": {
+              "T1": 4.89720670727703e-05,
+              "T1_std_err": 2.3989671859984245e-06,
+              "T2": 8.33771578473814e-06,
+              "T2_echo": 2.2275000882020788e-05,
+              "T2_echo_std_err": 9.289009335398339e-07,
+              "T2_std_err": 4.5372311725425737e-07,
+              "f1Q_simultaneous_RB": 0.9997393057076364,
+              "f1Q_simultaneous_RB_std_err": 1.6253565960284783e-05,
+              "fRO": 0.9937100433078986,
+              "readout_error_0_to_1": 0.016,
+              "readout_error_1_to_0": 0.0232
+            },
+            "17": {
+              "T1": 5.481755862450458e-05,
+              "T1_std_err": 2.0967560491544168e-06,
+              "T2": 1.5227037834178377e-05,
+              "T2_echo": 2.9920989375702867e-05,
+              "T2_echo_std_err": 1.741061927941452e-06,
+              "T2_std_err": 9.803636222386534e-07,
+              "f1Q_simultaneous_RB": 0.9995385150511746,
+              "f1Q_simultaneous_RB_std_err": 2.448212612953444e-05,
+              "fRO": 0.9938549774682507,
+              "readout_error_0_to_1": 0.0098,
+              "readout_error_1_to_0": 0.017
+            },
+            "18": {
+              "T1": 5.903224152276221e-05,
+              "T1_std_err": 4.362957220341294e-06,
+              "T2": 1.2208010249780495e-05,
+              "T2_echo": 2.6996752832326793e-05,
+              "T2_echo_std_err": 1.4514169455110867e-06,
+              "T2_std_err": 6.359049077395188e-07,
+              "f1Q_simultaneous_RB": 0.9997511708974917,
+              "f1Q_simultaneous_RB_std_err": 1.0483052348698335e-05,
+              "fRO": 0.9928425357873211,
+              "readout_error_0_to_1": 0.0174,
+              "readout_error_1_to_0": 0.0226
+            },
+            "19": {
+              "T1": 3.913370808161746e-05,
+              "T1_std_err": 1.5328934088797506e-06,
+              "T2": 9.334860208536416e-06,
+              "T2_echo": 2.409180035402048e-05,
+              "T2_echo_std_err": 1.3707952943153528e-06,
+              "T2_std_err": 4.297660768611082e-07,
+              "f1Q_simultaneous_RB": 0.9997106434947894,
+              "f1Q_simultaneous_RB_std_err": 1.9092756651941985e-05,
+              "fRO": 0.9820581563208909,
+              "readout_error_0_to_1": 0.0272,
+              "readout_error_1_to_0": 0.0266
+            },
+            "2": {
+              "T1": 3.5095218912432434e-05,
+              "T1_std_err": 1.8376907122718027e-06,
+              "T2": 7.578365143024499e-06,
+              "T2_echo": 1.5252281131560488e-05,
+              "T2_echo_std_err": 7.003628795355616e-07,
+              "T2_std_err": 5.355433196325209e-07,
+              "f1Q_simultaneous_RB": 0.999613799694421,
+              "f1Q_simultaneous_RB_std_err": 1.4856159107486451e-05,
+              "fRO": 0.9944942903752039,
+              "readout_error_0_to_1": 0.01,
+              "readout_error_1_to_0": 0.0198
+            },
+            "20": {
+              "T1": 2.4226591573472457e-05,
+              "T1_std_err": 1.4226627885217768e-06,
+              "T2": 2.3494504801872025e-05,
+              "T2_echo": 3.096053794008241e-05,
+              "T2_echo_std_err": 2.553490502683802e-06,
+              "T2_std_err": 1.978495549794784e-06,
+              "f1Q_simultaneous_RB": 0.9995733811080978,
+              "f1Q_simultaneous_RB_std_err": 1.5286078646176325e-05,
+              "fRO": 0.9897545141002232,
+              "readout_error_0_to_1": 0.0108,
+              "readout_error_1_to_0": 0.0278
+            },
+            "3": {
+              "T1": 3.434932113223115e-05,
+              "T1_std_err": 1.6827901388528794e-06,
+              "T2": 1.4231997791570277e-05,
+              "T2_echo": 2.419607796553699e-05,
+              "T2_echo_std_err": 1.5616549891995534e-06,
+              "T2_std_err": 7.025138649285504e-07,
+              "f1Q_simultaneous_RB": 0.9995712230783604,
+              "f1Q_simultaneous_RB_std_err": 1.6545172390565037e-05,
+              "fRO": 0.9866571603177836,
+              "readout_error_0_to_1": 0.0068,
+              "readout_error_1_to_0": 0.026
+            },
+            "4": {
+              "T1": 2.6973968742892586e-05,
+              "T1_std_err": 1.1598560224954425e-06,
+              "T2": 8.344481237539398e-06,
+              "T2_echo": 1.5119570674319908e-05,
+              "T2_echo_std_err": 1.1532997817609759e-06,
+              "T2_std_err": 5.814268228347653e-07,
+              "f1Q_simultaneous_RB": 0.999504044659509,
+              "f1Q_simultaneous_RB_std_err": 1.4194520021429372e-05,
+              "fRO": 0.9926948051948052,
+              "readout_error_0_to_1": 0.0046,
+              "readout_error_1_to_0": 0.0106
+            },
+            "5": {
+              "T1": 3.164182850588906e-05,
+              "T1_std_err": 3.165271858861449e-06,
+              "T2": 6.348804790524527e-06,
+              "T2_echo": 1.4216229615422315e-05,
+              "T2_echo_std_err": 8.183168730580696e-07,
+              "T2_std_err": 4.135148398687033e-07,
+              "f1Q_simultaneous_RB": 0.999341647972474,
+              "f1Q_simultaneous_RB_std_err": 3.317568471895358e-05,
+              "fRO": 0.9602962353425221,
+              "readout_error_0_to_1": 0.0226,
+              "readout_error_1_to_0": 0.0674
+            },
+            "6": {
+              "T1": 6.805857388844336e-05,
+              "T1_std_err": 7.829525322784266e-06,
+              "T2": 9.839200252149175e-06,
+              "T2_echo": 2.288688350542239e-05,
+              "T2_echo_std_err": 1.0292268162379334e-06,
+              "T2_std_err": 6.593407086969896e-07,
+              "f1Q_simultaneous_RB": 0.9996366162601462,
+              "f1Q_simultaneous_RB_std_err": 1.1036425797623865e-05,
+              "fRO": 0.9794909549852756,
+              "readout_error_0_to_1": 0.0298,
+              "readout_error_1_to_0": 0.035
+            },
+            "7": {
+              "T1": 3.339110566245954e-05,
+              "T1_std_err": 3.2693640657604628e-06,
+              "T2": 1.1036709922356955e-05,
+              "T2_echo": 1.9876103159108538e-05,
+              "T2_echo_std_err": 1.0895846219996877e-06,
+              "T2_std_err": 6.482130290777314e-07,
+              "f1Q_simultaneous_RB": 0.9976831459900216,
+              "f1Q_simultaneous_RB_std_err": 0.0002940698918567292,
+              "fRO": 0.9822702262074587,
+              "readout_error_0_to_1": 0.0154,
+              "readout_error_1_to_0": 0.0354
+            },
+            "8": {
+              "T1": 2.527391453268188e-05,
+              "T1_std_err": 1.46993732684481e-06,
+              "T2": 8.374494932207293e-06,
+              "T2_echo": 1.7386158592140538e-05,
+              "T2_echo_std_err": 8.671198551725227e-07,
+              "T2_std_err": 5.203038453652203e-07,
+              "f1Q_simultaneous_RB": 0.9995936003468266,
+              "f1Q_simultaneous_RB_std_err": 1.097010986767394e-05,
+              "fRO": 0.9922363379713652,
+              "readout_error_0_to_1": 0.0042,
+              "readout_error_1_to_0": 0.0178
+            },
+            "9": {
+              "T1": 1.616825088566912e-05,
+              "T1_std_err": 1.407226904027813e-06,
+              "T2": 1.0299260851260794e-05,
+              "T2_echo": 1.6533117727483163e-05,
+              "T2_echo_std_err": 9.766439144788925e-07,
+              "T2_std_err": 6.93153035898799e-07,
+              "f1Q_simultaneous_RB": 0.9991841822944674,
+              "f1Q_simultaneous_RB_std_err": 2.2755019924083757e-05,
+              "fRO": 0.9772167487684729,
+              "readout_error_0_to_1": 0.0102,
+              "readout_error_1_to_0": 0.0324
+            }
+          },
+          "two_qubit": {
+            "1-2": {
+              "f2Q_simultaneous_RB_Clifford": 0.992713628703263,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.00013767192849356262,
+              "fCZ": 0.9972664503054304,
+              "fCZ_std_err": 0.00023867980887537024
+            },
+            "1-4": {
+              "f2Q_simultaneous_RB_Clifford": 0.9917635342323827,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.00012702816315913258,
+              "fCZ": 0.9965762521368828,
+              "fCZ_std_err": 0.00022356228436720474
+            },
+            "10-11": {
+              "f2Q_simultaneous_RB_Clifford": 0.9804803733260146,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.00039825121717988423,
+              "fCZ": 0.9877897484136405,
+              "fCZ_std_err": 0.0007619775685119217
+            },
+            "10-15": {
+              "f2Q_simultaneous_RB_Clifford": 0.9788596797132101,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.0003405649495554138,
+              "fCZ": 0.9895643175283939,
+              "fCZ_std_err": 0.0006169896019295289
+            },
+            "11-12": {
+              "f2Q_simultaneous_RB_Clifford": 0.989421073186243,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.0002457818323761795,
+              "fCZ": 0.9987128588523639,
+              "fCZ_std_err": 0.00037434493936035104
+            },
+            "11-16": {
+              "f2Q_simultaneous_RB_Clifford": 0.9922038169911679,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.00013761240453082294,
+              "fCZ": 0.9947131534031323,
+              "fCZ_std_err": 0.0002732946673117068
+            },
+            "12-17": {
+              "f2Q_simultaneous_RB_Clifford": 0.9894265834543182,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.0002473266551799016,
+              "fCZ": 0.9929510556362121,
+              "fCZ_std_err": 0.00016488443678660107
+            },
+            "13-14": {
+              "f2Q_simultaneous_RB_Clifford": 0.9918719638325711,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.0001266626464769213,
+              "fCZ": 0.9960348915617714,
+              "fCZ_std_err": 0.0002306271482572652
+            },
+            "14-15": {
+              "f2Q_simultaneous_RB_Clifford": 0.9862859958168403,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.0002279627248593356,
+              "fCZ": 0.9919572764599252,
+              "fCZ_std_err": 0.00042937290422513197
+            },
+            "14-18": {
+              "f2Q_simultaneous_RB_Clifford": 0.9917944196122987,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.00010114547837445305,
+              "fCZ": 0.9948894796448869,
+              "fCZ_std_err": 0.00019560080958025595
+            },
+            "15-16": {
+              "f2Q_simultaneous_RB_Clifford": 0.9931034291770033,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.00010239125410359274,
+              "fCZ": 0.9966532485477966,
+              "fCZ_std_err": 0.00018760101616804655
+            },
+            "15-19": {
+              "f2Q_simultaneous_RB_Clifford": 0.9913265746879186,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.0001515403953632914,
+              "fCZ": 0.9957823343764022,
+              "fCZ_std_err": 0.0002750994459560459
+            },
+            "16-17": {
+              "f2Q_simultaneous_RB_Clifford": 0.9927380849090257,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.00013210647860394104,
+              "fCZ": 0.9957917297345477,
+              "fCZ_std_err": 0.00025211802956991516
+            },
+            "16-20": {
+              "f2Q_simultaneous_RB_Clifford": 0.9922433929276269,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.00011996141534150622,
+              "fCZ": 0.9961086057247367,
+              "fCZ_std_err": 0.0002202421383462439
+            },
+            "18-19": {
+              "f2Q_simultaneous_RB_Clifford": 0.9937459302455409,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.00010924394985668004,
+              "fCZ": 0.9984600271189635,
+              "fCZ_std_err": 0.00017831250201820202
+            },
+            "19-20": {
+              "f2Q_simultaneous_RB_Clifford": 0.9908162556525915,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.00012835350550030914,
+              "fCZ": 0.9935391059630141,
+              "fCZ_std_err": 0.0002558609274422184
+            },
+            "2-5": {
+              "f2Q_simultaneous_RB_Clifford": 0.9912349859731793,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.0001892905808553683,
+              "fCZ": 0.9960831612402161,
+              "fCZ_std_err": 0.00033736744462077275
+            },
+            "3-4": {
+              "f2Q_simultaneous_RB_Clifford": 0.9917670728193964,
+              "f2Q_simultaneous_RB_Clifford_std_err": 9.815556199141827e-05,
+              "fCZ": 0.9965882760667454,
+              "fCZ_std_err": 0.00017264642803292926
+            },
+            "3-8": {
+              "f2Q_simultaneous_RB_Clifford": 0.9916499745021183,
+              "f2Q_simultaneous_RB_Clifford_std_err": 8.441344388285881e-05,
+              "fCZ": 0.9965187892321742,
+              "fCZ_std_err": 0.00014858383942014763
+            },
+            "4-5": {
+              "f2Q_simultaneous_RB_Clifford": 0.9909670511446662,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.00017855428696145382,
+              "fCZ": 0.9967459025372972,
+              "fCZ_std_err": 0.00030540172278075594
+            },
+            "4-9": {
+              "f2Q_simultaneous_RB_Clifford": 0.9913528036508961,
+              "f2Q_simultaneous_RB_Clifford_std_err": 9.271646319585779e-05,
+              "fCZ": 0.9971999186026352,
+              "fCZ_std_err": 0.0001560061926103526
+            },
+            "5-10": {
+              "f2Q_simultaneous_RB_Clifford": 0.9796347617656583,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.00032703765695280413,
+              "fCZ": 0.9909974953434311,
+              "fCZ_std_err": 0.0005794970162850841
+            },
+            "5-6": {
+              "f2Q_simultaneous_RB_Clifford": 0.9829560004043041,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.00028902048809948674,
+              "fCZ": 0.9916985616170035,
+              "fCZ_std_err": 0.0005216214312012348
+            },
+            "6-11": {
+              "f2Q_simultaneous_RB_Clifford": 0.9880056044279522,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.00015045988310694025,
+              "fCZ": 0.9935667384685938,
+              "fCZ_std_err": 0.0002775657018496617
+            },
+            "6-7": {
+              "f2Q_simultaneous_RB_Clifford": 0.9912107141872593,
+              "f2Q_simultaneous_RB_Clifford_std_err": 9.946254229276991e-05,
+              "fCZ": 0.9958797401625609,
+              "fCZ_std_err": 0.0001790486476266644
+            },
+            "7-12": {
+              "f2Q_simultaneous_RB_Clifford": 0.98837901928854,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.00028555991349592176,
+              "fCZ": 0.9922526795256933,
+              "fCZ_std_err": 0.00019037327566394783
+            },
+            "8-13": {
+              "f2Q_simultaneous_RB_Clifford": 0.993029669713576,
+              "f2Q_simultaneous_RB_Clifford_std_err": 9.554074889457377e-05,
+              "fCZ": 0.9965118488485005,
+              "fCZ_std_err": 0.0001762042608757922
+            },
+            "8-9": {
+              "f2Q_simultaneous_RB_Clifford": 0.9908862558378169,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.00011386969337876566,
+              "fCZ": 0.996616992840792,
+              "fCZ_std_err": 0.00019573360401686524
+            },
+            "9-10": {
+              "f2Q_simultaneous_RB_Clifford": 0.9779938374514705,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.00039651830533218066,
+              "fCZ": 0.9853704724681472,
+              "fCZ_std_err": 0.0007706932852330863
+            },
+            "9-14": {
+              "f2Q_simultaneous_RB_Clifford": 0.9924648893601409,
+              "f2Q_simultaneous_RB_Clifford_std_err": 0.00010171662145692852,
+              "fCZ": 0.9973015277501076,
+              "fCZ_std_err": 0.00017467825232539945
+            }
+          }
+        }
+      },
+      "service": {
+        "braketSchemaHeader": {
+          "name": "braket.device_schema.device_service_properties",
+          "version": "1"
+        },
+        "deviceCost": {
+          "price": 0.00145,
+          "unit": "shot"
+        },
+        "deviceDocumentation": {
+          "externalDocumentationUrl": "https://www.iqmacademy.com/qpu/",
+          "imageUrl": "",
+          "summary": "Universal gate-model QPU based on superconducting qubits"
+        },
+        "deviceLocation": "Espoo, Finland",
+        "executionWindows": [
+          {
+            "executionDay": "Weekdays",
+            "windowEndHour": "01:14:59",
+            "windowStartHour": "00:00:00"
+          },
+          {
+            "executionDay": "Weekdays",
+            "windowEndHour": "23:59:59",
+            "windowStartHour": "02:45:00"
+          }
+        ],
+        "shotsRange": [
+          1,
+          20000
+        ],
+        "updatedAt": "2026-11-20T02:39:29.621392+00:00"
+      },
+      "standardized": {
+        "braketSchemaHeader": {
+          "name": "braket.device_schema.standardized_gate_model_qpu_device_properties",
+          "version": "1"
+        },
+        "oneQubitProperties": {
+          "1": {
+            "T1": {
+              "standardError": 3.0157735478390156e-06,
+              "unit": "S",
+              "value": 2.9802637003167408e-05
+            },
+            "T2": {
+              "standardError": 6.556072264229333e-07,
+              "unit": "S",
+              "value": 1.0257193329000153e-05
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9995944106272592,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 1.2734507063674552e-05
+              },
+              {
+                "fidelity": 0.01,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.0146,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9897666803110929,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.001018741127251907
+              }
+            ]
+          },
+          "10": {
+            "T1": {
+              "standardError": 1.1516422165442144e-06,
+              "unit": "S",
+              "value": 2.984639689402595e-05
+            },
+            "T2": {
+              "standardError": 5.888605312367578e-07,
+              "unit": "S",
+              "value": 9.690760744911619e-06
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9993162868192278,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 1.5610671554079914e-05
+              },
+              {
+                "fidelity": 0.0198,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.0948,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9488837888587524,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.0022122724080320157
+              }
+            ]
+          },
+          "11": {
+            "T1": {
+              "standardError": 2.7002562202953517e-06,
+              "unit": "S",
+              "value": 5.7396832673896336e-05
+            },
+            "T2": {
+              "standardError": 8.988515762849732e-07,
+              "unit": "S",
+              "value": 1.1938579674155068e-05
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9995161220282522,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 1.7824149956126845e-05
+              },
+              {
+                "fidelity": 0.0236,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.0398,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9844945213975604,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.00124730121168143
+              }
+            ]
+          },
+          "12": {
+            "T1": {
+              "standardError": 4.526717546372244e-06,
+              "unit": "S",
+              "value": 6.218313724694148e-05
+            },
+            "T2": {
+              "standardError": 8.495029821997596e-07,
+              "unit": "S",
+              "value": 1.5909063033840798e-05
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9974040620740359,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 0.00022546557788216624
+              },
+              {
+                "fidelity": 0.0212,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.0156,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9950738916256158,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.0007142763918814672
+              }
+            ]
+          },
+          "13": {
+            "T1": {
+              "standardError": 4.107798266179247e-06,
+              "unit": "S",
+              "value": 5.622503113361783e-05
+            },
+            "T2": {
+              "standardError": 9.938894861194966e-07,
+              "unit": "S",
+              "value": 1.3262075364973932e-05
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9994147006248938,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 2.143783595459171e-05
+              },
+              {
+                "fidelity": 0.0196,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.0422,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9781409601634321,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.0014625044365327018
+              }
+            ]
+          },
+          "14": {
+            "T1": {
+              "standardError": 6.6953655779183746e-06,
+              "unit": "S",
+              "value": 5.2180129204862336e-05
+            },
+            "T2": {
+              "standardError": 3.0565786854394047e-07,
+              "unit": "S",
+              "value": 8.958904076486583e-06
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9997371797683281,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 1.2428357502533353e-05
+              },
+              {
+                "fidelity": 0.0276,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.0316,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9901679639492011,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.0009965541872772714
+              }
+            ]
+          },
+          "15": {
+            "T1": {
+              "standardError": 2.5867381101702592e-06,
+              "unit": "S",
+              "value": 2.8173041140546688e-05
+            },
+            "T2": {
+              "standardError": 8.972506156873154e-07,
+              "unit": "S",
+              "value": 1.1907851950385889e-05
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9995350230081004,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 2.5022553295259874e-05
+              },
+              {
+                "fidelity": 0.0058,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.0302,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9859482410028305,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.0011752880448063089
+              }
+            ]
+          },
+          "16": {
+            "T1": {
+              "standardError": 2.3989671859984245e-06,
+              "unit": "S",
+              "value": 4.89720670727703e-05
+            },
+            "T2": {
+              "standardError": 4.5372311725425737e-07,
+              "unit": "S",
+              "value": 8.33771578473814e-06
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9997393057076364,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 1.6253565960284783e-05
+              },
+              {
+                "fidelity": 0.016,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.0232,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9937100433078986,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.0008052330125679829
+              }
+            ]
+          },
+          "17": {
+            "T1": {
+              "standardError": 2.0967560491544168e-06,
+              "unit": "S",
+              "value": 5.481755862450458e-05
+            },
+            "T2": {
+              "standardError": 9.803636222386534e-07,
+              "unit": "S",
+              "value": 1.5227037834178377e-05
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9995385150511746,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 2.448212612953444e-05
+              },
+              {
+                "fidelity": 0.0098,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.017,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9938549774682507,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.0007936895418488617
+              }
+            ]
+          },
+          "18": {
+            "T1": {
+              "standardError": 4.362957220341294e-06,
+              "unit": "S",
+              "value": 5.903224152276221e-05
+            },
+            "T2": {
+              "standardError": 6.359049077395188e-07,
+              "unit": "S",
+              "value": 1.2208010249780495e-05
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9997511708974917,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 1.0483052348698335e-05
+              },
+              {
+                "fidelity": 0.0174,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.0226,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9928425357873211,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.000852583494012952
+              }
+            ]
+          },
+          "19": {
+            "T1": {
+              "standardError": 1.5328934088797506e-06,
+              "unit": "S",
+              "value": 3.913370808161746e-05
+            },
+            "T2": {
+              "standardError": 4.297660768611082e-07,
+              "unit": "S",
+              "value": 9.334860208536416e-06
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9997106434947894,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 1.9092756651941985e-05
+              },
+              {
+                "fidelity": 0.0272,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.0266,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9820581563208909,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.001340815964371696
+              }
+            ]
+          },
+          "2": {
+            "T1": {
+              "standardError": 1.8376907122718027e-06,
+              "unit": "S",
+              "value": 3.5095218912432434e-05
+            },
+            "T2": {
+              "standardError": 5.355433196325209e-07,
+              "unit": "S",
+              "value": 7.578365143024499e-06
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.999613799694421,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 1.4856159107486451e-05
+              },
+              {
+                "fidelity": 0.01,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.0198,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9944942903752039,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.0007499968841882426
+              }
+            ]
+          },
+          "20": {
+            "T1": {
+              "standardError": 1.4226627885217768e-06,
+              "unit": "S",
+              "value": 2.4226591573472457e-05
+            },
+            "T2": {
+              "standardError": 1.978495549794784e-06,
+              "unit": "S",
+              "value": 2.3494504801872025e-05
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9995733811080978,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 1.5286078646176325e-05
+              },
+              {
+                "fidelity": 0.0108,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.0278,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9897545141002232,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.0010104440096776574
+              }
+            ]
+          },
+          "3": {
+            "T1": {
+              "standardError": 1.6827901388528794e-06,
+              "unit": "S",
+              "value": 3.434932113223115e-05
+            },
+            "T2": {
+              "standardError": 7.025138649285504e-07,
+              "unit": "S",
+              "value": 1.4231997791570277e-05
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9995712230783604,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 1.6545172390565037e-05
+              },
+              {
+                "fidelity": 0.0068,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.026,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9866571603177836,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.0011546457982960906
+              }
+            ]
+          },
+          "4": {
+            "T1": {
+              "standardError": 1.1598560224954425e-06,
+              "unit": "S",
+              "value": 2.6973968742892586e-05
+            },
+            "T2": {
+              "standardError": 5.814268228347653e-07,
+              "unit": "S",
+              "value": 8.344481237539398e-06
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.999504044659509,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 1.4194520021429372e-05
+              },
+              {
+                "fidelity": 0.0046,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.0106,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9926948051948052,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.0008602946398940263
+              }
+            ]
+          },
+          "5": {
+            "T1": {
+              "standardError": 3.165271858861449e-06,
+              "unit": "S",
+              "value": 3.164182850588906e-05
+            },
+            "T2": {
+              "standardError": 4.135148398687033e-07,
+              "unit": "S",
+              "value": 6.348804790524527e-06
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.999341647972474,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 3.317568471895358e-05
+              },
+              {
+                "fidelity": 0.0226,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.0674,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9602962353425221,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.0019498482196424905
+              }
+            ]
+          },
+          "6": {
+            "T1": {
+              "standardError": 7.829525322784266e-06,
+              "unit": "S",
+              "value": 6.805857388844336e-05
+            },
+            "T2": {
+              "standardError": 6.593407086969896e-07,
+              "unit": "S",
+              "value": 9.839200252149175e-06
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9996366162601462,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 1.1036425797623865e-05
+              },
+              {
+                "fidelity": 0.0298,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.035,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9794909549852756,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.0014457635920530616
+              }
+            ]
+          },
+          "7": {
+            "T1": {
+              "standardError": 3.2693640657604628e-06,
+              "unit": "S",
+              "value": 3.339110566245954e-05
+            },
+            "T2": {
+              "standardError": 6.482130290777314e-07,
+              "unit": "S",
+              "value": 1.1036709922356955e-05
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9976831459900216,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 0.0002940698918567292
+              },
+              {
+                "fidelity": 0.0154,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.0354,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9822702262074587,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.001320153265520247
+              }
+            ]
+          },
+          "8": {
+            "T1": {
+              "standardError": 1.46993732684481e-06,
+              "unit": "S",
+              "value": 2.527391453268188e-05
+            },
+            "T2": {
+              "standardError": 5.203038453652203e-07,
+              "unit": "S",
+              "value": 8.374494932207293e-06
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9995936003468266,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 1.097010986767394e-05
+              },
+              {
+                "fidelity": 0.0042,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.0178,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9922363379713652,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.0008810641420869229
+              }
+            ]
+          },
+          "9": {
+            "T1": {
+              "standardError": 1.407226904027813e-06,
+              "unit": "S",
+              "value": 1.616825088566912e-05
+            },
+            "T2": {
+              "standardError": 6.93153035898799e-07,
+              "unit": "S",
+              "value": 1.0299260851260794e-05
+            },
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9991841822944674,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 2.2755019924083757e-05
+              },
+              {
+                "fidelity": 0.0102,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_0_TO_1"
+                }
+              },
+              {
+                "fidelity": 0.0324,
+                "fidelityType": {
+                  "name": "READOUT_ERROR_1_TO_0"
+                }
+              },
+              {
+                "fidelity": 0.9772167487684729,
+                "fidelityType": {
+                  "name": "READOUT"
+                },
+                "standardError": 0.0015028113008182394
+              }
+            ]
+          }
+        },
+        "twoQubitProperties": {
+          "1-2": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9972664503054304,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.00023867980887537024
+              },
+              {
+                "fidelity": 0.992713628703263,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.00013767192849356262
+              }
+            ]
+          },
+          "1-4": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9965762521368828,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.00022356228436720474
+              },
+              {
+                "fidelity": 0.9917635342323827,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.00012702816315913258
+              }
+            ]
+          },
+          "10-11": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9877897484136405,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.0007619775685119217
+              },
+              {
+                "fidelity": 0.9804803733260146,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.00039825121717988423
+              }
+            ]
+          },
+          "10-15": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9895643175283939,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.0006169896019295289
+              },
+              {
+                "fidelity": 0.9788596797132101,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.0003405649495554138
+              }
+            ]
+          },
+          "11-12": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9987128588523639,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.00037434493936035104
+              },
+              {
+                "fidelity": 0.989421073186243,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.0002457818323761795
+              }
+            ]
+          },
+          "11-16": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9947131534031323,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.0002732946673117068
+              },
+              {
+                "fidelity": 0.9922038169911679,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.00013761240453082294
+              }
+            ]
+          },
+          "12-17": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9929510556362121,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.00016488443678660107
+              },
+              {
+                "fidelity": 0.9894265834543182,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.0002473266551799016
+              }
+            ]
+          },
+          "13-14": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9960348915617714,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.0002306271482572652
+              },
+              {
+                "fidelity": 0.9918719638325711,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.0001266626464769213
+              }
+            ]
+          },
+          "14-15": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9919572764599252,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.00042937290422513197
+              },
+              {
+                "fidelity": 0.9862859958168403,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.0002279627248593356
+              }
+            ]
+          },
+          "14-18": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9948894796448869,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.00019560080958025595
+              },
+              {
+                "fidelity": 0.9917944196122987,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.00010114547837445305
+              }
+            ]
+          },
+          "15-16": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9966532485477966,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.00018760101616804655
+              },
+              {
+                "fidelity": 0.9931034291770033,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.00010239125410359274
+              }
+            ]
+          },
+          "15-19": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9957823343764022,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.0002750994459560459
+              },
+              {
+                "fidelity": 0.9913265746879186,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.0001515403953632914
+              }
+            ]
+          },
+          "16-17": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9957917297345477,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.00025211802956991516
+              },
+              {
+                "fidelity": 0.9927380849090257,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.00013210647860394104
+              }
+            ]
+          },
+          "16-20": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9961086057247367,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.0002202421383462439
+              },
+              {
+                "fidelity": 0.9922433929276269,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.00011996141534150622
+              }
+            ]
+          },
+          "18-19": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9984600271189635,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.00017831250201820202
+              },
+              {
+                "fidelity": 0.9937459302455409,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.00010924394985668004
+              }
+            ]
+          },
+          "19-20": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9935391059630141,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.0002558609274422184
+              },
+              {
+                "fidelity": 0.9908162556525915,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.00012835350550030914
+              }
+            ]
+          },
+          "2-5": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9960831612402161,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.00033736744462077275
+              },
+              {
+                "fidelity": 0.9912349859731793,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.0001892905808553683
+              }
+            ]
+          },
+          "3-4": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9965882760667454,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.00017264642803292926
+              },
+              {
+                "fidelity": 0.9917670728193964,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 9.815556199141827e-05
+              }
+            ]
+          },
+          "3-8": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9965187892321742,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.00014858383942014763
+              },
+              {
+                "fidelity": 0.9916499745021183,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 8.441344388285881e-05
+              }
+            ]
+          },
+          "4-5": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9967459025372972,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.00030540172278075594
+              },
+              {
+                "fidelity": 0.9909670511446662,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.00017855428696145382
+              }
+            ]
+          },
+          "4-9": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9971999186026352,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.0001560061926103526
+              },
+              {
+                "fidelity": 0.9913528036508961,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 9.271646319585779e-05
+              }
+            ]
+          },
+          "5-10": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9909974953434311,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.0005794970162850841
+              },
+              {
+                "fidelity": 0.9796347617656583,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.00032703765695280413
+              }
+            ]
+          },
+          "5-6": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9916985616170035,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.0005216214312012348
+              },
+              {
+                "fidelity": 0.9829560004043041,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.00028902048809948674
+              }
+            ]
+          },
+          "6-11": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9935667384685938,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.0002775657018496617
+              },
+              {
+                "fidelity": 0.9880056044279522,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.00015045988310694025
+              }
+            ]
+          },
+          "6-7": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9958797401625609,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.0001790486476266644
+              },
+              {
+                "fidelity": 0.9912107141872593,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 9.946254229276991e-05
+              }
+            ]
+          },
+          "7-12": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9922526795256933,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.00019037327566394783
+              },
+              {
+                "fidelity": 0.98837901928854,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.00028555991349592176
+              }
+            ]
+          },
+          "8-13": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9965118488485005,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.0001762042608757922
+              },
+              {
+                "fidelity": 0.993029669713576,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 9.554074889457377e-05
+              }
+            ]
+          },
+          "8-9": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.996616992840792,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.00019573360401686524
+              },
+              {
+                "fidelity": 0.9908862558378169,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.00011386969337876566
+              }
+            ]
+          },
+          "9-10": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9853704724681472,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.0007706932852330863
+              },
+              {
+                "fidelity": 0.9779938374514705,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.00039651830533218066
+              }
+            ]
+          },
+          "9-14": {
+            "twoQubitGateFidelity": [
+              {
+                "fidelity": 0.9973015277501076,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "CZ",
+                "standardError": 0.00017467825232539945
+              },
+              {
+                "fidelity": 0.9924648893601409,
+                "fidelityType": {
+                  "name": "SIMULTANEOUS_INTERLEAVED_RANDOMIZED_BENCHMARKING"
+                },
+                "gateName": "Two_Qubit_Clifford",
+                "standardError": 0.00010171662145692852
+              }
+            ]
+          }
+        }
+      }
+    },
+    "deviceName": "Garnet",
+    "deviceQueueInfo": [
+      {
+        "queue": "QUANTUM_TASKS_QUEUE",
+        "queuePriority": "Normal",
+        "queueSize": "0"
+      },
+      {
+        "queue": "QUANTUM_TASKS_QUEUE",
+        "queuePriority": "Priority",
+        "queueSize": "0"
+      },
+      {
+        "queue": "JOBS_QUEUE",
+        "queueSize": "0"
+      }
+    ],
+    "deviceStatus": "ONLINE",
+    "deviceType": "QPU",
+    "providerName": "IQM"
+  },
+  "get_quantum_task": {
+    "actionMetadata": {
+      "actionType": "braket.ir.openqasm.program"
+    },
+    "createdAt": "2026-11-20T05:45:34.934000+00:00",
+    "deviceArn": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet",
+    "deviceParameters": "{\"braketSchemaHeader\": {\"name\": \"braket.device_schema.iqm.iqm_device_parameters\", \"version\": \"1\"}, \"paradigmParameters\": {\"braketSchemaHeader\": {\"name\": \"braket.device_schema.gate_model_parameters\", \"version\": \"1\"}, \"qubitCount\": 2, \"disableQubitRewiring\": false}}",
+    "endedAt": "2026-11-20T05:45:36.486000+00:00",
+    "outputS3Bucket": "amazon-braket-eu-north-1-000000000000",
+    "outputS3Directory": "quantum-provenance/e2/309e744e-f2ad-4152-8977-6c8dec2c9829",
+    "quantumTaskArn": "arn:aws:braket:eu-north-1:000000000000:quantum-task/309e744e-f2ad-4152-8977-6c8dec2c9829",
+    "queueInfo": {
+      "message": "Task is in COMPLETED status. AmazonBraket does not show queue position for this status.",
+      "position": "None",
+      "queue": "QUANTUM_TASKS_QUEUE",
+      "queuePriority": "Normal"
+    },
+    "shots": 1000,
+    "status": "COMPLETED",
+    "tags": {
+      "plan-key": "e2-iqm-garnet-bell2",
+      "project": "quantum-provenance"
+    }
+  },
+  "results_json": {
+    "additionalMetadata": {
+      "action": {
+        "braketSchemaHeader": {
+          "name": "braket.ir.openqasm.program",
+          "version": "1"
+        },
+        "source": "<program redacted sha256=fc354b10607b27536ea4c85a2bb8c1627a92fbc09ab36d02144053ce6b1cb046 bytes=76>"
+      },
+      "iqmMetadata": {
+        "braketSchemaHeader": {
+          "name": "braket.task_result.iqm_metadata",
+          "version": "1"
+        },
+        "compiledProgram": "<program redacted sha256=519dd738ffab5d0b9cd42ee098e39a9080462a7d77d2c8d027a05755c7f8ab1a bytes=250>"
+      }
+    },
+    "braketSchemaHeader": {
+      "name": "braket.task_result.gate_model_task_result",
+      "version": "1"
+    },
+    "measuredQubits": [
+      0,
+      1
+    ],
+    "measurements": [
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "resultTypes": [],
+    "taskMetadata": {
+      "braketSchemaHeader": {
+        "name": "braket.task_result.task_metadata",
+        "version": "1"
+      },
+      "createdAt": "2026-11-20T05:45:34.934Z",
+      "deviceId": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet",
+      "deviceParameters": {
+        "braketSchemaHeader": {
+          "name": "braket.device_schema.iqm.iqm_device_parameters",
+          "version": "1"
+        },
+        "paradigmParameters": {
+          "braketSchemaHeader": {
+            "name": "braket.device_schema.gate_model_parameters",
+            "version": "1"
+          },
+          "disableQubitRewiring": false,
+          "qubitCount": 2
+        }
+      },
+      "endedAt": "2026-11-20T05:45:36.486Z",
+      "id": "arn:aws:braket:eu-north-1:000000000000:quantum-task/309e744e-f2ad-4152-8977-6c8dec2c9829",
+      "shots": 1000,
+      "status": "COMPLETED"
+    }
+  }
+}
