@@ -16,6 +16,7 @@ dependencies = [
 dev = [
     "pytest>=7.4",
     "ruff>=0.1",
+    "schemathesis>=3.39",
 ]
 live = [
     "boto3>=1.44.5",
@@ -23,6 +24,10 @@ live = [
     "perceval-quandela>=1.3.1",
     "qiskit-ibm-runtime>=0.52.1",
     "qiskit-qasm3-import>=0.6.0",
+]
+http = [
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
 ]
 
 [build-system]
