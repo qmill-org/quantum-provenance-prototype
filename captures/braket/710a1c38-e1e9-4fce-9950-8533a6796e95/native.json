@@ -1,0 +1,1031 @@
+{
+  "get_device": {
+    "deviceArn": "arn:aws:braket:eu-north-1::device/qpu/aqt/Ibex-Q1",
+    "deviceCapabilities": {
+      "action": {
+        "braket.ir.openqasm.program": {
+          "actionType": "braket.ir.openqasm.program",
+          "disabledQubitRewiringSupported": false,
+          "forbiddenArrayOperations": [
+            "concatenation",
+            "negativeIndex",
+            "range",
+            "rangeWithStep",
+            "slicing",
+            "selection"
+          ],
+          "forbiddenPragmas": [
+            "braket_unitary_matrix",
+            "braket_result_type_state_vector",
+            "braket_result_type_density_matrix",
+            "braket_result_type_amplitude"
+          ],
+          "maximumClassicalArrays": 1,
+          "maximumQubitArrays": 1,
+          "requiresAllQubitsMeasurement": false,
+          "requiresContiguousQubitIndices": false,
+          "supportPhysicalQubits": true,
+          "supportedModifiers": [],
+          "supportedOperations": [
+            "ccnot",
+            "cnot",
+            "cphaseshift",
+            "cphaseshift00",
+            "cphaseshift01",
+            "cphaseshift10",
+            "cswap",
+            "swap",
+            "iswap",
+            "pswap",
+            "ecr",
+            "cy",
+            "cz",
+            "xy",
+            "xx",
+            "yy",
+            "zz",
+            "h",
+            "i",
+            "phaseshift",
+            "rx",
+            "ry",
+            "rz",
+            "s",
+            "si",
+            "t",
+            "ti",
+            "v",
+            "vi",
+            "x",
+            "y",
+            "z",
+            "prx"
+          ],
+          "supportedPragmas": [
+            "verbatim",
+            "braket_result_type_sample",
+            "braket_result_type_expectation",
+            "braket_result_type_variance",
+            "braket_result_type_probability"
+          ],
+          "supportedResultTypes": [
+            {
+              "maxShots": 2000,
+              "minShots": 1,
+              "name": "Sample",
+              "observables": [
+                "x",
+                "y",
+                "z",
+                "h",
+                "i"
+              ]
+            },
+            {
+              "maxShots": 2000,
+              "minShots": 1,
+              "name": "Expectation",
+              "observables": [
+                "x",
+                "y",
+                "z",
+                "h",
+                "i"
+              ]
+            },
+            {
+              "maxShots": 2000,
+              "minShots": 1,
+              "name": "Variance",
+              "observables": [
+                "x",
+                "y",
+                "z",
+                "h",
+                "i"
+              ]
+            },
+            {
+              "maxShots": 2000,
+              "minShots": 1,
+              "name": "Probability"
+            }
+          ],
+          "supportsPartialVerbatimBox": true,
+          "supportsUnassignedMeasurements": false,
+          "version": [
+            "1.0"
+          ]
+        },
+        "braket.ir.openqasm.program_set": {
+          "actionType": "braket.ir.openqasm.program_set",
+          "maximumExecutables": 100,
+          "maximumTotalShots": 10000,
+          "version": [
+            "1.0"
+          ]
+        }
+      },
+      "braketSchemaHeader": {
+        "name": "braket.device_schema.aqt.aqt_device_capabilities",
+        "version": "1"
+      },
+      "deviceParameters": {
+        "definitions": {
+          "GateModelParameters": {
+            "description": "Defines parameters common to all gate model devices.\\n\\nAttributes:\\n    qubitCount: Number of qubits used by the circuit.\\n    disableQubitRewiring: Whether to run the circuit with the exact qubits chosen,\\n        without any rewiring downstream.\\n        If ``True``, no qubit rewiring is allowed; if ``False``, qubit rewiring is allowed.\\n\\nExamples:\\n    >>> import json\\n    >>> input_json = {\\n    ...    \\\"braketSchemaHeader\\\": {\\n    ...        \\\"name\\\": \\\"braket.device_schema.gate_model_parameters\\\",\\n    ...        \\\"version\\\": \\\"1\\\"\\n    ...    },\\n    ...    \\\"qubitCount\\\": 1,\\n    ...    \\\"disableQubitRewiring\\\": true\\n    ... }\\n    >>> GateModelParameters.parse_raw_schema(json.dumps(input_json))",
+            "properties": {
+              "braketSchemaHeader": {
+                "const": {
+                  "name": "braket.device_schema.gate_model_parameters",
+                  "version": "1"
+                },
+                "default": {
+                  "name": "braket.device_schema.gate_model_parameters",
+                  "version": "1"
+                },
+                "title": "Braketschemaheader"
+              },
+              "disableQubitRewiring": {
+                "default": false,
+                "title": "Disablequbitrewiring",
+                "type": "boolean"
+              },
+              "qubitCount": {
+                "minimum": 0,
+                "title": "Qubitcount",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "qubitCount"
+            ],
+            "title": "GateModelParameters",
+            "type": "object"
+          }
+        },
+        "description": "Schema for parameters shared across all gate model devices.\\n\\nArgs:\\n    braketSchemaHeader (BraketSchemaHeader): Schema header containing name and version.\\n    paradigmParameters (GateModelParameters): Parameters specific to gate model devices.",
+        "properties": {
+          "braketSchemaHeader": {
+            "const": {
+              "name": "braket.device_schema.common.gate_model_device_parameters",
+              "version": "1"
+            },
+            "default": {
+              "name": "braket.device_schema.common.gate_model_device_parameters",
+              "version": "1"
+            },
+            "title": "Braketschemaheader"
+          },
+          "paradigmParameters": {
+            "$ref": "#/definitions/GateModelParameters"
+          }
+        },
+        "required": [
+          "paradigmParameters"
+        ],
+        "title": "GateModelDeviceParameters",
+        "type": "object"
+      },
+      "paradigm": {
+        "braketSchemaHeader": {
+          "name": "braket.device_schema.gate_model_qpu_paradigm_properties",
+          "version": "1"
+        },
+        "connectivity": {
+          "connectivityGraph": {},
+          "fullyConnected": true
+        },
+        "nativeGateSet": [
+          "prx",
+          "xx",
+          "rz"
+        ],
+        "qubitCount": 12
+      },
+      "provider": {
+        "braketSchemaHeader": {
+          "name": "braket.device_schema.aqt.aqt_provider_properties",
+          "version": "1"
+        },
+        "properties": {
+          "mean_two_qubit_gate_fidelity": {
+            "uncertainty": 0.5,
+            "value": 98.0
+          },
+          "model_config": {
+            "json_schema_extra": {
+              "description": "Characterisation data describing a resources properties."
+            }
+          },
+          "readout_time_micros": 1000.0,
+          "single_qubit_gate_duration_micros": 45.0,
+          "single_qubit_gate_fidelity": {
+            "0": {
+              "uncertainty": 0.004,
+              "value": 99.981
+            },
+            "1": {
+              "uncertainty": 0.004,
+              "value": 99.977
+            },
+            "10": {
+              "uncertainty": 0.003,
+              "value": 99.976
+            },
+            "11": {
+              "uncertainty": 0.003,
+              "value": 99.976
+            },
+            "2": {
+              "uncertainty": 0.002,
+              "value": 99.982
+            },
+            "3": {
+              "uncertainty": 0.0018,
+              "value": 99.9822
+            },
+            "4": {
+              "uncertainty": 0.007,
+              "value": 99.971
+            },
+            "5": {
+              "uncertainty": 0.004,
+              "value": 99.977
+            },
+            "6": {
+              "uncertainty": 0.002,
+              "value": 99.983
+            },
+            "7": {
+              "uncertainty": 0.002,
+              "value": 99.983
+            },
+            "8": {
+              "uncertainty": 0.005,
+              "value": 99.965
+            },
+            "9": {
+              "uncertainty": 0.002,
+              "value": 99.981
+            }
+          },
+          "spam_fidelity_lower_bound": 99.78,
+          "t1_s": {
+            "uncertainty": 0.07,
+            "value": 1.12
+          },
+          "t2_coherence_time_s": {
+            "uncertainty": 0.04,
+            "value": 0.16
+          },
+          "two_qubit_gate_duration_micros": 335.0,
+          "updated_at": "2026-11-17T07:59:48+00:00"
+        }
+      },
+      "service": {
+        "braketSchemaHeader": {
+          "name": "braket.device_schema.device_service_properties",
+          "version": "1"
+        },
+        "deviceCost": {
+          "price": 0.0235,
+          "unit": "shot"
+        },
+        "deviceDocumentation": {
+          "externalDocumentationUrl": "https://www.aqt.eu/products/ibex-q1/",
+          "imageUrl": "",
+          "summary": "universal gate-model ion-trap QPU"
+        },
+        "deviceLocation": "Innsbruck, Austria",
+        "executionWindows": [
+          {
+            "executionDay": "Monday",
+            "windowEndHour": "15:00:00",
+            "windowStartHour": "11:00:00"
+          },
+          {
+            "executionDay": "Tuesday",
+            "windowEndHour": "15:00:00",
+            "windowStartHour": "08:00:00"
+          },
+          {
+            "executionDay": "Wednesday",
+            "windowEndHour": "15:00:00",
+            "windowStartHour": "08:00:00"
+          },
+          {
+            "executionDay": "Friday",
+            "windowEndHour": "15:00:00",
+            "windowStartHour": "08:00:00"
+          }
+        ],
+        "shotsRange": [
+          1,
+          2000
+        ],
+        "updatedAt": "2026-11-17T07:59:48+00:00"
+      },
+      "standardized": {
+        "T1": {
+          "standardError": 0.07,
+          "unit": "s",
+          "value": 1.12
+        },
+        "T2": {
+          "standardError": 0.04,
+          "unit": "s",
+          "value": 0.16
+        },
+        "braketSchemaHeader": {
+          "name": "braket.device_schema.standardized_gate_model_qpu_device_properties",
+          "version": "3"
+        },
+        "oneQubitProperties": {
+          "0": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99981,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 4e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "1": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99977,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 4e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "10": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99976,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 3e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "11": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99976,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 3e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "2": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99982,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 2e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "3": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9998220000000001,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 1.8e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "4": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99971,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 7.000000000000001e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "5": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99977,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 4e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "6": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99983,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 2e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "7": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99983,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 2e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "8": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99965,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 5e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "9": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99981,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 2e-05,
+                "unit": "fraction"
+              }
+            ]
+          }
+        },
+        "readoutDuration": {
+          "unit": "us",
+          "value": 1000.0
+        },
+        "readoutFidelity": [
+          {
+            "fidelity": 0.9978,
+            "unit": "fraction"
+          }
+        ],
+        "singleQubitFidelity": [
+          {
+            "fidelity": 0.9997785,
+            "fidelityType": {
+              "name": "RANDOMIZED_BENCHMARKING"
+            },
+            "median": 0.99979,
+            "unit": "fraction"
+          }
+        ],
+        "singleQubitGateDuration": {
+          "unit": "us",
+          "value": 45.0
+        },
+        "twoQubitGateDuration": {
+          "unit": "us",
+          "value": 335.0
+        },
+        "twoQubitGateFidelity": [
+          {
+            "fidelity": 0.98,
+            "fidelityType": {
+              "name": "RANDOMIZED_BENCHMARKING"
+            },
+            "standardError": 0.005,
+            "unit": "fraction"
+          }
+        ],
+        "updatedAt": "2026-11-17T07:59:48+00:00"
+      }
+    },
+    "deviceName": "IBEX Q1",
+    "deviceQueueInfo": [
+      {
+        "queue": "QUANTUM_TASKS_QUEUE",
+        "queuePriority": "Normal",
+        "queueSize": "0"
+      },
+      {
+        "queue": "QUANTUM_TASKS_QUEUE",
+        "queuePriority": "Priority",
+        "queueSize": "0"
+      },
+      {
+        "queue": "JOBS_QUEUE",
+        "queueSize": "0"
+      }
+    ],
+    "deviceStatus": "ONLINE",
+    "deviceType": "QPU",
+    "providerName": "AQT"
+  },
+  "get_quantum_task": {
+    "actionMetadata": {
+      "actionType": "braket.ir.openqasm.program"
+    },
+    "createdAt": "2026-11-18T15:29:20.922000+00:00",
+    "deviceArn": "arn:aws:braket:eu-north-1::device/qpu/aqt/Ibex-Q1",
+    "deviceParameters": "{\"braketSchemaHeader\": {\"name\": \"braket.device_schema.simulators.gate_model_simulator_device_parameters\", \"version\": \"1\"}, \"paradigmParameters\": {\"braketSchemaHeader\": {\"name\": \"braket.device_schema.gate_model_parameters\", \"version\": \"1\"}, \"qubitCount\": 2, \"disableQubitRewiring\": false}}",
+    "endedAt": "2026-11-20T08:00:08.236000+00:00",
+    "outputS3Bucket": "amazon-braket-eu-north-1-000000000000",
+    "outputS3Directory": "quantum-provenance/e2/710a1c38-e1e9-4fce-9950-8533a6796e95",
+    "quantumTaskArn": "arn:aws:braket:eu-north-1:000000000000:quantum-task/710a1c38-e1e9-4fce-9950-8533a6796e95",
+    "queueInfo": {
+      "message": "Task is in COMPLETED status. AmazonBraket does not show queue position for this status.",
+      "position": "None",
+      "queue": "QUANTUM_TASKS_QUEUE",
+      "queuePriority": "Normal"
+    },
+    "shots": 100,
+    "status": "COMPLETED",
+    "tags": {
+      "plan-key": "e3-aqt-ibexq1-bell2",
+      "project": "quantum-provenance"
+    }
+  },
+  "results_json": {
+    "additionalMetadata": {
+      "action": {
+        "braketSchemaHeader": {
+          "name": "braket.ir.openqasm.program",
+          "version": "1"
+        },
+        "source": "<program redacted sha256=fc354b10607b27536ea4c85a2bb8c1627a92fbc09ab36d02144053ce6b1cb046 bytes=76>"
+      },
+      "aqtMetadata": {
+        "braketSchemaHeader": {
+          "name": "braket.task_result.aqt_metadata",
+          "version": "1"
+        },
+        "compiledProgram": "<program redacted sha256=fa5653594528013c8ad961b3d900269875b5415178f5670b68abdb03e509fea6 bytes=175>"
+      }
+    },
+    "braketSchemaHeader": {
+      "name": "braket.task_result.gate_model_task_result",
+      "version": "1"
+    },
+    "measuredQubits": [
+      0,
+      1
+    ],
+    "measurements": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "resultTypes": [],
+    "taskMetadata": {
+      "braketSchemaHeader": {
+        "name": "braket.task_result.task_metadata",
+        "version": "1"
+      },
+      "createdAt": "2026-11-18T15:29:20.922Z",
+      "deviceId": "arn:aws:braket:eu-north-1::device/qpu/aqt/Ibex-Q1",
+      "deviceParameters": {
+        "braketSchemaHeader": {
+          "name": "braket.device_schema.simulators.gate_model_simulator_device_parameters",
+          "version": "1"
+        },
+        "paradigmParameters": {
+          "braketSchemaHeader": {
+            "name": "braket.device_schema.gate_model_parameters",
+            "version": "1"
+          },
+          "disableQubitRewiring": false,
+          "qubitCount": 2
+        }
+      },
+      "endedAt": "2026-11-20T08:00:08.236Z",
+      "id": "arn:aws:braket:eu-north-1:000000000000:quantum-task/710a1c38-e1e9-4fce-9950-8533a6796e95",
+      "shots": 100,
+      "status": "COMPLETED"
+    }
+  }
+}

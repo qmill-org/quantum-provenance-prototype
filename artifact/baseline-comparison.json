@@ -4,7 +4,7 @@
   "arms": {
     "B": "flat baseline (comparison/baseline.py)",
     "V1": "v0.1.0",
-    "V2": "075ad89",
+    "V2": "fcf8113",
     "V2f": "baseline-freeze (adapters as frozen for the hold-out set)"
   },
   "summary": {
@@ -413,52 +413,58 @@
     "holdout": {
       "B": {
         "total": {
-          "correct": 38,
-          "misleading": 2,
-          "undeterminable": 17,
+          "correct": 62,
+          "misleading": 7,
+          "undeterminable": 21,
           "no_record": 0
         },
         "per_question": {
           "Q0": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q1": {
-            "correct": 2,
+            "correct": 4,
             "misleading": 0,
-            "undeterminable": 3,
+            "undeterminable": 4,
             "no_record": 0
           },
           "Q2": {
+            "correct": 4,
+            "misleading": 2,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q3": {
             "correct": 3,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q4": {
-            "correct": 4,
-            "misleading": 2,
+            "correct": 6,
+            "misleading": 3,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q6": {
-            "correct": 3,
-            "misleading": 0,
+            "correct": 5,
+            "misleading": 1,
             "undeterminable": 1,
             "no_record": 0
           },
           "Q7": {
-            "correct": 2,
-            "misleading": 0,
+            "correct": 4,
+            "misleading": 1,
             "undeterminable": 3,
             "no_record": 0
           },
           "Q8": {
             "correct": 0,
             "misleading": 0,
-            "undeterminable": 6,
+            "undeterminable": 9,
             "no_record": 0
           },
           "Q10": {
@@ -468,25 +474,25 @@
             "no_record": 0
           },
           "Q11": {
-            "correct": 2,
+            "correct": 3,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "N1": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "N2": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "N3": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
@@ -495,52 +501,58 @@
       },
       "V1": {
         "total": {
-          "correct": 43,
-          "misleading": 0,
-          "undeterminable": 14,
+          "correct": 68,
+          "misleading": 5,
+          "undeterminable": 17,
           "no_record": 0
         },
         "per_question": {
           "Q0": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q1": {
-            "correct": 5,
-            "misleading": 0,
+            "correct": 7,
+            "misleading": 1,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q2": {
+            "correct": 4,
+            "misleading": 2,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q3": {
             "correct": 3,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q4": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q6": {
-            "correct": 3,
-            "misleading": 0,
+            "correct": 5,
+            "misleading": 1,
             "undeterminable": 1,
             "no_record": 0
           },
           "Q7": {
-            "correct": 2,
-            "misleading": 0,
+            "correct": 4,
+            "misleading": 1,
             "undeterminable": 3,
             "no_record": 0
           },
           "Q8": {
             "correct": 0,
             "misleading": 0,
-            "undeterminable": 6,
+            "undeterminable": 9,
             "no_record": 0
           },
           "Q10": {
@@ -550,25 +562,25 @@
             "no_record": 0
           },
           "Q11": {
-            "correct": 2,
+            "correct": 3,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "N1": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "N2": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "N3": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
@@ -577,50 +589,56 @@
       },
       "V2": {
         "total": {
-          "correct": 55,
-          "misleading": 0,
+          "correct": 87,
+          "misleading": 1,
           "undeterminable": 2,
           "no_record": 0
         },
         "per_question": {
           "Q0": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q1": {
-            "correct": 5,
+            "correct": 8,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q2": {
+            "correct": 6,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q3": {
             "correct": 3,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q4": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q6": {
-            "correct": 3,
-            "misleading": 0,
+            "correct": 5,
+            "misleading": 1,
             "undeterminable": 1,
             "no_record": 0
           },
           "Q7": {
-            "correct": 5,
+            "correct": 8,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q8": {
-            "correct": 5,
+            "correct": 8,
             "misleading": 0,
             "undeterminable": 1,
             "no_record": 0
@@ -632,25 +650,25 @@
             "no_record": 0
           },
           "Q11": {
-            "correct": 2,
+            "correct": 3,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "N1": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "N2": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "N3": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
@@ -659,50 +677,56 @@
       },
       "V2f": {
         "total": {
-          "correct": 55,
-          "misleading": 0,
+          "correct": 87,
+          "misleading": 1,
           "undeterminable": 2,
           "no_record": 0
         },
         "per_question": {
           "Q0": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q1": {
-            "correct": 5,
+            "correct": 8,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q2": {
+            "correct": 6,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q3": {
             "correct": 3,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q4": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q6": {
-            "correct": 3,
-            "misleading": 0,
+            "correct": 5,
+            "misleading": 1,
             "undeterminable": 1,
             "no_record": 0
           },
           "Q7": {
-            "correct": 5,
+            "correct": 8,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "Q8": {
-            "correct": 5,
+            "correct": 8,
             "misleading": 0,
             "undeterminable": 1,
             "no_record": 0
@@ -714,25 +738,25 @@
             "no_record": 0
           },
           "Q11": {
-            "correct": 2,
+            "correct": 3,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "N1": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "N2": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
           "N3": {
-            "correct": 6,
+            "correct": 9,
             "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
@@ -1419,6 +1443,179 @@
             "Q7": "correct",
             "Q11": "correct",
             "Q8": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "braket/710a1c38-e1e9-4fce-9950-8533a6796e95",
+      "set": "holdout",
+      "truth": {
+        "Q0": true,
+        "Q4": "aqt",
+        "Q1": "observed_counts",
+        "Q7": 100,
+        "Q11": {
+          "00": 40,
+          "11": 60
+        },
+        "Q2": "provider",
+        "Q8": "none",
+        "Q3": "matched",
+        "Q6": 100,
+        "N1": "arn:aws:braket:eu-north-1::device/qpu/aqt/Ibex-Q1",
+        "N2": [
+          "2026-11-18T15:29:20.922000+00:00",
+          "2026-11-20T08:00:08.236000+00:00"
+        ],
+        "N3": 12
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "braket",
+            "Q1": "observed_counts",
+            "Q7": 100,
+            "Q11": {
+              "00": 40,
+              "11": 60
+            },
+            "Q2": "provider",
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 100,
+            "N1": "arn:aws:braket:eu-north-1::device/qpu/aqt/Ibex-Q1",
+            "N2": [
+              "2026-11-18T15:29:20.922000+00:00",
+              "2026-11-20T08:00:08.236000+00:00"
+            ],
+            "N3": 12
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "misleading",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q11": "correct",
+            "Q2": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "aqt",
+            "Q1": "observed_counts",
+            "Q7": 100,
+            "Q11": {
+              "00": 40,
+              "11": 60
+            },
+            "Q2": "provider",
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 100,
+            "N1": "arn:aws:braket:eu-north-1::device/qpu/aqt/Ibex-Q1",
+            "N2": [
+              "2026-11-18T15:29:20.922000+00:00",
+              "2026-11-20T08:00:08.236000+00:00"
+            ],
+            "N3": 12
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q11": "correct",
+            "Q2": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "aqt",
+            "Q1": "observed_counts",
+            "Q7": 100,
+            "Q11": {
+              "00": 40,
+              "11": 60
+            },
+            "Q2": "provider",
+            "Q8": "none",
+            "Q3": "matched",
+            "Q6": 100,
+            "N1": "arn:aws:braket:eu-north-1::device/qpu/aqt/Ibex-Q1",
+            "N2": [
+              "2026-11-18T15:29:20.922000+00:00",
+              "2026-11-20T08:00:08.236000+00:00"
+            ],
+            "N3": 12
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q11": "correct",
+            "Q2": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q4": "aqt",
+            "Q1": "observed_counts",
+            "Q7": 100,
+            "Q11": {
+              "00": 40,
+              "11": 60
+            },
+            "Q2": "provider",
+            "Q8": "none",
+            "Q3": "matched",
+            "Q6": 100,
+            "N1": "arn:aws:braket:eu-north-1::device/qpu/aqt/Ibex-Q1",
+            "N2": [
+              "2026-11-18T15:29:20.922000+00:00",
+              "2026-11-20T08:00:08.236000+00:00"
+            ],
+            "N3": 12
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q11": "correct",
+            "Q2": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
             "Q6": "correct",
             "N1": "correct",
             "N2": "correct",
@@ -3840,6 +4037,304 @@
             "Q5": "correct",
             "Q3": "correct",
             "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "ibm/dc00tp4u0a8c7394gpr0",
+      "set": "holdout",
+      "truth": {
+        "Q0": true,
+        "Q4": "ibm",
+        "Q1": "client_derived",
+        "Q2": "application",
+        "Q7": 1000,
+        "Q8": "none",
+        "Q3": "matched",
+        "Q6": 1000,
+        "N1": "ibm_aachen",
+        "N2": [
+          "2026-11-20T09:12:04.977552+00:00",
+          "2026-11-20T09:15:03.565075+00:00"
+        ],
+        "N3": 156
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "undeterminable",
+            "Q2": "provider",
+            "Q7": 1000,
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-20T09:12:04.977552+00:00",
+              "2026-11-20T09:15:03.565075+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "undeterminable",
+            "Q2": "misleading",
+            "Q7": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "retrieval_failed",
+            "Q2": "provider",
+            "Q7": 1000,
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-20T09:12:04.977552+00:00",
+              "2026-11-20T09:15:03.565075+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "misleading",
+            "Q2": "misleading",
+            "Q7": "correct",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "client_derived",
+            "Q2": "application",
+            "Q7": 1000,
+            "Q8": "none",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-20T09:12:04.977552+00:00",
+              "2026-11-20T09:15:03.565075+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "client_derived",
+            "Q2": "application",
+            "Q7": 1000,
+            "Q8": "none",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-20T09:12:04.977552+00:00",
+              "2026-11-20T09:15:03.565075+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        }
+      },
+      "sensitivity": {
+        "B_Q4_cautious": "undeterminable"
+      }
+    },
+    {
+      "capture": "ibm/dc00tp56efjc7392492g",
+      "set": "holdout",
+      "truth": {
+        "Q0": true,
+        "Q4": "ibm",
+        "Q1": "observed_counts",
+        "Q2": "application",
+        "Q7": 1024,
+        "Q8": "none",
+        "Q3": "matched",
+        "Q6": 1000,
+        "N1": "ibm_aachen",
+        "N2": [
+          "2026-11-20T09:12:04.382734+00:00",
+          "2026-11-20T09:15:03.011033+00:00"
+        ],
+        "N3": 156
+      },
+      "arms": {
+        "B": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "provider",
+            "Q7": 64,
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 64,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-20T09:12:04.382734+00:00",
+              "2026-11-20T09:15:03.011033+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "misleading",
+            "Q7": "misleading",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "misleading",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V1": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "provider",
+            "Q7": 64,
+            "Q8": "undeterminable",
+            "Q3": "matched",
+            "Q6": 64,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-20T09:12:04.382734+00:00",
+              "2026-11-20T09:15:03.011033+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "misleading",
+            "Q7": "misleading",
+            "Q8": "undeterminable",
+            "Q3": "correct",
+            "Q6": "misleading",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "application",
+            "Q7": 1024,
+            "Q8": "none",
+            "Q3": "matched",
+            "Q6": 64,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-20T09:12:04.382734+00:00",
+              "2026-11-20T09:15:03.011033+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "misleading",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "application",
+            "Q7": 1024,
+            "Q8": "none",
+            "Q3": "matched",
+            "Q6": 64,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-20T09:12:04.382734+00:00",
+              "2026-11-20T09:15:03.011033+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "misleading",
             "N1": "correct",
             "N2": "correct",
             "N3": "correct"

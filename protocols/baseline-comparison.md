@@ -155,6 +155,18 @@ reports `upstream_request_failed` (false); V2f, frozen after AC-6, reports
 result); V2 states that the results belong to the child jobs, and each child
 record carries `parent_job_id` and its own distribution.
 
+### 2026-11-20: H1 IBM jobs (twirled Sampler, resilience-0 Estimator) and AQT Ibex-Q1
+
+Scored as pre-registered (cumulative hold-out, 9 captures), frozen questions:
+B 62/7/21/0, V1 68/5/17/0, V2 87/1/2/0, V2f 87/1/2/0. V2's misleading answer:
+
+**F17 (scored).** With twirling, the Sampler turns the 1000 requested shots
+into 16 randomizations × 64; IBM records 64 as both the executor shots and the
+post-processor `shots`, and the request itself nowhere. V2 reports
+`job.shots = 64` as provider-supplied requested shots (executed shots, 1024,
+are correct). Reported before any fix. The first AQT job and the Estimator
+with resilience level 0 raised no failure.
+
 ## Threats stated in advance
 
 - The baseline, the readers and the questions are designed by the authors of
@@ -275,3 +287,4 @@ whether derived values are relabelled observations or computed estimates
 | 2026-11-20 | Hold-out job set H1 registered (above) before submission. | Hold-out set otherwise only Aquila, AQT and Belenos. |
 | 2026-11-20 | H1 IonQ results recorded as scored; F16 recorded as unscored, with the oracle limitation. | Results reported before any fix. |
 | 2026-11-20 | F16 fixed: the IonQ retrieval layer follows `results.probabilities.url`; a multi-circuit parent records results as not applicable, pointing to its child jobs (shared rule: an adapter's own not-applicable explanation is not overwritten or warned about). Parent re-captured; child jobs `06b000ed-feec…`, `06b000ed-feed…` captured. | Post-freeze fix of a hold-out failure; before (`b91d015`) and after reported. |
+| 2026-11-20 | H1 IBM and AQT hold-out results recorded; F17 recorded (scored, V2 misleading on Q6). | Results reported before any fix. |

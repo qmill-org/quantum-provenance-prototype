@@ -1,0 +1,735 @@
+{
+  "device": {
+    "calibration": {
+      "captured_at": "2026-11-17T07:59:48+00:00",
+      "metrics": {
+        "standardized.T1": 1.12,
+        "standardized.T2": 0.16,
+        "standardized.oneQubitFidelity.RANDOMIZED_BENCHMARKING.median_over_qubits": 0.99979,
+        "standardized.readoutDuration": 1000.0,
+        "standardized.singleQubitGateDuration": 45.0,
+        "standardized.twoQubitGateDuration": 335.0
+      },
+      "service_updated_at": "2026-11-17T07:59:48+00:00",
+      "standardized": {
+        "T1": {
+          "standardError": 0.07,
+          "unit": "s",
+          "value": 1.12
+        },
+        "T2": {
+          "standardError": 0.04,
+          "unit": "s",
+          "value": 0.16
+        },
+        "braketSchemaHeader": {
+          "name": "braket.device_schema.standardized_gate_model_qpu_device_properties",
+          "version": "3"
+        },
+        "oneQubitProperties": {
+          "0": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99981,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 4e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "1": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99977,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 4e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "10": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99976,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 3e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "11": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99976,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 3e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "2": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99982,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 2e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "3": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.9998220000000001,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 1.8e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "4": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99971,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 7.000000000000001e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "5": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99977,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 4e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "6": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99983,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 2e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "7": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99983,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 2e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "8": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99965,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 5e-05,
+                "unit": "fraction"
+              }
+            ]
+          },
+          "9": {
+            "oneQubitFidelity": [
+              {
+                "fidelity": 0.99981,
+                "fidelityType": {
+                  "name": "RANDOMIZED_BENCHMARKING"
+                },
+                "standardError": 2e-05,
+                "unit": "fraction"
+              }
+            ]
+          }
+        },
+        "readoutDuration": {
+          "unit": "us",
+          "value": 1000.0
+        },
+        "readoutFidelity": [
+          {
+            "fidelity": 0.9978,
+            "unit": "fraction"
+          }
+        ],
+        "singleQubitFidelity": [
+          {
+            "fidelity": 0.9997785,
+            "fidelityType": {
+              "name": "RANDOMIZED_BENCHMARKING"
+            },
+            "median": 0.99979,
+            "unit": "fraction"
+          }
+        ],
+        "singleQubitGateDuration": {
+          "unit": "us",
+          "value": 45.0
+        },
+        "twoQubitGateDuration": {
+          "unit": "us",
+          "value": 335.0
+        },
+        "twoQubitGateFidelity": [
+          {
+            "fidelity": 0.98,
+            "fidelityType": {
+              "name": "RANDOMIZED_BENCHMARKING"
+            },
+            "standardError": 0.005,
+            "unit": "fraction"
+          }
+        ],
+        "updatedAt": "2026-11-17T07:59:48+00:00"
+      }
+    },
+    "metadata": {
+      "provider": "AQT"
+    },
+    "name": "IBEX Q1",
+    "provider": "braket",
+    "provider_properties": {
+      "nativeGateSet": [
+        "prx",
+        "xx",
+        "rz"
+      ],
+      "qubitCount": 12
+    },
+    "provider_target_id": "arn:aws:braket:eu-north-1::device/qpu/aqt/Ibex-Q1",
+    "status": "ONLINE",
+    "target_id": "arn:aws:braket:eu-north-1::device/qpu/aqt/Ibex-Q1",
+    "type": "QPU"
+  },
+  "external_job_id": "arn:aws:braket:eu-north-1:000000000000:quantum-task/710a1c38-e1e9-4fce-9950-8533a6796e95",
+  "provider": "braket",
+  "region": "eu-north-1",
+  "result": {
+    "compiled_circuit": "<program redacted sha256=fa5653594528013c8ad961b3d900269875b5415178f5670b68abdb03e509fea6 bytes=175>",
+    "compiled_circuit_metrics": null,
+    "measurement_counts": {
+      "00": 40,
+      "11": 60
+    },
+    "raw_payload": {
+      "additionalMetadata": {
+        "action": {
+          "braketSchemaHeader": {
+            "name": "braket.ir.openqasm.program",
+            "version": "1"
+          },
+          "source": "<program redacted sha256=fc354b10607b27536ea4c85a2bb8c1627a92fbc09ab36d02144053ce6b1cb046 bytes=76>"
+        },
+        "aqtMetadata": {
+          "braketSchemaHeader": {
+            "name": "braket.task_result.aqt_metadata",
+            "version": "1"
+          },
+          "compiledProgram": "<program redacted sha256=fa5653594528013c8ad961b3d900269875b5415178f5670b68abdb03e509fea6 bytes=175>"
+        }
+      },
+      "braketSchemaHeader": {
+        "name": "braket.task_result.gate_model_task_result",
+        "version": "1"
+      },
+      "measuredQubits": [
+        0,
+        1
+      ],
+      "measurements": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "resultTypes": [],
+      "taskMetadata": {
+        "braketSchemaHeader": {
+          "name": "braket.task_result.task_metadata",
+          "version": "1"
+        },
+        "createdAt": "2026-11-18T15:29:20.922Z",
+        "deviceId": "arn:aws:braket:eu-north-1::device/qpu/aqt/Ibex-Q1",
+        "deviceParameters": {
+          "braketSchemaHeader": {
+            "name": "braket.device_schema.simulators.gate_model_simulator_device_parameters",
+            "version": "1"
+          },
+          "paradigmParameters": {
+            "braketSchemaHeader": {
+              "name": "braket.device_schema.gate_model_parameters",
+              "version": "1"
+            },
+            "disableQubitRewiring": false,
+            "qubitCount": 2
+          }
+        },
+        "endedAt": "2026-11-20T08:00:08.236Z",
+        "id": "arn:aws:braket:eu-north-1:000000000000:quantum-task/710a1c38-e1e9-4fce-9950-8533a6796e95",
+        "shots": 100,
+        "status": "COMPLETED"
+      }
+    },
+    "status": "COMPLETED"
+  },
+  "snapshot": {
+    "created_at": "2026-11-18T15:29:20.922000+00:00",
+    "ended_at": "2026-11-20T08:00:08.236000+00:00",
+    "metadata": {
+      "actionMetadata": {
+        "actionType": "braket.ir.openqasm.program"
+      },
+      "createdAt": "2026-11-18T15:29:20.922000+00:00",
+      "deviceArn": "arn:aws:braket:eu-north-1::device/qpu/aqt/Ibex-Q1",
+      "deviceParameters": "{\"braketSchemaHeader\": {\"name\": \"braket.device_schema.simulators.gate_model_simulator_device_parameters\", \"version\": \"1\"}, \"paradigmParameters\": {\"braketSchemaHeader\": {\"name\": \"braket.device_schema.gate_model_parameters\", \"version\": \"1\"}, \"qubitCount\": 2, \"disableQubitRewiring\": false}}",
+      "endedAt": "2026-11-20T08:00:08.236000+00:00",
+      "outputS3Bucket": "amazon-braket-eu-north-1-000000000000",
+      "outputS3Directory": "quantum-provenance/e2/710a1c38-e1e9-4fce-9950-8533a6796e95",
+      "quantumTaskArn": "arn:aws:braket:eu-north-1:000000000000:quantum-task/710a1c38-e1e9-4fce-9950-8533a6796e95",
+      "queueInfo": {
+        "message": "Task is in COMPLETED status. AmazonBraket does not show queue position for this status.",
+        "position": "None",
+        "queue": "QUANTUM_TASKS_QUEUE",
+        "queuePriority": "Normal"
+      },
+      "shots": 100,
+      "status": "COMPLETED",
+      "tags": {
+        "plan-key": "e3-aqt-ibexq1-bell2",
+        "project": "quantum-provenance"
+      }
+    },
+    "provider": "braket",
+    "provider_job_id": "arn:aws:braket:eu-north-1:000000000000:quantum-task/710a1c38-e1e9-4fce-9950-8533a6796e95",
+    "provider_target_id": "arn:aws:braket:eu-north-1::device/qpu/aqt/Ibex-Q1",
+    "shots": 100,
+    "status": "COMPLETED",
+    "target_id": "arn:aws:braket:eu-north-1::device/qpu/aqt/Ibex-Q1"
+  }
+}

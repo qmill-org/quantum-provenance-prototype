@@ -1,5 +1,5 @@
 {
-  "adapter_revision": "bf1be9b",
+  "adapter_revision": "fcf8113",
   "captures": [
     {
       "capture": "04470467-2658-4b06-8e5c-35b841c7b054",
@@ -218,6 +218,55 @@
         "not_applicable": 4,
         "provider_supplied": 8,
         "unavailable": 8
+      },
+      "provider": "braket",
+      "schema_valid": true,
+      "upstream": {
+        "get_device_details": "ok",
+        "get_result": "ok",
+        "get_status": "ok"
+      }
+    },
+    {
+      "capture": "710a1c38-e1e9-4fce-9950-8533a6796e95",
+      "device": {
+        "hardware_provider": "aqt",
+        "identifier": "arn:aws:braket:eu-north-1::device/qpu/aqt/Ibex-Q1",
+        "platform_provider": "amazon_braket"
+      },
+      "findings": [],
+      "inventory": {
+        "artifact.compiled": "provider_passthrough",
+        "characterization": "provider_supplied",
+        "compilation.compiler": "unavailable",
+        "compilation.logical_to_physical_mapping": "unavailable",
+        "device.hardware_provider": "derived",
+        "device.identifier": "provider_supplied",
+        "device.platform_provider": "provider_supplied",
+        "device.qubit_count": "provider_supplied",
+        "device.type": "provider_supplied",
+        "execution.executed_shots": "derived",
+        "execution.queue_duration_ms": "unavailable",
+        "execution.run_duration_ms": "unavailable",
+        "execution.total_duration_ms": "derived",
+        "job.created_at": "provider_supplied",
+        "job.ended_at": "provider_supplied",
+        "job.failure": "not_applicable",
+        "job.relations": "not_applicable",
+        "job.shots": "provider_supplied",
+        "job.status": "provider_supplied",
+        "results.estimated_measurement_counts": "not_applicable",
+        "results.measurement_counts": "provider_supplied",
+        "results.measurement_probabilities": "not_applicable",
+        "software.framework_versions": "unavailable",
+        "software.provider_client": "unavailable"
+      },
+      "inventory_counts": {
+        "derived": 3,
+        "not_applicable": 4,
+        "provider_passthrough": 1,
+        "provider_supplied": 10,
+        "unavailable": 6
       },
       "provider": "braket",
       "schema_valid": true,
@@ -852,6 +901,102 @@
       "upstream": {
         "get_device_details": "ok",
         "get_result": "ResultUnavailableError",
+        "get_status": "ok"
+      }
+    },
+    {
+      "capture": "dc00tp4u0a8c7394gpr0",
+      "device": {
+        "hardware_provider": "ibm",
+        "identifier": "ibm_aachen",
+        "platform_provider": "ibm_quantum"
+      },
+      "findings": [],
+      "inventory": {
+        "artifact.compiled": "unavailable",
+        "characterization": "provider_supplied",
+        "compilation.compiler": "unavailable",
+        "compilation.logical_to_physical_mapping": "unavailable",
+        "device.hardware_provider": "provider_supplied",
+        "device.identifier": "provider_supplied",
+        "device.platform_provider": "provider_supplied",
+        "device.qubit_count": "provider_supplied",
+        "device.type": "provider_supplied",
+        "execution.executed_shots": "derived",
+        "execution.queue_duration_ms": "derived",
+        "execution.run_duration_ms": "derived",
+        "execution.total_duration_ms": "derived",
+        "job.created_at": "provider_supplied",
+        "job.ended_at": "provider_supplied",
+        "job.failure": "not_applicable",
+        "job.relations": "not_applicable",
+        "job.shots": "provider_supplied",
+        "job.status": "provider_supplied",
+        "results.estimated_measurement_counts": "not_applicable",
+        "results.measurement_counts": "not_applicable",
+        "results.measurement_probabilities": "not_applicable",
+        "software.framework_versions": "unavailable",
+        "software.provider_client": "unavailable"
+      },
+      "inventory_counts": {
+        "derived": 4,
+        "not_applicable": 5,
+        "provider_supplied": 10,
+        "unavailable": 5
+      },
+      "provider": "ibm",
+      "schema_valid": true,
+      "upstream": {
+        "get_device_details": "ok",
+        "get_result": "ok",
+        "get_status": "ok"
+      }
+    },
+    {
+      "capture": "dc00tp56efjc7392492g",
+      "device": {
+        "hardware_provider": "ibm",
+        "identifier": "ibm_aachen",
+        "platform_provider": "ibm_quantum"
+      },
+      "findings": [],
+      "inventory": {
+        "artifact.compiled": "unavailable",
+        "characterization": "provider_supplied",
+        "compilation.compiler": "unavailable",
+        "compilation.logical_to_physical_mapping": "unavailable",
+        "device.hardware_provider": "provider_supplied",
+        "device.identifier": "provider_supplied",
+        "device.platform_provider": "provider_supplied",
+        "device.qubit_count": "provider_supplied",
+        "device.type": "provider_supplied",
+        "execution.executed_shots": "derived",
+        "execution.queue_duration_ms": "derived",
+        "execution.run_duration_ms": "derived",
+        "execution.total_duration_ms": "derived",
+        "job.created_at": "provider_supplied",
+        "job.ended_at": "provider_supplied",
+        "job.failure": "not_applicable",
+        "job.relations": "not_applicable",
+        "job.shots": "provider_supplied",
+        "job.status": "provider_supplied",
+        "results.estimated_measurement_counts": "not_applicable",
+        "results.measurement_counts": "provider_supplied",
+        "results.measurement_probabilities": "not_applicable",
+        "software.framework_versions": "unavailable",
+        "software.provider_client": "unavailable"
+      },
+      "inventory_counts": {
+        "derived": 4,
+        "not_applicable": 4,
+        "provider_supplied": 11,
+        "unavailable": 5
+      },
+      "provider": "ibm",
+      "schema_valid": true,
+      "upstream": {
+        "get_device_details": "ok",
+        "get_result": "ok",
         "get_status": "ok"
       }
     },

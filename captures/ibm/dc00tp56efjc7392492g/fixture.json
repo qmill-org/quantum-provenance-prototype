@@ -1,0 +1,122 @@
+{
+  "device": {
+    "calibration": {
+      "captured_at": "2026-11-20T08:52:07+00:00",
+      "metrics": {
+        "T1.median_over_qubits[us]": 218.80472397512773,
+        "T2.median_over_qubits[us]": 246.7910624652002,
+        "gate_error.cz.median": 0.0015670061326233248,
+        "gate_error.id.median": 0.00023919817977280004,
+        "gate_error.measure.median": 0.0054931640625,
+        "gate_error.measure_2.median": 0.0211181640625,
+        "gate_error.rx.median": 0.00023919817977280004,
+        "gate_error.rz.median": 0.0,
+        "gate_error.rzz.median": 0.0015193750254268307,
+        "gate_error.sx.median": 0.00023919817977280004,
+        "gate_error.x.median": 0.00023919817977280004,
+        "gate_error.xslow.median": 0.00023919817977280004,
+        "readout_error.median_over_qubits": 0.0054931640625
+      },
+      "query": "as_of_job_creation"
+    },
+    "metadata": {
+      "provider": "IBM Quantum"
+    },
+    "name": "ibm_aachen",
+    "provider": "ibm",
+    "provider_properties": {
+      "basis_gates": [
+        "cz",
+        "id",
+        "rz",
+        "sx",
+        "x",
+        "xslow"
+      ],
+      "num_qubits": 156,
+      "processor_type": {
+        "family": "Heron",
+        "revision": "3"
+      }
+    },
+    "provider_target_id": "ibm_aachen",
+    "status": "ONLINE",
+    "target_id": "ibm_aachen",
+    "type": "QPU"
+  },
+  "external_job_id": "dc00tp56efjc7392492g",
+  "provider": "ibm",
+  "region": null,
+  "result": {
+    "compiled_circuit": "<program redacted sha256=09f5886641ab0f5e4e4b2e6696fd4a7ce70c07085371313e317ae465b13f741c bytes=3305>",
+    "compiled_circuit_metrics": null,
+    "measurement_counts": {
+      "00000": 485,
+      "00001": 4,
+      "00010": 1,
+      "00011": 1,
+      "00100": 5,
+      "00111": 5,
+      "01000": 2,
+      "01100": 1,
+      "01101": 1,
+      "01111": 7,
+      "10000": 3,
+      "10011": 2,
+      "10100": 1,
+      "10111": 2,
+      "11000": 13,
+      "11011": 3,
+      "11100": 2,
+      "11101": 5,
+      "11110": 6,
+      "11111": 475
+    },
+    "raw_payload": null,
+    "status": "DONE"
+  },
+  "snapshot": {
+    "created_at": "2026-11-20T09:12:04.382734+00:00",
+    "ended_at": "2026-11-20T09:15:03.011033Z",
+    "metadata": {
+      "backend_name": "ibm_aachen",
+      "error_message": null,
+      "executed_shots": 1024,
+      "executor_shots": 64,
+      "input_schema": "v2.0",
+      "program_id": "executor",
+      "qiskit_version": "qiskit_ibm_runtime-0.52.1,qiskit-2.6.2*",
+      "resilience_level": null,
+      "session_id": null,
+      "session_mode": null,
+      "shots": 64,
+      "timestamps": {
+        "created": "2026-11-20T09:12:04.382734Z",
+        "finished": "2026-11-20T09:15:03.011033Z",
+        "running": "2026-11-20T09:14:58.243105Z"
+      },
+      "usage": {
+        "details": [
+          {
+            "metric": {
+              "id": "caffe3ca-729c-5750-8777-df63bbf8bfd9",
+              "value": 2
+            },
+            "unit": "resource_units",
+            "value": 0.033331
+          }
+        ],
+        "qpu_charge_time_seconds": 2,
+        "status": "complete",
+        "unit": "resource_units",
+        "value": 0.033331
+      }
+    },
+    "provider": "ibm",
+    "provider_job_id": "dc00tp56efjc7392492g",
+    "provider_target_id": "ibm_aachen",
+    "shots": 64,
+    "status": "DONE",
+    "target_id": "ibm_aachen"
+  }
+}

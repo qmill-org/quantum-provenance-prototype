@@ -217,3 +217,11 @@ captured after the `baseline-freeze` tag.
   location; the parent record states that its results belong to the child
   jobs listed in `job.relations.child_job_ids`, and the two child jobs are
   captured with their own records (`parent_job_id`, one distribution each).
+
+## IBM hold-out jobs H1 and AQT Ibex-Q1 (captured 2026-11-20)
+
+- **F17 Twirling hides the requested shots.** A Sampler run with gate and
+  measurement twirling (1000 shots requested) is executed as 16
+  randomizations × 64 shots; the job records 64 as the executor shots and as
+  the post-processor `shots`, and the request nowhere. The `v0.2.0-dev`
+  record reports 64 as the provider-recorded requested shots.
