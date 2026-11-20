@@ -113,6 +113,21 @@ undeterminable answers. Reported per question and per capture set, as counts
   the oracle are changed after the freeze without a log entry here; if they
   are, hold-out results are reported both before and after the change.
 
+### Hold-out job set H1 (registered 2026-11-20, before submission)
+
+Free tiers only. Chosen to differ from the development jobs and to reach code
+paths no development capture exercised:
+
+| Key | Platform | What is new |
+|---|---|---|
+| `h1-ibm-sampler-ghz5-twirled` | IBM `ibm_aachen`, SamplerV2 | gate and measurement twirling: executed shots differ from requested for a Sampler |
+| `h1-ibm-estimator-ghz5-r0` | IBM `ibm_aachen`, EstimatorV2 | resilience level 0, five-qubit observable `IIIZZ` |
+| `h1-ionq-noisy-aria1-bell2` | IonQ simulator | noise model `aria-1`, fixed seed 42 |
+| `h1-ionq-multicircuit` | IonQ simulator | `ionq.multi-circuit.v1` (Bell + GHZ-5): parent job with child jobs |
+| `h1-quandela-sim-belenos-interferometer6` | Quandela `sim:belenos` | three photons, six modes |
+
+Plus the jobs pending at the freeze (AQT Ibex-Q1, Quandela Belenos QPU).
+
 ## Threats stated in advance
 
 - The baseline, the readers and the questions are designed by the authors of
@@ -230,3 +245,4 @@ whether derived values are relabelled observations or computed estimates
 | 2026-11-20 | F15 fixed: the Braket retrieval layer tallies analog shots with the Braket SDK's documented site convention (successful shots only) and no longer tallies shot layouts it does not recognize (they now yield no counts and an `unrecognized_result_format` warning); the Braket adapter labels analog outcomes `site_occupation` with `derived` evidence. Aquila jobs re-captured. | Post-freeze fix of a hold-out failure; results reported before (above, `63ce25f`) and after. |
 | 2026-11-20 | Arm V2f added: V2 as frozen at `baseline-freeze`, run from a worktree, so every hold-out capture is scored with and without post-freeze changes. | Hold-out discipline after the first post-freeze change. |
 | 2026-11-20 | Q1 reader: `measurement_counts` always read as observed counts (the contract's definition); previously counts with `derived` evidence were read as client-computed. | The frozen rule contradicted the contract text the protocol requires readers to use; it first mattered for the analog counts. Development results unchanged. |
+| 2026-11-20 | Hold-out job set H1 registered (above) before submission. | Hold-out set otherwise only Aquila, AQT and Belenos. |
