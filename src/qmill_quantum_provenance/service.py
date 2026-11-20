@@ -142,6 +142,7 @@ class ProvenanceService:
         now = self._clock()
         artifacts = list(result.artifacts)
         evidence = list(result.evidence)
+        warnings = list(result.warnings)
 
         self._apply_source_program(request.source_program, artifacts, evidence)
         compilation = self._merge_compilation(
@@ -149,6 +150,7 @@ class ProvenanceService:
         )
         software = self._merge_software(result.software, request.software_context, evidence)
         job = self._apply_experiment_id(result.job, request.experiment_id, evidence)
+        job = self._apply_requested_shots(job, request.requested_shots, evidence, warnings)
 
         operations = list(result.operations)
         operations.append(OperationObservation(actor="qmill", operation="create_provenance_record"))
@@ -167,7 +169,7 @@ class ProvenanceService:
             results=result.results,
             artifacts=artifacts,
             evidence=evidence,
-            warnings=list(result.warnings),
+            warnings=warnings,
             operations=operations,
             compilation=compilation,
             execution=result.execution,
@@ -175,6 +177,36 @@ class ProvenanceService:
             software=software,
             extensions=dict(result.extensions) or None,
         )
+
+    def _apply_requested_shots(
+        self,
+        job: Job,
+        requested: int | None,
+        evidence: list[Evidence],
+        warnings: list[Warning],
+    ) -> Job:
+        if requested is None:
+            return job
+        if job.shots is not None:
+            if job.shots != requested:
+                warnings.append(
+                    Warning(
+                        "shots_mismatch",
+                        f"Application requested {requested} shots; the provider records "
+                        f"{job.shots}. job.shots keeps the provider value.",
+                    )
+                )
+            return job
+        evidence[:] = [item for item in evidence if item.path != "/job/shots"]
+        evidence.append(
+            Evidence(
+                path="/job/shots",
+                status=EvidenceStatus.APPLICATION_CAPTURED,
+                notes="Requested shots supplied by the submitting application; the provider "
+                "does not record the request.",
+            )
+        )
+        return dataclasses.replace(job, shots=requested)
 
     def _apply_experiment_id(
         self, job: Job, experiment_id: str | None, evidence: list[Evidence]

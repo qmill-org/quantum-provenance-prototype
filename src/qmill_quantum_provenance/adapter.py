@@ -10,7 +10,7 @@ provider branching lives inside the concrete adapter.
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import datetime
 from typing import Any
 
@@ -80,6 +80,7 @@ class CreateProvenanceRecordRequest:
     compilation_context: ApplicationCompilationContext | None = None
     software_context: ApplicationSoftwareContext | None = None
     experiment_id: str | None = None
+    requested_shots: int | None = None
 
 
 @dataclass(frozen=True)
@@ -332,6 +333,52 @@ def failure_with_evidence(
     return None
 
 
+def add_executed_shots(
+    execution: Execution | None,
+    evidence: list[Evidence],
+    job_status: str,
+    value: int | None,
+    *,
+    status: EvidenceStatus = EvidenceStatus.PROVIDER_SUPPLIED,
+    provider_field: str | None = None,
+    source_paths: list[str] | None = None,
+    derivation: str | None = None,
+    notes: str | None = None,
+    missing: EvidenceStatus = EvidenceStatus.UNAVAILABLE,
+) -> Execution | None:
+    """Record executed shots, kept apart from the requested ``job.shots``."""
+
+    path = "/execution/executed_shots"
+    if value is not None:
+        evidence.append(
+            Evidence(
+                path=path,
+                status=status,
+                provider_field=provider_field,
+                source_paths=source_paths,
+                derivation=derivation,
+                notes=notes,
+            )
+        )
+        return replace(execution or Execution(), executed_shots=int(value))
+    if job_status in _NOT_RUN or job_status in _PENDING:
+        evidence.append(
+            Evidence(path=path, status=EvidenceStatus.NOT_APPLICABLE, notes=f"Job {job_status}.")
+        )
+    elif missing is EvidenceStatus.NOT_APPLICABLE:
+        evidence.append(Evidence(path=path, status=missing, notes=notes))
+    else:
+        evidence.append(
+            Evidence(
+                path=path,
+                status=EvidenceStatus.UNAVAILABLE,
+                reason=AvailabilityReason.NOT_EXPOSED_BY_PROVIDER,
+                notes=notes or "Provider reports no executed-shot count separate from the request.",
+            )
+        )
+    return execution
+
+
 @dataclass(frozen=True)
 class ExpectedField:
     """A provider field an adapter maps, with its accepted names (newest first).
@@ -407,6 +454,7 @@ def check_result_recognized(
 
 
 __all__ = [
+    "add_executed_shots",
     "check_expected_fields",
     "check_result_recognized",
     "DRIFT_WARNING_CODES",

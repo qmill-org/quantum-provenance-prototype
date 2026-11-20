@@ -137,6 +137,16 @@ labels only `nearest_available`.
   says `results.available = false` with reason `upstream_request_failed`, and
   reports `shots = 64` (shots per twirling randomization recorded by the
   executor) instead of the 1000 the application requested.
+- **F14 Primitive results are computed by the client, not the provider.**
+  With `qiskit-ibm-runtime` 0.52 the server runs an executor program and
+  returns per-shot samples (`_meas`, `measurement_flips._meas`) together with
+  the caller's primitive options as pass-through data. The Estimator's
+  expectation values and standard errors are computed locally by the SDK's
+  `ClientSideEstimatorDecoder` (here with measurement-error mitigation,
+  resilience level 1). The job executed 2 items × 16 randomizations × 64 shots
+  = 2048 shots for a request of 1000. A record must therefore label the
+  expectation values as derived by named client software, and keep requested
+  and executed shots apart.
 
 ## IonQ direct API v0.4 (captured 2026-11-19)
 

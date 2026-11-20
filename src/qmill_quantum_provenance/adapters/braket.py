@@ -15,6 +15,7 @@ from typing import Any
 
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    add_executed_shots,
     check_result_recognized,
     failure_with_evidence,
     relations_with_evidence,
@@ -200,6 +201,20 @@ class BraketProvenanceAdapter(ProvenanceAdapter):
         self._build_submitted_artifact(result_data, artifacts, evidence)
         self._build_provider_native_artifact(snapshot, artifacts, evidence)
         execution = self._build_execution(snapshot, evidence)
+        payload = (getattr(result_data, "raw_payload", None) or {}) if result_data else {}
+        measurements = payload.get("measurements")
+        execution = add_executed_shots(
+            execution,
+            evidence,
+            job.status,
+            len(measurements) if isinstance(measurements, list) and measurements else None,
+            status=EvidenceStatus.DERIVED,
+            source_paths=["results.json measurements"],
+            derivation="number of per-shot measurement records",
+            notes=None
+            if isinstance(measurements, list) and measurements
+            else "No per-shot measurements in the result; executed shots not reported.",
+        )
         characterization = self._build_characterization(device_details, job, evidence)
 
         return AdapterResult(

@@ -349,6 +349,7 @@ class Execution:
     queue_duration_ms: int | None = None
     run_duration_ms: int | None = None
     total_duration_ms: int | None = None
+    executed_shots: int | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return _compact(
@@ -356,6 +357,7 @@ class Execution:
                 "queue_duration_ms": self.queue_duration_ms,
                 "run_duration_ms": self.run_duration_ms,
                 "total_duration_ms": self.total_duration_ms,
+                "executed_shots": self.executed_shots,
             }
         )
 

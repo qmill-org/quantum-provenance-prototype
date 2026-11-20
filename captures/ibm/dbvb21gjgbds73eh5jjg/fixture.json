@@ -76,9 +76,12 @@
     "metadata": {
       "backend_name": "ibm_aachen",
       "error_message": null,
+      "executed_shots": 1000,
+      "executor_shots": 1000,
       "input_schema": "v2.0",
       "program_id": "executor",
       "qiskit_version": "qiskit_ibm_runtime-0.52.1,qiskit-2.6.2*",
+      "resilience_level": null,
       "session_id": null,
       "session_mode": null,
       "shots": 1000,

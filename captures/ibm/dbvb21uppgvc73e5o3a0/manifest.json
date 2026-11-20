@@ -1,6 +1,6 @@
 {
-  "capture_tool_revision": "3d3e48569076b53f8b53b373bfff7d17697f5f12",
-  "captured_at": "2026-11-20T06:06:01.799944+00:00",
+  "capture_tool_revision": "2523fd6c2523281ce9e8693cb53a66170457eb69",
+  "captured_at": "2026-11-20T06:23:40.635437+00:00",
   "external_job_id": "dbvb21uppgvc73e5o3a0",
   "notes": {
     "input_items": [
@@ -12,17 +12,17 @@
   },
   "operations": [
     {
-      "at": "2026-11-20T06:05:59.836853+00:00",
+      "at": "2026-11-20T06:23:38.843030+00:00",
       "operation": "get_status",
       "outcome": "ok"
     },
     {
-      "at": "2026-11-20T06:06:00.885393+00:00",
+      "at": "2026-11-20T06:23:39.912728+00:00",
       "operation": "get_device_details",
       "outcome": "ok"
     },
     {
-      "at": "2026-11-20T06:06:01.799913+00:00",
+      "at": "2026-11-20T06:23:40.635413+00:00",
       "message": "Job is not complete: CANCELLED",
       "operation": "get_result",
       "outcome": "ResultUnavailableError"

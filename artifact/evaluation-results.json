@@ -15,21 +15,21 @@
           "characterization_status": "unavailable",
           "characterization_unavailable": true,
           "record_validates": true,
-          "unavailable_attributes": 4,
+          "unavailable_attributes": 5,
           "unclassified": 0
         },
         "ibm": {
           "characterization_status": "unavailable",
           "characterization_unavailable": true,
           "record_validates": true,
-          "unavailable_attributes": 5,
+          "unavailable_attributes": 6,
           "unclassified": 0
         },
         "ionq": {
           "characterization_status": "unavailable",
           "characterization_unavailable": true,
           "record_validates": true,
-          "unavailable_attributes": 8,
+          "unavailable_attributes": 9,
           "unclassified": 0
         }
       }
@@ -65,16 +65,16 @@
   },
   "providers": {
     "braket": {
-      "adapter_loc": 557,
+      "adapter_loc": 572,
       "attribute_evidence_counts": {
         "application_captured": 11,
         "derived": 2,
         "not_applicable": 3,
         "provider_passthrough": 2,
         "provider_supplied": 10,
-        "unavailable": 1
+        "unavailable": 2
       },
-      "evidence_total": 29,
+      "evidence_total": 30,
       "fixture_id": "arn:aws:braket:us-east-1:000000000000:quantum-task/11111111-2222-3333-4444-555555555555",
       "inventory_classification": {
         "by_attribute": {
@@ -87,6 +87,7 @@
           "device.platform_provider": "provider_supplied",
           "device.qubit_count": "provider_supplied",
           "device.type": "provider_supplied",
+          "execution.executed_shots": "unavailable",
           "execution.queue_duration_ms": "unavailable",
           "execution.run_duration_ms": "unavailable",
           "execution.total_duration_ms": "derived",
@@ -108,7 +109,7 @@
           "not_applicable": 3,
           "provider_passthrough": 1,
           "provider_supplied": 10,
-          "unavailable": 3
+          "unavailable": 4
         },
         "unclassified": 0
       },
@@ -121,16 +122,16 @@
       "results_available": true
     },
     "ibm": {
-      "adapter_loc": 561,
+      "adapter_loc": 615,
       "attribute_evidence_counts": {
         "application_captured": 11,
         "derived": 3,
         "not_applicable": 3,
         "provider_passthrough": 2,
         "provider_supplied": 11,
-        "unavailable": 2
+        "unavailable": 3
       },
-      "evidence_total": 32,
+      "evidence_total": 33,
       "fixture_id": "cx7z8k2m4n5p6q7r8s9t",
       "inventory_classification": {
         "by_attribute": {
@@ -143,6 +144,7 @@
           "device.platform_provider": "provider_supplied",
           "device.qubit_count": "provider_supplied",
           "device.type": "provider_supplied",
+          "execution.executed_shots": "unavailable",
           "execution.queue_duration_ms": "derived",
           "execution.run_duration_ms": "derived",
           "execution.total_duration_ms": "derived",
@@ -163,7 +165,7 @@
           "derived": 3,
           "not_applicable": 3,
           "provider_supplied": 11,
-          "unavailable": 2
+          "unavailable": 3
         },
         "unclassified": 0
       },
@@ -176,15 +178,15 @@
       "results_available": true
     },
     "ionq": {
-      "adapter_loc": 608,
+      "adapter_loc": 623,
       "attribute_evidence_counts": {
         "derived": 2,
         "not_applicable": 2,
         "provider_passthrough": 2,
         "provider_supplied": 12,
-        "unavailable": 1
+        "unavailable": 2
       },
-      "evidence_total": 19,
+      "evidence_total": 20,
       "fixture_id": "b7f3d2a1-9c84-4e15-8a76-0f2c1d5e6b3a",
       "inventory_classification": {
         "by_attribute": {
@@ -197,6 +199,7 @@
           "device.platform_provider": "provider_supplied",
           "device.qubit_count": "provider_supplied",
           "device.type": "provider_supplied",
+          "execution.executed_shots": "unavailable",
           "execution.queue_duration_ms": "unavailable",
           "execution.run_duration_ms": "provider_supplied",
           "execution.total_duration_ms": "derived",
@@ -217,7 +220,7 @@
           "not_applicable": 2,
           "provider_passthrough": 1,
           "provider_supplied": 12,
-          "unavailable": 6
+          "unavailable": 7
         },
         "unclassified": 0
       },
@@ -283,12 +286,12 @@
   },
   "schema_version": "0.1.0-prototype",
   "shared_provider_independent_implementation_loc": {
-    "adapter.py": 356,
+    "adapter.py": 401,
     "contract.py": 32,
-    "models.py": 445,
+    "models.py": 447,
     "redaction.py": 68,
     "registry.py": 54,
-    "service.py": 286
+    "service.py": 317
   },
-  "shared_provider_independent_implementation_loc_total": 1241
+  "shared_provider_independent_implementation_loc_total": 1319
 }

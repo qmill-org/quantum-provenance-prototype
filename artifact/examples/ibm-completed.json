@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0-prototype",
   "record_id": "qprov:ibm:049001a0c6830efb74a6fa0c8ae65e6d",
-  "generated_at": "2026-11-20T06:06:32.890489+00:00",
-  "retrieved_at": "2026-11-20T06:06:32.890475+00:00",
+  "generated_at": "2026-11-20T06:24:22.551976+00:00",
+  "retrieved_at": "2026-11-20T06:24:22.551966+00:00",
   "adapter": {
     "provider": "ibm",
     "name": "ibm-provenance-adapter",
@@ -78,7 +78,8 @@
     {
       "path": "/job/shots",
       "status": "provider_supplied",
-      "provider_field": "RuntimeJobV2.metrics().usage / metadata.shots"
+      "provider_field": "RuntimeJobV2.metrics().usage / metadata.shots",
+      "notes": "Shots requested by the primitive caller, as recorded with the job."
     },
     {
       "path": "/job/created_at",
@@ -189,6 +190,12 @@
         "/job/ended_at"
       ],
       "derivation": "finished - created"
+    },
+    {
+      "path": "/execution/executed_shots",
+      "status": "unavailable",
+      "reason": "not_exposed_by_provider",
+      "notes": "Provider reports no executed-shot count separate from the request."
     },
     {
       "path": "/characterization",

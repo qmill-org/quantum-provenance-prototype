@@ -1,5 +1,5 @@
 {
-  "adapter_revision": "965756a",
+  "adapter_revision": "2523fd6",
   "captures": [
     {
       "capture": "04470467-2658-4b06-8e5c-35b841c7b054",
@@ -19,6 +19,7 @@
         "device.platform_provider": "unavailable",
         "device.qubit_count": "unavailable",
         "device.type": "unavailable",
+        "execution.executed_shots": "unavailable",
         "execution.queue_duration_ms": "unavailable",
         "execution.run_duration_ms": "unavailable",
         "execution.total_duration_ms": "unavailable",
@@ -35,7 +36,7 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "unavailable": 23
+        "unavailable": 24
       },
       "provider": "braket",
       "schema_valid": true,
@@ -61,6 +62,7 @@
         "device.platform_provider": "unavailable",
         "device.qubit_count": "unavailable",
         "device.type": "unavailable",
+        "execution.executed_shots": "unavailable",
         "execution.queue_duration_ms": "unavailable",
         "execution.run_duration_ms": "unavailable",
         "execution.total_duration_ms": "unavailable",
@@ -77,7 +79,7 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "unavailable": 23
+        "unavailable": 24
       },
       "provider": "braket",
       "schema_valid": true,
@@ -103,6 +105,7 @@
         "device.platform_provider": "unavailable",
         "device.qubit_count": "unavailable",
         "device.type": "unavailable",
+        "execution.executed_shots": "unavailable",
         "execution.queue_duration_ms": "unavailable",
         "execution.run_duration_ms": "unavailable",
         "execution.total_duration_ms": "unavailable",
@@ -119,7 +122,7 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "unavailable": 23
+        "unavailable": 24
       },
       "provider": "braket",
       "schema_valid": true,
@@ -145,6 +148,7 @@
         "device.platform_provider": "provider_supplied",
         "device.qubit_count": "provider_supplied",
         "device.type": "provider_supplied",
+        "execution.executed_shots": "derived",
         "execution.queue_duration_ms": "unavailable",
         "execution.run_duration_ms": "unavailable",
         "execution.total_duration_ms": "derived",
@@ -161,7 +165,7 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "derived": 2,
+        "derived": 3,
         "not_applicable": 4,
         "provider_passthrough": 1,
         "provider_supplied": 10,
@@ -193,6 +197,7 @@
         "device.platform_provider": "provider_supplied",
         "device.qubit_count": "provider_supplied",
         "device.type": "provider_supplied",
+        "execution.executed_shots": "derived",
         "execution.queue_duration_ms": "unavailable",
         "execution.run_duration_ms": "unavailable",
         "execution.total_duration_ms": "derived",
@@ -209,7 +214,7 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "derived": 2,
+        "derived": 3,
         "not_applicable": 4,
         "provider_passthrough": 1,
         "provider_supplied": 10,
@@ -241,6 +246,7 @@
         "device.platform_provider": "provider_supplied",
         "device.qubit_count": "provider_supplied",
         "device.type": "provider_supplied",
+        "execution.executed_shots": "not_applicable",
         "execution.queue_duration_ms": "unavailable",
         "execution.run_duration_ms": "unavailable",
         "execution.total_duration_ms": "derived",
@@ -258,7 +264,7 @@
       },
       "inventory_counts": {
         "derived": 2,
-        "not_applicable": 3,
+        "not_applicable": 4,
         "provider_supplied": 8,
         "unavailable": 10
       },
@@ -288,6 +294,7 @@
         "device.platform_provider": "provider_supplied",
         "device.qubit_count": "provider_supplied",
         "device.type": "provider_supplied",
+        "execution.executed_shots": "unavailable",
         "execution.queue_duration_ms": "unavailable",
         "execution.run_duration_ms": "unavailable",
         "execution.total_duration_ms": "derived",
@@ -308,7 +315,7 @@
         "not_applicable": 3,
         "provider_passthrough": 1,
         "provider_supplied": 9,
-        "unavailable": 7
+        "unavailable": 8
       },
       "provider": "braket",
       "schema_valid": true,
@@ -336,6 +343,7 @@
         "device.platform_provider": "provider_supplied",
         "device.qubit_count": "provider_supplied",
         "device.type": "provider_supplied",
+        "execution.executed_shots": "derived",
         "execution.queue_duration_ms": "unavailable",
         "execution.run_duration_ms": "unavailable",
         "execution.total_duration_ms": "derived",
@@ -352,7 +360,7 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "derived": 2,
+        "derived": 3,
         "not_applicable": 4,
         "provider_passthrough": 1,
         "provider_supplied": 10,
@@ -384,6 +392,7 @@
         "device.platform_provider": "provider_supplied",
         "device.qubit_count": "provider_supplied",
         "device.type": "provider_supplied",
+        "execution.executed_shots": "derived",
         "execution.queue_duration_ms": "unavailable",
         "execution.run_duration_ms": "unavailable",
         "execution.total_duration_ms": "derived",
@@ -400,7 +409,7 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "derived": 2,
+        "derived": 3,
         "not_applicable": 4,
         "provider_passthrough": 1,
         "provider_supplied": 10,
@@ -432,6 +441,7 @@
         "device.platform_provider": "provider_supplied",
         "device.qubit_count": "provider_supplied",
         "device.type": "provider_supplied",
+        "execution.executed_shots": "derived",
         "execution.queue_duration_ms": "derived",
         "execution.run_duration_ms": "derived",
         "execution.total_duration_ms": "derived",
@@ -448,7 +458,7 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "derived": 3,
+        "derived": 4,
         "not_applicable": 3,
         "provider_supplied": 12,
         "unavailable": 5
@@ -479,6 +489,7 @@
         "device.platform_provider": "provider_supplied",
         "device.qubit_count": "provider_supplied",
         "device.type": "provider_supplied",
+        "execution.executed_shots": "derived",
         "execution.queue_duration_ms": "derived",
         "execution.run_duration_ms": "derived",
         "execution.total_duration_ms": "derived",
@@ -495,7 +506,7 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "derived": 3,
+        "derived": 4,
         "not_applicable": 3,
         "provider_supplied": 12,
         "unavailable": 5
@@ -526,6 +537,7 @@
         "device.platform_provider": "provider_supplied",
         "device.qubit_count": "provider_supplied",
         "device.type": "provider_supplied",
+        "execution.executed_shots": "derived",
         "execution.queue_duration_ms": "derived",
         "execution.run_duration_ms": "derived",
         "execution.total_duration_ms": "derived",
@@ -542,7 +554,7 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "derived": 3,
+        "derived": 4,
         "not_applicable": 3,
         "provider_supplied": 12,
         "unavailable": 5
@@ -573,6 +585,7 @@
         "device.platform_provider": "provider_supplied",
         "device.qubit_count": "provider_supplied",
         "device.type": "provider_supplied",
+        "execution.executed_shots": "derived",
         "execution.queue_duration_ms": "derived",
         "execution.run_duration_ms": "derived",
         "execution.total_duration_ms": "derived",
@@ -589,7 +602,7 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "derived": 3,
+        "derived": 4,
         "not_applicable": 4,
         "provider_supplied": 11,
         "unavailable": 5
@@ -620,6 +633,7 @@
         "device.platform_provider": "provider_supplied",
         "device.qubit_count": "provider_supplied",
         "device.type": "provider_supplied",
+        "execution.executed_shots": "derived",
         "execution.queue_duration_ms": "derived",
         "execution.run_duration_ms": "derived",
         "execution.total_duration_ms": "derived",
@@ -636,7 +650,7 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "derived": 3,
+        "derived": 4,
         "not_applicable": 4,
         "provider_supplied": 11,
         "unavailable": 5
@@ -656,12 +670,7 @@
         "identifier": "ibm_aachen",
         "platform_provider": "ibm_quantum"
       },
-      "findings": [
-        {
-          "check": "provider_interface_drift",
-          "detail": "unrecognized_result_format: Result retrieved for a completed job, but it holds no result representation this adapter maps; reported unavailable."
-        }
-      ],
+      "findings": [],
       "inventory": {
         "artifact.compiled": "unavailable",
         "characterization": "provider_supplied",
@@ -672,6 +681,7 @@
         "device.platform_provider": "provider_supplied",
         "device.qubit_count": "provider_supplied",
         "device.type": "provider_supplied",
+        "execution.executed_shots": "derived",
         "execution.queue_duration_ms": "derived",
         "execution.run_duration_ms": "derived",
         "execution.total_duration_ms": "derived",
@@ -681,17 +691,17 @@
         "job.relations": "not_applicable",
         "job.shots": "provider_supplied",
         "job.status": "provider_supplied",
-        "results.estimated_measurement_counts": "unavailable",
-        "results.measurement_counts": "unavailable",
-        "results.measurement_probabilities": "unavailable",
+        "results.estimated_measurement_counts": "not_applicable",
+        "results.measurement_counts": "not_applicable",
+        "results.measurement_probabilities": "not_applicable",
         "software.framework_versions": "unavailable",
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "derived": 3,
-        "not_applicable": 2,
+        "derived": 4,
+        "not_applicable": 5,
         "provider_supplied": 10,
-        "unavailable": 8
+        "unavailable": 5
       },
       "provider": "ibm",
       "schema_valid": true,
@@ -719,6 +729,7 @@
         "device.platform_provider": "provider_supplied",
         "device.qubit_count": "provider_supplied",
         "device.type": "provider_supplied",
+        "execution.executed_shots": "not_applicable",
         "execution.queue_duration_ms": "unavailable",
         "execution.run_duration_ms": "unavailable",
         "execution.total_duration_ms": "derived",
@@ -736,7 +747,7 @@
       },
       "inventory_counts": {
         "derived": 1,
-        "not_applicable": 3,
+        "not_applicable": 4,
         "provider_supplied": 9,
         "unavailable": 10
       },
@@ -766,6 +777,7 @@
         "device.platform_provider": "provider_supplied",
         "device.qubit_count": "provider_supplied",
         "device.type": "provider_supplied",
+        "execution.executed_shots": "not_applicable",
         "execution.queue_duration_ms": "unavailable",
         "execution.run_duration_ms": "provider_supplied",
         "execution.total_duration_ms": "derived",
@@ -783,7 +795,7 @@
       },
       "inventory_counts": {
         "derived": 1,
-        "not_applicable": 3,
+        "not_applicable": 4,
         "provider_passthrough": 1,
         "provider_supplied": 10,
         "unavailable": 8
@@ -814,6 +826,7 @@
         "device.platform_provider": "provider_supplied",
         "device.qubit_count": "provider_supplied",
         "device.type": "provider_supplied",
+        "execution.executed_shots": "unavailable",
         "execution.queue_duration_ms": "unavailable",
         "execution.run_duration_ms": "provider_supplied",
         "execution.total_duration_ms": "derived",
@@ -834,7 +847,7 @@
         "not_applicable": 3,
         "provider_passthrough": 1,
         "provider_supplied": 11,
-        "unavailable": 6
+        "unavailable": 7
       },
       "provider": "ionq",
       "schema_valid": true,
@@ -862,6 +875,7 @@
         "device.platform_provider": "provider_supplied",
         "device.qubit_count": "provider_supplied",
         "device.type": "provider_supplied",
+        "execution.executed_shots": "not_applicable",
         "execution.queue_duration_ms": "unavailable",
         "execution.run_duration_ms": "unavailable",
         "execution.total_duration_ms": "unavailable",
@@ -878,7 +892,7 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "not_applicable": 2,
+        "not_applicable": 3,
         "provider_supplied": 8,
         "unavailable": 13
       },
@@ -908,6 +922,7 @@
         "device.platform_provider": "provider_supplied",
         "device.qubit_count": "not_applicable",
         "device.type": "provider_supplied",
+        "execution.executed_shots": "provider_supplied",
         "execution.queue_duration_ms": "derived",
         "execution.run_duration_ms": "provider_supplied",
         "execution.total_duration_ms": "derived",
@@ -915,7 +930,7 @@
         "job.ended_at": "derived",
         "job.failure": "not_applicable",
         "job.relations": "unavailable",
-        "job.shots": "provider_supplied",
+        "job.shots": "unavailable",
         "job.status": "provider_supplied",
         "results.estimated_measurement_counts": "not_applicable",
         "results.measurement_counts": "provider_supplied",
@@ -928,7 +943,7 @@
         "derived": 3,
         "not_applicable": 5,
         "provider_supplied": 9,
-        "unavailable": 5
+        "unavailable": 6
       },
       "provider": "quandela",
       "schema_valid": true,
@@ -956,6 +971,7 @@
         "device.platform_provider": "provider_supplied",
         "device.qubit_count": "not_applicable",
         "device.type": "provider_supplied",
+        "execution.executed_shots": "provider_supplied",
         "execution.queue_duration_ms": "derived",
         "execution.run_duration_ms": "provider_supplied",
         "execution.total_duration_ms": "derived",
@@ -963,7 +979,7 @@
         "job.ended_at": "derived",
         "job.failure": "not_applicable",
         "job.relations": "unavailable",
-        "job.shots": "provider_supplied",
+        "job.shots": "unavailable",
         "job.status": "provider_supplied",
         "results.estimated_measurement_counts": "not_applicable",
         "results.measurement_counts": "provider_supplied",
@@ -976,7 +992,7 @@
         "derived": 3,
         "not_applicable": 5,
         "provider_supplied": 9,
-        "unavailable": 5
+        "unavailable": 6
       },
       "provider": "quandela",
       "schema_valid": true,
@@ -987,8 +1003,6 @@
       }
     }
   ],
-  "finding_counts": {
-    "provider_interface_drift": 1
-  },
+  "finding_counts": {},
   "inventory_version": "0.2.0"
 }

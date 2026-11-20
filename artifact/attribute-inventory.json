@@ -108,6 +108,12 @@
             "applicability": "all"
         },
         {
+            "id": "execution.executed_shots",
+            "value_pointer": "/execution/executed_shots",
+            "evidence_pointer": "/execution/executed_shots",
+            "applicability": "all"
+        },
+        {
             "id": "characterization",
             "value_pointer": "/characterization",
             "evidence_pointer": "/characterization",

@@ -18,10 +18,7 @@ IONQ_V04 = CAPTURES / "ionq" / "01a1f2eb-d155-7632-bc4e-f340de096f01"
 IBM_SAMPLER = CAPTURES / "ibm" / "dbvb21eppgvc73e5o380"
 
 # Known adapter gaps the validator must keep reporting until they are closed.
-KNOWN_FINDINGS = {
-    # F11: Estimator expectation values are not mapped yet (AC-7).
-    "dbvb21mppgvc73e5o390": ["provider_interface_drift"],
-}
+KNOWN_FINDINGS: dict[str, list[str]] = {}
 
 
 def _record(fixture: dict) -> dict:

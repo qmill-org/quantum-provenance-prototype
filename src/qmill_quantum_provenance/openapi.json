@@ -347,7 +347,8 @@
                     },
                     "shots": {
                         "type": "integer",
-                        "minimum": 0
+                        "minimum": 0,
+                        "description": "Shots requested for the job, as recorded by the provider or, if the provider does not record it, supplied by the application (see evidence). Not the number of shots executed; see execution.executed_shots."
                     },
                     "relations": {
                         "$ref": "#/components/schemas/JobRelations"
@@ -461,6 +462,11 @@
                     },
                     "total_duration_ms": {
                         "$ref": "#/components/schemas/DurationMilliseconds"
+                    },
+                    "executed_shots": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "description": "Shots the provider executed for the job, summed over every circuit it ran, including twirling randomizations and calibration or noise-learning circuits. For photonic platforms, photon-detection events. Can differ from the requested job.shots."
                     }
                 },
                 "additionalProperties": false
@@ -533,7 +539,8 @@
                 ],
                 "properties": {
                     "available": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "True when the job's results were retrieved and mapped. A result with no core representation (for example expectation values) is carried in the provider's extensions namespace, named in the /results evidence."
                     },
                     "shots": {
                         "type": "integer",
@@ -846,6 +853,11 @@
                         "type": "string",
                         "minLength": 1,
                         "description": "Optional application identifier of the logical experiment this job belongs to; recorded as job.relations.experiment_id with application_captured evidence."
+                    },
+                    "requested_shots": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "description": "Optional shots the application requested. Used for job.shots (application_captured) when the provider does not record the request; a mismatch with the provider-recorded value is reported as a warning."
                     }
                 },
                 "additionalProperties": false

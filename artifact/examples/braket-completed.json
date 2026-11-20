@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0-prototype",
   "record_id": "qprov:braket:782f818c22da425e05074b501ca26a26",
-  "generated_at": "2026-11-20T06:06:32.778028+00:00",
-  "retrieved_at": "2026-11-20T06:06:32.777998+00:00",
+  "generated_at": "2026-11-20T06:24:22.491626+00:00",
+  "retrieved_at": "2026-11-20T06:24:22.491486+00:00",
   "adapter": {
     "provider": "braket",
     "name": "braket-provenance-adapter",
@@ -163,6 +163,12 @@
         "/job/ended_at"
       ],
       "derivation": "ended_at - created_at"
+    },
+    {
+      "path": "/execution/executed_shots",
+      "status": "unavailable",
+      "reason": "not_exposed_by_provider",
+      "notes": "No per-shot measurements in the result; executed shots not reported."
     },
     {
       "path": "/characterization",

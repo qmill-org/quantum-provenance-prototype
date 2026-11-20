@@ -24,6 +24,7 @@ import os
 from statistics import median
 from typing import Any
 
+from .sanitize import to_jsonable
 from ..integration import (
     AccessDeniedError,
     DeviceDetails,
@@ -103,6 +104,48 @@ def _shots(inputs: dict[str, Any]) -> int | None:
         if isinstance(inputs.get(key), int):
             return inputs[key]
     return None
+
+
+def _post_processor(inputs: dict[str, Any]) -> dict[str, Any]:
+    """Primitive options the client passed through the executor job (schema v2.0)."""
+
+    program = inputs.get("quantum_program")
+    passthrough = getattr(program, "passthrough_data", None) or {}
+    value = passthrough.get("post_processor") if isinstance(passthrough, dict) else None
+    return value if isinstance(value, dict) else {}
+
+
+def _requested_shots(inputs: dict[str, Any]) -> int | None:
+    """Shots the primitive caller asked for; falls back to the executor shots."""
+
+    shots = _post_processor(inputs).get("shots")
+    return shots if isinstance(shots, int) else _shots(inputs)
+
+
+def _executed_shots(inputs: dict[str, Any]) -> int | None:
+    """Executor shots summed over items and their randomizations (schema v2.0)."""
+
+    program = inputs.get("quantum_program")
+    if program is None or not isinstance(getattr(program, "shots", None), int):
+        return None
+    total = 0
+    for item in program.items:
+        shape = getattr(item, "shape", None)
+        if shape is None:
+            return None
+        size = 1
+        for dim in shape:
+            size *= int(dim)
+        total += size * program.shots
+    return total
+
+
+def _runtime_version() -> str:
+    try:
+        from qiskit_ibm_runtime import __version__
+    except ImportError:  # pragma: no cover - live extra not installed
+        return "unknown"
+    return str(__version__)
 
 
 def _first_circuit(inputs: dict[str, Any]):
@@ -203,7 +246,7 @@ class LiveIBMIntegration(ProviderAdapter):
             status=status,
             created_at=job.creation_date,
             ended_at=timestamps.get("finished"),
-            shots=_shots(inputs),
+            shots=_requested_shots(inputs),
             target_id=backend_name,
             provider_target_id=backend_name,
             metadata={
@@ -216,7 +259,12 @@ class LiveIBMIntegration(ProviderAdapter):
                 "timestamps": timestamps,
                 "usage": metrics.get("usage"),
                 "qiskit_version": metrics.get("qiskit_version"),
-                "shots": _shots(inputs),
+                "shots": _requested_shots(inputs),
+                "executor_shots": _shots(inputs),
+                "executed_shots": (_executed_shots(inputs) if status.upper() in _DONE else None),
+                "resilience_level": (_post_processor(inputs).get("options") or {}).get(
+                    "resilience_level"
+                ),
             },
         )
 
@@ -230,6 +278,7 @@ class LiveIBMIntegration(ProviderAdapter):
         except Exception as exc:
             raise _translate(exc, "RuntimeJobV2.result") from exc
         counts: dict[str, int] = {}
+        raw_payload = None
         kind = "none"
         if len(result):
             data = result[0].data
@@ -241,6 +290,24 @@ class LiveIBMIntegration(ProviderAdapter):
                     break
             else:
                 kind = "no_bit_arrays"
+            if not counts and "evs" in data:
+                # Executor-based EstimatorV2: IBM returns per-shot samples; the SDK's
+                # client-side decoder computes the expectation values from them.
+                raw_payload = {
+                    "primitive": "estimator",
+                    "evs": to_jsonable(data["evs"]),
+                    "stds": to_jsonable(data["stds"]) if "stds" in data else None,
+                    "ensemble_standard_error": (
+                        to_jsonable(data["ensemble_standard_error"])
+                        if "ensemble_standard_error" in data
+                        else None
+                    ),
+                    "decoder_chain": " -> ".join(
+                        d.__name__ for d in getattr(job, "_result_decoders", None) or []
+                    ),
+                    "client": f"qiskit-ibm-runtime {_runtime_version()}",
+                }
+                kind = "expectation_values:client_side_decoder"
         self.notes["measurement_counts_origin"] = kind
         self.native["result_metadata"] = getattr(result, "metadata", None)
         return TaskResult(
@@ -250,7 +317,7 @@ class LiveIBMIntegration(ProviderAdapter):
             measurement_counts=counts,
             compiled_circuit=self.get_compiled_circuit(task),
             compiled_circuit_metrics=None,
-            raw_payload=None,
+            raw_payload=raw_payload,
         )
 
     def get_compiled_circuit(self, task: TaskHandle) -> str | None:

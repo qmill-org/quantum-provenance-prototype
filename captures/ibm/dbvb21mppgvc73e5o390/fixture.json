@@ -51,7 +51,14 @@
     "compiled_circuit": "<program redacted sha256=96af8c47ae64c0457a8866fb70166be8165fc471f6c8d5579180a7bb46d8aa00 bytes=29979>",
     "compiled_circuit_metrics": null,
     "measurement_counts": {},
-    "raw_payload": null,
+    "raw_payload": {
+      "client": "qiskit-ibm-runtime 0.52.1",
+      "decoder_chain": "ExecutorResultDecoder -> ClientSideSamplerResultDecoder -> ClientSideEstimatorDecoder -> ClientSideNoiseLearnerResultDecoder",
+      "ensemble_standard_error": 0.005600231639331864,
+      "evs": 1.0018314430788795,
+      "primitive": "estimator",
+      "stds": 0.006285851570838471
+    },
     "status": "DONE"
   },
   "snapshot": {
@@ -60,12 +67,15 @@
     "metadata": {
       "backend_name": "ibm_aachen",
       "error_message": null,
+      "executed_shots": 2048,
+      "executor_shots": 64,
       "input_schema": "v2.0",
       "program_id": "executor",
       "qiskit_version": "qiskit_ibm_runtime-0.52.1,qiskit-2.6.2*",
+      "resilience_level": 1,
       "session_id": null,
       "session_mode": null,
-      "shots": 64,
+      "shots": 1000,
       "timestamps": {
         "created": "2026-11-19T08:19:18.943384Z",
         "finished": "2026-11-19T08:20:08.605881Z",
@@ -91,7 +101,7 @@
     "provider": "ibm",
     "provider_job_id": "dbvb21mppgvc73e5o390",
     "provider_target_id": "ibm_aachen",
-    "shots": 64,
+    "shots": 1000,
     "status": "DONE",
     "target_id": "ibm_aachen"
   }

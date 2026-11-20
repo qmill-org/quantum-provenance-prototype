@@ -1,6 +1,6 @@
 {
-  "capture_tool_revision": "3d3e48569076b53f8b53b373bfff7d17697f5f12",
-  "captured_at": "2026-11-20T06:05:58.434801+00:00",
+  "capture_tool_revision": "2523fd6c2523281ce9e8693cb53a66170457eb69",
+  "captured_at": "2026-11-20T06:23:53.822519+00:00",
   "external_job_id": "dbvb21mppgvc73e5o390",
   "notes": {
     "compiled_program_origin": "application_compiled_job_input",
@@ -9,24 +9,24 @@
       "SamplexItem"
     ],
     "input_schema": "v2.0",
-    "measurement_counts_origin": "no_bit_arrays",
+    "measurement_counts_origin": "expectation_values:client_side_decoder",
     "primitive_recorded": "executor",
     "properties_query": "as_of_job_creation",
     "submitted_program_available": true
   },
   "operations": [
     {
-      "at": "2026-11-20T06:05:56.333170+00:00",
+      "at": "2026-11-20T06:23:51.355814+00:00",
       "operation": "get_status",
       "outcome": "ok"
     },
     {
-      "at": "2026-11-20T06:05:57.340996+00:00",
+      "at": "2026-11-20T06:23:52.561345+00:00",
       "operation": "get_device_details",
       "outcome": "ok"
     },
     {
-      "at": "2026-11-20T06:05:58.154044+00:00",
+      "at": "2026-11-20T06:23:53.589137+00:00",
       "operation": "get_result",
       "outcome": "ok"
     }

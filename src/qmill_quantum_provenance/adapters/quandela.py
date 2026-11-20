@@ -11,6 +11,7 @@ from datetime import UTC, datetime, timedelta
 from typing import Any
 
 from ..adapter import (
+    add_executed_shots,
     check_expected_fields,
     check_result_recognized,
     ExpectedField,
@@ -138,6 +139,14 @@ class QuandelaProvenanceAdapter(ProvenanceAdapter):
         check_expected_fields(snapshot.metadata, _EXPECTED_FIELDS, job.status, warnings)
         self._compiled(result, artifacts, evidence, extension)
         execution = self._execution(metadata, evidence)
+        execution = add_executed_shots(
+            execution,
+            evidence,
+            job.status,
+            snapshot.shots,
+            provider_field="job status.shots",
+            notes="Photon-detection events; accepted samples are fewer (see extension).",
+        )
         characterization = self._characterization(device, job, device_details, evidence, extension)
 
         if extension:
@@ -186,12 +195,15 @@ class QuandelaProvenanceAdapter(ProvenanceAdapter):
             evidence.append(
                 _unavailable("/job/ended_at", AvailabilityReason.NOT_EXPOSED_BY_PROVIDER)
             )
-        if snapshot.shots is not None:
-            evidence.append(
-                _supplied(
-                    "/job/shots", "job status.shots", "photon-detection shots, not accepted samples"
-                )
+        # status.shots counts photon-detection events (executed), not the request;
+        # the requested max_samples/max_shots are not returned by the provider.
+        evidence.append(
+            _unavailable(
+                "/job/shots",
+                AvailabilityReason.NOT_EXPOSED_BY_PROVIDER,
+                "Requested samples/shots are not returned; status.shots is executed shots.",
             )
+        )
         status = normalize_job_status(snapshot.status)
         relations = relations_with_evidence(evidence, exposed=False, provider_field="job status")
         failure = failure_with_evidence(
@@ -208,7 +220,6 @@ class QuandelaProvenanceAdapter(ProvenanceAdapter):
             status=status,
             created_at=created,
             ended_at=ended,
-            shots=snapshot.shots,
             relations=relations,
             failure=failure,
         )

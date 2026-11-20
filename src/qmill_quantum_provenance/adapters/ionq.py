@@ -30,6 +30,7 @@ from typing import Any
 
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    add_executed_shots,
     check_expected_fields,
     check_result_recognized,
     ExpectedField,
@@ -249,6 +250,20 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
         self._build_compiled_artifact(result_data, artifacts, evidence)
         self._build_provider_native_artifact(snapshot, artifacts, evidence)
         execution = self._build_execution(snapshot, evidence)
+        noise = (snapshot.metadata or {}).get("noise") or {}
+        ideal = isinstance(noise, dict) and noise.get("model") == "ideal"
+        execution = add_executed_shots(
+            execution,
+            evidence,
+            job.status,
+            None,
+            missing=EvidenceStatus.NOT_APPLICABLE if ideal else EvidenceStatus.UNAVAILABLE,
+            notes=(
+                "Ideal simulation: exact probabilities, no shots executed."
+                if ideal
+                else "IonQ reports the requested shots only."
+            ),
+        )
         characterization = self._build_characterization(device_details, snapshot, job, evidence)
 
         return AdapterResult(

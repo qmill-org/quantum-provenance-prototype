@@ -26,6 +26,7 @@ from typing import Any
 
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    add_executed_shots,
     check_expected_fields,
     check_result_recognized,
     ExpectedField,
@@ -139,6 +140,23 @@ _EXPECTED_FIELDS = (ExpectedField("/execution (queue/run split)", ("timestamps",
 _KNOWN_INPUT_SCHEMAS = frozenset({"pubs", "v2.0"})
 
 
+NAMESPACE = "gate_model.ibm"
+
+
+def _estimator_extension(result_data, metadata: dict[str, Any]) -> dict[str, Any]:
+    payload = (getattr(result_data, "raw_payload", None) or {}) if result_data else {}
+    if payload.get("primitive") != "estimator":
+        return {}
+    estimator = {
+        key: payload[key]
+        for key in ("evs", "stds", "ensemble_standard_error", "decoder_chain", "client")
+        if payload.get(key) is not None
+    }
+    if metadata.get("resilience_level") is not None:
+        estimator["resilience_level"] = metadata["resilience_level"]
+    return {NAMESPACE: {"estimator": estimator}}
+
+
 class IBMProvenanceAdapter(ProvenanceAdapter):
     provider = "ibm"
     name = "ibm-provenance-adapter"
@@ -218,6 +236,22 @@ class IBMProvenanceAdapter(ProvenanceAdapter):
         self._build_compiled_artifact(result_data, artifacts, evidence)
         self._build_provider_native_artifact(snapshot, artifacts, evidence)
         execution = self._build_execution(snapshot, evidence)
+        metadata = snapshot.metadata or {}
+        execution = add_executed_shots(
+            execution,
+            evidence,
+            job.status,
+            metadata.get("executed_shots"),
+            status=EvidenceStatus.DERIVED,
+            source_paths=["job inputs quantum_program.items[].shape", "quantum_program.shots"],
+            derivation="sum over items of randomizations x executor shots",
+            notes=(
+                f"Executor shots per randomization: {metadata.get('executor_shots')}."
+                if metadata.get("executor_shots") is not None
+                else None
+            ),
+        )
+        extensions = _estimator_extension(result_data, metadata)
         characterization = self._build_characterization(device_details, job, evidence)
 
         return AdapterResult(
@@ -231,6 +265,7 @@ class IBMProvenanceAdapter(ProvenanceAdapter):
             execution=execution,
             characterization=characterization,
             retrieved_at=datetime.now(UTC),
+            extensions=extensions,
         )
 
     # -- section builders ----------------------------------------------------
@@ -249,7 +284,12 @@ class IBMProvenanceAdapter(ProvenanceAdapter):
                 Evidence(
                     path="/job/shots",
                     status=EvidenceStatus.PROVIDER_SUPPLIED,
-                    provider_field="RuntimeJobV2.metrics().usage / metadata.shots",
+                    provider_field=(
+                        "job inputs quantum_program.passthrough_data.post_processor.shots"
+                        if "executor_shots" in (snapshot.metadata or {})
+                        else "RuntimeJobV2.metrics().usage / metadata.shots"
+                    ),
+                    notes="Shots requested by the primitive caller, as recorded with the job.",
                 )
             )
         _record_timestamp_evidence(snapshot, evidence, "RuntimeJobV2.metrics() timestamps")
@@ -393,6 +433,25 @@ class IBMProvenanceAdapter(ProvenanceAdapter):
                 outcome_basis="bitstring",
                 measurement_counts=dict(result_data.measurement_counts),
             )
+
+        payload = (result_data.raw_payload or {}) if result_data is not None else {}
+        if payload.get("primitive") == "estimator":
+            evidence.append(
+                Evidence(
+                    path="/results",
+                    status=EvidenceStatus.DERIVED,
+                    source_paths=["IBM job results (per-shot executor samples)"],
+                    derivation=f"{payload.get('client')} decoder chain: {payload.get('decoder_chain')}",
+                    notes=f"Expectation values, in /extensions/{NAMESPACE}/estimator; computed "
+                    "client-side by the provider SDK from the samples IBM returns.",
+                )
+            )
+            mark_not_applicable(
+                evidence,
+                RESULT_REPRESENTATIONS,
+                "Estimator job: expectation values, no outcome distribution.",
+            )
+            return Results(available=True, shots=snapshot.shots)
 
         evidence.append(
             Evidence(
