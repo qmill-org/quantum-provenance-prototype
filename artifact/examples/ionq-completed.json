@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0-prototype",
   "record_id": "qprov:ionq:f09d0b7fd29c07000f3221aad6ddb677",
-  "generated_at": "2026-11-20T09:32:38.689175+00:00",
-  "retrieved_at": "2026-11-20T09:32:38.689162+00:00",
+  "generated_at": "2026-11-20T09:34:44.770132+00:00",
+  "retrieved_at": "2026-11-20T09:34:44.770117+00:00",
   "adapter": {
     "provider": "ionq",
     "name": "ionq-provenance-adapter",

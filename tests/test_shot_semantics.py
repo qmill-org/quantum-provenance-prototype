@@ -100,3 +100,14 @@ def test_simulator_noise_model_and_seed_go_to_the_simulation_extension() -> None
     assert _evidence(noisy)["/extensions/simulation.ionq"]["status"] == "provider_supplied"
     ideal = _record(IONQ_IDEAL)
     assert ideal["extensions"]["simulation.ionq"] == {"noise_model": "ideal"}
+
+
+IBM_TWIRLED = CAPTURES / "ibm" / "dc00tp56efjc7392492g"
+
+
+def test_twirled_sampler_does_not_pass_shots_per_randomization_off_as_the_request() -> None:
+    payload = _record(IBM_TWIRLED)
+    assert "shots" not in payload["job"]
+    assert _evidence(payload)["/job/shots"]["reason"] == "not_exposed_by_provider"
+    assert payload["execution"]["executed_shots"] == 1024  # 16 randomizations x 64
+    assert _record(IBM_TWIRLED, requested_shots=1000)["job"]["shots"] == 1000

@@ -4,7 +4,7 @@
   "arms": {
     "B": "flat baseline (comparison/baseline.py)",
     "V1": "v0.1.0",
-    "V2": "fcf8113",
+    "V2": "0eb4c30",
     "V2f": "baseline-freeze (adapters as frozen for the hold-out set)"
   },
   "summary": {
@@ -414,8 +414,8 @@
       "B": {
         "total": {
           "correct": 62,
-          "misleading": 7,
-          "undeterminable": 21,
+          "misleading": 5,
+          "undeterminable": 23,
           "no_record": 0
         },
         "per_question": {
@@ -451,14 +451,14 @@
           },
           "Q6": {
             "correct": 5,
-            "misleading": 1,
-            "undeterminable": 1,
+            "misleading": 0,
+            "undeterminable": 2,
             "no_record": 0
           },
           "Q7": {
             "correct": 4,
-            "misleading": 1,
-            "undeterminable": 3,
+            "misleading": 0,
+            "undeterminable": 4,
             "no_record": 0
           },
           "Q8": {
@@ -502,8 +502,8 @@
       "V1": {
         "total": {
           "correct": 68,
-          "misleading": 5,
-          "undeterminable": 17,
+          "misleading": 3,
+          "undeterminable": 19,
           "no_record": 0
         },
         "per_question": {
@@ -539,14 +539,14 @@
           },
           "Q6": {
             "correct": 5,
-            "misleading": 1,
-            "undeterminable": 1,
+            "misleading": 0,
+            "undeterminable": 2,
             "no_record": 0
           },
           "Q7": {
             "correct": 4,
-            "misleading": 1,
-            "undeterminable": 3,
+            "misleading": 0,
+            "undeterminable": 4,
             "no_record": 0
           },
           "Q8": {
@@ -590,8 +590,8 @@
       "V2": {
         "total": {
           "correct": 87,
-          "misleading": 1,
-          "undeterminable": 2,
+          "misleading": 0,
+          "undeterminable": 3,
           "no_record": 0
         },
         "per_question": {
@@ -627,8 +627,8 @@
           },
           "Q6": {
             "correct": 5,
-            "misleading": 1,
-            "undeterminable": 1,
+            "misleading": 0,
+            "undeterminable": 2,
             "no_record": 0
           },
           "Q7": {
@@ -678,8 +678,8 @@
       "V2f": {
         "total": {
           "correct": 87,
-          "misleading": 1,
-          "undeterminable": 2,
+          "misleading": 0,
+          "undeterminable": 3,
           "no_record": 0
         },
         "per_question": {
@@ -715,8 +715,8 @@
           },
           "Q6": {
             "correct": 5,
-            "misleading": 1,
-            "undeterminable": 1,
+            "misleading": 0,
+            "undeterminable": 2,
             "no_record": 0
           },
           "Q7": {
@@ -4222,10 +4222,10 @@
             "Q4": "ibm",
             "Q1": "observed_counts",
             "Q2": "provider",
-            "Q7": 64,
+            "Q7": "undeterminable",
             "Q8": "undeterminable",
             "Q3": "matched",
-            "Q6": 64,
+            "Q6": "undeterminable",
             "N1": "ibm_aachen",
             "N2": [
               "2026-11-20T09:12:04.382734+00:00",
@@ -4238,10 +4238,10 @@
             "Q4": "correct",
             "Q1": "correct",
             "Q2": "misleading",
-            "Q7": "misleading",
+            "Q7": "undeterminable",
             "Q8": "undeterminable",
             "Q3": "correct",
-            "Q6": "misleading",
+            "Q6": "undeterminable",
             "N1": "correct",
             "N2": "correct",
             "N3": "correct"
@@ -4253,10 +4253,10 @@
             "Q4": "ibm",
             "Q1": "observed_counts",
             "Q2": "provider",
-            "Q7": 64,
+            "Q7": "undeterminable",
             "Q8": "undeterminable",
             "Q3": "matched",
-            "Q6": 64,
+            "Q6": "undeterminable",
             "N1": "ibm_aachen",
             "N2": [
               "2026-11-20T09:12:04.382734+00:00",
@@ -4269,10 +4269,10 @@
             "Q4": "correct",
             "Q1": "correct",
             "Q2": "misleading",
-            "Q7": "misleading",
+            "Q7": "undeterminable",
             "Q8": "undeterminable",
             "Q3": "correct",
-            "Q6": "misleading",
+            "Q6": "undeterminable",
             "N1": "correct",
             "N2": "correct",
             "N3": "correct"
@@ -4287,7 +4287,7 @@
             "Q7": 1024,
             "Q8": "none",
             "Q3": "matched",
-            "Q6": 64,
+            "Q6": "undeterminable",
             "N1": "ibm_aachen",
             "N2": [
               "2026-11-20T09:12:04.382734+00:00",
@@ -4303,7 +4303,7 @@
             "Q7": "correct",
             "Q8": "correct",
             "Q3": "correct",
-            "Q6": "misleading",
+            "Q6": "undeterminable",
             "N1": "correct",
             "N2": "correct",
             "N3": "correct"
@@ -4318,7 +4318,7 @@
             "Q7": 1024,
             "Q8": "none",
             "Q3": "matched",
-            "Q6": 64,
+            "Q6": "undeterminable",
             "N1": "ibm_aachen",
             "N2": [
               "2026-11-20T09:12:04.382734+00:00",
@@ -4334,7 +4334,7 @@
             "Q7": "correct",
             "Q8": "correct",
             "Q3": "correct",
-            "Q6": "misleading",
+            "Q6": "undeterminable",
             "N1": "correct",
             "N2": "correct",
             "N3": "correct"

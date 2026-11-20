@@ -1,6 +1,6 @@
 {
-  "capture_tool_revision": "fcf81130e0bdf5498b8f5e6aac04579bfb4247ed",
-  "captured_at": "2026-11-20T09:33:45.034739+00:00",
+  "capture_tool_revision": "0eb4c308f64d150eacd3f40e1ffd3712059e35ec",
+  "captured_at": "2026-11-20T09:34:44.343066+00:00",
   "external_job_id": "dc00tp56efjc7392492g",
   "notes": {
     "compiled_program_origin": "application_compiled_job_input",
@@ -15,17 +15,17 @@
   },
   "operations": [
     {
-      "at": "2026-11-20T09:33:42.525911+00:00",
+      "at": "2026-11-20T09:34:41.966051+00:00",
       "operation": "get_status",
       "outcome": "ok"
     },
     {
-      "at": "2026-11-20T09:33:43.790445+00:00",
+      "at": "2026-11-20T09:34:43.161531+00:00",
       "operation": "get_device_details",
       "outcome": "ok"
     },
     {
-      "at": "2026-11-20T09:33:44.752071+00:00",
+      "at": "2026-11-20T09:34:44.091460+00:00",
       "operation": "get_result",
       "outcome": "ok"
     }

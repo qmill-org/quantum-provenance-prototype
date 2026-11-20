@@ -225,3 +225,6 @@ captured after the `baseline-freeze` tag.
   randomizations × 64 shots; the job records 64 as the executor shots and as
   the post-processor `shots`, and the request nowhere. The `v0.2.0-dev`
   record reports 64 as the provider-recorded requested shots.
+  *Fixed after being reported:* the retrieval layer no longer takes the
+  per-randomization shots for the request; the record states requested shots
+  as not exposed by the provider (the application can supply them).

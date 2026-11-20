@@ -89,7 +89,7 @@
       "resilience_level": null,
       "session_id": null,
       "session_mode": null,
-      "shots": 64,
+      "shots": null,
       "timestamps": {
         "created": "2026-11-20T09:12:04.382734Z",
         "finished": "2026-11-20T09:15:03.011033Z",
@@ -115,7 +115,7 @@
     "provider": "ibm",
     "provider_job_id": "dc00tp56efjc7392492g",
     "provider_target_id": "ibm_aachen",
-    "shots": 64,
+    "shots": null,
     "status": "DONE",
     "target_id": "ibm_aachen"
   }

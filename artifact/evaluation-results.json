@@ -122,7 +122,7 @@
       "results_available": false
     },
     "ibm": {
-      "adapter_loc": 625,
+      "adapter_loc": 636,
       "attribute_evidence_counts": {
         "application_captured": 11,
         "derived": 3,

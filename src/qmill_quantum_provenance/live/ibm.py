@@ -124,7 +124,12 @@ def _post_processor(inputs: dict[str, Any]) -> dict[str, Any]:
 def _requested_shots(inputs: dict[str, Any]) -> int | None:
     """Shots the primitive caller asked for; falls back to the executor shots."""
 
-    shots = _post_processor(inputs).get("shots")
+    post_processor = _post_processor(inputs)
+    if post_processor.get("twirling") is True:
+        # A twirled Sampler records shots per randomization; the request itself
+        # is not kept (F17).
+        return None
+    shots = post_processor.get("shots")
     return shots if isinstance(shots, int) else _shots(inputs)
 
 

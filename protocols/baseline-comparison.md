@@ -167,6 +167,13 @@ post-processor `shots`, and the request itself nowhere. V2 reports
 are correct). Reported before any fix. The first AQT job and the Estimator
 with resilience level 0 raised no failure.
 
+After the fix (the IBM retrieval layer no longer reads a twirled Sampler's
+per-randomization shots as the request; the adapter states requested shots
+as `not_exposed_by_provider`; the job re-captured): frozen questions B
+62/5/23/0, V1 68/3/19/0, V2 87/0/3/0, V2f 87/0/3/0. The defect was in the
+shared retrieval layer, so all arms now leave Q6 undeterminable there; V2
+also says why.
+
 ## Threats stated in advance
 
 - The baseline, the readers and the questions are designed by the authors of
@@ -288,3 +295,4 @@ whether derived values are relabelled observations or computed estimates
 | 2026-11-20 | H1 IonQ results recorded as scored; F16 recorded as unscored, with the oracle limitation. | Results reported before any fix. |
 | 2026-11-20 | F16 fixed: the IonQ retrieval layer follows `results.probabilities.url`; a multi-circuit parent records results as not applicable, pointing to its child jobs (shared rule: an adapter's own not-applicable explanation is not overwritten or warned about). Parent re-captured; child jobs `06b000ed-feec…`, `06b000ed-feed…` captured. | Post-freeze fix of a hold-out failure; before (`b91d015`) and after reported. |
 | 2026-11-20 | H1 IBM and AQT hold-out results recorded; F17 recorded (scored, V2 misleading on Q6). | Results reported before any fix. |
+| 2026-11-20 | F17 fixed: requested shots not read from a twirled Sampler's post-processor; IBM adapter states them as not exposed. Job `dc00tp56` re-captured. | Post-freeze fix of a hold-out failure; before (`0eb4c30`) and after reported. |

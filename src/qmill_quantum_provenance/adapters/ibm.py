@@ -302,6 +302,17 @@ class IBMProvenanceAdapter(ProvenanceAdapter):
                     notes="Shots requested by the primitive caller, as recorded with the job.",
                 )
             )
+        else:
+            evidence.append(
+                Evidence(
+                    path="/job/shots",
+                    status=EvidenceStatus.UNAVAILABLE,
+                    reason=AvailabilityReason.NOT_EXPOSED_BY_PROVIDER,
+                    notes="The job does not record the requested shots (e.g. a twirled "
+                    "Sampler keeps only shots per randomization); the application can "
+                    "supply them.",
+                )
+            )
         _record_timestamp_evidence(snapshot, evidence, "RuntimeJobV2.metrics() timestamps")
         metadata = snapshot.metadata or {}
         session_id = metadata.get("session_id")

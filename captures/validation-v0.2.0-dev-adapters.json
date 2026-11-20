@@ -978,7 +978,7 @@
         "job.ended_at": "provider_supplied",
         "job.failure": "not_applicable",
         "job.relations": "not_applicable",
-        "job.shots": "provider_supplied",
+        "job.shots": "unavailable",
         "job.status": "provider_supplied",
         "results.estimated_measurement_counts": "not_applicable",
         "results.measurement_counts": "provider_supplied",
@@ -989,8 +989,8 @@
       "inventory_counts": {
         "derived": 4,
         "not_applicable": 4,
-        "provider_supplied": 11,
-        "unavailable": 5
+        "provider_supplied": 10,
+        "unavailable": 6
       },
       "provider": "ibm",
       "schema_valid": true,
