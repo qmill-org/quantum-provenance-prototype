@@ -271,7 +271,7 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
         results = self._build_results(snapshot, result_data, evidence)
         if not results.available:
             qualify_missing_results(evidence, job.status, result_error)
-        check_result_recognized(job.status, result_data is not None, results, warnings)
+        check_result_recognized(job.status, result_data is not None, results, warnings, evidence)
         check_status_recognized(snapshot.status, warnings)
         check_expected_fields(snapshot.metadata, _EXPECTED_FIELDS, job.status, warnings)
         self._build_compiled_artifact(result_data, artifacts, evidence)
@@ -452,6 +452,22 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
                     status=EvidenceStatus.UNAVAILABLE,
                     reason=AvailabilityReason.UPSTREAM_REQUEST_FAILED,
                 )
+            )
+            return Results(available=False, shots=snapshot.shots)
+
+        payload = getattr(result_data, "raw_payload", None)
+        if isinstance(payload, dict) and "per_child_probabilities" in payload:
+            evidence.append(
+                Evidence(
+                    path="/results",
+                    status=EvidenceStatus.NOT_APPLICABLE,
+                    provider_field="results.probabilities.url (aggregated, keyed by child job)",
+                    notes="Multi-circuit job: each circuit's result belongs to a child job "
+                    "(job.relations.child_job_ids); see those jobs' records.",
+                )
+            )
+            mark_not_applicable(
+                evidence, RESULT_REPRESENTATIONS, "Multi-circuit parent job; see child jobs."
             )
             return Results(available=False, shots=snapshot.shots)
 

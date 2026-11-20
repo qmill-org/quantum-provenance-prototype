@@ -213,3 +213,7 @@ captured after the `baseline-freeze` tag.
   The retrieval layer requests the fixed path `/results/probabilities`, gets
   404, and the record states that the provider no longer has the results
   (`not_found_by_provider`), which is false.
+  *Fixed after being reported:* the retrieval layer follows the advertised
+  location; the parent record states that its results belong to the child
+  jobs listed in `job.relations.child_job_ids`, and the two child jobs are
+  captured with their own records (`parent_job_id`, one distribution each).

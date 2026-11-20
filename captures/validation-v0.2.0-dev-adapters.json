@@ -1077,23 +1077,121 @@
         "job.relations": "provider_supplied",
         "job.shots": "unavailable",
         "job.status": "provider_supplied",
-        "results.estimated_measurement_counts": "unavailable",
-        "results.measurement_counts": "unavailable",
-        "results.measurement_probabilities": "unavailable",
+        "results.estimated_measurement_counts": "not_applicable",
+        "results.measurement_counts": "not_applicable",
+        "results.measurement_probabilities": "not_applicable",
         "software.framework_versions": "unavailable",
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
         "derived": 1,
-        "not_applicable": 2,
+        "not_applicable": 5,
         "provider_supplied": 10,
-        "unavailable": 11
+        "unavailable": 8
       },
       "provider": "ionq",
       "schema_valid": true,
       "upstream": {
         "get_device_details": "ok",
-        "get_result": "JobNotFoundError",
+        "get_result": "ok",
+        "get_status": "ok"
+      }
+    },
+    {
+      "capture": "06b000ed-feec-76fe-8000-e3d6ea87294d",
+      "device": {
+        "hardware_provider": "ionq",
+        "identifier": "simulator",
+        "platform_provider": "ionq"
+      },
+      "findings": [],
+      "inventory": {
+        "artifact.compiled": "provider_passthrough",
+        "characterization": "unavailable",
+        "compilation.compiler": "unavailable",
+        "compilation.logical_to_physical_mapping": "unavailable",
+        "device.hardware_provider": "provider_supplied",
+        "device.identifier": "provider_supplied",
+        "device.platform_provider": "provider_supplied",
+        "device.qubit_count": "provider_supplied",
+        "device.type": "provider_supplied",
+        "execution.executed_shots": "not_applicable",
+        "execution.queue_duration_ms": "unavailable",
+        "execution.run_duration_ms": "provider_supplied",
+        "execution.total_duration_ms": "derived",
+        "job.created_at": "provider_supplied",
+        "job.ended_at": "provider_supplied",
+        "job.failure": "not_applicable",
+        "job.relations": "provider_supplied",
+        "job.shots": "unavailable",
+        "job.status": "provider_supplied",
+        "results.estimated_measurement_counts": "unavailable",
+        "results.measurement_counts": "not_applicable",
+        "results.measurement_probabilities": "provider_supplied",
+        "software.framework_versions": "unavailable",
+        "software.provider_client": "unavailable"
+      },
+      "inventory_counts": {
+        "derived": 1,
+        "not_applicable": 3,
+        "provider_passthrough": 1,
+        "provider_supplied": 11,
+        "unavailable": 8
+      },
+      "provider": "ionq",
+      "schema_valid": true,
+      "upstream": {
+        "get_device_details": "ok",
+        "get_result": "ok",
+        "get_status": "ok"
+      }
+    },
+    {
+      "capture": "06b000ed-feed-7745-8000-255add763441",
+      "device": {
+        "hardware_provider": "ionq",
+        "identifier": "simulator",
+        "platform_provider": "ionq"
+      },
+      "findings": [],
+      "inventory": {
+        "artifact.compiled": "provider_passthrough",
+        "characterization": "unavailable",
+        "compilation.compiler": "unavailable",
+        "compilation.logical_to_physical_mapping": "unavailable",
+        "device.hardware_provider": "provider_supplied",
+        "device.identifier": "provider_supplied",
+        "device.platform_provider": "provider_supplied",
+        "device.qubit_count": "provider_supplied",
+        "device.type": "provider_supplied",
+        "execution.executed_shots": "not_applicable",
+        "execution.queue_duration_ms": "unavailable",
+        "execution.run_duration_ms": "provider_supplied",
+        "execution.total_duration_ms": "derived",
+        "job.created_at": "provider_supplied",
+        "job.ended_at": "provider_supplied",
+        "job.failure": "not_applicable",
+        "job.relations": "provider_supplied",
+        "job.shots": "unavailable",
+        "job.status": "provider_supplied",
+        "results.estimated_measurement_counts": "unavailable",
+        "results.measurement_counts": "not_applicable",
+        "results.measurement_probabilities": "provider_supplied",
+        "software.framework_versions": "unavailable",
+        "software.provider_client": "unavailable"
+      },
+      "inventory_counts": {
+        "derived": 1,
+        "not_applicable": 3,
+        "provider_passthrough": 1,
+        "provider_supplied": 11,
+        "unavailable": 8
+      },
+      "provider": "ionq",
+      "schema_valid": true,
+      "upstream": {
+        "get_device_details": "ok",
+        "get_result": "ok",
         "get_status": "ok"
       }
     },

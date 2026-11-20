@@ -145,6 +145,16 @@ is a limit of an oracle built on the capture layer. V2 does carry the two
 child job identifiers (`job.relations.child_job_ids`, provider-supplied);
 B and V1 cannot.
 
+After the fix (retrieval layer follows the advertised location; the parent
+re-captured and its two child jobs captured as jobs in their own right):
+cumulative hold-out, frozen questions B 38/2/17/0, V1 43/0/14/0, V2 55/0/2/0,
+V2f 55/0/2/0. Unscored but decisive for R1.4: given the same, now complete,
+input, the parent's per-child results are new to the older adapters. V1
+reports `upstream_request_failed` (false); V2f, frozen after AC-6, reports
+`unrecognized_result_format` (true: the adapter does not understand the
+result); V2 states that the results belong to the child jobs, and each child
+record carries `parent_job_id` and its own distribution.
+
 ## Threats stated in advance
 
 - The baseline, the readers and the questions are designed by the authors of
@@ -264,3 +274,4 @@ whether derived values are relabelled observations or computed estimates
 | 2026-11-20 | Q1 reader: `measurement_counts` always read as observed counts (the contract's definition); previously counts with `derived` evidence were read as client-computed. | The frozen rule contradicted the contract text the protocol requires readers to use; it first mattered for the analog counts. Development results unchanged. |
 | 2026-11-20 | Hold-out job set H1 registered (above) before submission. | Hold-out set otherwise only Aquila, AQT and Belenos. |
 | 2026-11-20 | H1 IonQ results recorded as scored; F16 recorded as unscored, with the oracle limitation. | Results reported before any fix. |
+| 2026-11-20 | F16 fixed: the IonQ retrieval layer follows `results.probabilities.url`; a multi-circuit parent records results as not applicable, pointing to its child jobs (shared rule: an adapter's own not-applicable explanation is not overwritten or warned about). Parent re-captured; child jobs `06b000ed-feec…`, `06b000ed-feed…` captured. | Post-freeze fix of a hold-out failure; before (`b91d015`) and after reported. |

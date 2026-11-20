@@ -178,7 +178,7 @@
       "results_available": true
     },
     "ionq": {
-      "adapter_loc": 647,
+      "adapter_loc": 662,
       "attribute_evidence_counts": {
         "derived": 2,
         "not_applicable": 2,
@@ -286,12 +286,12 @@
   },
   "schema_version": "0.1.0-prototype",
   "shared_provider_independent_implementation_loc": {
-    "adapter.py": 414,
+    "adapter.py": 427,
     "contract.py": 32,
     "models.py": 455,
     "redaction.py": 68,
     "registry.py": 54,
     "service.py": 317
   },
-  "shared_provider_independent_implementation_loc_total": 1340
+  "shared_provider_independent_implementation_loc_total": 1353
 }

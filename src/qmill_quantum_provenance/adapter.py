@@ -169,6 +169,11 @@ def qualify_missing_results(
     a job still pending has none yet; otherwise the upstream error decides.
     """
 
+    if any(
+        item.path == "/results" and item.status is EvidenceStatus.NOT_APPLICABLE
+        for item in evidence
+    ):
+        return  # the adapter already explained why the job has no results of its own
     if job_status in _NOT_RUN:
         replacement = Evidence(
             path="/results",
@@ -454,11 +459,19 @@ def check_status_recognized(raw: str | None, warnings: list[Warning]) -> None:
 
 
 def check_result_recognized(
-    job_status: str, result_retrieved: bool, results: Results, warnings: list[Warning]
+    job_status: str,
+    result_retrieved: bool,
+    results: Results,
+    warnings: list[Warning],
+    evidence: list[Evidence] | None = None,
 ) -> None:
     """Warn when a completed job's result was retrieved but not understood."""
 
-    if job_status == "completed" and result_retrieved and not results.available:
+    explained = any(
+        item.path == "/results" and item.status is EvidenceStatus.NOT_APPLICABLE
+        for item in evidence or []
+    )
+    if job_status == "completed" and result_retrieved and not results.available and not explained:
         warnings.append(
             Warning(
                 "unrecognized_result_format",

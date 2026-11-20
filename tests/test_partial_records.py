@@ -177,3 +177,17 @@ def test_failed_job_carries_the_provider_failure_verbatim() -> None:
     assert "Syntax error" in payload["job"]["failure"]["message"]
     assert _evidence(payload)["/job/failure"]["status"] == "provider_supplied"
     assert _evidence(_record(_fixture(COMPLETED_IBM)))["/job/failure"]["status"] == "not_applicable"
+
+
+IONQ_MULTI = CAPTURES / "ionq" / "01a1f83a-1870-7461-aec9-0a9777ba0fdf"
+
+
+def test_multi_circuit_parent_points_to_children_instead_of_claiming_results_are_gone() -> None:
+    parent = _record(_fixture(IONQ_MULTI))
+    children = parent["job"]["relations"]["child_job_ids"]
+    assert len(children) == 2 and not parent["warnings"]
+    assert _evidence(parent)["/results"]["status"] == "not_applicable"
+    for child in children:
+        record = _record(_fixture(CAPTURES / "ionq" / child))
+        assert record["job"]["relations"]["parent_job_id"] == parent["job"]["external_id"]
+        assert record["results"]["available"] is True

@@ -133,11 +133,25 @@ class LiveIonQIntegration(ProviderAdapter):
         if status != "completed":
             failure = job.get("failure")
             raise ResultUnavailableError(f"Job is {status}" + (f": {failure}" if failure else ""))
-        probabilities = self._get(
-            f"/jobs/{task.provider_job_id}/results/probabilities", "GetJobProbabilities"
-        ).json()
-        self.native["probabilities"] = probabilities
-        self.notes["measurement_counts_origin"] = "none_provider_returns_probabilities"
+        # Follow the location the job advertises (F16); multi-circuit jobs keep
+        # their results elsewhere, keyed by child job.
+        advertised = ((job.get("results") or {}).get("probabilities") or {}).get("url")
+        path = (
+            advertised.removeprefix("/v0.4")
+            if advertised
+            else f"/jobs/{task.provider_job_id}/results/probabilities"
+        )
+        probabilities = self._get(path, "GetJobProbabilities").json()
+        multi = job.get("type") == "ionq.multi-circuit.v1"
+        self.native["per_child_probabilities" if multi else "probabilities"] = probabilities
+        self.notes["measurement_counts_origin"] = (
+            "per_child_job_results" if multi else "none_provider_returns_probabilities"
+        )
+        payload = (
+            {"per_child_probabilities": probabilities}
+            if multi
+            else {"histogram": probabilities, "qubits": (job.get("stats") or {}).get("qubits")}
+        )
         return TaskResult(
             provider="ionq",
             provider_job_id=task.provider_job_id,
@@ -145,10 +159,7 @@ class LiveIonQIntegration(ProviderAdapter):
             measurement_counts={},
             compiled_circuit=self.get_compiled_circuit(task),
             compiled_circuit_metrics=(job.get("stats") or None),
-            raw_payload={
-                "histogram": probabilities,
-                "qubits": (job.get("stats") or {}).get("qubits"),
-            },
+            raw_payload=payload,
         )
 
     def get_compiled_circuit(self, task: TaskHandle) -> str | None:
