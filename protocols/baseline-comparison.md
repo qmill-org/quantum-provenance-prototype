@@ -30,7 +30,7 @@ Quandela; its Quandela cells are scored "no record".
 ### Baseline fields (fixed)
 
 `provider` (platform the job was retrieved from), `job_id`, `status` (provider
-string, lower-cased), `created_at`, `ended_at`, `shots`, `qpu_name`,
+string, lower-cased), `created_at`, `ended_at`, `shots`, `qpu_name` (the target the job names),
 `is_simulator`, `qubit_count`, `last_calibrated` and `calibration` (device
 characterization as returned with the device details), `counts`
 (`TaskResult.measurement_counts`), `compiled_circuit`
@@ -120,3 +120,5 @@ undeterminable answers. Reported per question and per capture set, as counts
 | Date | Change | Reason |
 |---|---|---|
 | 2026-11-20 | Protocol committed. | — |
+| 2026-11-20 | Baseline `qpu_name` taken from the target the job names instead of the device's display name. | First run scored correct display names ("Forte 1") as misleading against device identifiers; the job's own target field is the more direct accessor. Before freeze; no hold-out data. |
+| 2026-11-20 | V1 harness: a recorded provider error is raised with its recorded class when `v0.1.0` defines it (as the current replay does), not as a generic error. | The generic error made `v0.1.0` drop three records it produces in the frozen `v0.1.0` report (cancelled/failed jobs). Harness only. Before freeze. |
