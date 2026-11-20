@@ -123,8 +123,80 @@ warning), or **wrong**.
 Counts per stage, family, arm and measure; every non-expected cell listed.
 Results in `artifact/failure-injection.json`. No effort measures.
 
+## Results before fixes (2026-11-20, `artifact/failure-injection.json` at this commit)
+
+### Stage A — transport faults (108 cells; V2 retrieval layers)
+
+| Provider | as expected | other integration error | escaped | n/a |
+|---|---|---|---|---|
+| Braket | 17 | 1 | 7 | 2 |
+| IBM | 24 | 3 | 0 | 0 |
+| IonQ | 18 | 0 | 9 | 0 |
+| Quandela | 25 | 0 | 2 | 0 |
+
+Escaped (no record would be produced): Braket timeouts crash the error
+translator itself (botocore timeout exceptions have `response = None`) and
+malformed or truncated S3 `results.json` and `deviceCapabilities` raise
+`JSONDecodeError`; IonQ lets `httpx` timeouts and `JSONDecodeError` through
+on every operation; Quandela's own parse of the inner results document
+escapes. Wrong error: IBM rate limiting (HTTP 429) is not recognized (generic
+error); S3 `InvalidAccessKeyId` is not recognized as an access failure.
+
+### Stage B — seam faults (cases failing each measure)
+
+| Arm | Family | cases | crash | invalid | fabricated | wrong reason | not isolated | no warning |
+|---|---|---|---|---|---|---|---|---|
+| V1 | upstream error | 60 | 40 | 0 | 0 | 20 | 0 | 0 |
+| V1 | missing sections | 185 | 0 | 0 | 0 | 0 | 0 | 185 |
+| V1 | malformed | 19 | 2 | 8 | 11 | 0 | 0 | 17 |
+| V2 | upstream error | 72 | 0 | 0 | 0 | 72 | 0 | 0 |
+| V2 | missing sections | 222 | 0 | 0 | 6 | 0 | 6 | 129 |
+| V2 | malformed | 23 | 6 | 5 | 9 | 0 | 0 | 16 |
+
+(Not applicable: 13 malformed cases where the base has no such value.)
+
+V1: every status or result retrieval error leaves no record (40); device
+errors give records with a generic reason. V2 never crashes on upstream
+errors, but:
+
+- **wrong reasons** (all 72): a failed status retrieval states reasons at
+  three paths only (456 attribute-level misses); a failed device or result
+  retrieval is reported as `not_exposed_by_provider` for `device.type`,
+  `device.qubit_count`, `characterization` and `execution.executed_shots`
+  (the provider does expose them; retrieval failed); an absent artifact role
+  (`artifact.compiled`) cannot carry a reason at all in the contract;
+- **fabrication** (6): with the Braket result payload missing, the Braket-IonQ
+  record falls back to the SDK's counts expanded from probabilities and labels
+  them `provider_supplied` (F3 again);
+- **malformed values** (6 crashes, 9 passed through as provider-supplied,
+  5 schema-invalid records): string shots and counts, a non-numeric
+  characterization metric and an unparsable Quandela time are not checked.
+- **not isolated** (6): Quandela executed shots and requested shots share one
+  provider field, so removing it affects both (a coupling, not an error).
+- **no warning** for 129 missing-section cases: a missing section is reported
+  per attribute in the evidence, not as a warning. M7 was stated as a measure,
+  not a criterion; reported as is.
+
+### Stage C — real interface change (IonQ run duration)
+
+| Response | V1 | V2 |
+|---|---|---|
+| v0.3 (`execution_time_ms`) | delivered | delivered |
+| v0.4 (`execution_duration_ms`), real capture | silently lost | delivered |
+| unknown future rename (control) | silently lost | flagged |
+
+The IBM input-layout change (PUB list → v2.0) is absorbed by the retrieval
+layer: requested shots are read from both layouts (4096 and 1000 in the
+check).
+
 ## Log
 
 | Date | Change | Reason |
 |---|---|---|
 | 2026-11-20 | Protocol committed. | — |
+| 2026-11-20 | Harness: Braket Stage A fake used the masked placeholder account, which makes the layer call STS; replaced by an ordinary account id. | Harness error; no layer change. |
+| 2026-11-20 | Harness: cases that remove metadata excluded from M4–M6 when metadata is one of several removed sections (the protocol's rule; the code applied it to the single case only). | Implementation did not follow the protocol. |
+| 2026-11-20 | M6 compares evidence status only; an attribute the base record reports as `derived` may change when a source is removed (reported as a dependency, still checked for fabrication). | First run counted correct derived-value changes (e.g. Braket executed shots counted from the removed measurements) as isolation failures. |
+| 2026-11-20 | M5 takes the reason at the attribute's evidence path or its nearest ancestor (e.g. `/results` for `results.*`). | A section-level reason applies to its attributes. |
+| 2026-11-20 | "Unparsable creation time" is injected in the provider field the adapter parses itself (IBM `timestamps.created`, Quandela `creation_datetime`); the seam parses snapshot times itself. Not applicable to Braket and IonQ bases. | Implementation detail fixed before the first full run. |
+| 2026-11-20 | Results before fixes recorded (above). | Reported before any fix. |
