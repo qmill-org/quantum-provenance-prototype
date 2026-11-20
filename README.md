@@ -1,4 +1,5 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21451599.svg)](https://doi.org/10.5281/zenodo.21451599)
+[![ci](https://github.com/qmill-org/quantum-provenance-prototype/actions/workflows/ci.yml/badge.svg)](https://github.com/qmill-org/quantum-provenance-prototype/actions/workflows/ci.yml)
 
 # Quantum Provenance Prototype
 
@@ -7,84 +8,91 @@ Reproducible research artifact for the paper:
 > **Toward Standardized Quantum Provenance: A Cross-Provider Analysis, Unified
 > API, and Reference Prototype**
 
-This repository contains the self-contained reference prototype and evaluation
-harness for a unified quantum-provenance model spanning three provider
-platforms (Amazon Braket, IBM Quantum, IonQ). It reproduces the paper's
-evaluation entirely from sanitized, checked-in fixtures — **no network access,
-credentials, or provider SDKs are required**.
+An evidence-aware provenance contract (OpenAPI), provider adapters for Amazon
+Braket, IBM Quantum, IonQ and Quandela, live retrieval layers, a reference
+HTTP service, and the paper's experiments. Everything is reproducible offline
+from **sanitized captures of real, purpose-run provider jobs**; no network
+access or provider credentials are needed except to take new captures.
 
-The package (`qmill_quantum_provenance`) is a standalone extraction of the
-prototype; it does not depend on any private QMill code.
-
-## Provenance of this artifact
+Version `0.2.0` is the revision for the reviews; `0.1.0` (the artifact as
+submitted, DOI above) is unchanged. See [CHANGELOG.md](CHANGELOG.md).
 
 | Field | Value |
 | --- | --- |
-| Paper | *Toward Standardized Quantum Provenance: A Cross-Provider Analysis, Unified API, and Reference Prototype* |
+| Contract / schema version | `0.2.0` (accepts `0.1.0-prototype` records; changes are additive) |
+| Attribute inventory | `0.2.0` ([`artifact/attribute-inventory.json`](artifact/attribute-inventory.json)) |
+| Provider-interface verification cutoff (documentation analysis) | 2026-07-19 |
+| Live captures | 2026-11-18 to 2026-11-20 |
 | Artifact author | Jouni Peltonen |
-| Prototype evaluation cutoff date | 2026-07-17 |
-| Provider-interface verification cutoff date | 2026-07-19 |
-| Schema version | `0.1.0-prototype` |
-| Report format | `qmill.provenance.evaluation` v`0.2.0` |
-| DOI | [10.5281/zenodo.21451599](https://doi.org/10.5281/zenodo.21451599) |
 
 ## Layout
 
 ```
-src/qmill_quantum_provenance/   # the prototype package
-  models.py         # canonical provenance domain model (mirrors the OpenAPI contract)
-  adapter.py        # provenance adapter interface + request/context dataclasses
-  registry.py       # provider -> adapter registry
-  service.py        # create_record / get_provenance service operations
-  contract.py       # loads openapi.json, validates records against the schema
-  redaction.py      # secret/PII redaction applied before records are emitted
-  replay.py         # offline ProviderAdapter that replays a captured fixture
-  integration.py    # minimal provider-integration interface (inlined; see module docstring)
-  evaluation.py     # reproducible evaluation harness (metrics + experiments)
-  generate_examples.py  # regenerates the canonical example records
-  adapters/{braket,ibm,ionq}.py  # per-provider provenance adapters
-  openapi.json      # canonical contract (source of truth, shipped as package data)
-tests/              # pytest suite + sanitized fixtures
-artifact/           # committed, drift-checked evaluation outputs (paper values)
-supplementary/      # narrative supplementary material for the paper
+src/qmill_quantum_provenance/
+  openapi.json        # the contract (source of truth, shipped as package data)
+  models.py           # record model mirroring the contract
+  adapter.py          # adapter interface and shared mapping rules
+  service.py          # in-process service (create / get)
+  adapters/           # braket, ibm, ionq, quandela provenance adapters
+  live/               # live retrieval layers, capture, sanitize, validate
+  replay.py           # offline replay of a capture through the retrieval interface
+  server/             # reference HTTP service (FastAPI, SQLite, API keys)
+  comparison/         # baseline comparison: flat baseline, oracle, readers
+  experiments/        # failure injection: transport, seam and drift stages
+  evaluation.py       # attribute classification report over the evaluation captures
+captures/             # sanitized live captures + findings F1-F18 (README)
+runs/                 # run ledgers and programs of the purpose-run jobs
+scripts/              # submission scripts for those jobs (need credentials)
+protocols/            # pre-registered protocols, with results and change logs
+artifact/             # committed, drift-checked outputs cited by the paper
+supplementary/        # July 2026 provider evidence ledgers and profiles
+tests/                # pytest suite (offline)
 ```
 
-## Requirements
-
-- Python 3.12 (>=3.12,<3.14)
-- The only runtime dependency is `jsonschema>=4.0`.
-
-## Reproducing the evaluation
+## Reproducing the results
 
 ```bash
-# 1. Create an isolated environment and install the package
-uv venv --python 3.12
-source .venv/bin/activate
-uv pip install -e ".[dev]"
+uv sync --extra dev --extra http --extra live    # or: pip install -e ".[dev,http,live]"
 
-# 2. Run the test suite (34 tests, no network/credentials)
-pytest tests/
+uv run pytest -q                                  # offline test suite
+uv run python -m qmill_quantum_provenance.evaluation --check
+uv run python -m qmill_quantum_provenance.generate_examples --check
 
-# 3. Verify the committed evaluation report is reproducible (exits non-zero on drift)
-python -m qmill_quantum_provenance.evaluation --check
-
-# 4. Verify the committed example records are reproducible
-python -m qmill_quantum_provenance.generate_examples --check
+# experiments (rewrite the committed outputs; compare with git diff)
+uv run python -m qmill_quantum_provenance.live.validate captures \
+    --report captures/validation-v0.2.0-adapters.json
+uv run python -m qmill_quantum_provenance.comparison.run \
+    --output artifact/baseline-comparison.json     # needs the git tags (full clone)
+uv run python -m qmill_quantum_provenance.experiments.run \
+    --output artifact/failure-injection.json
 ```
 
-`pip` may be used instead of `uv` throughout.
+| Output | What it holds | Protocol |
+| --- | --- | --- |
+| [`artifact/evaluation-results.json`](artifact/evaluation-results.json) | Every inventory attribute classified per provider for one real capture per provider path, built with the application context from the run ledgers | — |
+| [`artifact/examples/`](artifact/examples) | The four corresponding provenance records | — |
+| [`captures/validation-v0.2.0-adapters.json`](captures/validation-v0.2.0-adapters.json) | Every capture mapped, schema-validated and checked against what the provider returned (`validation-v0.1.0-adapters.json`: the submitted adapters, frozen) | [captures/README.md](captures/README.md) |
+| [`artifact/baseline-comparison.json`](artifact/baseline-comparison.json) | Flat baseline vs `v0.1.0` vs `v0.2.0` on development and hold-out captures | [baseline-comparison.md](protocols/baseline-comparison.md) |
+| [`artifact/failure-injection.json`](artifact/failure-injection.json) | Transport faults, seam faults and a real interface change | [failure-injection.md](protocols/failure-injection.md) |
+| [`protocols/new-provider-quandela.md`](protocols/new-provider-quandela.md) | New-provider integration, with measures and change log | — |
 
-### Regenerating outputs
+Each protocol was committed before its experiment ran and records its results
+before and after any fix, with the reason for every later change.
 
-```bash
-# Rewrite the evaluation report in place
-python -m qmill_quantum_provenance.evaluation --output artifact/evaluation-results.json
+## Live captures and new jobs
 
-# Rewrite the example provenance records in place
-python -m qmill_quantum_provenance.generate_examples
-```
+Captures are taken with `python -m qmill_quantum_provenance.live.capture
+<provider> <job ids> --out captures` and need provider credentials in the
+environment (see `scripts/` for the submission side and `runs/` for what was
+submitted). Captures are sanitized before they are written: secrets,
+AWS account and IBM IAM identifiers, and credentials in free text are masked,
+and program text is replaced by its SHA-256 digest and size.
 
-### Reference HTTP service
+The captures contain responses about the authors' own purpose-run jobs. The
+synthetic, documentation-derived fixtures of `v0.1.0` remain as unit-test
+fixtures under [`tests/fixtures/`](tests/fixtures).
+
+## Reference HTTP service
 
 A reference service (not a production deployment) serves the contract over
 HTTP with SQLite persistence, API-key authentication bound to a tenant, record
@@ -115,60 +123,18 @@ st run http://127.0.0.1:8000/v1/openapi.json -H "Authorization: Bearer change-me
     --checks all --mode all --max-examples 200
 ```
 
-## Expected output
+## Supplementary material
 
-- **Tests:** `34 passed`.
-- **`--check` commands:** both print an "up to date" message and exit `0`.
-
-The committed evaluation report ([`artifact/evaluation-results.json`](artifact/evaluation-results.json))
-records the headline metrics per provider (handwritten adapter lines of code and
-evidence-category counts):
-
-| Provider | Adapter LOC | Evidence attributes |
-| --- | --- | --- |
-| Braket | 428 | 25 |
-| IBM | 486 | 27 |
-| IonQ | 526 | 16 |
-
-Shared, provider-independent implementation: **861** lines. No inventory
-attribute is left `unclassified` for any provider. The report also contains
-three runnable experiments (schema-change backward compatibility, provider-input
-isolation, and partial-record graceful degradation).
-
-## Synthetic fixtures and public provider evidence
-
-The prototype runs against **sanitized, synthetic fixtures** under
-[`tests/fixtures/`](tests/fixtures), one `completed.json` (and a
-`completed_no_calibration.json` for the partial-record experiment) per provider.
-These fixtures are hand-authored, structurally faithful representations of the
-kind of job records each provider platform returns:
-
-- **Shape and field semantics** mirror each provider's public result / device
-  schemas (Amazon Braket task + device calibration, IBM Quantum job + backend
-  properties, IonQ job histogram + characterization). The mapping from public
-  provider evidence to the fixture fields is documented in
-  [`supplementary/provider-profiles/`](supplementary/provider-profiles) and
-  [`supplementary/provider-evidence/`](supplementary/provider-evidence).
-- **All secrets and account-specific identifiers are placeholders.** Fixtures
-  use synthetic values (e.g. `FAKE-*` markers, example ARNs/IDs). The redaction
-  layer ([`redaction.py`](src/qmill_quantum_provenance/redaction.py)) and its
-  tests assert that no such material ever reaches an emitted record.
-- **No proprietary or exported provider data is included.** The fixtures are
-  independent reconstructions from public documentation, not captures of real
-  jobs. This keeps the artifact freely redistributable and deterministic.
-
-A complete, human-readable example of a fully populated provenance response is
-provided in
-[`supplementary/complete-example-provenance-response.json`](supplementary/complete-example-provenance-response.json).
-Supplementary conceptual and comparative materials are also available under
-[`supplementary/conceptual-api/`](supplementary/conceptual-api/) and
-[`supplementary/provider-profiles/platform-specific-findings.md`](supplementary/provider-profiles/platform-specific-findings.md).
+[`supplementary/provider-evidence/`](supplementary/provider-evidence) holds the
+July 2026 evidence ledgers of the 15-platform documentation analysis (with
+dated errata), and [`supplementary/provider-profiles/`](supplementary/provider-profiles)
+the per-platform findings. [`supplementary/conceptual-api/`](supplementary/conceptual-api)
+holds the conceptual API example from the paper.
 
 ## Citation
 
-If you use this artifact, please cite it via [`CITATION.cff`](CITATION.cff).
-A versioned release of this repository is archived at Zenodo: 
-[10.5281/zenodo.21451599](https://doi.org/10.5281/zenodo.21451599)
+Please cite via [`CITATION.cff`](CITATION.cff). Versions are archived at
+Zenodo; `0.1.0`: [10.5281/zenodo.21451599](https://doi.org/10.5281/zenodo.21451599).
 
 ## License
 

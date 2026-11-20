@@ -1,6 +1,6 @@
 {
     "title": "Quantum Provenance Prototype: reproducible reference artifact",
-    "description": "Self-contained reference prototype and evaluation harness for a unified quantum-provenance model spanning Amazon Braket, IBM Quantum, and IonQ. Accompanies the paper \"Toward Standardized Quantum Provenance: A Cross-Provider Analysis, Unified API, and Reference Prototype\". Runs entirely from sanitized, synthetic fixtures with no network access or credentials.",
+    "description": "Reference prototype, live-capture evidence and evaluation harness for an evidence-aware quantum-provenance contract with adapters for Amazon Braket, IBM Quantum, IonQ and Quandela. Accompanies the paper \"Toward Standardized Quantum Provenance: A Cross-Provider Analysis, Unified API, and Reference Prototype\". Reproducible offline from sanitized captures of real, purpose-run provider jobs; includes pre-registered baseline-comparison and failure-injection experiments and a reference HTTP service.",
     "upload_type": "software",
     "version": "0.1.0",
     "license": "MIT",
@@ -10,10 +10,12 @@
         }
     ],
     "keywords": [
-        "quantum computing",
-        "provenance",
-        "reproducibility",
+        "metadata",
         "openapi",
-        "metadata"
+        "provenance",
+        "provenance api",
+        "quantum computing",
+        "quantum software engineering",
+        "reproducibility"
     ]
 }
