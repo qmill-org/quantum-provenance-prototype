@@ -26,7 +26,25 @@ from .baseline import flat_record
 from .oracle import load_ledgers, parse_time, truth
 from .readers import UNDETERMINABLE, read_baseline, read_contract, score
 
-QUESTIONS = ("Q0", "Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "N1", "N2", "N3")
+QUESTIONS = (
+    "Q0",
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9",
+    "Q10",
+    "Q11",
+    "N1",
+    "N2",
+    "N3",
+)
+# Added after the freeze (protocol log); reported separately from the frozen totals.
+POST_FREEZE_QUESTIONS = frozenset({"Q11"})
 OUTCOMES = ("correct", "misleading", "undeterminable", "no_record")
 FREEZE_TAG = "baseline-freeze"
 
@@ -185,7 +203,8 @@ def _render_summary(summary) -> dict[str, Any]:
                 if question in questions:
                     counts = questions[question]
                     per_question[question] = {o: counts.get(o, 0) for o in OUTCOMES}
-                    totals.update(counts)
+                    if question not in POST_FREEZE_QUESTIONS:
+                        totals.update(counts)
             rendered[capture_set][arm] = {
                 "total": {o: totals.get(o, 0) for o in OUTCOMES},
                 "per_question": per_question,
@@ -205,7 +224,10 @@ def markdown(report: dict[str, Any]) -> str:
             for data in arms.values():
                 counts = data["total"] if question == "total" else data["per_question"][question]
                 cells.append("/".join(str(counts[o]) for o in OUTCOMES))
-            lines.append(f"| {question} | " + " | ".join(cells) + " |")
+            label = {"total": "total (frozen questions)"}.get(question, question)
+            if question in POST_FREEZE_QUESTIONS:
+                label = f"{question} (post-freeze)"
+            lines.append(f"| {label} | " + " | ".join(cells) + " |")
         lines.append("")
     return "\n".join(lines)
 

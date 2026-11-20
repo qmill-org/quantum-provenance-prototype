@@ -80,6 +80,13 @@ not only test what V2 fixed):
 
 Record existence (Q0): did the arm produce a record at all?
 
+Added after the freeze (see log; reported separately, not in the frozen
+totals):
+
+| ID | Question | Ground truth |
+|---|---|---|
+| Q11 | Do the recorded outcome counts equal the provider's raw per-shot data, outcome by outcome? | Braket `measurements` tallied (gate: bit strings; analog: the Braket SDK's documented `e`/`r`/`g` site convention, successful shots only); Quandela raw `counts`. IBM raw samples are not stored in the captures: not applicable. |
+
 ## Scoring
 
 Each applicable (capture, question) pair is scored for each arm:
@@ -185,6 +192,10 @@ The pre-registered Q1 asks only which kind of result the provider returned
 recorded outcomes are correct, so the scored table does not show the failure.
 This is reported as a limitation of the question set, not re-scored.
 
+Post-freeze Q11 (outcome content), before any fix: B 0/2/0/0, V1 0/2/0/0,
+V2 0/2/0/0 (misleading in every arm). Development set: B 6/0/0/0, V1 4/0/0/2,
+V2 6/0/0/0.
+
 ## Log
 
 | Date | Change | Reason |
@@ -193,3 +204,4 @@ This is reported as a limitation of the question set, not re-scored.
 | 2026-11-20 | Baseline `qpu_name` taken from the target the job names instead of the device's display name. | First run scored correct display names ("Forte 1") as misleading against device identifiers; the job's own target field is the more direct accessor. Before freeze; no hold-out data. |
 | 2026-11-20 | V1 harness: a recorded provider error is raised with its recorded class when `v0.1.0` defines it (as the current replay does), not as a generic error. | The generic error made `v0.1.0` drop three records it produces in the frozen `v0.1.0` report (cancelled/failed jobs). Harness only. Before freeze. |
 | 2026-11-20 | Hold-out results for the two Aquila jobs recorded as scored; F15 recorded as an unscored failure. No change to adapters, oracle or readers yet. | Hold-out discipline: results are reported before any fix. |
+| 2026-11-20 | Q11 added (outcome content), scored separately from the frozen totals. | F15 showed that the frozen Q1 checks only the kind of result, so a corrupted result scores as correct. Added after hold-out data were seen; reported as post-freeze. |

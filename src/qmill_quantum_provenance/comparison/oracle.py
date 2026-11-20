@@ -41,6 +41,34 @@ def load_ledgers(runs: Path) -> dict[str, dict[str, Any]]:
     return requests
 
 
+_AHS_STATES = "erg"
+
+
+def tally_shots(measurements: list[Any]) -> dict[str, int]:
+    """Outcome counts from raw per-shot data (Q11, added after the freeze).
+
+    Gate-model shots are bit lists. Analog (AHS) shots use the Braket SDK's
+    documented convention: an empty site is ``e``, a Rydberg atom (post 0) ``r``,
+    a ground-state atom ``g``; only successful shots count.
+    """
+
+    counts: dict[str, int] = {}
+    for shot in measurements:
+        if isinstance(shot, dict):
+            if (shot.get("shotMetadata") or {}).get("shotStatus") != "Success":
+                continue
+            result = shot.get("shotResult") or {}
+            pre, post = result.get("preSequence") or [], result.get("postSequence") or []
+            key = "".join(
+                _AHS_STATES[0 if a == 0 else 1 if b == 0 else 2]
+                for a, b in zip(pre, post, strict=True)
+            )
+        else:
+            key = "".join(str(bit) for bit in shot)
+        counts[key] = counts.get(key, 0) + 1
+    return counts
+
+
 def _relation(kind: str | None, ident: str | None) -> str:
     return f"{kind}:{ident}" if ident else "none"
 
@@ -76,6 +104,7 @@ def truth(directory: Path, ledgers: dict[str, dict[str, Any]]) -> dict[str, Any]
         if results.get("measurements"):
             answers["Q1"] = "observed_counts"
             answers["Q7"] = len(results["measurements"])
+            answers["Q11"] = tally_shots(results["measurements"])
         elif results.get("measurementProbabilities"):
             answers["Q1"] = "probabilities"
         compiled = notes.get("compiled_program")
@@ -139,6 +168,8 @@ def truth(directory: Path, ledgers: dict[str, dict[str, Any]]) -> dict[str, Any]
         answers["Q4"] = "quandela"
         if native.get("job_result"):
             answers["Q1"] = "observed_counts"
+            if isinstance(native["job_result"].get("counts"), dict):
+                answers["Q11"] = native["job_result"]["counts"]
         if notes.get("compiled_program_origin") == "provider_compiled_artifact":
             answers["Q2"] = "provider"
         if status == "completed" and job_status.get("shots") is not None:

@@ -56,6 +56,7 @@ def read_baseline(record: dict[str, Any]) -> dict[str, Any]:
     answers["Q8"] = UNDETERMINABLE
     answers["Q9"] = UNDETERMINABLE
     answers["Q10"] = UNDETERMINABLE
+    answers["Q11"] = record.get("counts") or UNDETERMINABLE
     answers["N1"] = record.get("qpu_name") or UNDETERMINABLE
     answers["N2"] = _times(record.get("created_at"), record.get("ended_at"))
     answers["N3"] = record.get("qubit_count") or UNDETERMINABLE
@@ -158,6 +159,7 @@ def read_contract(record: dict[str, Any]) -> dict[str, Any]:
     answers["Q9"] = (job.get("failure") or {}).get("code") or UNDETERMINABLE
     simulation = (record.get("extensions") or {}).get("simulation.ionq") or {}
     answers["Q10"] = simulation.get("noise_model") or UNDETERMINABLE
+    answers["Q11"] = results.get("measurement_counts") or UNDETERMINABLE
     device = record.get("device") or {}
     identifier = device.get("identifier")
     answers["N1"] = identifier if identifier and identifier != "unknown" else UNDETERMINABLE
