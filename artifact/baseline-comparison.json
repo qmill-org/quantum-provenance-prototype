@@ -4,7 +4,7 @@
   "arms": {
     "B": "flat baseline (comparison/baseline.py)",
     "V1": "v0.1.0",
-    "V2": "b91d015",
+    "V2": "075ad89",
     "V2f": "baseline-freeze (adapters as frozen for the hold-out set)"
   },
   "summary": {

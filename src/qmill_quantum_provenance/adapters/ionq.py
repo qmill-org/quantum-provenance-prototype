@@ -30,6 +30,8 @@ from typing import Any
 
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    clean_seam,
+    requalify_after_failure,
     check_status_recognized,
     add_executed_shots,
     check_expected_fields,
@@ -249,12 +251,14 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
         operations.append(OperationObservation("adapter", "get_status"))
 
         target = snapshot.provider_target_id or snapshot.target_id
+        device_error: Exception | None = None
         device_details = None
         if target:
             try:
                 device_details = integration.get_device_details(target, region=request.region)
                 operations.append(OperationObservation("adapter", "get_device_details"))
             except Exception as exc:  # provider/lookup failure is non-fatal
+                device_error = exc
                 warnings.append(Warning("device_details_unavailable", str(exc)))
 
         result_data = None
@@ -266,6 +270,9 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
             result_error = exc
             warnings.append(Warning("results_unavailable", str(exc)))
 
+        snapshot, device_details, result_data = clean_seam(
+            snapshot, device_details, result_data, warnings
+        )
         job = self._build_job(request, snapshot, evidence)
         device = self._build_device(target, device_details, evidence)
         results = self._build_results(snapshot, result_data, evidence)
@@ -294,6 +301,7 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
         characterization = self._build_characterization(device_details, snapshot, job, evidence)
         extensions = _simulation_extension(snapshot.metadata, device.type, evidence)
 
+        requalify_after_failure(evidence, artifacts, job.status, device_error, result_error)
         return AdapterResult(
             job=job,
             device=device,

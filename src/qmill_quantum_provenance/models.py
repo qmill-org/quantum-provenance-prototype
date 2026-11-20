@@ -167,11 +167,13 @@ class Evidence:
     derivation: str | None = None
     provider_field: str | None = None
     notes: str | None = None
+    artifact_role: ArtifactRole | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return _compact(
             {
                 "path": self.path,
+                "artifact_role": self.artifact_role.value if self.artifact_role else None,
                 "status": self.status.value,
                 "reason": self.reason.value if self.reason else None,
                 "source_paths": self.source_paths or None,

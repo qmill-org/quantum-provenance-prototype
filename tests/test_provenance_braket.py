@@ -107,8 +107,12 @@ def test_braket_mapping_normalizes_expected_fields() -> None:
     # operator (parsed from the device ARN) are distinct and both preserved.
     assert record.device.platform_provider == "amazon_braket"
     assert record.device.hardware_provider == "ionq"
-    assert record.results.available is True
-    assert record.results.measurement_counts == {"00": 511, "11": 489}
+    # The synthetic v0.1.0 fixture carries IonQ-via-Braket counts without the
+    # result document; their origin (observed or expanded from probabilities,
+    # F3) cannot be established, so they are not presented as results.
+    assert record.results.available is False
+    results_evidence = next(e for e in payload["evidence"] if e["path"] == "/results")
+    assert results_evidence["reason"] == "insufficient_source_data"
 
     # Derived execution timing: 10:00:00 -> 10:00:03.5 == 3500 ms.
     assert record.execution is not None

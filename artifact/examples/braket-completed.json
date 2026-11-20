@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0-prototype",
   "record_id": "qprov:braket:782f818c22da425e05074b501ca26a26",
-  "generated_at": "2026-11-20T09:15:25.068725+00:00",
-  "retrieved_at": "2026-11-20T09:15:25.068691+00:00",
+  "generated_at": "2026-11-20T09:32:38.606076+00:00",
+  "retrieved_at": "2026-11-20T09:32:38.606055+00:00",
   "adapter": {
     "provider": "braket",
     "name": "braket-provenance-adapter",
@@ -59,13 +59,8 @@
     }
   ],
   "results": {
-    "available": true,
-    "shots": 1000,
-    "outcome_basis": "bitstring",
-    "measurement_counts": {
-      "00": 511,
-      "11": 489
-    }
+    "available": false,
+    "shots": 1000
   },
   "evidence": [
     {
@@ -130,19 +125,10 @@
       "notes": "Underlying hardware operator behind the Braket platform."
     },
     {
-      "path": "/results/measurement_counts",
-      "status": "provider_supplied",
-      "provider_field": "GateModelQuantumTaskResult.measurement_counts"
-    },
-    {
-      "path": "/results/measurement_probabilities",
-      "status": "not_applicable",
-      "notes": "Observed per-shot counts; no probability representation."
-    },
-    {
-      "path": "/results/estimated_measurement_counts",
-      "status": "not_applicable",
-      "notes": "Observed per-shot counts; no probability representation."
+      "path": "/results",
+      "status": "unavailable",
+      "reason": "insufficient_source_data",
+      "notes": "Result document missing; whether the counts were observed or expanded from probabilities cannot be established."
     },
     {
       "path": "/artifacts/0",
@@ -222,7 +208,12 @@
       "status": "application_captured"
     }
   ],
-  "warnings": [],
+  "warnings": [
+    {
+      "code": "unrecognized_result_format",
+      "message": "Result retrieved for a completed job, but it holds no result representation this adapter maps; reported unavailable."
+    }
+  ],
   "operations": [
     {
       "actor": "adapter",

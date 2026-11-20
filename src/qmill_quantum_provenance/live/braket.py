@@ -50,6 +50,10 @@ _DENIED = {
     "AccessDeniedException",
     "AccessDenied",
     "UnrecognizedClientException",
+    "InvalidAccessKeyId",
+    "SignatureDoesNotMatch",
+    "ExpiredToken",
+    "ExpiredTokenException",
     "ExpiredTokenException",
     "InvalidSignatureException",
     "403",
@@ -63,7 +67,8 @@ def _region_from_arn(arn: str) -> str | None:
 
 
 def _translate(exc: Exception, what: str) -> ProviderIntegrationError:
-    code = getattr(exc, "response", {}).get("Error", {}).get("Code", "")
+    response = getattr(exc, "response", None)  # None on botocore timeouts
+    code = (response or {}).get("Error", {}).get("Code", "") if isinstance(response, dict) else ""
     message = f"{what}: {code or type(exc).__name__}: {exc}"
     if code in _NOT_FOUND:
         return JobNotFoundError(message)
@@ -72,6 +77,13 @@ def _translate(exc: Exception, what: str) -> ProviderIntegrationError:
     if code in _THROTTLED:
         return ThrottledError(message)
     return ProviderIntegrationError(message)
+
+
+def _parse_json(body: Any, what: str) -> Any:
+    try:
+        return json.loads(body)
+    except ValueError as exc:  # malformed or truncated document
+        raise ProviderIntegrationError(f"{what}: unreadable JSON: {exc}") from exc
 
 
 _AHS_STATES = "erg"
@@ -243,9 +255,10 @@ class LiveBraketIntegration(ProviderAdapter):
                 obj = self._session.client("s3", region_name=task.region).get_object(
                     Bucket=bucket, Key=f"{directory}/results.json"
                 )
+                body = obj["Body"].read()
             except Exception as exc:
                 raise _translate(exc, "S3 GetObject results.json") from exc
-            self.native["results_json"] = json.loads(obj["Body"].read())
+            self.native["results_json"] = _parse_json(body, "S3 results.json")
         return self.native["results_json"]
 
     def get_result(self, task: TaskHandle) -> TaskResult:
@@ -291,7 +304,7 @@ class LiveBraketIntegration(ProviderAdapter):
         except Exception as exc:
             raise _translate(exc, "GetDevice") from exc
         response.pop("ResponseMetadata", None)
-        capabilities = json.loads(response.get("deviceCapabilities") or "{}")
+        capabilities = _parse_json(response.get("deviceCapabilities") or "{}", "deviceCapabilities")
         self.native["get_device"] = {**response, "deviceCapabilities": capabilities}
         paradigm = capabilities.get("paradigm") or {}
         return DeviceDetails(

@@ -125,7 +125,26 @@ class ProvenanceService:
             results=Results(available=False),
             evidence=[
                 Evidence(path=path, status=EvidenceStatus.UNAVAILABLE, reason=reason, notes=note)
-                for path in ("/job/status", "/device/identifier", "/results")
+                for path in (
+                    "/job",
+                    "/job/status",
+                    "/device",
+                    "/device/identifier",
+                    "/results",
+                    "/execution",
+                    "/characterization",
+                    "/compilation",
+                    "/software",
+                )
+            ]
+            + [
+                Evidence(
+                    path="/artifacts",
+                    artifact_role=ArtifactRole.COMPILED,
+                    status=EvidenceStatus.UNAVAILABLE,
+                    reason=reason,
+                    notes=note,
+                )
             ],
             warnings=[Warning("upstream_failure", note)],
             operations=[OperationObservation("adapter", "collect_failed")],

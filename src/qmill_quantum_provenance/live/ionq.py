@@ -90,7 +90,10 @@ class LiveIonQIntegration(ProviderAdapter):
         self.notes: dict[str, Any] = {}
 
     def _get(self, path: str, what: str, **params: Any):
-        response = self._client.get(path, params=params or None)
+        try:
+            response = self._client.get(path, params=params or None)
+        except Exception as exc:  # httpx timeouts and transport errors
+            raise ProviderIntegrationError(f"{what}: {type(exc).__name__}: {exc}") from exc
         status = response.status_code
         if status == 404:
             raise JobNotFoundError(f"{what}: HTTP 404")
@@ -102,9 +105,16 @@ class LiveIonQIntegration(ProviderAdapter):
             raise ProviderIntegrationError(f"{what}: HTTP {status}: {response.text[:200]}")
         return response
 
+    def _json(self, path: str, what: str, **params: Any) -> Any:
+        response = self._get(path, what, **params)
+        try:
+            return response.json()
+        except ValueError as exc:  # malformed or truncated body
+            raise ProviderIntegrationError(f"{what}: unreadable JSON body: {exc}") from exc
+
     def _job(self, job_id: str) -> dict[str, Any]:
         if job_id not in self._jobs:
-            self._jobs[job_id] = self._get(f"/jobs/{job_id}", "GetJob").json()
+            self._jobs[job_id] = self._json(f"/jobs/{job_id}", "GetJob")
             self.native["job"] = self._jobs[job_id]
         return self._jobs[job_id]
 
@@ -141,7 +151,7 @@ class LiveIonQIntegration(ProviderAdapter):
             if advertised
             else f"/jobs/{task.provider_job_id}/results/probabilities"
         )
-        probabilities = self._get(path, "GetJobProbabilities").json()
+        probabilities = self._json(path, "GetJobProbabilities")
         multi = job.get("type") == "ionq.multi-circuit.v1"
         self.native["per_child_probabilities" if multi else "probabilities"] = probabilities
         self.notes["measurement_counts_origin"] = (
@@ -177,17 +187,17 @@ class LiveIonQIntegration(ProviderAdapter):
         return text
 
     def get_device_details(self, target_id: str, region: str | None = None) -> DeviceDetails:
-        backend = self._get(f"/backends/{target_id}", "GetBackend").json()
+        backend = self._json(f"/backends/{target_id}", "GetBackend")
         self.native["backend"] = backend
         calibration = None
         submitted = next(iter(self._jobs.values()), {}).get("submitted_at")
         if target_id.startswith("qpu.") and submitted:
-            history = self._get(
+            history = self._json(
                 f"/backends/{target_id}/characterizations",
                 "GetCharacterizations",
                 end=submitted,
                 limit=1,
-            ).json()
+            )
             items = history.get("characterizations") or []
             if items:
                 self.native["characterization"] = items[0]

@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0-prototype",
   "record_id": "qprov:ibm:049001a0c6830efb74a6fa0c8ae65e6d",
-  "generated_at": "2026-11-20T09:15:25.155118+00:00",
-  "retrieved_at": "2026-11-20T09:15:25.155094+00:00",
+  "generated_at": "2026-11-20T09:32:38.684426+00:00",
+  "retrieved_at": "2026-11-20T09:32:38.684410+00:00",
   "adapter": {
     "provider": "ibm",
     "name": "ibm-provenance-adapter",
@@ -202,6 +202,13 @@
       "status": "provider_supplied",
       "provider_field": "IBMBackend.properties()",
       "notes": "Nearest available backend properties snapshot; no provider guarantee that it was in force during execution."
+    },
+    {
+      "path": "/artifacts",
+      "artifact_role": "compiled",
+      "status": "unavailable",
+      "reason": "not_exposed_by_provider",
+      "notes": "The provider returns no compiled program for this job."
     },
     {
       "path": "/artifacts/2",

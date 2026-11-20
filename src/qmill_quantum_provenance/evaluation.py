@@ -218,6 +218,9 @@ def _classify_artifact_role(
         if artifact.get("role") == role:
             path = f"/artifacts/{index}"
             return evidence_by_path.get(path, "unclassified")
+    for item in payload.get("evidence") or []:
+        if item.get("path") == "/artifacts" and item.get("artifact_role") == role:
+            return item["status"]
     return "unavailable"
 
 

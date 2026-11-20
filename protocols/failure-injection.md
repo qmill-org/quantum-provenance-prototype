@@ -189,6 +189,32 @@ The IBM input-layout change (PUB list → v2.0) is absorbed by the retrieval
 layer: requested shots are read from both layouts (4096 and 1000 in the
 check).
 
+## Results after fixes
+
+Fixes (all logged below): retrieval layers translate every transport fault
+(timeouts and unreadable bodies included; IBM rate limiting; S3 credential
+errors); adapters check the documented types of shots, counts, result payload,
+histogram and characterization metrics before mapping (`malformed_provider_value`
+warning, value unavailable); a failed device or result retrieval is reported
+with the failure's reason instead of `not_exposed_by_provider`; a failed status
+retrieval states its reason for every section; the contract can state why an
+artifact role is absent (CC-8: `Evidence.artifact_role` with path
+`/artifacts`); Braket counts without their result document are not presented
+(origin unknown); Quandela tolerates an unparsable time.
+
+| Stage | V1 | V2 before | V2 after |
+|---|---|---|---|
+| A: transport cells as expected | — (no retrieval layer) | 84 of 106 | 106 of 106 |
+| B upstream errors: crash / wrong reason | 40 / 20 of 60 | 0 / 72 of 72 | 0 / 0 of 72 |
+| B missing sections: fabricated / not isolated | 0 / 0 of 185 | 6 / 6 of 222 | 0 / 6 of 222 |
+| B malformed: crash / invalid / fabricated | 2 / 8 / 11 of 19 | 6 / 5 / 9 of 23 | 0 / 0 / 0 of 23 |
+
+Remaining, reported as is: the 6 + 1 isolation cases are Quandela's shared
+shots field (requested and executed shots come from one provider value);
+missing sections are reported in evidence, not as warnings (121 cases); an
+unparsable time inside IBM or Quandela metadata is reported unavailable
+without a warning (3 cases). The V1 and V2-before results stand as recorded.
+
 ## Log
 
 | Date | Change | Reason |
@@ -200,3 +226,5 @@ check).
 | 2026-11-20 | M5 takes the reason at the attribute's evidence path or its nearest ancestor (e.g. `/results` for `results.*`). | A section-level reason applies to its attributes. |
 | 2026-11-20 | "Unparsable creation time" is injected in the provider field the adapter parses itself (IBM `timestamps.created`, Quandela `creation_datetime`); the seam parses snapshot times itself. Not applicable to Braket and IonQ bases. | Implementation detail fixed before the first full run. |
 | 2026-11-20 | Results before fixes recorded (above). | Reported before any fix. |
+| 2026-11-20 | Fixes listed under "Results after fixes"; CC-8 contract change (`Evidence.artifact_role`). Synthetic `v0.1.0` Braket–IonQ fixture: its counts are now reported unavailable (`insufficient_source_data`), as F3 requires; it is replaced by the live Forte-1 capture in `v0.2.0`. | Results before fixes recorded at `075ad89`. |
+| 2026-11-20 | M5 reads the reason for an absent artifact role from CC-8 evidence. | The contract had no place for it before CC-8; V1 records cannot carry it. |

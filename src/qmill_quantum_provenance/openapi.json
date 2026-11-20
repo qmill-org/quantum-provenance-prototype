@@ -205,6 +205,10 @@
                     },
                     "notes": {
                         "type": "string"
+                    },
+                    "artifact_role": {
+                        "$ref": "#/components/schemas/ArtifactRole",
+                        "description": "With path '/artifacts': the artifact role this evidence is about. States why an artifact role is absent from the record (artifacts are listed by position, so an absent role has no path of its own)."
                     }
                 },
                 "allOf": [

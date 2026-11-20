@@ -141,14 +141,18 @@ def test_every_inventory_attribute_is_classified_per_provider() -> None:
 def test_inventory_distinguishes_not_applicable_from_unavailable() -> None:
     report = _default_report()
     braket = report["providers"]["braket"]["inventory_classification"]["by_attribute"]
+    ibm = report["providers"]["ibm"]["inventory_classification"]["by_attribute"]
     ionq = report["providers"]["ionq"]["inventory_classification"]["by_attribute"]
 
     # IonQ returns probabilities, so observed counts are inapplicable there;
     # probabilities are inapplicable for the count-returning providers.
     assert ionq["results.measurement_counts"] == "not_applicable"
-    assert braket["results.measurement_probabilities"] == "not_applicable"
+    assert ibm["results.measurement_probabilities"] == "not_applicable"
     assert ionq["results.measurement_probabilities"] == "provider_supplied"
-    assert braket["results.measurement_counts"] == "provider_supplied"
+    assert ibm["results.measurement_counts"] == "provider_supplied"
+    # The synthetic Braket-IonQ fixture's counts have no result document to
+    # establish their origin (F3), so they are unavailable, not presented.
+    assert braket["results.measurement_counts"] == "unavailable"
 
     # An applicable-but-absent field is unavailable (not not_applicable).
     assert braket["execution.queue_duration_ms"] == "unavailable"

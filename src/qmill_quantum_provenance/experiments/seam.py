@@ -284,7 +284,15 @@ def _attribute_view(
                 ),
                 None,
             )
-            reason = None
+            reason = next(
+                (
+                    e.get("reason")
+                    for e in record.get("evidence") or []
+                    if e.get("path") == "/artifacts"
+                    and e.get("artifact_role") == locator.get("role")
+                ),
+                None,
+            )
         else:
             value = _resolve_pointer(record, attribute["value_pointer"])[1]
             reason = _inherited_reason(evidence, attribute["evidence_pointer"])

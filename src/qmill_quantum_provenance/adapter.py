@@ -22,6 +22,7 @@ from .integration import (
 )
 from .models import (
     Artifact,
+    ArtifactRole,
     AvailabilityReason,
     Characterization,
     Compilation,
@@ -160,6 +161,23 @@ def reason_for(error: Exception) -> AvailabilityReason:
     return AvailabilityReason.UPSTREAM_REQUEST_FAILED
 
 
+def _explains_results(item: Evidence) -> bool:
+    """An adapter's specific statement about absent results (not the generic default)."""
+
+    return item.path == "/results" and (
+        item.status is EvidenceStatus.NOT_APPLICABLE
+        or (
+            item.status is EvidenceStatus.UNAVAILABLE
+            and item.reason
+            not in (
+                AvailabilityReason.UPSTREAM_REQUEST_FAILED,
+                AvailabilityReason.NOT_EXPOSED_BY_PROVIDER,
+                None,
+            )
+        )
+    )
+
+
 def qualify_missing_results(
     evidence: list[Evidence], job_status: str, error: ProviderIntegrationError | None
 ) -> None:
@@ -169,11 +187,8 @@ def qualify_missing_results(
     a job still pending has none yet; otherwise the upstream error decides.
     """
 
-    if any(
-        item.path == "/results" and item.status is EvidenceStatus.NOT_APPLICABLE
-        for item in evidence
-    ):
-        return  # the adapter already explained why the job has no results of its own
+    if any(_explains_results(item) for item in evidence):
+        return  # the adapter already explained why there are no results
     if job_status in _NOT_RUN:
         replacement = Evidence(
             path="/results",
@@ -339,6 +354,149 @@ def failure_with_evidence(
     return None
 
 
+def _number(value: Any) -> bool:
+    return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
+def _time_like(value: Any) -> bool:
+    if value is None or isinstance(value, datetime) or _number(value):
+        return True
+    if isinstance(value, str):
+        try:
+            datetime.fromisoformat(value.replace("Z", "+00:00"))
+        except ValueError:
+            return False
+        return True
+    return False
+
+
+def clean_seam(snapshot, device, result, warnings: list[Warning]):
+    """Drop provider values that are not of their documented type.
+
+    A malformed value is treated as unavailable (with a warning) rather than
+    passed on as provider-supplied or allowed to break the mapping.
+    """
+
+    problems: list[str] = []
+    if snapshot.shots is not None and not (
+        isinstance(snapshot.shots, int)
+        and not isinstance(snapshot.shots, bool)
+        and snapshot.shots >= 0
+    ):
+        problems.append(f"job shots {snapshot.shots!r}")
+        snapshot = replace(snapshot, shots=None)
+    for name in ("created_at", "ended_at"):
+        if not _time_like(getattr(snapshot, name)):
+            problems.append(f"job {name} {getattr(snapshot, name)!r}")
+            snapshot = replace(snapshot, **{name: None})
+    if result is not None:
+        counts = result.measurement_counts or {}
+        if any(not isinstance(n, int) or isinstance(n, bool) or n < 0 for n in counts.values()):
+            problems.append("measurement counts with non-integer values")
+            result = replace(result, measurement_counts={})
+        payload = result.raw_payload
+        if payload is not None and not isinstance(payload, dict):
+            problems.append(f"result payload of type {type(payload).__name__}")
+            result = replace(result, raw_payload=None)
+        elif isinstance(payload, dict) and isinstance(payload.get("histogram"), dict):
+            if not all(_number(p) for p in payload["histogram"].values()):
+                problems.append("probability histogram with non-numeric values")
+                result = replace(
+                    result, raw_payload={k: v for k, v in payload.items() if k != "histogram"}
+                )
+    if device is not None and isinstance(device.calibration_data, dict):
+        metrics = device.calibration_data.get("metrics") or {}
+        if not all(_number(v) for v in metrics.values()):
+            problems.append("characterization metrics with non-numeric values")
+            device = replace(device, calibration_data=None)
+    for problem in problems:
+        warnings.append(
+            Warning(
+                "malformed_provider_value",
+                f"{problem}: not the documented type; treated as unavailable.",
+            )
+        )
+    return snapshot, device, result
+
+
+def requalify_after_failure(
+    evidence: list[Evidence],
+    artifacts: list[Artifact],
+    job_status: str,
+    device_error: Exception | None,
+    result_error: Exception | None,
+) -> None:
+    """State the retrieval failure, not "not exposed", for what a failed call would hold.
+
+    Also records why the compiled artifact role is absent (CC-8).
+    """
+
+    def failed(path: str) -> Exception | None:
+        if device_error is not None and (
+            (path.startswith("/device/") and path != "/device/identifier")
+            or path.startswith("/characterization")
+        ):
+            return device_error
+        if (
+            result_error is not None
+            and job_status == "completed"
+            and (path.startswith("/results") or path == "/execution/executed_shots")
+        ):
+            return result_error
+        return None
+
+    for index, item in enumerate(evidence):
+        error = failed(item.path)
+        if (
+            error is not None
+            and item.status is EvidenceStatus.UNAVAILABLE
+            and item.reason
+            in (
+                AvailabilityReason.NOT_EXPOSED_BY_PROVIDER,
+                AvailabilityReason.INSUFFICIENT_SOURCE_DATA,
+                AvailabilityReason.UPSTREAM_REQUEST_FAILED,
+            )
+        ):
+            evidence[index] = replace(
+                item, reason=reason_for(error), notes=f"Retrieval failed: {error}"[:200]
+            )
+
+    role = ArtifactRole.COMPILED
+    if any(a.role is role for a in artifacts) or any(
+        e.path == "/artifacts" and e.artifact_role is role for e in evidence
+    ):
+        return
+    if job_status in _NOT_RUN:
+        evidence.append(
+            Evidence(
+                path="/artifacts",
+                artifact_role=role,
+                status=EvidenceStatus.NOT_APPLICABLE,
+                notes=f"Job {job_status}.",
+            )
+        )
+    elif result_error is not None and job_status == "completed":
+        evidence.append(
+            Evidence(
+                path="/artifacts",
+                artifact_role=role,
+                status=EvidenceStatus.UNAVAILABLE,
+                reason=reason_for(result_error),
+                notes="Result retrieval failed.",
+            )
+        )
+    else:
+        evidence.append(
+            Evidence(
+                path="/artifacts",
+                artifact_role=role,
+                status=EvidenceStatus.UNAVAILABLE,
+                reason=AvailabilityReason.NOT_EXPOSED_BY_PROVIDER,
+                notes="The provider returns no compiled program for this job.",
+            )
+        )
+
+
 def add_executed_shots(
     execution: Execution | None,
     evidence: list[Evidence],
@@ -467,10 +625,7 @@ def check_result_recognized(
 ) -> None:
     """Warn when a completed job's result was retrieved but not understood."""
 
-    explained = any(
-        item.path == "/results" and item.status is EvidenceStatus.NOT_APPLICABLE
-        for item in evidence or []
-    )
+    explained = any(_explains_results(item) for item in evidence or [])
     if job_status == "completed" and result_retrieved and not results.available and not explained:
         warnings.append(
             Warning(
@@ -482,6 +637,8 @@ def check_result_recognized(
 
 
 __all__ = [
+    "clean_seam",
+    "requalify_after_failure",
     "add_executed_shots",
     "check_expected_fields",
     "check_status_recognized",

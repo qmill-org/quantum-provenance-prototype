@@ -1,5 +1,5 @@
 {
-  "adapter_revision": "94f00a9",
+  "adapter_revision": "bf1be9b",
   "captures": [
     {
       "capture": "04470467-2658-4b06-8e5c-35b841c7b054",
@@ -333,7 +333,7 @@
       },
       "findings": [],
       "inventory": {
-        "artifact.compiled": "unavailable",
+        "artifact.compiled": "not_applicable",
         "characterization": "not_applicable",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
@@ -360,9 +360,9 @@
       },
       "inventory_counts": {
         "derived": 2,
-        "not_applicable": 4,
+        "not_applicable": 5,
         "provider_supplied": 8,
-        "unavailable": 10
+        "unavailable": 9
       },
       "provider": "braket",
       "schema_valid": true,
@@ -816,7 +816,7 @@
       },
       "findings": [],
       "inventory": {
-        "artifact.compiled": "unavailable",
+        "artifact.compiled": "not_applicable",
         "characterization": "not_applicable",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
@@ -843,9 +843,9 @@
       },
       "inventory_counts": {
         "derived": 1,
-        "not_applicable": 4,
+        "not_applicable": 5,
         "provider_supplied": 9,
-        "unavailable": 10
+        "unavailable": 9
       },
       "provider": "ibm",
       "schema_valid": true,
@@ -962,7 +962,7 @@
       },
       "findings": [],
       "inventory": {
-        "artifact.compiled": "unavailable",
+        "artifact.compiled": "not_applicable",
         "characterization": "not_applicable",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
@@ -988,9 +988,9 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "not_applicable": 3,
+        "not_applicable": 4,
         "provider_supplied": 8,
-        "unavailable": 13
+        "unavailable": 12
       },
       "provider": "ionq",
       "schema_valid": true,

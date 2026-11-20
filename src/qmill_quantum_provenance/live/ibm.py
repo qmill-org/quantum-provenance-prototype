@@ -38,6 +38,7 @@ from ..integration import (
     TaskHandle,
     TaskResult,
     TaskSnapshot,
+    ThrottledError,
 )
 
 _DONE = {"DONE", "COMPLETED"}
@@ -46,9 +47,14 @@ _DONE = {"DONE", "COMPLETED"}
 def _translate(exc: Exception, what: str) -> ProviderIntegrationError:
     text = f"{what}: {type(exc).__name__}: {exc}"
     lowered = str(exc).lower()
-    if "not found" in lowered or "404" in lowered:
+    status = getattr(exc, "status_code", None)
+    if status == 429 or "429" in lowered or "too many requests" in lowered:
+        return ThrottledError(text)
+    if status == 404 or "not found" in lowered or "404" in lowered:
         return JobNotFoundError(text)
-    if "unauthorized" in lowered or "forbidden" in lowered or "401" in lowered or "403" in lowered:
+    if status in (401, 403) or any(
+        token in lowered for token in ("unauthorized", "forbidden", "401", "403")
+    ):
         return AccessDeniedError(text)
     return ProviderIntegrationError(text)
 

@@ -172,11 +172,16 @@ class LiveQuandelaIntegration(ProviderAdapter):
             raise _translate(exc, "GET /api/job/result") from exc
         from perceval.serialization import deserialize
 
-        inner = json.loads(response["results"]) if isinstance(response.get("results"), str) else {}
-        counts_obj = deserialize(inner["results"]) if "results" in inner else {}
-        counts = {str(state): int(n) for state, n in dict(counts_obj).items()}
-        compiled = inner.get("computed_experiment")
-        compiled_modes = getattr(deserialize(compiled), "m", None) if compiled else None
+        try:
+            inner = (
+                json.loads(response["results"]) if isinstance(response.get("results"), str) else {}
+            )
+            counts_obj = deserialize(inner["results"]) if "results" in inner else {}
+            counts = {str(state): int(n) for state, n in dict(counts_obj).items()}
+            compiled = inner.get("computed_experiment")
+            compiled_modes = getattr(deserialize(compiled), "m", None) if compiled else None
+        except Exception as exc:  # malformed or truncated result document
+            raise ProviderIntegrationError(f"job result document unreadable: {exc}") from exc
         self.native["job_result"] = {
             "job_id": response.get("job_id"),
             "shots": response.get("shots"),

@@ -11,6 +11,8 @@ from datetime import UTC, datetime, timedelta
 from typing import Any
 
 from ..adapter import (
+    clean_seam,
+    requalify_after_failure,
     check_status_recognized,
     add_executed_shots,
     check_expected_fields,
@@ -55,10 +57,13 @@ NAMESPACE = "photonic.quandela"
 def _parse(value: Any) -> datetime | None:
     if isinstance(value, datetime):
         return value
-    if isinstance(value, str) and value:
-        return datetime.fromisoformat(value.replace("Z", "+00:00"))
-    if isinstance(value, (int, float)):
-        return datetime.fromtimestamp(value, UTC)
+    try:
+        if isinstance(value, str) and value:
+            return datetime.fromisoformat(value.replace("Z", "+00:00"))
+        if isinstance(value, (int, float)) and not isinstance(value, bool):
+            return datetime.fromtimestamp(value, UTC)
+    except (ValueError, OverflowError, OSError):
+        return None  # malformed provider time: reported unavailable
     return None
 
 
@@ -113,12 +118,14 @@ class QuandelaProvenanceAdapter(ProvenanceAdapter):
         operations.append(OperationObservation("adapter", "get_status"))
         platform = snapshot.provider_target_id or snapshot.target_id
 
+        device_error: Exception | None = None
         device_details = None
         if platform:
             try:
                 device_details = integration.get_device_details(platform)
                 operations.append(OperationObservation("adapter", "get_device_details"))
             except Exception as exc:
+                device_error = exc
                 warnings.append(Warning("device_details_unavailable", str(exc)))
 
         result = None
@@ -130,6 +137,7 @@ class QuandelaProvenanceAdapter(ProvenanceAdapter):
             result_error = exc
             warnings.append(Warning("results_unavailable", str(exc)))
 
+        snapshot, device_details, result = clean_seam(snapshot, device_details, result, warnings)
         metadata = snapshot.metadata or {}
         job = self._job(request, snapshot, metadata, evidence)
         device = self._device(platform, device_details, evidence, extension)
@@ -155,6 +163,7 @@ class QuandelaProvenanceAdapter(ProvenanceAdapter):
             evidence.append(
                 _supplied(f"/extensions/{NAMESPACE}", "platform specs, job status and result")
             )
+        requalify_after_failure(evidence, artifacts, job.status, device_error, result_error)
         return AdapterResult(
             job=job,
             device=device,
