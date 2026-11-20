@@ -78,12 +78,9 @@ def read_contract(record: dict[str, Any]) -> dict[str, Any]:
         if result_evidence.get("status") == "derived":
             answers["Q1"] = "client_derived"
         elif results.get("measurement_counts"):
-            counts_evidence = evidence.get("/results/measurement_counts") or {}
-            answers["Q1"] = (
-                "client_derived"
-                if counts_evidence.get("status") == "derived"
-                else "observed_counts"
-            )
+            # The contract defines measurement_counts as observed counts; derived
+            # evidence there means relabelled observations, not computed values.
+            answers["Q1"] = "observed_counts"
         elif results.get("measurement_probabilities"):
             answers["Q1"] = "probabilities"
         else:

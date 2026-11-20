@@ -1,25 +1,25 @@
 {
-  "capture_tool_revision": "e299bc63ce8c7b1b5eb1534fcf916c83f8d6d998",
-  "captured_at": "2026-11-20T07:59:12.450172+00:00",
+  "capture_tool_revision": "63ce25f3de5cfd27a0d6f03199ccbcf5b300fdf5",
+  "captured_at": "2026-11-20T09:08:58.126678+00:00",
   "external_job_id": "arn:aws:braket:us-east-1:000000000000:quantum-task/4852fae4-439c-4640-ad66-9a0a37d77f0f",
   "notes": {
     "compiled_program": "absent",
-    "measurement_counts_origin": "observed_measurements",
+    "measurement_counts_origin": "observed_ahs_site_states",
     "submitted_program_available": false
   },
   "operations": [
     {
-      "at": "2026-11-20T07:59:10.833854+00:00",
+      "at": "2026-11-20T09:08:56.280430+00:00",
       "operation": "get_status",
       "outcome": "ok"
     },
     {
-      "at": "2026-11-20T07:59:11.349776+00:00",
+      "at": "2026-11-20T09:08:56.989352+00:00",
       "operation": "get_device_details",
       "outcome": "ok"
     },
     {
-      "at": "2026-11-20T07:59:11.813349+00:00",
+      "at": "2026-11-20T09:08:57.482105+00:00",
       "operation": "get_result",
       "outcome": "ok"
     }

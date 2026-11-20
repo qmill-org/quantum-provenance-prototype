@@ -203,7 +203,7 @@
       {
         "queue": "QUANTUM_TASKS_QUEUE",
         "queuePriority": "Normal",
-        "queueSize": "69"
+        "queueSize": "0"
       },
       {
         "queue": "QUANTUM_TASKS_QUEUE",

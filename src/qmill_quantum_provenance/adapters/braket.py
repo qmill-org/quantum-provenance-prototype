@@ -134,6 +134,12 @@ def _hardware_provider_from_arn(identifier: str | None) -> str | None:
     return None
 
 
+def _is_ahs(measurements: list[Any]) -> bool:
+    return bool(measurements) and all(
+        isinstance(shot, dict) and "shotResult" in shot for shot in measurements
+    )
+
+
 class BraketProvenanceAdapter(ProvenanceAdapter):
     provider = "braket"
     name = "braket-provenance-adapter"
@@ -414,6 +420,38 @@ class BraketProvenanceAdapter(ProvenanceAdapter):
                 outcome_basis="bitstring",
                 measurement_probabilities=probabilities,
                 estimated_measurement_counts=estimated,
+            )
+
+        measurements = payload.get("measurements") or []
+        if result_data is not None and result_data.measurement_counts and _is_ahs(measurements):
+            successful = sum(result_data.measurement_counts.values())
+            evidence.append(
+                Evidence(
+                    path="/results/measurement_counts",
+                    status=EvidenceStatus.DERIVED,
+                    source_paths=["results.json measurements[].shotResult pre/postSequence"],
+                    derivation="Braket SDK AHS convention per site: e empty, r Rydberg, g ground; "
+                    f"successful shots only ({successful} of {len(measurements)})",
+                )
+            )
+            evidence.append(
+                Evidence(
+                    path="/results/outcome_basis",
+                    status=EvidenceStatus.DERIVED,
+                    source_paths=["results.json braketSchemaHeader"],
+                    derivation="analog Hamiltonian simulation result: atom-site states",
+                )
+            )
+            mark_not_applicable(
+                evidence,
+                RESULT_REPRESENTATIONS[1:],
+                "Observed per-shot site states; no probability representation.",
+            )
+            return Results(
+                available=True,
+                shots=snapshot.shots,
+                outcome_basis="site_occupation",
+                measurement_counts=dict(result_data.measurement_counts),
             )
 
         if result_data is not None and result_data.measurement_counts:

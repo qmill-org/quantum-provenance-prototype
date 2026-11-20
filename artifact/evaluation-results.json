@@ -65,7 +65,7 @@
   },
   "providers": {
     "braket": {
-      "adapter_loc": 574,
+      "adapter_loc": 609,
       "attribute_evidence_counts": {
         "application_captured": 11,
         "derived": 2,

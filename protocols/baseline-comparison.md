@@ -196,6 +196,28 @@ Post-freeze Q11 (outcome content), before any fix: B 0/2/0/0, V1 0/2/0/0,
 V2 0/2/0/0 (misleading in every arm). Development set: B 6/0/0/0, V1 4/0/0/2,
 V2 6/0/0/0.
 
+After the fix (retrieval layer and Braket adapter, `F15` below; the two jobs
+re-captured, the pre-fix captures remain at `b8014a8`), with arm V2f = V2 as
+frozen at `baseline-freeze`:
+
+| Arm | frozen questions c/m/u/n | Q11 |
+|---|---|---|
+| B | 14 / 2 / 2 / 0 | 2 / 0 / 0 / 0 |
+| V1 | 16 / 0 / 2 / 0 | 2 / 0 / 0 / 0 |
+| V2 (fixed) | 18 / 0 / 0 / 0 | 2 / 0 / 0 / 0 |
+| V2f (frozen) | 18 / 0 / 0 / 0 | 2 / 0 / 0 / 0 |
+
+Reading notes: the corruption was in the shared retrieval layer, so once it
+is fixed every arm records the right outcomes. What the adapter adds is the
+meaning: V2 labels the outcomes `site_occupation` with `derived` evidence
+naming the convention, whereas V2f (and V1, B) present the same strings as
+bitstrings. No question scores the basis (unscored). Under the frozen Q1
+reader the fixed V2 scored 2 misleading (derived counts read as client-
+computed values); the reader was corrected to the contract's definition (log),
+which also shows that the evidence state alone does not tell a machine reader
+whether derived values are relabelled observations or computed estimates
+(input to R2.4).
+
 ## Log
 
 | Date | Change | Reason |
@@ -205,3 +227,6 @@ V2 6/0/0/0.
 | 2026-11-20 | V1 harness: a recorded provider error is raised with its recorded class when `v0.1.0` defines it (as the current replay does), not as a generic error. | The generic error made `v0.1.0` drop three records it produces in the frozen `v0.1.0` report (cancelled/failed jobs). Harness only. Before freeze. |
 | 2026-11-20 | Hold-out results for the two Aquila jobs recorded as scored; F15 recorded as an unscored failure. No change to adapters, oracle or readers yet. | Hold-out discipline: results are reported before any fix. |
 | 2026-11-20 | Q11 added (outcome content), scored separately from the frozen totals. | F15 showed that the frozen Q1 checks only the kind of result, so a corrupted result scores as correct. Added after hold-out data were seen; reported as post-freeze. |
+| 2026-11-20 | F15 fixed: the Braket retrieval layer tallies analog shots with the Braket SDK's documented site convention (successful shots only) and no longer tallies shot layouts it does not recognize (they now yield no counts and an `unrecognized_result_format` warning); the Braket adapter labels analog outcomes `site_occupation` with `derived` evidence. Aquila jobs re-captured. | Post-freeze fix of a hold-out failure; results reported before (above, `63ce25f`) and after. |
+| 2026-11-20 | Arm V2f added: V2 as frozen at `baseline-freeze`, run from a worktree, so every hold-out capture is scored with and without post-freeze changes. | Hold-out discipline after the first post-freeze change. |
+| 2026-11-20 | Q1 reader: `measurement_counts` always read as observed counts (the contract's definition); previously counts with `derived` evidence were read as client-computed. | The frozen rule contradicted the contract text the protocol requires readers to use; it first mattered for the analog counts. Development results unchanged. |

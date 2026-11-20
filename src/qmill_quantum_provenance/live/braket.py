@@ -74,11 +74,43 @@ def _translate(exc: Exception, what: str) -> ProviderIntegrationError:
     return ProviderIntegrationError(message)
 
 
+_AHS_STATES = "erg"
+
+
+def ahs_site_counts(measurements: list[dict[str, Any]]) -> dict[str, int]:
+    """Analog (AHS) shots as site-state strings, as the Braket SDK's ``get_counts``.
+
+    Per site: ``e`` empty (pre-sequence 0), ``r`` Rydberg (post-sequence 0),
+    ``g`` ground (post-sequence 1). Only shots with status ``Success`` count.
+    """
+
+    tally: Counter[str] = Counter()
+    for shot in measurements:
+        if (shot.get("shotMetadata") or {}).get("shotStatus") != "Success":
+            continue
+        result = shot.get("shotResult") or {}
+        pre, post = result.get("preSequence") or [], result.get("postSequence") or []
+        tally[
+            "".join(
+                _AHS_STATES[0 if a == 0 else 1 if b == 0 else 2]
+                for a, b in zip(pre, post, strict=True)
+            )
+        ] += 1
+    return dict(tally)
+
+
 def counts_from_result(result: dict[str, Any], shots: int | None) -> tuple[dict[str, int], str]:
     """Return measurement counts and how they were obtained."""
 
     measurements = result.get("measurements")
     if measurements:
+        if all(isinstance(shot, dict) and "shotResult" in shot for shot in measurements):
+            return ahs_site_counts(measurements), "observed_ahs_site_states"
+        if not all(
+            isinstance(shot, list) and all(bit in (0, 1) for bit in shot) for shot in measurements
+        ):
+            # Tallying an unknown shot layout would invent outcomes (F15).
+            return {}, "unrecognized_shot_format"
         tally = Counter("".join(str(bit) for bit in shot) for shot in measurements)
         return dict(tally), "observed_measurements"
     probabilities = result.get("measurementProbabilities")
@@ -296,4 +328,9 @@ class LiveBraketIntegration(ProviderAdapter):
         raise NotImplementedError
 
 
-__all__ = ["LiveBraketIntegration", "counts_from_result", "summarize_calibration"]
+__all__ = [
+    "LiveBraketIntegration",
+    "ahs_site_counts",
+    "counts_from_result",
+    "summarize_calibration",
+]

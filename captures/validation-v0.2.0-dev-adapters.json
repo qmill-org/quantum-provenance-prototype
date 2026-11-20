@@ -208,15 +208,15 @@
         "job.shots": "provider_supplied",
         "job.status": "provider_supplied",
         "results.estimated_measurement_counts": "not_applicable",
-        "results.measurement_counts": "provider_supplied",
+        "results.measurement_counts": "derived",
         "results.measurement_probabilities": "not_applicable",
         "software.framework_versions": "unavailable",
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "derived": 3,
+        "derived": 4,
         "not_applicable": 4,
-        "provider_supplied": 9,
+        "provider_supplied": 8,
         "unavailable": 8
       },
       "provider": "braket",
@@ -256,15 +256,15 @@
         "job.shots": "provider_supplied",
         "job.status": "provider_supplied",
         "results.estimated_measurement_counts": "not_applicable",
-        "results.measurement_counts": "provider_supplied",
+        "results.measurement_counts": "derived",
         "results.measurement_probabilities": "not_applicable",
         "software.framework_versions": "unavailable",
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
-        "derived": 3,
+        "derived": 4,
         "not_applicable": 4,
-        "provider_supplied": 9,
+        "provider_supplied": 8,
         "unavailable": 8
       },
       "provider": "braket",

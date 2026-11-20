@@ -3,8 +3,8 @@
     python -m qmill_quantum_provenance.comparison.run \
         --captures captures --runs runs --output artifact/baseline-comparison.json
 
-Arm V1 runs the ``v0.1.0`` package from a temporary git worktree in a
-subprocess; its replay is given the same rule as the current one (a recorded
+Arms V1 (``v0.1.0``) and V2f (V2 as frozen at ``baseline-freeze``) run the
+tagged package from a temporary git worktree in a subprocess; its replay is given the same rule as the current one (a recorded
 provider error is raised), which changes the test harness, not the adapters.
 """
 
@@ -89,10 +89,12 @@ def _git(*args: str) -> str:
     return subprocess.run(["git", *args], check=True, capture_output=True, text=True).stdout.strip()
 
 
-def v1_records(fixtures: list[Path]) -> dict[str, dict[str, Any] | None]:
+def tagged_records(tag: str, fixtures: list[Path]) -> dict[str, dict[str, Any] | None]:
+    """Records from the package as it was at ``tag`` (run from a temporary worktree)."""
+
     with tempfile.TemporaryDirectory() as tmp:
-        tree = Path(tmp) / "v010"
-        _git("worktree", "add", "--detach", str(tree), "v0.1.0")
+        tree = Path(tmp) / "tree"
+        _git("worktree", "add", "--detach", str(tree), tag)
         try:
             proc = subprocess.run(
                 [sys.executable, "-c", _V1_SCRIPT, *map(str, fixtures)],
@@ -136,7 +138,8 @@ def _answers(arm: str, record: dict[str, Any] | None) -> dict[str, Any]:
 def run(captures: Path, runs: Path) -> dict[str, Any]:
     directories = sorted(path.parent for path in captures.glob("*/*/fixture.json"))
     fixtures = [directory / "fixture.json" for directory in directories]
-    v1 = v1_records(fixtures)
+    v1 = tagged_records("v0.1.0", fixtures)
+    frozen = tagged_records(FREEZE_TAG, fixtures) if _freeze_time() else {}
     ledgers = load_ledgers(runs)
     freeze = _freeze_time()
     rows = []
@@ -154,6 +157,8 @@ def run(captures: Path, runs: Path) -> dict[str, Any]:
             "V1": v1.get(str(fixture_path)),
             "V2": v2_record(fixture),
         }
+        if frozen:
+            records["V2f"] = frozen.get(str(fixture_path))
         row: dict[str, Any] = {
             "capture": f"{directory.parent.name}/{directory.name}",
             "set": capture_set,
@@ -186,6 +191,7 @@ def run(captures: Path, runs: Path) -> dict[str, Any]:
             "B": "flat baseline (comparison/baseline.py)",
             "V1": "v0.1.0",
             "V2": _git("rev-parse", "--short", "HEAD"),
+            "V2f": f"{FREEZE_TAG} (adapters as frozen for the hold-out set)",
         },
         "summary": _render_summary(summary),
         "captures": rows,

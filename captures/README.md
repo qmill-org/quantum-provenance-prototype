@@ -198,3 +198,9 @@ captured after the `baseline-freeze` tag.
   records these as provider-supplied bitstring counts, with no warning and no
   validator finding. Found on the first jobs of a paradigm the adapters were
   not revised on (non-gate, R1.3).
+  *Fixed after being reported:* analog shots are tallied with the Braket SDK's
+  documented site convention (`e` empty, `r` Rydberg, `g` ground; successful
+  shots only); unknown shot layouts are no longer tallied but reported as an
+  unrecognized result format; the adapter labels the outcomes
+  `site_occupation`. Both jobs re-captured; dominant outcome `rgrgrgrgr`
+  (alternating order), as expected for the program.

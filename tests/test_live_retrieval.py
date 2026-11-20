@@ -183,3 +183,17 @@ def test_claim_checks_flag_mislabelled_counts_and_unmapped_submitted_program() -
         "submitted_program_not_mapped",
         "characterization_postdates_job",
     }
+
+
+def test_analog_shots_use_the_sdk_site_convention_and_unknown_layouts_are_not_tallied() -> None:
+    from qmill_quantum_provenance.live.braket import counts_from_result
+
+    shot = {
+        "shotMetadata": {"shotStatus": "Success"},
+        "shotResult": {"preSequence": [1, 1, 0], "postSequence": [0, 1, 0]},
+    }
+    failed = {"shotMetadata": {"shotStatus": "Failure"}, "shotResult": {}}
+    counts, origin = counts_from_result({"measurements": [shot, shot, failed]}, 3)
+    assert (counts, origin) == ({"rge": 2}, "observed_ahs_site_states")
+    counts, origin = counts_from_result({"measurements": [{"bits": "01"}]}, 1)
+    assert (counts, origin) == ({}, "unrecognized_shot_format")

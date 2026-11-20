@@ -4,7 +4,8 @@
   "arms": {
     "B": "flat baseline (comparison/baseline.py)",
     "V1": "v0.1.0",
-    "V2": "b8014a8"
+    "V2": "63ce25f",
+    "V2f": "baseline-freeze (adapters as frozen for the hold-out set)"
   },
   "summary": {
     "development": {
@@ -307,6 +308,106 @@
             "no_record": 0
           }
         }
+      },
+      "V2f": {
+        "total": {
+          "correct": 187,
+          "misleading": 0,
+          "undeterminable": 4,
+          "no_record": 0
+        },
+        "per_question": {
+          "Q0": {
+            "correct": 21,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q1": {
+            "correct": 15,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q2": {
+            "correct": 15,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q3": {
+            "correct": 13,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q4": {
+            "correct": 18,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q5": {
+            "correct": 6,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q6": {
+            "correct": 14,
+            "misleading": 0,
+            "undeterminable": 4,
+            "no_record": 0
+          },
+          "Q7": {
+            "correct": 13,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q8": {
+            "correct": 16,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q9": {
+            "correct": 1,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q10": {
+            "correct": 3,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q11": {
+            "correct": 6,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "N1": {
+            "correct": 18,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "N2": {
+            "correct": 18,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "N3": {
+            "correct": 16,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          }
+        }
       }
     },
     "holdout": {
@@ -355,8 +456,8 @@
             "no_record": 0
           },
           "Q11": {
-            "correct": 0,
-            "misleading": 2,
+            "correct": 2,
+            "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
@@ -425,8 +526,8 @@
             "no_record": 0
           },
           "Q11": {
-            "correct": 0,
-            "misleading": 2,
+            "correct": 2,
+            "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
@@ -495,8 +596,78 @@
             "no_record": 0
           },
           "Q11": {
-            "correct": 0,
-            "misleading": 2,
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "N1": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "N2": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "N3": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          }
+        }
+      },
+      "V2f": {
+        "total": {
+          "correct": 18,
+          "misleading": 0,
+          "undeterminable": 0,
+          "no_record": 0
+        },
+        "per_question": {
+          "Q0": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q1": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q4": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q6": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q7": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q8": {
+            "correct": 2,
+            "misleading": 0,
+            "undeterminable": 0,
+            "no_record": 0
+          },
+          "Q11": {
+            "correct": 2,
+            "misleading": 0,
             "undeterminable": 0,
             "no_record": 0
           },
@@ -560,6 +731,16 @@
             "Q0": "correct",
             "Q5": "correct"
           }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q5": "not_retrievable"
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q5": "correct"
+          }
         }
       }
     },
@@ -600,6 +781,16 @@
             "Q0": "correct",
             "Q5": "correct"
           }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q5": "not_retrievable"
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q5": "correct"
+          }
         }
       }
     },
@@ -632,6 +823,16 @@
           }
         },
         "V2": {
+          "answers": {
+            "Q0": true,
+            "Q5": "not_retrievable"
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q5": "correct"
+          }
+        },
+        "V2f": {
           "answers": {
             "Q0": true,
             "Q5": "not_retrievable"
@@ -782,6 +983,44 @@
             "N2": "correct",
             "N3": "correct"
           }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q4": "iqm",
+            "Q1": "observed_counts",
+            "Q7": 1000,
+            "Q11": {
+              "00": 465,
+              "01": 22,
+              "10": 19,
+              "11": 494
+            },
+            "Q2": "provider",
+            "Q8": "none",
+            "Q3": "unknown_time",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet",
+            "N2": [
+              "2026-11-20T05:45:34.934000+00:00",
+              "2026-11-20T05:45:36.486000+00:00"
+            ],
+            "N3": 20
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q11": "correct",
+            "Q2": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
         }
       },
       "sensitivity": {
@@ -857,7 +1096,48 @@
             "Q1": "observed_counts",
             "Q7": 100,
             "Q11": {
-              "shotMetadatashotResult": 100
+              "ggggrgrgr": 1,
+              "gggrgrggr": 1,
+              "gggrgrgre": 1,
+              "ggrggggrg": 1,
+              "ggrggrggr": 2,
+              "ggrgrgggg": 1,
+              "ggrgrgggr": 1,
+              "ggrgrgrgr": 5,
+              "grggggggr": 1,
+              "grgggrggr": 1,
+              "grggrggrg": 1,
+              "grggrgrgr": 1,
+              "grgrggggr": 2,
+              "grgrgggrg": 2,
+              "grgrgrgrg": 3,
+              "regggrggr": 1,
+              "regrgrgrg": 1,
+              "rgegggggr": 1,
+              "rggggrgre": 1,
+              "rgggrgrgg": 1,
+              "rgggrgrgr": 6,
+              "rgggrrrrr": 1,
+              "rggrgggre": 1,
+              "rggrggrgr": 1,
+              "rggrgrggg": 1,
+              "rggrgrggr": 1,
+              "rggrrrgrg": 1,
+              "rgrgegrgr": 1,
+              "rgrgggrgr": 3,
+              "rgrgggrrr": 1,
+              "rgrggrgge": 1,
+              "rgrggrggr": 1,
+              "rgrggrgrg": 1,
+              "rgrggrgrr": 1,
+              "rgrgrgggr": 7,
+              "rgrgrggrg": 2,
+              "rgrgrgree": 1,
+              "rgrgrgrgg": 3,
+              "rgrgrgrgr": 34,
+              "rgrrrgrgr": 1,
+              "rrgergrgr": 1,
+              "rrggrgggr": 1
             },
             "Q8": "undeterminable",
             "Q6": 100,
@@ -873,7 +1153,7 @@
             "Q4": "misleading",
             "Q1": "correct",
             "Q7": "correct",
-            "Q11": "misleading",
+            "Q11": "correct",
             "Q8": "undeterminable",
             "Q6": "correct",
             "N1": "correct",
@@ -888,7 +1168,48 @@
             "Q1": "observed_counts",
             "Q7": 100,
             "Q11": {
-              "shotMetadatashotResult": 100
+              "ggggrgrgr": 1,
+              "gggrgrggr": 1,
+              "gggrgrgre": 1,
+              "ggrggggrg": 1,
+              "ggrggrggr": 2,
+              "ggrgrgggg": 1,
+              "ggrgrgggr": 1,
+              "ggrgrgrgr": 5,
+              "grggggggr": 1,
+              "grgggrggr": 1,
+              "grggrggrg": 1,
+              "grggrgrgr": 1,
+              "grgrggggr": 2,
+              "grgrgggrg": 2,
+              "grgrgrgrg": 3,
+              "regggrggr": 1,
+              "regrgrgrg": 1,
+              "rgegggggr": 1,
+              "rggggrgre": 1,
+              "rgggrgrgg": 1,
+              "rgggrgrgr": 6,
+              "rgggrrrrr": 1,
+              "rggrgggre": 1,
+              "rggrggrgr": 1,
+              "rggrgrggg": 1,
+              "rggrgrggr": 1,
+              "rggrrrgrg": 1,
+              "rgrgegrgr": 1,
+              "rgrgggrgr": 3,
+              "rgrgggrrr": 1,
+              "rgrggrgge": 1,
+              "rgrggrggr": 1,
+              "rgrggrgrg": 1,
+              "rgrggrgrr": 1,
+              "rgrgrgggr": 7,
+              "rgrgrggrg": 2,
+              "rgrgrgree": 1,
+              "rgrgrgrgg": 3,
+              "rgrgrgrgr": 34,
+              "rgrrrgrgr": 1,
+              "rrgergrgr": 1,
+              "rrggrgggr": 1
             },
             "Q8": "undeterminable",
             "Q6": 100,
@@ -904,7 +1225,7 @@
             "Q4": "correct",
             "Q1": "correct",
             "Q7": "correct",
-            "Q11": "misleading",
+            "Q11": "correct",
             "Q8": "undeterminable",
             "Q6": "correct",
             "N1": "correct",
@@ -919,7 +1240,48 @@
             "Q1": "observed_counts",
             "Q7": 100,
             "Q11": {
-              "shotMetadatashotResult": 100
+              "ggggrgrgr": 1,
+              "gggrgrggr": 1,
+              "gggrgrgre": 1,
+              "ggrggggrg": 1,
+              "ggrggrggr": 2,
+              "ggrgrgggg": 1,
+              "ggrgrgggr": 1,
+              "ggrgrgrgr": 5,
+              "grggggggr": 1,
+              "grgggrggr": 1,
+              "grggrggrg": 1,
+              "grggrgrgr": 1,
+              "grgrggggr": 2,
+              "grgrgggrg": 2,
+              "grgrgrgrg": 3,
+              "regggrggr": 1,
+              "regrgrgrg": 1,
+              "rgegggggr": 1,
+              "rggggrgre": 1,
+              "rgggrgrgg": 1,
+              "rgggrgrgr": 6,
+              "rgggrrrrr": 1,
+              "rggrgggre": 1,
+              "rggrggrgr": 1,
+              "rggrgrggg": 1,
+              "rggrgrggr": 1,
+              "rggrrrgrg": 1,
+              "rgrgegrgr": 1,
+              "rgrgggrgr": 3,
+              "rgrgggrrr": 1,
+              "rgrggrgge": 1,
+              "rgrggrggr": 1,
+              "rgrggrgrg": 1,
+              "rgrggrgrr": 1,
+              "rgrgrgggr": 7,
+              "rgrgrggrg": 2,
+              "rgrgrgree": 1,
+              "rgrgrgrgg": 3,
+              "rgrgrgrgr": 34,
+              "rgrrrgrgr": 1,
+              "rrgergrgr": 1,
+              "rrggrgggr": 1
             },
             "Q8": "none",
             "Q6": 100,
@@ -935,7 +1297,79 @@
             "Q4": "correct",
             "Q1": "correct",
             "Q7": "correct",
-            "Q11": "misleading",
+            "Q11": "correct",
+            "Q8": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q4": "quera",
+            "Q1": "observed_counts",
+            "Q7": 100,
+            "Q11": {
+              "ggggrgrgr": 1,
+              "gggrgrggr": 1,
+              "gggrgrgre": 1,
+              "ggrggggrg": 1,
+              "ggrggrggr": 2,
+              "ggrgrgggg": 1,
+              "ggrgrgggr": 1,
+              "ggrgrgrgr": 5,
+              "grggggggr": 1,
+              "grgggrggr": 1,
+              "grggrggrg": 1,
+              "grggrgrgr": 1,
+              "grgrggggr": 2,
+              "grgrgggrg": 2,
+              "grgrgrgrg": 3,
+              "regggrggr": 1,
+              "regrgrgrg": 1,
+              "rgegggggr": 1,
+              "rggggrgre": 1,
+              "rgggrgrgg": 1,
+              "rgggrgrgr": 6,
+              "rgggrrrrr": 1,
+              "rggrgggre": 1,
+              "rggrggrgr": 1,
+              "rggrgrggg": 1,
+              "rggrgrggr": 1,
+              "rggrrrgrg": 1,
+              "rgrgegrgr": 1,
+              "rgrgggrgr": 3,
+              "rgrgggrrr": 1,
+              "rgrggrgge": 1,
+              "rgrggrggr": 1,
+              "rgrggrgrg": 1,
+              "rgrggrgrr": 1,
+              "rgrgrgggr": 7,
+              "rgrgrggrg": 2,
+              "rgrgrgree": 1,
+              "rgrgrgrgg": 3,
+              "rgrgrgrgr": 34,
+              "rgrrrgrgr": 1,
+              "rrgergrgr": 1,
+              "rrggrgggr": 1
+            },
+            "Q8": "none",
+            "Q6": 100,
+            "N1": "arn:aws:braket:us-east-1::device/qpu/quera/Aquila",
+            "N2": [
+              "2026-11-18T15:29:24.640000+00:00",
+              "2026-11-20T07:24:42.849000+00:00"
+            ],
+            "N3": 256
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q11": "correct",
             "Q8": "correct",
             "Q6": "correct",
             "N1": "correct",
@@ -1022,7 +1456,53 @@
             "Q1": "observed_counts",
             "Q7": 100,
             "Q11": {
-              "shotMetadatashotResult": 100
+              "ggggrgggr": 1,
+              "ggggrgrgr": 1,
+              "gggrggrgr": 1,
+              "gggrgrggg": 1,
+              "gggrgrgre": 1,
+              "gggrgrgrg": 1,
+              "ggrgggrgr": 1,
+              "ggrgrergr": 1,
+              "ggrgrggre": 1,
+              "ggrgrgrgr": 7,
+              "grggggggg": 1,
+              "grgggrgrg": 1,
+              "grggrgrgg": 1,
+              "grgrggrgr": 4,
+              "grgrgrggg": 1,
+              "grgrgrggr": 1,
+              "grgrgrgrg": 3,
+              "grrrgrrgg": 1,
+              "rggggggre": 1,
+              "rgggrgggr": 1,
+              "rgggrggrg": 1,
+              "rgggrgrgg": 1,
+              "rgggrgrgr": 4,
+              "rggrgggre": 1,
+              "rggrggrgr": 1,
+              "rggrgregr": 1,
+              "rggrgrggg": 1,
+              "rggrgrggr": 1,
+              "rggrgrgre": 1,
+              "rggrgrgrg": 2,
+              "rggrrrggg": 1,
+              "rgrergrgg": 1,
+              "rgrggggge": 1,
+              "rgrgggrgg": 1,
+              "rgrgggrgr": 2,
+              "rgrgrgggg": 1,
+              "rgrgrgggr": 6,
+              "rgrgrggrg": 3,
+              "rgrgrggrr": 1,
+              "rgrgrgrge": 1,
+              "rgrgrgrgg": 2,
+              "rgrgrgrgr": 29,
+              "rgrgrrrgr": 1,
+              "rgrrggggr": 1,
+              "rgrrggrgr": 2,
+              "rgrrrgrgr": 1,
+              "rrrgrrrrr": 1
             },
             "Q8": "undeterminable",
             "Q6": 100,
@@ -1038,7 +1518,7 @@
             "Q4": "misleading",
             "Q1": "correct",
             "Q7": "correct",
-            "Q11": "misleading",
+            "Q11": "correct",
             "Q8": "undeterminable",
             "Q6": "correct",
             "N1": "correct",
@@ -1053,7 +1533,53 @@
             "Q1": "observed_counts",
             "Q7": 100,
             "Q11": {
-              "shotMetadatashotResult": 100
+              "ggggrgggr": 1,
+              "ggggrgrgr": 1,
+              "gggrggrgr": 1,
+              "gggrgrggg": 1,
+              "gggrgrgre": 1,
+              "gggrgrgrg": 1,
+              "ggrgggrgr": 1,
+              "ggrgrergr": 1,
+              "ggrgrggre": 1,
+              "ggrgrgrgr": 7,
+              "grggggggg": 1,
+              "grgggrgrg": 1,
+              "grggrgrgg": 1,
+              "grgrggrgr": 4,
+              "grgrgrggg": 1,
+              "grgrgrggr": 1,
+              "grgrgrgrg": 3,
+              "grrrgrrgg": 1,
+              "rggggggre": 1,
+              "rgggrgggr": 1,
+              "rgggrggrg": 1,
+              "rgggrgrgg": 1,
+              "rgggrgrgr": 4,
+              "rggrgggre": 1,
+              "rggrggrgr": 1,
+              "rggrgregr": 1,
+              "rggrgrggg": 1,
+              "rggrgrggr": 1,
+              "rggrgrgre": 1,
+              "rggrgrgrg": 2,
+              "rggrrrggg": 1,
+              "rgrergrgg": 1,
+              "rgrggggge": 1,
+              "rgrgggrgg": 1,
+              "rgrgggrgr": 2,
+              "rgrgrgggg": 1,
+              "rgrgrgggr": 6,
+              "rgrgrggrg": 3,
+              "rgrgrggrr": 1,
+              "rgrgrgrge": 1,
+              "rgrgrgrgg": 2,
+              "rgrgrgrgr": 29,
+              "rgrgrrrgr": 1,
+              "rgrrggggr": 1,
+              "rgrrggrgr": 2,
+              "rgrrrgrgr": 1,
+              "rrrgrrrrr": 1
             },
             "Q8": "undeterminable",
             "Q6": 100,
@@ -1069,7 +1595,7 @@
             "Q4": "correct",
             "Q1": "correct",
             "Q7": "correct",
-            "Q11": "misleading",
+            "Q11": "correct",
             "Q8": "undeterminable",
             "Q6": "correct",
             "N1": "correct",
@@ -1084,7 +1610,53 @@
             "Q1": "observed_counts",
             "Q7": 100,
             "Q11": {
-              "shotMetadatashotResult": 100
+              "ggggrgggr": 1,
+              "ggggrgrgr": 1,
+              "gggrggrgr": 1,
+              "gggrgrggg": 1,
+              "gggrgrgre": 1,
+              "gggrgrgrg": 1,
+              "ggrgggrgr": 1,
+              "ggrgrergr": 1,
+              "ggrgrggre": 1,
+              "ggrgrgrgr": 7,
+              "grggggggg": 1,
+              "grgggrgrg": 1,
+              "grggrgrgg": 1,
+              "grgrggrgr": 4,
+              "grgrgrggg": 1,
+              "grgrgrggr": 1,
+              "grgrgrgrg": 3,
+              "grrrgrrgg": 1,
+              "rggggggre": 1,
+              "rgggrgggr": 1,
+              "rgggrggrg": 1,
+              "rgggrgrgg": 1,
+              "rgggrgrgr": 4,
+              "rggrgggre": 1,
+              "rggrggrgr": 1,
+              "rggrgregr": 1,
+              "rggrgrggg": 1,
+              "rggrgrggr": 1,
+              "rggrgrgre": 1,
+              "rggrgrgrg": 2,
+              "rggrrrggg": 1,
+              "rgrergrgg": 1,
+              "rgrggggge": 1,
+              "rgrgggrgg": 1,
+              "rgrgggrgr": 2,
+              "rgrgrgggg": 1,
+              "rgrgrgggr": 6,
+              "rgrgrggrg": 3,
+              "rgrgrggrr": 1,
+              "rgrgrgrge": 1,
+              "rgrgrgrgg": 2,
+              "rgrgrgrgr": 29,
+              "rgrgrrrgr": 1,
+              "rgrrggggr": 1,
+              "rgrrggrgr": 2,
+              "rgrrrgrgr": 1,
+              "rrrgrrrrr": 1
             },
             "Q8": "none",
             "Q6": 100,
@@ -1100,7 +1672,84 @@
             "Q4": "correct",
             "Q1": "correct",
             "Q7": "correct",
-            "Q11": "misleading",
+            "Q11": "correct",
+            "Q8": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q4": "quera",
+            "Q1": "observed_counts",
+            "Q7": 100,
+            "Q11": {
+              "ggggrgggr": 1,
+              "ggggrgrgr": 1,
+              "gggrggrgr": 1,
+              "gggrgrggg": 1,
+              "gggrgrgre": 1,
+              "gggrgrgrg": 1,
+              "ggrgggrgr": 1,
+              "ggrgrergr": 1,
+              "ggrgrggre": 1,
+              "ggrgrgrgr": 7,
+              "grggggggg": 1,
+              "grgggrgrg": 1,
+              "grggrgrgg": 1,
+              "grgrggrgr": 4,
+              "grgrgrggg": 1,
+              "grgrgrggr": 1,
+              "grgrgrgrg": 3,
+              "grrrgrrgg": 1,
+              "rggggggre": 1,
+              "rgggrgggr": 1,
+              "rgggrggrg": 1,
+              "rgggrgrgg": 1,
+              "rgggrgrgr": 4,
+              "rggrgggre": 1,
+              "rggrggrgr": 1,
+              "rggrgregr": 1,
+              "rggrgrggg": 1,
+              "rggrgrggr": 1,
+              "rggrgrgre": 1,
+              "rggrgrgrg": 2,
+              "rggrrrggg": 1,
+              "rgrergrgg": 1,
+              "rgrggggge": 1,
+              "rgrgggrgg": 1,
+              "rgrgggrgr": 2,
+              "rgrgrgggg": 1,
+              "rgrgrgggr": 6,
+              "rgrgrggrg": 3,
+              "rgrgrggrr": 1,
+              "rgrgrgrge": 1,
+              "rgrgrgrgg": 2,
+              "rgrgrgrgr": 29,
+              "rgrgrrrgr": 1,
+              "rgrrggggr": 1,
+              "rgrrggrgr": 2,
+              "rgrrrgrgr": 1,
+              "rrrgrrrrr": 1
+            },
+            "Q8": "none",
+            "Q6": 100,
+            "N1": "arn:aws:braket:us-east-1::device/qpu/quera/Aquila",
+            "N2": [
+              "2026-11-18T15:29:23.601000+00:00",
+              "2026-11-20T07:23:48.972000+00:00"
+            ],
+            "N3": 256
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q11": "correct",
             "Q8": "correct",
             "Q6": "correct",
             "N1": "correct",
@@ -1352,6 +2001,69 @@
             "N2": "correct",
             "N3": "correct"
           }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q4": "rigetti",
+            "Q1": "observed_counts",
+            "Q7": 1000,
+            "Q11": {
+              "00000": 398,
+              "00001": 14,
+              "00010": 7,
+              "00011": 18,
+              "00100": 2,
+              "00101": 2,
+              "00110": 1,
+              "00111": 5,
+              "01000": 3,
+              "01001": 2,
+              "01011": 2,
+              "01100": 8,
+              "01101": 2,
+              "01110": 4,
+              "01111": 40,
+              "10000": 55,
+              "10001": 2,
+              "10010": 5,
+              "10011": 6,
+              "10100": 1,
+              "10111": 4,
+              "11000": 10,
+              "11001": 3,
+              "11010": 4,
+              "11011": 5,
+              "11100": 15,
+              "11101": 13,
+              "11110": 38,
+              "11111": 331
+            },
+            "Q2": "provider",
+            "Q8": "none",
+            "Q3": "unknown_time",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
+            "N2": [
+              "2026-11-18T15:29:19.522000+00:00",
+              "2026-11-18T16:00:03.559000+00:00"
+            ],
+            "N3": 107
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q11": "correct",
+            "Q2": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
         }
       },
       "sensitivity": {
@@ -1431,6 +2143,33 @@
           }
         },
         "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "rigetti",
+            "Q8": "none",
+            "Q5": "did_not_run",
+            "Q3": "no_execution",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
+            "N2": [
+              "2026-11-18T15:29:26.927000+00:00",
+              "2026-11-18T15:29:28.285000+00:00"
+            ],
+            "N3": 107
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q8": "correct",
+            "Q5": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2f": {
           "answers": {
             "Q0": true,
             "Q4": "rigetti",
@@ -1567,6 +2306,35 @@
             "N2": "correct",
             "N3": "correct"
           }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q1": "probabilities",
+            "Q2": "application",
+            "Q8": "none",
+            "Q3": "matched",
+            "Q6": 100,
+            "N1": "arn:aws:braket:us-east-1::device/qpu/ionq/Forte-1",
+            "N2": [
+              "2026-11-18T15:29:09.913000+00:00",
+              "2026-11-18T22:40:28.932000+00:00"
+            ],
+            "N3": 36
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
         }
       },
       "sensitivity": {
@@ -1676,6 +2444,44 @@
           }
         },
         "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "rigetti",
+            "Q1": "observed_counts",
+            "Q7": 1000,
+            "Q11": {
+              "00": 477,
+              "01": 27,
+              "10": 36,
+              "11": 460
+            },
+            "Q2": "provider",
+            "Q8": "none",
+            "Q3": "unknown_time",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:us-west-1::device/qpu/rigetti/Cepheus-1-108Q",
+            "N2": [
+              "2026-11-18T15:29:17.017000+00:00",
+              "2026-11-18T16:00:03.244000+00:00"
+            ],
+            "N3": 107
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q11": "correct",
+            "Q2": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2f": {
           "answers": {
             "Q0": true,
             "Q4": "rigetti",
@@ -1913,6 +2719,58 @@
             "N2": "correct",
             "N3": "correct"
           }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q4": "iqm",
+            "Q1": "observed_counts",
+            "Q7": 1000,
+            "Q11": {
+              "00000": 477,
+              "00001": 14,
+              "00010": 4,
+              "00011": 4,
+              "00100": 2,
+              "00111": 4,
+              "01000": 2,
+              "01111": 10,
+              "10000": 1,
+              "10100": 1,
+              "10111": 11,
+              "11000": 6,
+              "11010": 4,
+              "11011": 4,
+              "11100": 2,
+              "11101": 6,
+              "11110": 14,
+              "11111": 434
+            },
+            "Q2": "provider",
+            "Q8": "none",
+            "Q3": "unknown_time",
+            "Q6": 1000,
+            "N1": "arn:aws:braket:eu-north-1::device/qpu/iqm/Garnet",
+            "N2": [
+              "2026-11-20T05:45:35.552000+00:00",
+              "2026-11-20T05:45:37.009000+00:00"
+            ],
+            "N3": 20
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q7": "correct",
+            "Q11": "correct",
+            "Q2": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
         }
       },
       "sensitivity": {
@@ -2002,6 +2860,37 @@
           }
         },
         "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "application",
+            "Q7": 1000,
+            "Q8": "batch:6af94c4e-9fd8-435f-b39e-8ff7da263275",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:15.719598+00:00",
+              "2026-11-19T08:19:30.575849+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2f": {
           "answers": {
             "Q0": true,
             "Q4": "ibm",
@@ -2149,6 +3038,37 @@
             "N2": "correct",
             "N3": "correct"
           }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "application",
+            "Q7": 1000,
+            "Q8": "batch:6af94c4e-9fd8-435f-b39e-8ff7da263275",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:16.796507+00:00",
+              "2026-11-19T08:19:46.543616+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
         }
       },
       "sensitivity": {
@@ -2238,6 +3158,37 @@
           }
         },
         "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "application",
+            "Q7": 1000,
+            "Q8": "batch:6af94c4e-9fd8-435f-b39e-8ff7da263275",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:16.260471+00:00",
+              "2026-11-19T08:19:38.670199+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2f": {
           "answers": {
             "Q0": true,
             "Q4": "ibm",
@@ -2385,6 +3336,37 @@
             "N2": "correct",
             "N3": "correct"
           }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "application",
+            "Q7": 1000,
+            "Q8": "none",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:17.552760+00:00",
+              "2026-11-19T08:19:55.016867+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
         }
       },
       "sensitivity": {
@@ -2474,6 +3456,37 @@
           }
         },
         "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "observed_counts",
+            "Q2": "application",
+            "Q7": 1000,
+            "Q8": "none",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:18.175652+00:00",
+              "2026-11-19T08:20:01.950612+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2f": {
           "answers": {
             "Q0": true,
             "Q4": "ibm",
@@ -2621,6 +3634,37 @@
             "N2": "correct",
             "N3": "correct"
           }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q1": "client_derived",
+            "Q2": "application",
+            "Q7": 2048,
+            "Q8": "none",
+            "Q3": "matched",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:18.943384+00:00",
+              "2026-11-19T08:20:08.605881+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
         }
       },
       "sensitivity": {
@@ -2700,6 +3744,33 @@
           }
         },
         "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ibm",
+            "Q8": "none",
+            "Q5": "did_not_run",
+            "Q3": "no_execution",
+            "Q6": 1000,
+            "N1": "ibm_aachen",
+            "N2": [
+              "2026-11-19T08:19:19.577463+00:00",
+              "2026-11-19T08:19:20.497279+00:00"
+            ],
+            "N3": 156
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q8": "correct",
+            "Q5": "correct",
+            "Q3": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2f": {
           "answers": {
             "Q0": true,
             "Q4": "ibm",
@@ -2843,6 +3914,37 @@
             "N2": "correct",
             "N3": "correct"
           }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q1": "probabilities",
+            "Q2": "provider",
+            "Q10": "ideal",
+            "Q7": "none",
+            "Q8": "none",
+            "Q6": "undeterminable",
+            "N1": "simulator",
+            "N2": [
+              "2026-11-19T08:28:22.632000+00:00",
+              "2026-11-19T08:29:30.310000+00:00"
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q10": "correct",
+            "Q7": "correct",
+            "Q8": "correct",
+            "Q6": "undeterminable",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
         }
       },
       "sensitivity": {
@@ -2954,6 +4056,35 @@
             "N2": "correct",
             "N3": "correct"
           }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q1": "probabilities",
+            "Q2": "provider",
+            "Q10": "forte-1",
+            "Q8": "none",
+            "Q6": 1000,
+            "N1": "simulator",
+            "N2": [
+              "2026-11-19T08:28:23.256000+00:00",
+              "2026-11-19T08:29:29.408000+00:00"
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q2": "correct",
+            "Q10": "correct",
+            "Q8": "correct",
+            "Q6": "correct",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
         }
       },
       "sensitivity": {
@@ -3038,6 +4169,35 @@
           }
         },
         "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "ionq",
+            "Q10": "ideal",
+            "Q9": "CompilationError",
+            "Q8": "none",
+            "Q5": "did_not_run",
+            "Q6": "undeterminable",
+            "N1": "simulator",
+            "N2": [
+              "2026-11-19T08:28:23.617000+00:00",
+              null
+            ],
+            "N3": 29
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q10": "correct",
+            "Q9": "correct",
+            "Q8": "correct",
+            "Q5": "correct",
+            "Q6": "undeterminable",
+            "N1": "correct",
+            "N2": "correct",
+            "N3": "correct"
+          }
+        },
+        "V2f": {
           "answers": {
             "Q0": true,
             "Q4": "ionq",
@@ -3178,6 +4338,37 @@
             "N1": "correct",
             "N2": "correct"
           }
+        },
+        "V2f": {
+          "answers": {
+            "Q0": true,
+            "Q4": "quandela",
+            "Q1": "observed_counts",
+            "Q11": {
+              "|0,2>": 467,
+              "|1,1>": 48,
+              "|2,0>": 485
+            },
+            "Q2": "provider",
+            "Q7": 33533,
+            "Q6": "undeterminable",
+            "N1": "sim:belenos",
+            "N2": [
+              "2026-11-19T08:52:48.663211+00:00",
+              "2026-11-19T08:53:17.455556+00:00"
+            ]
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q11": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q6": "undeterminable",
+            "N1": "correct",
+            "N2": "correct"
+          }
         }
       },
       "sensitivity": {
@@ -3276,6 +4467,44 @@
           }
         },
         "V2": {
+          "answers": {
+            "Q0": true,
+            "Q4": "quandela",
+            "Q1": "observed_counts",
+            "Q11": {
+              "|0,0,0,2>": 161,
+              "|0,0,1,1>": 62,
+              "|0,0,2,0>": 7,
+              "|0,1,0,1>": 379,
+              "|0,1,1,0>": 52,
+              "|0,2,0,0>": 147,
+              "|1,0,0,1>": 99,
+              "|1,0,1,0>": 11,
+              "|1,1,0,0>": 67,
+              "|2,0,0,0>": 15
+            },
+            "Q2": "provider",
+            "Q7": 32686,
+            "Q6": "undeterminable",
+            "N1": "sim:belenos",
+            "N2": [
+              "2026-11-19T08:53:52.521082+00:00",
+              "2026-11-19T08:54:11.668974+00:00"
+            ]
+          },
+          "scores": {
+            "Q0": "correct",
+            "Q4": "correct",
+            "Q1": "correct",
+            "Q11": "correct",
+            "Q2": "correct",
+            "Q7": "correct",
+            "Q6": "undeterminable",
+            "N1": "correct",
+            "N2": "correct"
+          }
+        },
+        "V2f": {
           "answers": {
             "Q0": true,
             "Q4": "quandela",

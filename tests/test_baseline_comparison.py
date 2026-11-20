@@ -29,7 +29,7 @@ def _scores(directory: Path, arm: str) -> dict[str, str]:
 
 
 @pytest.mark.parametrize("directory", DIRECTORIES, ids=lambda p: f"{p.parent.name}/{p.name[:8]}")
-def test_revised_records_never_mislead_on_the_development_set(directory: Path) -> None:
+def test_revised_records_never_mislead(directory: Path) -> None:
     assert "misleading" not in _scores(directory, "V2").values()
 
 
