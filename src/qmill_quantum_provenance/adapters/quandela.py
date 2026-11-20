@@ -11,6 +11,9 @@ from datetime import UTC, datetime, timedelta
 from typing import Any
 
 from ..adapter import (
+    check_expected_fields,
+    check_result_recognized,
+    ExpectedField,
     failure_with_evidence,
     relations_with_evidence,
     characterization_applies,
@@ -65,6 +68,13 @@ def _supplied(path: str, field: str, notes: str | None = None) -> Evidence:
 
 def _unavailable(path: str, reason: AvailabilityReason, notes: str | None = None) -> Evidence:
     return Evidence(path=path, status=EvidenceStatus.UNAVAILABLE, reason=reason, notes=notes)
+
+
+_EXPECTED_FIELDS = (
+    ExpectedField("/job/created_at", ("creation_datetime",)),
+    ExpectedField("/job/ended_at", ("start_time",)),
+    ExpectedField("/execution/run_duration_ms", ("duration",)),
+)
 
 
 class QuandelaProvenanceAdapter(ProvenanceAdapter):
@@ -124,6 +134,8 @@ class QuandelaProvenanceAdapter(ProvenanceAdapter):
         results = self._results(result, evidence, extension)
         if not results.available:
             qualify_missing_results(evidence, job.status, result_error)
+        check_result_recognized(job.status, result is not None, results, warnings)
+        check_expected_fields(snapshot.metadata, _EXPECTED_FIELDS, job.status, warnings)
         self._compiled(result, artifacts, evidence, extension)
         execution = self._execution(metadata, evidence)
         characterization = self._characterization(device, job, device_details, evidence, extension)

@@ -36,7 +36,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from ..adapter import CreateProvenanceRecordRequest
+from ..adapter import DRIFT_WARNING_CODES, CreateProvenanceRecordRequest
 from ..contract import validate_record
 from ..evaluation import build_service, classify_inventory, load_inventory
 
@@ -95,6 +95,15 @@ def check_claims(payload: dict[str, Any], manifest: dict[str, Any]) -> list[dict
                 "detail": "provider retains the submitted program; record has no submitted artifact",
             }
         )
+
+    for warning in payload.get("warnings") or []:
+        if warning.get("code") in DRIFT_WARNING_CODES:
+            findings.append(
+                {
+                    "check": "provider_interface_drift",
+                    "detail": f"{warning['code']}: {warning['message']}",
+                }
+            )
 
     characterization = payload.get("characterization") or {}
     if characterization:

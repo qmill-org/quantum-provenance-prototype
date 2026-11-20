@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0-prototype",
   "record_id": "qprov:ibm:049001a0c6830efb74a6fa0c8ae65e6d",
-  "generated_at": "2026-11-20T05:51:14.340401+00:00",
-  "retrieved_at": "2026-11-20T05:51:14.340388+00:00",
+  "generated_at": "2026-11-20T06:06:32.890489+00:00",
+  "retrieved_at": "2026-11-20T06:06:32.890475+00:00",
   "adapter": {
     "provider": "ibm",
     "name": "ibm-provenance-adapter",

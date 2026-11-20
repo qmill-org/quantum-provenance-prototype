@@ -30,6 +30,10 @@ from typing import Any
 
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    check_expected_fields,
+    check_result_recognized,
+    ExpectedField,
+    read_field,
     failure_with_evidence,
     relations_with_evidence,
     characterization_applies,
@@ -169,6 +173,12 @@ def _probabilities_to_estimated_counts(
     return {state: round(probability * shots) for state, probability in probabilities.items()}
 
 
+_EXPECTED_FIELDS = (
+    # v0.4 renamed execution_time_ms (v0.3) to execution_duration_ms.
+    ExpectedField("/execution/run_duration_ms", ("execution_duration_ms", "execution_time_ms")),
+)
+
+
 class IonQProvenanceAdapter(ProvenanceAdapter):
     provider = "ionq"
     name = "ionq-provenance-adapter"
@@ -234,6 +244,8 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
         results = self._build_results(snapshot, result_data, evidence)
         if not results.available:
             qualify_missing_results(evidence, job.status, result_error)
+        check_result_recognized(job.status, result_data is not None, results, warnings)
+        check_expected_fields(snapshot.metadata, _EXPECTED_FIELDS, job.status, warnings)
         self._build_compiled_artifact(result_data, artifacts, evidence)
         self._build_provider_native_artifact(snapshot, artifacts, evidence)
         execution = self._build_execution(snapshot, evidence)
@@ -556,11 +568,9 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
         ended = snapshot.ended_at
 
         run_ms = None
-        metadata = getattr(snapshot, "metadata", None)
-        if isinstance(metadata, dict):
-            raw_run = metadata.get("execution_time_ms")
-            if isinstance(raw_run, (int, float)) and not isinstance(raw_run, bool):
-                run_ms = int(raw_run)
+        raw_run, run_field = read_field(getattr(snapshot, "metadata", None), _EXPECTED_FIELDS[0])
+        if isinstance(raw_run, (int, float)) and not isinstance(raw_run, bool):
+            run_ms = int(raw_run)
 
         total_ms = None
         if created is not None and ended is not None and ended >= created:
@@ -582,7 +592,7 @@ class IonQProvenanceAdapter(ProvenanceAdapter):
                 Evidence(
                     path="/execution/run_duration_ms",
                     status=EvidenceStatus.PROVIDER_SUPPLIED,
-                    provider_field="ionq.jobs.get().execution_time",
+                    provider_field=f"ionq.jobs.get().{run_field}",
                 )
             )
         if total_ms is not None:

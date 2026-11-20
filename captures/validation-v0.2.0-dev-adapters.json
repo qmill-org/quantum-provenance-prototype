@@ -656,7 +656,12 @@
         "identifier": "ibm_aachen",
         "platform_provider": "ibm_quantum"
       },
-      "findings": [],
+      "findings": [
+        {
+          "check": "provider_interface_drift",
+          "detail": "unrecognized_result_format: Result retrieved for a completed job, but it holds no result representation this adapter maps; reported unavailable."
+        }
+      ],
       "inventory": {
         "artifact.compiled": "unavailable",
         "characterization": "provider_supplied",
@@ -762,7 +767,7 @@
         "device.qubit_count": "provider_supplied",
         "device.type": "provider_supplied",
         "execution.queue_duration_ms": "unavailable",
-        "execution.run_duration_ms": "unavailable",
+        "execution.run_duration_ms": "provider_supplied",
         "execution.total_duration_ms": "derived",
         "job.created_at": "provider_supplied",
         "job.ended_at": "provider_supplied",
@@ -780,8 +785,8 @@
         "derived": 1,
         "not_applicable": 3,
         "provider_passthrough": 1,
-        "provider_supplied": 9,
-        "unavailable": 9
+        "provider_supplied": 10,
+        "unavailable": 8
       },
       "provider": "ionq",
       "schema_valid": true,
@@ -810,7 +815,7 @@
         "device.qubit_count": "provider_supplied",
         "device.type": "provider_supplied",
         "execution.queue_duration_ms": "unavailable",
-        "execution.run_duration_ms": "unavailable",
+        "execution.run_duration_ms": "provider_supplied",
         "execution.total_duration_ms": "derived",
         "job.created_at": "provider_supplied",
         "job.ended_at": "provider_supplied",
@@ -828,8 +833,8 @@
         "derived": 2,
         "not_applicable": 3,
         "provider_passthrough": 1,
-        "provider_supplied": 10,
-        "unavailable": 7
+        "provider_supplied": 11,
+        "unavailable": 6
       },
       "provider": "ionq",
       "schema_valid": true,
@@ -982,6 +987,8 @@
       }
     }
   ],
-  "finding_counts": {},
+  "finding_counts": {
+    "provider_interface_drift": 1
+  },
   "inventory_version": "0.2.0"
 }

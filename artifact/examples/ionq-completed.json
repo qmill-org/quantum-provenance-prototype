@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1.0-prototype",
   "record_id": "qprov:ionq:f09d0b7fd29c07000f3221aad6ddb677",
-  "generated_at": "2026-11-20T05:51:14.343607+00:00",
-  "retrieved_at": "2026-11-20T05:51:14.343600+00:00",
+  "generated_at": "2026-11-20T06:06:32.893746+00:00",
+  "retrieved_at": "2026-11-20T06:06:32.893737+00:00",
   "adapter": {
     "provider": "ionq",
     "name": "ionq-provenance-adapter",
@@ -155,7 +155,7 @@
     {
       "path": "/execution/run_duration_ms",
       "status": "provider_supplied",
-      "provider_field": "ionq.jobs.get().execution_time"
+      "provider_field": "ionq.jobs.get().execution_time_ms"
     },
     {
       "path": "/execution/total_duration_ms",

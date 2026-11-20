@@ -161,7 +161,10 @@ class LiveIBMIntegration(ProviderAdapter):
         timestamps = metrics.get("timestamps") or {}
         self._created_at = job.creation_date
         program = inputs.get("quantum_program")
-        self.notes["input_schema"] = inputs.get("schema_version") or "pubs"
+        input_schema = inputs.get("schema_version") or ("pubs" if "pubs" in inputs else None)
+        if input_schema is None:
+            input_schema = "unrecognized:" + ",".join(sorted(map(str, inputs)))
+        self.notes["input_schema"] = input_schema
         self.notes["primitive_recorded"] = getattr(job, "primitive_id", None)
         if program is not None:
             self.notes["input_items"] = [type(item).__name__ for item in program.items]
@@ -208,6 +211,7 @@ class LiveIBMIntegration(ProviderAdapter):
                 "program_id": getattr(job, "primitive_id", None),
                 "session_id": session_id,
                 "session_mode": session_mode,
+                "input_schema": input_schema,
                 "error_message": error_message,
                 "timestamps": timestamps,
                 "usage": metrics.get("usage"),

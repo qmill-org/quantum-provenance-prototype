@@ -26,6 +26,9 @@ from typing import Any
 
 from ..integration import ProviderAdapter, ProviderIntegrationError
 from ..adapter import (
+    check_expected_fields,
+    check_result_recognized,
+    ExpectedField,
     failure_with_evidence,
     relations_with_evidence,
     characterization_applies,
@@ -131,6 +134,11 @@ def _metric_unit(name: str) -> str | None:
     return None
 
 
+_EXPECTED_FIELDS = (ExpectedField("/execution (queue/run split)", ("timestamps",)),)
+# Job-input layouts the live integration can parse (PUB list; QuantumProgram v2.0).
+_KNOWN_INPUT_SCHEMAS = frozenset({"pubs", "v2.0"})
+
+
 class IBMProvenanceAdapter(ProvenanceAdapter):
     provider = "ibm"
     name = "ibm-provenance-adapter"
@@ -196,6 +204,17 @@ class IBMProvenanceAdapter(ProvenanceAdapter):
         results = self._build_results(snapshot, result_data, evidence)
         if not results.available:
             qualify_missing_results(evidence, job.status, result_error)
+        check_result_recognized(job.status, result_data is not None, results, warnings)
+        check_expected_fields(snapshot.metadata, _EXPECTED_FIELDS, job.status, warnings)
+        schema = (snapshot.metadata or {}).get("input_schema")
+        if schema is not None and schema not in _KNOWN_INPUT_SCHEMAS:
+            warnings.append(
+                Warning(
+                    "unrecognized_provider_schema",
+                    f"Job inputs use schema {schema!r}; shots and circuit metrics may be "
+                    "missing. The provider interface may have changed.",
+                )
+            )
         self._build_compiled_artifact(result_data, artifacts, evidence)
         self._build_provider_native_artifact(snapshot, artifacts, evidence)
         execution = self._build_execution(snapshot, evidence)

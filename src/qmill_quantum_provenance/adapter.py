@@ -187,6 +187,13 @@ def qualify_missing_results(
             reason=reason_for(error),
             notes=str(error)[:200],
         )
+    elif job_status == "completed":
+        replacement = Evidence(
+            path="/results",
+            status=EvidenceStatus.UNAVAILABLE,
+            reason=AvailabilityReason.UNSUPPORTED_BY_ADAPTER,
+            notes="Result retrieved, but its format is not one this adapter maps.",
+        )
     else:
         return
     evidence[:] = [item for item in evidence if item.path != "/results"]
@@ -325,7 +332,86 @@ def failure_with_evidence(
     return None
 
 
+@dataclass(frozen=True)
+class ExpectedField:
+    """A provider field an adapter maps, with its accepted names (newest first).
+
+    Older names stay accepted so a provider interface change does not break the
+    mapping; when none of the names is present for a job in ``statuses`` the
+    adapter warns instead of silently reporting the attribute ``unavailable``.
+    """
+
+    record_path: str
+    names: tuple[str, ...]
+    statuses: frozenset[str] = frozenset({"completed"})
+
+
+DRIFT_WARNING_CODES = frozenset(
+    {
+        "expected_provider_field_missing",
+        "unrecognized_result_format",
+        "unrecognized_provider_schema",
+    }
+)
+
+
+def read_field(metadata: Any, field: ExpectedField) -> tuple[Any, str | None]:
+    """Value and matched name of the first accepted name present in ``metadata``."""
+
+    if isinstance(metadata, dict):
+        for name in field.names:
+            if name in metadata:
+                return metadata[name], name
+    return None, None
+
+
+def check_expected_fields(
+    metadata: Any,
+    fields: tuple[ExpectedField, ...],
+    job_status: str,
+    warnings: list[Warning],
+) -> None:
+    """Warn for mapped fields absent from the provider response.
+
+    A key that is present with a null value is the provider saying "no value";
+    only a missing key suggests the interface changed.
+    """
+
+    for expected in fields:
+        if job_status not in expected.statuses:
+            continue
+        if read_field(metadata, expected)[1] is None:
+            warnings.append(
+                Warning(
+                    "expected_provider_field_missing",
+                    f"{expected.record_path}: none of {', '.join(expected.names)} in the provider "
+                    f"response for a {job_status} job; reported unavailable. The provider "
+                    "interface may have changed.",
+                )
+            )
+
+
+def check_result_recognized(
+    job_status: str, result_retrieved: bool, results: Results, warnings: list[Warning]
+) -> None:
+    """Warn when a completed job's result was retrieved but not understood."""
+
+    if job_status == "completed" and result_retrieved and not results.available:
+        warnings.append(
+            Warning(
+                "unrecognized_result_format",
+                "Result retrieved for a completed job, but it holds no result "
+                "representation this adapter maps; reported unavailable.",
+            )
+        )
+
+
 __all__ = [
+    "check_expected_fields",
+    "check_result_recognized",
+    "DRIFT_WARNING_CODES",
+    "ExpectedField",
+    "read_field",
     "characterization_applies",
     "failure_with_evidence",
     "relations_with_evidence",
