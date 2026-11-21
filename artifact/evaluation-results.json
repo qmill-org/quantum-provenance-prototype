@@ -7,13 +7,14 @@
   },
   "providers": {
     "braket": {
-      "adapter_loc": 628,
+      "adapter_loc": 637,
       "attribute_evidence_counts": {
+        "aggregator_normalized": 1,
         "application_captured": 5,
         "derived": 3,
         "not_applicable": 3,
         "provider_passthrough": 3,
-        "provider_supplied": 9,
+        "provider_supplied": 8,
         "unavailable": 3
       },
       "evidence_total": 26,
@@ -21,7 +22,7 @@
       "inventory_classification": {
         "by_attribute": {
           "artifact.compiled": "unavailable",
-          "characterization": "provider_supplied",
+          "characterization": "aggregator_normalized",
           "compilation.compiler": "unavailable",
           "compilation.logical_to_physical_mapping": "unavailable",
           "device.hardware_provider": "derived",
@@ -46,11 +47,12 @@
           "software.provider_client": "application_captured"
         },
         "counts": {
+          "aggregator_normalized": 1,
           "application_captured": 2,
           "derived": 3,
           "not_applicable": 3,
           "provider_passthrough": 1,
-          "provider_supplied": 9,
+          "provider_supplied": 8,
           "unavailable": 6
         },
         "unclassified": 0

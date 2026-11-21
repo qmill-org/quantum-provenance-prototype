@@ -1,8 +1,8 @@
 {
   "schema_version": "0.2.0",
   "record_id": "qprov:braket:1157a7055a74f5350154078b654d30ff",
-  "generated_at": "2026-11-20T10:53:01.140902+00:00",
-  "retrieved_at": "2026-11-20T10:53:01.140848+00:00",
+  "generated_at": "2026-11-21T15:40:03.928754+00:00",
+  "retrieved_at": "2026-11-21T15:40:03.928734+00:00",
   "adapter": {
     "provider": "braket",
     "name": "braket-provenance-adapter",
@@ -202,9 +202,9 @@
     },
     {
       "path": "/characterization",
-      "status": "provider_supplied",
+      "status": "aggregator_normalized",
       "provider_field": "GetDevice deviceCapabilities (standardized/provider)",
-      "notes": "Device snapshot at retrieval time; Braket offers no historical query."
+      "notes": "Device snapshot at retrieval time; Braket offers no historical query. standardized.* metrics are Braket's normalization of vendor calibration; any provider.* metrics are relayed in the vendor's terms."
     },
     {
       "path": "/artifacts",

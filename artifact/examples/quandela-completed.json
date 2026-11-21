@@ -1,8 +1,8 @@
 {
   "schema_version": "0.2.0",
   "record_id": "qprov:quandela:5d27907cad1c18e3502f2f2b950c711d",
-  "generated_at": "2026-11-20T10:53:01.197964+00:00",
-  "retrieved_at": "2026-11-20T10:53:01.197958+00:00",
+  "generated_at": "2026-11-21T15:40:04.085999+00:00",
+  "retrieved_at": "2026-11-21T15:40:04.085980+00:00",
   "adapter": {
     "provider": "quandela",
     "name": "quandela-provenance-adapter",

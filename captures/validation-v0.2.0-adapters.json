@@ -1,5 +1,5 @@
 {
-  "adapter_revision": "79e177d",
+  "adapter_revision": "c0d5db5",
   "captures": [
     {
       "capture": "04470467-2658-4b06-8e5c-35b841c7b054",
@@ -140,7 +140,7 @@
       "findings": [],
       "inventory": {
         "artifact.compiled": "provider_passthrough",
-        "characterization": "provider_supplied",
+        "characterization": "aggregator_normalized",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
         "device.hardware_provider": "derived",
@@ -165,10 +165,11 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
+        "aggregator_normalized": 1,
         "derived": 3,
         "not_applicable": 4,
         "provider_passthrough": 1,
-        "provider_supplied": 10,
+        "provider_supplied": 9,
         "unavailable": 6
       },
       "provider": "braket",
@@ -237,7 +238,7 @@
       "findings": [],
       "inventory": {
         "artifact.compiled": "provider_passthrough",
-        "characterization": "provider_supplied",
+        "characterization": "aggregator_normalized",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
         "device.hardware_provider": "derived",
@@ -262,10 +263,11 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
+        "aggregator_normalized": 1,
         "derived": 3,
         "not_applicable": 4,
         "provider_passthrough": 1,
-        "provider_supplied": 10,
+        "provider_supplied": 9,
         "unavailable": 6
       },
       "provider": "braket",
@@ -334,7 +336,7 @@
       "findings": [],
       "inventory": {
         "artifact.compiled": "provider_passthrough",
-        "characterization": "provider_supplied",
+        "characterization": "aggregator_normalized",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
         "device.hardware_provider": "derived",
@@ -359,10 +361,11 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
+        "aggregator_normalized": 1,
         "derived": 3,
         "not_applicable": 4,
         "provider_passthrough": 1,
-        "provider_supplied": 10,
+        "provider_supplied": 9,
         "unavailable": 6
       },
       "provider": "braket",
@@ -431,7 +434,7 @@
       "findings": [],
       "inventory": {
         "artifact.compiled": "unavailable",
-        "characterization": "provider_supplied",
+        "characterization": "aggregator_normalized",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
         "device.hardware_provider": "derived",
@@ -456,10 +459,11 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
+        "aggregator_normalized": 1,
         "derived": 3,
         "not_applicable": 3,
         "provider_passthrough": 1,
-        "provider_supplied": 9,
+        "provider_supplied": 8,
         "unavailable": 8
       },
       "provider": "braket",
@@ -480,7 +484,7 @@
       "findings": [],
       "inventory": {
         "artifact.compiled": "provider_passthrough",
-        "characterization": "provider_supplied",
+        "characterization": "aggregator_normalized",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
         "device.hardware_provider": "derived",
@@ -505,10 +509,11 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
+        "aggregator_normalized": 1,
         "derived": 3,
         "not_applicable": 4,
         "provider_passthrough": 1,
-        "provider_supplied": 10,
+        "provider_supplied": 9,
         "unavailable": 6
       },
       "provider": "braket",
@@ -529,7 +534,7 @@
       "findings": [],
       "inventory": {
         "artifact.compiled": "provider_passthrough",
-        "characterization": "provider_supplied",
+        "characterization": "aggregator_normalized",
         "compilation.compiler": "unavailable",
         "compilation.logical_to_physical_mapping": "unavailable",
         "device.hardware_provider": "derived",
@@ -554,10 +559,11 @@
         "software.provider_client": "unavailable"
       },
       "inventory_counts": {
+        "aggregator_normalized": 1,
         "derived": 3,
         "not_applicable": 4,
         "provider_passthrough": 1,
-        "provider_supplied": 10,
+        "provider_supplied": 9,
         "unavailable": 6
       },
       "provider": "braket",
