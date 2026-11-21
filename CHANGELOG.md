@@ -46,6 +46,12 @@ every capture taken after its tag is held-out data for it.
   (F15), IonQ multi-circuit results (F16), twirled-Sampler shots (F17),
   transport faults, malformed provider values, failure reasons, credentials
   in provider error text (F18).
+- AC-10 Braket device characterization is labelled by origin:
+  `aggregator_normalized` when it includes Braket's standardized properties,
+  `provider_passthrough` when it holds only the vendor's own fields (it was
+  `provider_supplied`). Found while writing the normative evidence
+  definitions; the baseline-comparison and failure-injection results are
+  unchanged because both treat the three provider-origin states alike.
 
 ### Experiments (pre-registered; results before and after fixes)
 

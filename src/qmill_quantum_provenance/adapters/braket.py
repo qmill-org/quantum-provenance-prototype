@@ -645,10 +645,22 @@ class BraketProvenanceAdapter(ProvenanceAdapter):
             notes = "Device snapshot at retrieval time; Braket offers no historical query."
             if captured_at is None and calibration.get("service_updated_at"):
                 notes += " Only a service-document timestamp exists, which is not used."
+            # Braket restates vendor calibration in its standardized schema; the
+            # provider block relays the vendor's own fields. Metric-name prefixes
+            # keep the distinction per metric.
+            if any(metric.name.startswith("standardized.") for metric in metrics):
+                status = EvidenceStatus.AGGREGATOR_NORMALIZED
+                notes += (
+                    " standardized.* metrics are Braket's normalization of vendor calibration;"
+                    " any provider.* metrics are relayed in the vendor's terms."
+                )
+            else:
+                status = EvidenceStatus.PROVIDER_PASSTHROUGH
+                notes += " Metrics relayed by Braket in the hardware vendor's terms."
             evidence.append(
                 Evidence(
                     path="/characterization",
-                    status=EvidenceStatus.PROVIDER_SUPPLIED,
+                    status=status,
                     provider_field="GetDevice deviceCapabilities (standardized/provider)",
                     notes=notes,
                 )

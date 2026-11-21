@@ -132,7 +132,8 @@ def test_braket_mapping_normalizes_expected_fields() -> None:
     statuses = {(e.path, e.status.value) for e in record.evidence}
     assert ("/job/status", "provider_supplied") in statuses
     assert ("/execution/total_duration_ms", "derived") in statuses
-    assert ("/characterization", "provider_supplied") in statuses
+    # Vendor calibration relayed by the aggregator, not supplied by Braket itself.
+    assert ("/characterization", "provider_passthrough") in statuses
     assert any(
         path.startswith("/software/") and status == "application_captured"
         for path, status in statuses
@@ -147,6 +148,18 @@ def test_braket_mapping_normalizes_expected_fields() -> None:
     assert "compiled" in roles
     assert "provider_native" in roles
     assert "source" in roles
+
+
+def test_braket_standardized_calibration_is_aggregator_normalized() -> None:
+    fixture = _load("completed.json")
+    fixture["device"]["calibration"]["metrics"] = {
+        "standardized.oneQubitFidelity.RANDOMIZED_BENCHMARKING.median_over_qubits": 0.998,
+        "provider.fidelity.2Q.mean": 0.987,
+    }
+    record, _ = _service(fixture).create_record(_request(fixture))
+
+    [item] = [e for e in record.evidence if e.path == "/characterization"]
+    assert item.status.value == "aggregator_normalized"
 
 
 def test_partial_record_marks_characterization_unavailable() -> None:
